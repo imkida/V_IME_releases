@@ -6,8 +6,8 @@
     "debug": {
       "versionName": "1.3.11",
       "versionCode": 87,
-      "title": "v1.3.11 — Clean 低延迟短 Prompt 与真机验证准备",
-      "summary": "低延迟实验中 Normal + Clean 启用短 Clean Prompt，降低 LLM token 成本与等待时间；Normal + Tidy 继续复用 CleanTidyV2 baseline。同步补齐 Clean 长语音‘整理中’真机归因测试清单。",
+      "title": "v1.3.11 — Clean 高效改写短 Prompt 与真机验证准备",
+      "summary": "高效改写中 Normal + Clean 启用短 Clean Prompt，降低 LLM token 成本并提升整理阶段效率；Normal + Tidy 继续复用 CleanTidyV2 baseline。同步补齐 Clean 长语音‘整理中’真机归因测试清单。",
       "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.3.11",
       "apkName": "V_IME-v1.3.11-debug.apk",
       "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.3.11/V_IME-v1.3.11-debug.apk",
@@ -19,8 +19,8 @@
     "release": {
       "versionName": "1.3.11",
       "versionCode": 87,
-      "title": "v1.3.11 — Clean 低延迟短 Prompt 与真机验证准备",
-      "summary": "低延迟实验中 Normal + Clean 启用短 Clean Prompt，降低 LLM token 成本与等待时间；Normal + Tidy 继续复用 CleanTidyV2 baseline。同步补齐 Clean 长语音‘整理中’真机归因测试清单。",
+      "title": "v1.3.11 — Clean 高效改写短 Prompt 与真机验证准备",
+      "summary": "高效改写中 Normal + Clean 启用短 Clean Prompt，降低 LLM token 成本并提升整理阶段效率；Normal + Tidy 继续复用 CleanTidyV2 baseline。同步补齐 Clean 长语音‘整理中’真机归因测试清单。",
       "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.3.11",
       "apkName": "V_IME-v1.3.11-release.apk",
       "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.3.11/V_IME-v1.3.11-release.apk",
