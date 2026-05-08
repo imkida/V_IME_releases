@@ -60,3 +60,27 @@ manifest 里 `apkUrl` 指向本仓库的 GitHub Release asset（`releases/downlo
 
 - 主仓 issue tracker：[`imkida/V_IME_Android` issues](https://github.com/imkida/V_IME_Android/issues)（私有，需邀请）
 - 公开反馈渠道：暂无；联系作者请用主仓主页联系方式
+————————————
+About
+A voice-based input method driven by large language models, designed for the Android platform.一个自语音输入应用（对，是应用而不是输入法），支持自定义API和全本地化数据存储，保护隐私安全。产品功能及交互都持续打磨，适配各种场景，提供多格式输出。能说，就坚决不打字：）
+
+**这个项目完全基于 VibeCoding 开发，是一次完整的无代码设计尝试**
+
+# V_IME_Android
+
+V_IME 是一个**跨平台的纯语音输入应用**项目。切换到 V_IME 后，在任意应用的文本框里按住麦克风说话，识别 + LLM 改写后的文字会直接落入目标文本框。
+
+ **Android 端**实现，目前是整个 V_IME 家族中完成度最高的一支。
+
+## 主要特性（v1.1.2）
+
+- **五种改写模式**：Verbatim（直出，跳过 LLM）/ Translation / Edit / Clean / Tidy，按需路由不同 prompt。
+- **双 ASR 后端**：OpenAI 兼容 `/v1/audio/transcriptions` + 阿里百炼 Qwen ASR（DashScope 专用客户端）。LLM 改写走 OpenAI 兼容 `/v1/chat/completions`。
+- **Quick Panel 应急面板**（可选，默认关闭）：Numbers / Letters / Symbols 三层 keypad，每键直接 commit 不走 LLM，按当前文本框 inputType 自动选首层。
+- **隐私保护**：API Key 经 Android Keystore 加密后存入 DataStore，发请求那一刻才解密；密码框（`InputType` 含 password 标记）下静默拒绝写入。
+- **本地历史**：识别 + 改写结果落 Room，可查询、复用、清理。
+- **轻量软键盘 UI**：Jetpack Compose，含浅色 / 深色主题、音量表、partial ASR 显示。
+- **暂时不做**：完整 CJK 输入法兼容 / 智能用户候选词学习、离线识别、流式识别（流式版本在 `stream/main` 长期分支独立演进）、多端同步、iOS 版。
+
+---
+
