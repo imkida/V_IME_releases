@@ -47,10 +47,10 @@ manifest 里 `apkUrl` 指向本仓库的 GitHub Release asset（`releases/downlo
 | 平台 | tag 前缀示例 | 当前状态 |
 |---|---|---|
 | Android | `android-v1.3.10`、`android-v1.3.9` | 正在使用 |
-| macOS | `macos-vX.Y.Z` | 规划中 |
-| iOS | `ios-vX.Y.Z` | 规划中 |
-| Windows | `windows-vX.Y.Z` | 规划中 |
-| HarmonyOS | `harmonyos-vX.Y.Z` | 规划中 |
+| macOS | `macos-vX.Y.Z` | 内测中 |
+| iOS | `ios-vX.Y.Z` | 内测中 |
+| Windows | `windows-vX.Y.Z` | 内测中 |
+| HarmonyOS | `harmonyos-vX.Y.Z` | 适配中 |
 
 ## 历史
 
@@ -72,7 +72,7 @@ V_IME 是一个**跨平台的纯语音输入应用**项目。切换到 V_IME 后
 
  **Android 端**实现，目前是整个 V_IME 家族中完成度最高的一支。
 
-## 主要特性（v1.1.2）
+## 主要特性（主版本 V1.x）
 
 - **五种改写模式**：Verbatim（直出，跳过 LLM）/ Translation / Edit / Clean / Tidy，按需路由不同 prompt。
 - **双 ASR 后端**：OpenAI 兼容 `/v1/audio/transcriptions` + 阿里百炼 Qwen ASR（DashScope 专用客户端）。LLM 改写走 OpenAI 兼容 `/v1/chat/completions`。
