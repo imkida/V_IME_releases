@@ -11,10 +11,10 @@ V_IME_releases/
 ├── README.md                      ← 本文件
 ├── android/
 │   └── manifest.json              ← Android App 检查更新 fetch 此 URL
-├── macos/                         ← 规划中（macOS Sparkle appcast）
-├── ios/                           ← 规划中
-├── windows/                       ← 规划中
-└── harmonyos/                     ← 规划中
+├── macos/                         ← 内测中（macOS Sparkle appcast）
+├── ios/                           ← 内测中
+├── windows/                       ← 内测中
+└── harmonyos/                     ← 适配中
 ```
 
 ## Android 安装包
