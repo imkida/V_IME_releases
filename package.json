@@ -1,0 +1,8 @@
+{
+  "name": "v-ime-releases",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "release:manifest": "node scripts/update-manifest.mjs"
+  }
+}

@@ -1,0 +1,278 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/imkida/V_IME_releases/main/schema/release-manifest.schema.json",
+  "title": "V_IME Release Manifest",
+  "description": "Shared schema for public V_IME platform update manifests. Platform-specific fields are allowed, but every public release should expose stable version, release, asset, and integrity metadata.",
+  "type": "object",
+  "required": [
+    "formatVersion",
+    "generatedAt",
+    "channels"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "formatVersion": {
+      "type": "integer",
+      "const": 1
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "productName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "platform": {
+      "type": "string",
+      "enum": [
+        "android",
+        "macos",
+        "windows",
+        "ios",
+        "harmonyos"
+      ]
+    },
+    "packageName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "bundleId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "appId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "channels": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9._-]*$"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/channelRelease"
+      }
+    }
+  },
+  "$defs": {
+    "channelRelease": {
+      "type": "object",
+      "required": [
+        "versionName",
+        "title",
+        "summary",
+        "releaseUrl",
+        "mandatory"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "versionName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "versionCode": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "buildNumber": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "string",
+              "minLength": 1
+            }
+          ]
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "releaseUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "mandatory": {
+          "type": "boolean"
+        },
+        "minSupportedVersionCode": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "minSupportedVersionName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "minSystemVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "downloadUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "downloadName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "certificateSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "apkName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "apkUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "apkSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "appcastUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "sparkleEdDsaSignature": {
+          "type": "string",
+          "minLength": 1
+        },
+        "storeUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "installerType": {
+          "$ref": "#/$defs/installerType"
+        },
+        "arch": {
+          "$ref": "#/$defs/arch"
+        },
+        "assets": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/asset"
+          }
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "assets"
+          ]
+        },
+        {
+          "required": [
+            "apkUrl",
+            "apkSha256"
+          ]
+        },
+        {
+          "required": [
+            "downloadUrl",
+            "sha256"
+          ]
+        },
+        {
+          "required": [
+            "appcastUrl"
+          ]
+        },
+        {
+          "required": [
+            "storeUrl"
+          ]
+        }
+      ]
+    },
+    "asset": {
+      "type": "object",
+      "required": [
+        "name",
+        "url",
+        "sha256"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "sizeBytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "installerType": {
+          "$ref": "#/$defs/installerType"
+        },
+        "arch": {
+          "$ref": "#/$defs/arch"
+        },
+        "minSystemVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "certificateSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "sparkleEdDsaSignature": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "installerType": {
+      "type": "string",
+      "enum": [
+        "apk",
+        "aab",
+        "dmg",
+        "zip",
+        "pkg",
+        "exe",
+        "msi",
+        "msix",
+        "ipa",
+        "hap",
+        "app-store",
+        "testflight",
+        "store-link"
+      ]
+    },
+    "arch": {
+      "type": "string",
+      "enum": [
+        "universal",
+        "arm64",
+        "x86_64",
+        "x64",
+        "x86",
+        "armeabi-v7a",
+        "arm64-v8a"
+      ]
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[A-Fa-f0-9]{64}$"
+    }
+  }
+}

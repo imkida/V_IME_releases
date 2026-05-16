@@ -1,0 +1,38 @@
+{
+  "formatVersion": 1,
+  "generatedAt": "2026-05-16T18:23:10Z",
+  "platform": "macos",
+  "channels": {
+    "beta": {
+      "versionName": "0.5.0",
+      "title": "v0.5.0 beta - macOS 首个公开候选包",
+      "summary": "macOS 首个公开候选包：菜单栏 App、全局快捷键、麦克风录音、OpenAI-compatible ASR、LLM 改写 / 翻译 / Edit、Accessibility 写回、CGEvent typing fallback、Keychain 配置、历史记录和设置页。DMG 已使用 Developer ID 签名并完成 notarization + staple。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v0.5.0",
+      "mandatory": false,
+      "buildNumber": 2026051703,
+      "minSystemVersion": "14.0",
+      "assets": [
+        {
+          "name": "V_IME-0.5.0-2026051703-macos.dmg",
+          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v0.5.0/V_IME-0.5.0-2026051703-macos.dmg",
+          "sha256": "b875b812902ea1e7dbd0e696717d7f13c5a9c6577ab9500067173301d107d4bd",
+          "sizeBytes": 2636494,
+          "installerType": "dmg",
+          "arch": "universal",
+          "minSystemVersion": "14.0"
+        },
+        {
+          "name": "V_IME-0.5.0-2026051703-macos.zip",
+          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v0.5.0/V_IME-0.5.0-2026051703-macos.zip",
+          "sha256": "4071d0f36784310d5becb7840b15b9232be96cf721f7b09651160152709fd1ec",
+          "sizeBytes": 2165362,
+          "installerType": "zip",
+          "arch": "universal",
+          "minSystemVersion": "14.0"
+        }
+      ]
+    }
+  },
+  "productName": "V_IME",
+  "bundleId": "com.vime.app.macos"
+}
