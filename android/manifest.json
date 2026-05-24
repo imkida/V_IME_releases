@@ -1,17 +1,17 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-05-23T14:31:48Z",
+  "generatedAt": "2026-05-24T06:23:02Z",
   "packageName": "com.vime.android",
   "channels": {
     "debug": {
-      "versionName": "1.4.2",
-      "versionCode": 102,
-      "title": "v1.4.2 — 输出词库 v4 Phase 2 修复 + 真机受控验证",
-      "summary": "合入输出端内置词库 v4 Phase 2 修复，补齐 OpenAI / SwiftUI / Wasmtime 的确定性缺口，并记录 ASR Stub 真机受控验证 18 case 结果。内置词库仍默认 OFF，本版不切默认 ON。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.4.2",
-      "apkName": "V_IME-v1.4.2-debug.apk",
-      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.4.2/V_IME-v1.4.2-debug.apk",
-      "apkSha256": "43b16d9e99e8317c1cec623931af915ce46153baf2746b07cde6225d6f267f95",
+      "versionName": "1.5.0-dogfood.1",
+      "versionCode": 103,
+      "title": "v1.5.0-dogfood.1 — 短提示词 + Auto routing 默认 OFF dogfood 包",
+      "summary": "预发布 dogfood 包：合入短提示词与 Auto routing 默认候选验证框架、Qwen / DeepSeek / SiliconFlow 证据和 ASR Stub 真机受控验证工具链。LatencyV1、Auto routing、输出词库仍默认 OFF，本包不代表 v1.5 正式默认策略。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.5.0-dogfood.1",
+      "apkName": "V_IME-v1.5.0-dogfood.1-debug.apk",
+      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.5.0-dogfood.1/V_IME-v1.5.0-dogfood.1-debug.apk",
+      "apkSha256": "7b57c0b756b0059624f60db60bcf60a31e09b6f83c166626c7fecfb981f8642b",
       "certificateSha256": "4513e5bc726058d40be6020e1bbfc2d0c0fbf4e81d3b04a393cba394cd195059",
       "mandatory": false,
       "minSupportedVersionCode": 1
