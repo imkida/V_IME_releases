@@ -1,17 +1,17 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-05-24T06:23:02Z",
+  "generatedAt": "2026-05-25T11:53:06Z",
   "packageName": "com.vime.android",
   "channels": {
     "debug": {
-      "versionName": "1.5.0-dogfood.1",
-      "versionCode": 103,
-      "title": "v1.5.0-dogfood.1 — 短提示词 + Auto routing 默认 OFF dogfood 包",
-      "summary": "预发布 dogfood 包：合入短提示词与 Auto routing 默认候选验证框架、Qwen / DeepSeek / SiliconFlow 证据和 ASR Stub 真机受控验证工具链。LatencyV1、Auto routing、输出词库仍默认 OFF，本包不代表 v1.5 正式默认策略。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.5.0-dogfood.1",
-      "apkName": "V_IME-v1.5.0-dogfood.1-debug.apk",
-      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.5.0-dogfood.1/V_IME-v1.5.0-dogfood.1-debug.apk",
-      "apkSha256": "7b57c0b756b0059624f60db60bcf60a31e09b6f83c166626c7fecfb981f8642b",
+      "versionName": "1.5.0-dogfood.2",
+      "versionCode": 104,
+      "title": "v1.5.0-dogfood.2 — Clean V3 默认 OFF dogfood 包",
+      "summary": "预发布 dogfood 包：合入 CleanTidyV3 默认 OFF、RetentionFirst 默认 policy、Balanced dogfood 对照、真机 ASR Stub paired eval 工具链和 Qwen Fast Path dogfood 开关。V2、LatencyV1、QwenFastV1、Auto routing 和输出词库默认行为不变，本包不代表 v1.5 正式默认策略。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.5.0-dogfood.2",
+      "apkName": "V_IME-v1.5.0-dogfood.2-debug.apk",
+      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.5.0-dogfood.2/V_IME-v1.5.0-dogfood.2-debug.apk",
+      "apkSha256": "0e52a15ac2188665024d58a681269ca325def4b7d5826a84c9d77840d1e66fb1",
       "certificateSha256": "4513e5bc726058d40be6020e1bbfc2d0c0fbf4e81d3b04a393cba394cd195059",
       "mandatory": false,
       "minSupportedVersionCode": 1
