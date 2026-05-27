@@ -1,17 +1,17 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-05-25T18:40:23Z",
+  "generatedAt": "2026-05-27T02:20:05Z",
   "packageName": "com.vime.android",
   "channels": {
     "debug": {
-      "versionName": "1.5.0-dogfood.3",
-      "versionCode": 105,
-      "title": "v1.5.0-dogfood.3 — 处理态取消 + Clean V3 RetentionFirst dogfood",
-      "summary": "预发布 dogfood 包：合入处理中长按麦克风取消，并推进 Clean V3 RetentionFirst 信息安全基线观察。P0 hard pass 134/134、fallback 0/134；长输入结构化仍有 watch（design pass 60/62，under_organized=2）。V2、LatencyV1、QwenFastV1、Auto routing、Balanced selector 和输出词库默认行为不变，本包不代表 v1.5 正式默认策略。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.5.0-dogfood.3",
-      "apkName": "V_IME-v1.5.0-dogfood.3-debug.apk",
-      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.5.0-dogfood.3/V_IME-v1.5.0-dogfood.3-debug.apk",
-      "apkSha256": "2a91631d5009888ed1b31ca0709dccdd0cc1d896d44defc27ec8ddee75a1e5d4",
+      "versionName": "1.5.0-dogfood.4",
+      "versionCode": 106,
+      "title": "v1.5.0-dogfood.4 — Clean V3 RetentionFirst 默认候选准入",
+      "summary": "预发布 dogfood 包：合入 Clean V3 RetentionFirst 默认候选准入收敛。RetentionFirst P0 hard pass 144/144、design pass 144/144、fallback 0/144，长输入 design pass 72/72、under_organized=0、format_only_structure=0；Balanced 仍仅作为长输入高置信增强候选观察，不接默认策略或自动 selector。V3 继续默认 OFF，V2、LatencyV1、QwenFastV1、Auto routing 和输出词库默认行为不变，本包不代表 v1.5 正式默认策略。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.5.0-dogfood.4",
+      "apkName": "V_IME-v1.5.0-dogfood.4-debug.apk",
+      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.5.0-dogfood.4/V_IME-v1.5.0-dogfood.4-debug.apk",
+      "apkSha256": "28dc56e3a6be06c611ddd05f32b61c5fe0819a6ad59bdccc3bf08c18f76beaf1",
       "certificateSha256": "4513e5bc726058d40be6020e1bbfc2d0c0fbf4e81d3b04a393cba394cd195059",
       "mandatory": false,
       "minSupportedVersionCode": 1
