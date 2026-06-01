@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VIME 隐私政策</title>
+    <meta name="description" content="VIME iOS App 隐私政策">
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #f8fafc;
+        --surface: #ffffff;
+        --text: #111827;
+        --muted: #4b5563;
+        --line: #d1d5db;
+        --accent: #0f766e;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0f172a;
+          --surface: #111827;
+          --text: #f9fafb;
+          --muted: #cbd5e1;
+          --line: #334155;
+          --accent: #2dd4bf;
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.7;
+      }
+
+      main {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 48px 24px 72px;
+      }
+
+      article {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 40px;
+      }
+
+      h1,
+      h2 {
+        line-height: 1.25;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: clamp(32px, 4vw, 48px);
+      }
+
+      h2 {
+        margin: 36px 0 12px;
+        font-size: 22px;
+      }
+
+      p,
+      li {
+        color: var(--muted);
+      }
+
+      a {
+        color: var(--accent);
+      }
+
+      .updated {
+        margin: 0 0 32px;
+        color: var(--muted);
+      }
+
+      .summary {
+        margin: 28px 0;
+        padding: 16px 20px;
+        border-left: 4px solid var(--accent);
+        background: color-mix(in srgb, var(--accent) 8%, transparent);
+      }
+
+      ul {
+        padding-left: 22px;
+      }
+
+      strong {
+        color: var(--text);
+      }
+
+      footer {
+        margin-top: 32px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <article>
+        <h1>VIME 隐私政策</h1>
+        <p class="updated">生效日期：2026 年 6 月 1 日</p>
+
+        <p>
+          本隐私政策适用于 VIME iOS App。VIME 是一款语音输入和文字整理工具，帮助用户通过语音完成转写，并按需整理为更清晰的文字。
+        </p>
+
+        <div class="summary">
+          <strong>简要说明：</strong>
+          VIME 默认不需要账号，不用于广告跟踪。语音和文本仅在用户主动使用转写、整理等功能时，为完成对应功能而处理。
+        </div>
+
+        <h2>我们处理哪些数据</h2>
+        <p>根据 VIME 的功能实现，App 可能处理以下数据：</p>
+        <ul>
+          <li><strong>音频数据：</strong>当用户明确启动语音输入或语音会话时，VIME 会处理用户的语音录音，用于语音转写。</li>
+          <li><strong>其他用户内容：</strong>包括用户输入、转写得到的文本，以及用户要求 VIME 整理、润色或格式化的文本。</li>
+          <li><strong>本地配置数据：</strong>包括 API Key、服务配置、历史记录、个人词库和应用偏好设置。</li>
+        </ul>
+
+        <h2>数据如何使用</h2>
+        <p>VIME 只将上述数据用于 App 功能本身，包括：</p>
+        <ul>
+          <li>把用户语音转写为文字。</li>
+          <li>按照用户选择的模式整理、润色、翻译或格式化文本。</li>
+          <li>维护本地历史记录、个人词库和服务配置。</li>
+          <li>诊断和修复与语音输入、键盘输入、写回相关的问题。</li>
+        </ul>
+
+        <h2>云端服务与第三方服务</h2>
+        <p>
+          语音转写和文本整理可能需要调用云端 ASR 或 LLM 服务。VIME 会优先使用用户在 App 内配置的个人服务；如果当前版本提供默认云端服务，则仅用于完成用户主动触发的转写或文本处理请求。
+        </p>
+        <p>
+          默认云端服务不会用于广告、用户画像或数据经纪业务，也不会长期存储用户的音频、文本或 prompt。用户配置个人服务时，相应请求可能由该服务提供方按照其隐私政策处理。
+        </p>
+
+        <h2>本地存储</h2>
+        <ul>
+          <li>API Key 存储在 iOS Keychain 中。</li>
+          <li>历史记录、个人词库和应用偏好默认保存在用户设备本地。</li>
+          <li>用户可以在 App 设置中管理或清理本地历史记录、个人词库和相关配置。</li>
+        </ul>
+
+        <h2>自定义键盘与权限</h2>
+        <p>
+          VIME 作为 iOS 自定义键盘运行时，需要用户在系统设置中添加键盘，并根据功能需要允许完全访问。由于 iOS 限制，自定义键盘不能直接访问麦克风；VIME 只会在用户明确启动语音会话后，由主 App 持有麦克风会话。
+        </p>
+        <p>
+          VIME 不会在敏感输入框中自动写入云端处理结果，并会尽量遵守 iOS 对密码框和安全输入区域的保护。
+        </p>
+
+        <h2>我们不会做什么</h2>
+        <ul>
+          <li>不会出售用户数据。</li>
+          <li>不会将用户音频或文本用于广告跟踪。</li>
+          <li>不会把用户音频或文本与第三方数据合并用于广告或营销画像。</li>
+          <li>不会要求用户创建账号才能使用核心功能。</li>
+        </ul>
+
+        <h2>用户的选择</h2>
+        <ul>
+          <li>用户可以在 iOS 设置中撤销麦克风权限。</li>
+          <li>用户可以在 iOS 设置中移除 VIME 键盘或关闭完全访问。</li>
+          <li>用户可以在 App 内清理历史记录、个人词库和服务配置。</li>
+          <li>用户可以使用自己的 ASR 或 LLM 服务配置，并随时删除本地保存的 API Key。</li>
+        </ul>
+
+        <h2>儿童隐私</h2>
+        <p>
+          VIME 面向一般用户，不专门面向儿童设计。我们不会有意收集儿童个人信息。
+        </p>
+
+        <h2>政策更新</h2>
+        <p>
+          如果 VIME 的数据处理方式发生变化，我们会更新本页面，并在需要时同步更新 App Store Connect 中的 App Privacy 信息。
+        </p>
+
+        <h2>联系我们</h2>
+        <p>
+          如果你对本隐私政策或 VIME 的数据处理方式有疑问，可以通过
+          <a href="https://github.com/imkida/V_IME_releases/issues">GitHub Issues</a>
+          或邮件 <a href="mailto:kida.wong@gmail.com">kida.wong@gmail.com</a> 联系我们。
+        </p>
+
+        <footer>
+          VIME Privacy Policy
+        </footer>
+      </article>
+    </main>
+  </body>
+</html>
