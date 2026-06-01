@@ -1,17 +1,17 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-05-27T02:20:05Z",
+  "generatedAt": "2026-06-01T13:25:19Z",
   "packageName": "com.vime.android",
   "channels": {
     "debug": {
-      "versionName": "1.5.0-dogfood.4",
-      "versionCode": 106,
-      "title": "v1.5.0-dogfood.4 — Clean V3 RetentionFirst 默认候选准入",
-      "summary": "预发布 dogfood 包：合入 Clean V3 RetentionFirst 默认候选准入收敛。RetentionFirst P0 hard pass 144/144、design pass 144/144、fallback 0/144，长输入 design pass 72/72、under_organized=0、format_only_structure=0；Balanced 仍仅作为长输入高置信增强候选观察，不接默认策略或自动 selector。V3 继续默认 OFF，V2、LatencyV1、QwenFastV1、Auto routing 和输出词库默认行为不变，本包不代表 v1.5 正式默认策略。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.5.0-dogfood.4",
-      "apkName": "V_IME-v1.5.0-dogfood.4-debug.apk",
-      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.5.0-dogfood.4/V_IME-v1.5.0-dogfood.4-debug.apk",
-      "apkSha256": "28dc56e3a6be06c611ddd05f32b61c5fe0819a6ad59bdccc3bf08c18f76beaf1",
+      "versionName": "1.5.0-dogfood.7",
+      "versionCode": 108,
+      "title": "v1.5.0-dogfood.7 — Onboarding 支持导入已有配置",
+      "summary": "预发布 dogfood 包：首次引导新增“导入已有配置”入口，便于重装、切换设备或恢复测试环境时直接进入既有配置导入流程。本包不包含尚未合入 main 的 Lexicon P1/P2 PR，也不改变 Clean V3、LatencyV1、QwenFastV1、Auto routing、Balanced selector 或输出词库默认策略。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.5.0-dogfood.7",
+      "apkName": "V_IME-v1.5.0-dogfood.7-debug.apk",
+      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.5.0-dogfood.7/V_IME-v1.5.0-dogfood.7-debug.apk",
+      "apkSha256": "3af9d8e87b3514caf12f46cdef2e9e41ca80ffd18f3c6af9cf9db2d1c4520fdb",
       "certificateSha256": "4513e5bc726058d40be6020e1bbfc2d0c0fbf4e81d3b04a393cba394cd195059",
       "mandatory": false,
       "minSupportedVersionCode": 1
