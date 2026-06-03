@@ -1,32 +1,23 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-06-03T14:48:53Z",
+  "generatedAt": "2026-06-03T18:28:27Z",
   "platform": "macos",
   "channels": {
     "beta": {
       "versionName": "0.5.0",
-      "title": "v0.5.0 beta - 默认云端服务修正版",
-      "summary": "本次更新启用 V_IME 默认云端服务：未配置个人 API Key 时也可使用语音识别和文本整理；保存个人 Key 后仍优先使用个人服务。同时包含 HUD 提示体验优化：编辑模式未选中文本时改为轻量提示，错误提示更柔和，语音波形颜色更清晰。",
+      "title": "v0.5.0 beta - 正式签名修正版",
+      "summary": "本次更新提供 Developer ID 签名并完成 Apple notarization 的 DMG；已启用 V_IME 默认云端服务，未配置个人 API Key 时也可使用语音识别和文本整理，个人 Key 仍优先使用。同时包含 HUD 提示体验优化。",
       "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v0.5.0",
       "mandatory": false,
-      "buildNumber": 2026060305,
+      "buildNumber": 2026060401,
       "minSystemVersion": "14.0",
       "assets": [
         {
-          "name": "V_IME-0.5.0-2026060305-macos.dmg",
-          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v0.5.0/V_IME-0.5.0-2026060305-macos.dmg",
-          "sha256": "a94da891a166c671bcbda403a34493370b5f613a24ce453e43d238b83b3cb314",
-          "sizeBytes": 3547318,
+          "name": "V_IME-0.5.0-2026060401-macos.dmg",
+          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v0.5.0/V_IME-0.5.0-2026060401-macos.dmg",
+          "sha256": "441aa6da83ecc1e4cec3bfb6fd8acd7e2b7a641844ae73b5b75ca702a840e760",
+          "sizeBytes": 3557031,
           "installerType": "dmg",
-          "arch": "universal",
-          "minSystemVersion": "14.0"
-        },
-        {
-          "name": "V_IME-0.5.0-2026060305-macos.zip",
-          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v0.5.0/V_IME-0.5.0-2026060305-macos.zip",
-          "sha256": "50504eddcf245ef358aa235a9215314a5e51dd850f7cbb4c9e25cdc6494771be",
-          "sizeBytes": 2986684,
-          "installerType": "zip",
           "arch": "universal",
           "minSystemVersion": "14.0"
         }
