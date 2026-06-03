@@ -1,31 +1,31 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-05-16T18:23:10Z",
+  "generatedAt": "2026-06-03T14:39:21Z",
   "platform": "macos",
   "channels": {
     "beta": {
       "versionName": "0.5.0",
-      "title": "v0.5.0 beta - macOS 首个公开候选包",
-      "summary": "macOS 首个公开候选包：菜单栏 App、全局快捷键、麦克风录音、OpenAI-compatible ASR、LLM 改写 / 翻译 / Edit、Accessibility 写回、CGEvent typing fallback、Keychain 配置、历史记录和设置页。DMG 已使用 Developer ID 签名并完成 notarization + staple。",
+      "title": "v0.5.0 beta - HUD 提示体验优化",
+      "summary": "本次更新优化语音输入时的 HUD 反馈：编辑模式未选中文本时改为轻量提示，错误提示减少红色警示感并保留明确操作按钮，语音波形颜色更清晰。继续包含近期输入稳定性、快捷键和写回可靠性改进。",
       "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v0.5.0",
       "mandatory": false,
-      "buildNumber": 2026051703,
+      "buildNumber": 2026060304,
       "minSystemVersion": "14.0",
       "assets": [
         {
-          "name": "V_IME-0.5.0-2026051703-macos.dmg",
-          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v0.5.0/V_IME-0.5.0-2026051703-macos.dmg",
-          "sha256": "b875b812902ea1e7dbd0e696717d7f13c5a9c6577ab9500067173301d107d4bd",
-          "sizeBytes": 2636494,
+          "name": "V_IME-0.5.0-2026060304-macos.dmg",
+          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v0.5.0/V_IME-0.5.0-2026060304-macos.dmg",
+          "sha256": "b5939aea64773232aab696f921a8bc29ffc38d3d424f9ea6c55fbc5da54f04dd",
+          "sizeBytes": 3546579,
           "installerType": "dmg",
           "arch": "universal",
           "minSystemVersion": "14.0"
         },
         {
-          "name": "V_IME-0.5.0-2026051703-macos.zip",
-          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v0.5.0/V_IME-0.5.0-2026051703-macos.zip",
-          "sha256": "4071d0f36784310d5becb7840b15b9232be96cf721f7b09651160152709fd1ec",
-          "sizeBytes": 2165362,
+          "name": "V_IME-0.5.0-2026060304-macos.zip",
+          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v0.5.0/V_IME-0.5.0-2026060304-macos.zip",
+          "sha256": "a1c4950f051478cd2a028ec3ba6d6c0c5eabc8b27b5cb75e845c0ec7d94d38a8",
+          "sizeBytes": 2985652,
           "installerType": "zip",
           "arch": "universal",
           "minSystemVersion": "14.0"
