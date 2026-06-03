@@ -26,8 +26,10 @@ V_IME_releases/
 │           ├── V_IME-0.5.0-2026051703-macos.dmg
 │           └── V_IME-0.5.0-2026051703-macos.zip
 ├── docs/
-│   └── privacy/
-│       └── index.html              # App Store 隐私政策页面
+│   ├── privacy/
+│   │   └── index.html              # App Store 隐私政策页面
+│   └── support/
+│       └── index.html              # App Store 支持页面
 ├── schema/
 │   └── release-manifest.schema.json
 ├── windows/
@@ -203,6 +205,12 @@ iOS App Store 隐私政策页面由 GitHub Pages 提供：
 
 ```text
 https://imkida.github.io/V_IME_releases/privacy/
+```
+
+iOS App Store 支持页面：
+
+```text
+https://imkida.github.io/V_IME_releases/support/
 ```
 
 只有在明确使用企业签名或受控测试分发时，才应记录 `.ipa` 下载资产；此类资产仍需包含 SHA-256 和签名来源说明。

@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VIME 支持</title>
+    <meta name="description" content="VIME iOS App 支持与联系方式">
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #f8fafc;
+        --surface: #ffffff;
+        --text: #111827;
+        --muted: #4b5563;
+        --line: #d1d5db;
+        --accent: #0f766e;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0f172a;
+          --surface: #111827;
+          --text: #f9fafb;
+          --muted: #cbd5e1;
+          --line: #334155;
+          --accent: #2dd4bf;
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.7;
+      }
+
+      main {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 48px 24px 72px;
+      }
+
+      article {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 40px;
+      }
+
+      h1,
+      h2 {
+        line-height: 1.25;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: clamp(32px, 4vw, 48px);
+      }
+
+      h2 {
+        margin: 36px 0 12px;
+        font-size: 22px;
+      }
+
+      p,
+      li {
+        color: var(--muted);
+      }
+
+      a {
+        color: var(--accent);
+      }
+
+      .updated {
+        margin: 0 0 32px;
+        color: var(--muted);
+      }
+
+      .summary {
+        margin: 28px 0;
+        padding: 16px 20px;
+        border-left: 4px solid var(--accent);
+        background: color-mix(in srgb, var(--accent) 8%, transparent);
+      }
+
+      ul {
+        padding-left: 22px;
+      }
+
+      strong {
+        color: var(--text);
+      }
+
+      footer {
+        margin-top: 32px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <article>
+        <h1>VIME 支持</h1>
+        <p class="updated">更新日期：2026 年 6 月 3 日</p>
+
+        <p>
+          VIME 是一款面向 iPhone 的语音输入和文字整理工具。如果你在安装、启用键盘、麦克风授权、语音转写或文本输出中遇到问题，可以通过本页面联系支持。
+        </p>
+
+        <div class="summary">
+          <strong>联系支持：</strong>
+          请发送邮件至 <a href="mailto:kida.wong@gmail.com">kida.wong@gmail.com</a>。你也可以在
+          <a href="https://github.com/imkida/V_IME_releases/issues">GitHub Issues</a>
+          提交问题。
+        </div>
+
+        <h2>联系时建议提供</h2>
+        <ul>
+          <li>你的 iPhone 型号和 iOS 版本。</li>
+          <li>VIME App 中显示的版本号。</li>
+          <li>问题发生的位置，例如启用键盘、启动语音会话、麦克风授权、转写结果或文本写回。</li>
+          <li>可复现步骤和截图。请不要发送密码、验证码、个人证件、完整聊天记录等敏感内容。</li>
+        </ul>
+
+        <h2>常见检查</h2>
+        <ul>
+          <li>在 iOS 设置中添加 VIME 键盘，并为 VIME 键盘开启“允许完全访问”。</li>
+          <li>在 iOS 设置中允许 VIME 使用麦克风。</li>
+          <li>启动语音会话后，手动回到原 App，再切换到 VIME 键盘使用语音输入。</li>
+          <li>确认网络可用。语音转写和文本处理需要连接 VIME 默认云端服务。</li>
+        </ul>
+
+        <h2>隐私</h2>
+        <p>
+          VIME 的数据处理说明见
+          <a href="https://imkida.github.io/V_IME_releases/privacy/">隐私政策</a>。
+          App 不需要账号，不用于广告跟踪。语音和文本只在你主动使用相关功能时处理。
+        </p>
+
+        <footer>
+          VIME Support
+        </footer>
+      </article>
+    </main>
+  </body>
+</html>
