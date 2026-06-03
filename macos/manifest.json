@@ -1,31 +1,31 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-06-03T14:39:21Z",
+  "generatedAt": "2026-06-03T14:48:53Z",
   "platform": "macos",
   "channels": {
     "beta": {
       "versionName": "0.5.0",
-      "title": "v0.5.0 beta - HUD 提示体验优化",
-      "summary": "本次更新优化语音输入时的 HUD 反馈：编辑模式未选中文本时改为轻量提示，错误提示减少红色警示感并保留明确操作按钮，语音波形颜色更清晰。继续包含近期输入稳定性、快捷键和写回可靠性改进。",
+      "title": "v0.5.0 beta - 默认云端服务修正版",
+      "summary": "本次更新启用 V_IME 默认云端服务：未配置个人 API Key 时也可使用语音识别和文本整理；保存个人 Key 后仍优先使用个人服务。同时包含 HUD 提示体验优化：编辑模式未选中文本时改为轻量提示，错误提示更柔和，语音波形颜色更清晰。",
       "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v0.5.0",
       "mandatory": false,
-      "buildNumber": 2026060304,
+      "buildNumber": 2026060305,
       "minSystemVersion": "14.0",
       "assets": [
         {
-          "name": "V_IME-0.5.0-2026060304-macos.dmg",
-          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v0.5.0/V_IME-0.5.0-2026060304-macos.dmg",
-          "sha256": "b5939aea64773232aab696f921a8bc29ffc38d3d424f9ea6c55fbc5da54f04dd",
-          "sizeBytes": 3546579,
+          "name": "V_IME-0.5.0-2026060305-macos.dmg",
+          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v0.5.0/V_IME-0.5.0-2026060305-macos.dmg",
+          "sha256": "a94da891a166c671bcbda403a34493370b5f613a24ce453e43d238b83b3cb314",
+          "sizeBytes": 3547318,
           "installerType": "dmg",
           "arch": "universal",
           "minSystemVersion": "14.0"
         },
         {
-          "name": "V_IME-0.5.0-2026060304-macos.zip",
-          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v0.5.0/V_IME-0.5.0-2026060304-macos.zip",
-          "sha256": "a1c4950f051478cd2a028ec3ba6d6c0c5eabc8b27b5cb75e845c0ec7d94d38a8",
-          "sizeBytes": 2985652,
+          "name": "V_IME-0.5.0-2026060305-macos.zip",
+          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v0.5.0/V_IME-0.5.0-2026060305-macos.zip",
+          "sha256": "50504eddcf245ef358aa235a9215314a5e51dd850f7cbb4c9e25cdc6494771be",
+          "sizeBytes": 2986684,
           "installerType": "zip",
           "arch": "universal",
           "minSystemVersion": "14.0"
