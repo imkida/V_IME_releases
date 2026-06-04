@@ -1,6 +1,6 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-06-04T16:42:49Z",
+  "generatedAt": "2026-06-04T16:55:57Z",
   "platform": "macos",
   "channels": {
     "beta": {
@@ -15,8 +15,8 @@
         {
           "name": "V_IME-0.6.0-2026060502-macos.dmg",
           "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v0.6.0/V_IME-0.6.0-2026060502-macos.dmg",
-          "sha256": "9856cd513f467cff28819f162dfa3371a463bf4dc6b79833155d97c4f0fb8eee",
-          "sizeBytes": 3555700,
+          "sha256": "6bf05013a5d9413e1c52fff4ed16697b66dbce57e6837f388adb3980f9b56ef0",
+          "sizeBytes": 3555756,
           "installerType": "dmg",
           "arch": "universal",
           "minSystemVersion": "14.0"
