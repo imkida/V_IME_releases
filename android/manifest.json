@@ -1,17 +1,17 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-06-01T13:25:19Z",
+  "generatedAt": "2026-06-06T17:45:20Z",
   "packageName": "com.vime.android",
   "channels": {
     "debug": {
-      "versionName": "1.5.0-dogfood.7",
-      "versionCode": 108,
-      "title": "v1.5.0-dogfood.7 — Onboarding 支持导入已有配置",
-      "summary": "预发布 dogfood 包：首次引导新增“导入已有配置”入口，便于重装、切换设备或恢复测试环境时直接进入既有配置导入流程。本包不包含尚未合入 main 的 Lexicon P1/P2 PR，也不改变 Clean V3、LatencyV1、QwenFastV1、Auto routing、Balanced selector 或输出词库默认策略。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.5.0-dogfood.7",
-      "apkName": "V_IME-v1.5.0-dogfood.7-debug.apk",
-      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.5.0-dogfood.7/V_IME-v1.5.0-dogfood.7-debug.apk",
-      "apkSha256": "3af9d8e87b3514caf12f46cdef2e9e41ca80ffd18f3c6af9cf9db2d1c4520fdb",
+      "versionName": "1.5.0-dogfood.8",
+      "versionCode": 110,
+      "title": "v1.5.0-dogfood.8 — Clean V3 真实样本语气保真校准",
+      "summary": "预发布 dogfood 包：推进 Clean V3 真实样本语气保真校准，补充长输入评估基线与真实 provider 对照记录。本包不包含尚未合入 main 的 #247/#248/#246/#238/#239，也不改变 Clean V3、Local ASR、短提示词、格式控制或输出词库默认策略。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.5.0-dogfood.8",
+      "apkName": "V_IME-v1.5.0-dogfood.8-debug.apk",
+      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.5.0-dogfood.8/V_IME-v1.5.0-dogfood.8-debug.apk",
+      "apkSha256": "67268af9efbe00a6dbad5a70ace3d0a8d7bd3b2ee8021aaa7f0ef2bf279924af",
       "certificateSha256": "4513e5bc726058d40be6020e1bbfc2d0c0fbf4e81d3b04a393cba394cd195059",
       "mandatory": false,
       "minSupportedVersionCode": 1
