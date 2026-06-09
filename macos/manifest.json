@@ -1,29 +1,34 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-06-04T16:55:57Z",
+  "generatedAt": "2026-06-09T05:49:23Z",
   "platform": "macos",
   "channels": {
     "beta": {
-      "versionName": "0.6.0",
-      "title": "v0.6.0 beta - 菜单栏面板更新",
-      "summary": "本次更新优化菜单栏面板布局和可读性，统一输出风格命名，补充语音输入、自动翻译、文本编辑和输出风格快捷键说明。未配置个人 API Key 时仍可使用 V_IME 默认云端服务，配置个人 Key 后优先使用个人服务。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v0.6.0",
+      "versionName": "1.1.0",
+      "title": "VIME macOS v1.1.0 beta",
+      "summary": "本次更新收口默认云端服务、右 Command 快捷键、写回稳定性和常用词学习体验。未配置个人 API Key 时仍可使用 VIME 默认云端服务；配置个人 Key 后优先使用个人服务。建议所有测试用户更新。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.1.0",
       "mandatory": false,
-      "buildNumber": 2026060502,
+      "buildNumber": 2026060901,
       "minSystemVersion": "14.0",
       "assets": [
         {
-          "name": "V_IME-0.6.0-2026060502-macos.dmg",
-          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v0.6.0/V_IME-0.6.0-2026060502-macos.dmg",
-          "sha256": "6bf05013a5d9413e1c52fff4ed16697b66dbce57e6837f388adb3980f9b56ef0",
-          "sizeBytes": 3555756,
-          "installerType": "dmg",
-          "arch": "universal",
-          "minSystemVersion": "14.0"
+          "name": "V_IME-1.1.0-2026060901-macos.dmg",
+          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.0/V_IME-1.1.0-2026060901-macos.dmg",
+          "sha256": "d13fd40e35433290138efa28fe0c6063644e5fd5102e10f25fd5cf0718d87197",
+          "sizeBytes": 3938722,
+          "installerType": "dmg"
+        },
+        {
+          "name": "V_IME-1.1.0-2026060901-macos.zip",
+          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.0/V_IME-1.1.0-2026060901-macos.zip",
+          "sha256": "4d510c7041f9b27a261622dd6993b15f26c0adee87637a78b8406838275fb561",
+          "sizeBytes": 3336202,
+          "installerType": "zip"
         }
       ]
     }
   },
-  "productName": "V_IME",
+  "productName": "VIME",
   "bundleId": "com.vime.app.macos"
 }
