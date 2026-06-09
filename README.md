@@ -213,6 +213,12 @@ iOS App Store 支持页面：
 https://imkida.github.io/V_IME_releases/support/
 ```
 
+macOS 测试版下载、使用引导与更新说明页面：
+
+```text
+https://imkida.github.io/V_IME_releases/macos/
+```
+
 只有在明确使用企业签名或受控测试分发时，才应记录 `.ipa` 下载资产；此类资产仍需包含 SHA-256 和签名来源说明。
 
 ## HarmonyOS 发布
