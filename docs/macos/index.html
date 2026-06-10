@@ -672,7 +672,7 @@
             </div>
             <div class="metric">
               <span>Build</span>
-              <strong>2026060901</strong>
+              <strong>2026061001</strong>
             </div>
             <div class="metric">
               <span>系统要求</span>
@@ -682,23 +682,23 @@
         </section>
 
         <aside class="update-card" id="download" aria-labelledby="download-title">
-          <span class="status">已签名并公证</span>
+          <span class="status">Developer ID 签名</span>
           <h2 id="download-title">下载测试版</h2>
           <p>
             推荐下载 DMG。打开后把 <strong>V_IME.app</strong> 拖到 Applications，再从应用程序文件夹启动。
           </p>
           <div class="download-list">
-            <a class="download-item" href="https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.0/V_IME-1.1.0-2026060901-macos.dmg">
+            <a class="download-item" href="https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.0/V_IME-1.1.0-2026061001-macos.dmg">
               <span>
-                <strong>V_IME-1.1.0-2026060901-macos.dmg</strong>
-                <small>推荐安装包 · SHA-256: d13fd40e...</small>
+                <strong>V_IME-1.1.0-2026061001-macos.dmg</strong>
+                <small>推荐安装包 · SHA-256: d3dcdb1e...</small>
               </span>
               <span>下载</span>
             </a>
-            <a class="download-item" href="https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.0/V_IME-1.1.0-2026060901-macos.zip">
+            <a class="download-item" href="https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.0/V_IME-1.1.0-2026061001-macos.zip">
               <span>
-                <strong>V_IME-1.1.0-2026060901-macos.zip</strong>
-                <small>备用归档包 · SHA-256: 4d510c70...</small>
+                <strong>V_IME-1.1.0-2026061001-macos.zip</strong>
+                <small>备用归档包 · SHA-256: aeb07123...</small>
               </span>
               <span>下载</span>
             </a>
@@ -776,7 +776,7 @@
       <section id="whats-new" aria-labelledby="whats-new-title">
         <div class="section-head">
           <h2 id="whats-new-title">1.1.0 beta 更新内容</h2>
-          <p>这个版本重点收口默认云端服务、快捷键冲突、写回稳定性和学习体验，适合小范围测试用户更新。</p>
+          <p>这个 hotfix build 在 1.1.0 beta 基础上修复写回退化为字母 a 候选的问题，并继续收口默认云端服务、快捷键冲突、写回稳定性和学习体验。</p>
         </div>
         <div class="grid">
           <div class="panel">
@@ -786,6 +786,10 @@
           <div class="panel">
             <h3>右 Command 快捷键</h3>
             <p>优化按住说话、连续听写、自动翻译、文本编辑和输出风格切换，降低误触发。</p>
+          </div>
+          <div class="panel">
+            <h3>写回 hotfix</h3>
+            <p>修复部分输入法 / WebView 环境下 Unicode 写回退化成字母 a 候选的问题，并增强写回失败检测。</p>
           </div>
           <div class="panel">
             <h3>写回稳定性</h3>
@@ -801,7 +805,7 @@
           </div>
           <div class="panel">
             <h3>发布链路</h3>
-            <p>本包使用 Developer ID 签名和 Apple notarization，并通过更新 manifest 向测试用户分发。</p>
+            <p>本 hotfix 包使用 Developer ID 签名，并通过更新 manifest 向测试用户分发；本轮不走 Apple notarization。</p>
           </div>
         </div>
       </section>
@@ -848,7 +852,7 @@
 
       <footer>
         <span>VIME macOS Beta</span>
-        <span>Last updated: 2026-06-09</span>
+        <span>Last updated: 2026-06-10</span>
       </footer>
     </main>
   </body>
