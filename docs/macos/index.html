@@ -3,857 +3,2122 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>VIME macOS 测试版</title>
-    <meta name="description" content="VIME macOS 测试版下载、使用引导和更新说明">
+    <title>VIME for macOS — 把想法直接说进输入框</title>
+    <meta name="description" content="VIME macOS 测试版下载、使用引导和更新说明。按下右 Command 说话，转写、整理、翻译、编辑，结果直接写入当前输入位置。">
+    <meta property="og:title" content="VIME for macOS">
+    <meta property="og:description" content="桌面语音输入工具：按下右 Command 说话，VIME 完成转写与整理，写入当前光标位置。">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20180%20180'%3E%3Cpath%20fill%3D'%23FFFFFF'%20d%3D'M40%2C0%20H140%20A40%2C40%200%200%201%20180%2C40%20V140%20A40%2C40%200%200%201%20140%2C180%20H40%20A40%2C40%200%200%201%200%2C140%20V40%20A40%2C40%200%200%201%2040%2C0%20Z'%2F%3E%3Cg%20fill%3D'%231A1A1A'%3E%3Crect%20x%3D'18'%20y%3D'36'%20width%3D'12'%20height%3D'44'%20rx%3D'6'%2F%3E%3Crect%20x%3D'39'%20y%3D'46'%20width%3D'12'%20height%3D'60'%20rx%3D'6'%2F%3E%3Crect%20x%3D'60'%20y%3D'56'%20width%3D'12'%20height%3D'76'%20rx%3D'6'%2F%3E%3Crect%20x%3D'108'%20y%3D'56'%20width%3D'12'%20height%3D'76'%20rx%3D'6'%2F%3E%3Crect%20x%3D'129'%20y%3D'46'%20width%3D'12'%20height%3D'60'%20rx%3D'6'%2F%3E%3Crect%20x%3D'150'%20y%3D'36'%20width%3D'12'%20height%3D'44'%20rx%3D'6'%2F%3E%3C%2Fg%3E%3Cg%20fill%3D'%234A7CFF'%3E%3Ccircle%20cx%3D'90'%20cy%3D'58'%20r%3D'8'%2F%3E%3Crect%20x%3D'82'%20y%3D'72'%20width%3D'16'%20height%3D'92'%20rx%3D'8'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
+    <script>document.documentElement.classList.add('js');</script>
     <style>
       :root {
-        color-scheme: light;
-        --deep-night: #0f2841;
-        --blue-hour: #335176;
-        --first-blue: #dceafa;
-        --teal: #00bebe;
-        --teal-dark: #009e9e;
-        --golden-hour: #faebdc;
-        --mid-noon: #7d6e62;
-        --white: #ffffff;
-        --cloud-gray: #f0f0f2;
-        --cool-gray: #dcdcde;
-        --silver-gray: #8d8d8f;
-        --dark-gray: #54585a;
-        --off-black: #1a1a1a;
-        --text-primary: var(--off-black);
-        --text-secondary: var(--dark-gray);
-        --text-muted: var(--silver-gray);
-        --text-on-dark: #c5d8ea;
-        --surface-base: var(--white);
-        --surface-alt: var(--cloud-gray);
-        --surface-blue: var(--first-blue);
-        --surface-warm: var(--golden-hour);
-        --surface-dark: var(--deep-night);
-        --border-subtle: var(--cool-gray);
-        --shadow-1: 0 1px 2px rgba(15, 40, 65, 0.04);
-        --shadow-2: 0 2px 8px rgba(15, 40, 65, 0.06);
-        --shadow-3: 0 4px 18px rgba(15, 40, 65, 0.08);
-        --shadow-4: 0 14px 42px rgba(15, 40, 65, 0.14);
-        --radius-1: 4px;
-        --radius-2: 6px;
-        --radius-3: 8px;
-        --radius-4: 12px;
-        --radius-5: 16px;
-        --radius-pill: 999px;
-        --page-width: 1180px;
+        color-scheme: dark;
+        --bg0: #070b14;
+        --bg1: #0a101d;
+        --bg2: #0d1626;
+        --panel: rgba(255, 255, 255, 0.035);
+        --panel-2: rgba(255, 255, 255, 0.06);
+        --line: rgba(255, 255, 255, 0.08);
+        --line-2: rgba(255, 255, 255, 0.14);
+        --tx0: #edf3fb;
+        --tx1: #a8b8ce;
+        --tx2: #64778f;
+        --teal: #23e0c5;
+        --cyan: #39c0f0;
+        --blue: #4d8dff;
+        --violet: #8b7cff;
+        --amber: #f5b461;
+        --green: #5ee39e;
+        --red: #ff7a70;
+        --grad: linear-gradient(90deg, var(--teal), var(--cyan));
+        --font-s: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Helvetica Neue", Arial, sans-serif;
+        --font-d: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
+        --font-m: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+        --r2: 8px;
+        --r3: 12px;
+        --r4: 16px;
+        --r5: 22px;
+        --pill: 999px;
+        --wrap: 1140px;
+        --ease: cubic-bezier(0.16, 1, 0.3, 1);
       }
 
-      * {
-        box-sizing: border-box;
-      }
+      * { box-sizing: border-box; }
 
-      html {
-        scroll-behavior: smooth;
-      }
+      html { scroll-behavior: smooth; }
 
       body {
         margin: 0;
-        background: var(--cloud-gray);
-        color: var(--text-primary);
-        font-family: "Inter", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-        line-height: 1.62;
+        background: var(--bg0);
+        color: var(--tx0);
+        font-family: var(--font-s);
+        font-size: 16px;
+        line-height: 1.7;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
       }
 
-      a {
-        color: inherit;
-        text-decoration: none;
+      ::selection { background: rgba(35, 224, 197, 0.32); color: #fff; }
+
+      a { color: inherit; text-decoration: none; }
+
+      .noise {
+        position: fixed;
+        inset: 0;
+        z-index: 40;
+        pointer-events: none;
+        opacity: 0.05;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
       }
 
-      a:hover {
-        text-decoration: none;
+      #pgbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        z-index: 60;
+        background: var(--grad);
+        transform: scaleX(0);
+        transform-origin: 0 50%;
       }
 
-      .page {
-        width: min(var(--page-width), calc(100% - 48px));
+      .wrap {
+        width: min(var(--wrap), 100% - 48px);
         margin: 0 auto;
-        padding: 28px 0 72px;
-        counter-reset: section;
       }
 
       .nav {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(7, 11, 20, 0.62);
+        -webkit-backdrop-filter: blur(16px) saturate(150%);
+        backdrop-filter: blur(16px) saturate(150%);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .nav-in {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 24px;
-        margin-bottom: 20px;
+        gap: 20px;
+        min-height: 60px;
       }
 
       .brand {
         display: flex;
         align-items: center;
-        gap: 12px;
-        color: var(--deep-night);
-        font-size: 17px;
-        font-weight: 800;
-        letter-spacing: 0;
+        gap: 10px;
+        font-family: var(--font-d);
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.2px;
       }
 
-      .logo {
-        display: grid;
-        place-items: center;
-        width: 40px;
-        height: 40px;
-        border-radius: var(--radius-3);
-        background: var(--white);
-        border: 1px solid rgba(15, 40, 65, 0.1);
-        box-shadow: var(--shadow-2);
-      }
+      .brand svg { width: 30px; height: 30px; display: block; }
 
-      .logo svg {
-        width: 27px;
-        height: 27px;
+      .brand .brand-logo {
+        border-radius: 8px;
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14), 0 8px 24px rgba(0, 0, 0, 0.28);
       }
 
       .nav-links {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-        gap: 6px;
-        padding: 6px;
-        background: rgba(255, 255, 255, 0.72);
-        border: 1px solid rgba(15, 40, 65, 0.08);
-        border-radius: var(--radius-pill);
-        box-shadow: var(--shadow-1);
+        align-items: center;
+        gap: 2px;
+        font-size: 13.5px;
       }
 
       .nav-links a {
+        position: relative;
         padding: 7px 12px;
-        border-radius: var(--radius-pill);
-        color: var(--dark-gray);
-        font-size: 13px;
-        font-weight: 700;
-        transition: background 160ms ease-out, color 160ms ease-out;
+        border-radius: var(--pill);
+        color: var(--tx1);
+        transition: color 0.2s, background 0.2s;
       }
 
-      .nav-links a:hover {
-        background: var(--first-blue);
-        color: var(--deep-night);
+      .nav-links a:hover { color: var(--tx0); background: var(--panel-2); }
+
+      .nav-links a.on { color: var(--teal); }
+
+      .nav-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 8px 15px;
+        border-radius: var(--pill);
+        border: 1px solid rgba(35, 224, 197, 0.4);
+        background: rgba(35, 224, 197, 0.1);
+        color: var(--teal);
+        font-size: 13px;
+        font-weight: 600;
+        transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+      }
+
+      .nav-cta:hover {
+        background: rgba(35, 224, 197, 0.16);
+        box-shadow: 0 0 18px rgba(35, 224, 197, 0.25);
+        transform: translateY(-1px);
       }
 
       .hero {
-        display: grid;
-        grid-template-columns: minmax(0, 1.12fr) minmax(360px, 0.88fr);
-        gap: 0;
-        overflow: hidden;
-        min-height: 560px;
-        background:
-          linear-gradient(135deg, rgba(15, 40, 65, 0.98), rgba(51, 81, 118, 0.96));
-        border-radius: var(--radius-5);
-        box-shadow: var(--shadow-4);
         position: relative;
+        padding: clamp(48px, 7vw, 88px) 0 clamp(34px, 4vw, 52px);
+        overflow: hidden;
       }
 
       .hero::before {
         content: "";
         position: absolute;
         inset: 0;
-        pointer-events: none;
         background:
-          linear-gradient(90deg, rgba(0, 190, 190, 0.28), transparent 28%),
-          linear-gradient(0deg, rgba(255, 255, 255, 0.08), transparent 54%);
-        opacity: 0.75;
+          linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+        background-size: 52px 52px;
+        -webkit-mask-image: radial-gradient(75% 65% at 50% 30%, #000 30%, transparent 100%);
+        mask-image: radial-gradient(75% 65% at 50% 30%, #000 30%, transparent 100%);
+        pointer-events: none;
       }
 
-      .hero::after {
-        content: "";
+      .blob {
         position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        height: 4px;
-        background: var(--teal);
+        width: 760px;
+        height: 560px;
+        border-radius: 50%;
+        pointer-events: none;
+        opacity: 0.6;
       }
 
-      .hero-main,
-      .update-card {
+      .blob.a {
+        top: -220px;
+        left: -180px;
+        background: radial-gradient(closest-side, rgba(35, 224, 197, 0.2), transparent 70%);
+        animation: drift-a 26s ease-in-out infinite alternate;
+      }
+
+      .blob.b {
+        top: -160px;
+        right: -260px;
+        background: radial-gradient(closest-side, rgba(77, 141, 255, 0.18), transparent 70%);
+        animation: drift-b 32s ease-in-out infinite alternate;
+      }
+
+      .blob.c {
+        bottom: -320px;
+        left: 28%;
+        background: radial-gradient(closest-side, rgba(139, 124, 255, 0.1), transparent 70%);
+        animation: drift-a 38s ease-in-out infinite alternate-reverse;
+      }
+
+      @keyframes drift-a {
+        to { transform: translate3d(110px, 60px, 0) scale(1.12); }
+      }
+
+      @keyframes drift-b {
+        to { transform: translate3d(-130px, 80px, 0) scale(1.08); }
+      }
+
+      .hero-grid {
         position: relative;
-        z-index: 1;
-      }
-
-      .hero-main {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: clamp(42px, 6vw, 76px);
+        display: grid;
+        grid-template-columns: minmax(0, 1.04fr) minmax(380px, 0.96fr);
+        gap: clamp(32px, 5vw, 64px);
+        align-items: center;
       }
 
       .eyebrow {
-        margin: 0 0 24px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        border-radius: var(--pill);
+        border: 1px solid rgba(35, 224, 197, 0.32);
+        background: rgba(35, 224, 197, 0.07);
         color: var(--teal);
-        font-size: 12px;
-        font-weight: 800;
-        letter-spacing: 3px;
-        text-transform: uppercase;
+        font-size: 12.5px;
+        font-weight: 600;
+        letter-spacing: 0.6px;
       }
 
-      h1,
-      h2,
-      h3 {
-        margin: 0;
-        line-height: 1.16;
-        letter-spacing: 0;
+      .eyebrow .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--teal);
+        box-shadow: 0 0 10px var(--teal);
+        animation: pulse 2.4s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        50% { opacity: 0.35; }
       }
 
       h1 {
-        max-width: 760px;
-        color: var(--white);
-        font-size: clamp(42px, 6.4vw, 72px);
-        font-weight: 850;
+        margin: 26px 0 0;
+        font-family: var(--font-d);
+        font-size: clamp(38px, 4.2vw, 50px);
+        font-weight: 700;
+        line-height: 1.22;
+        letter-spacing: 0.2px;
+      }
+
+      @media (min-width: 981px) {
+        h1 .grad { white-space: nowrap; }
+      }
+
+      h1 .grad {
+        background: var(--grad);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
       }
 
       .lead {
-        max-width: 680px;
-        margin: 22px 0 0;
-        color: var(--text-on-dark);
-        font-size: 19px;
-        line-height: 1.62;
+        max-width: 540px;
+        margin: 20px 0 0;
+        color: var(--tx1);
+        font-size: 17px;
+        line-height: 1.8;
       }
 
       .actions {
         display: flex;
         flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 30px;
+        align-items: center;
+        gap: 14px;
+        margin-top: 32px;
       }
 
-      .button {
+      .btn {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        min-height: 44px;
-        padding: 0 18px;
-        border-radius: var(--radius-3);
-        border: 1px solid rgba(255, 255, 255, 0.26);
-        background: rgba(255, 255, 255, 0.08);
-        color: var(--white);
-        font-size: 14px;
-        font-weight: 800;
-        transition: transform 160ms ease-out, background 160ms ease-out, border-color 160ms ease-out;
-      }
-
-      .button:hover {
-        transform: translateY(-1px);
-        background: rgba(255, 255, 255, 0.14);
-        border-color: rgba(255, 255, 255, 0.4);
-      }
-
-      .button.primary {
-        border-color: var(--teal);
-        background: var(--teal);
-        color: var(--deep-night);
-      }
-
-      .button.primary:hover {
-        background: #16d5d5;
-      }
-
-      .version-strip {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 12px;
-        margin-top: 34px;
-      }
-
-      .metric {
-        min-height: 78px;
-        padding: 14px 16px;
-        border: 1px solid rgba(255, 255, 255, 0.16);
-        border-radius: var(--radius-3);
-        background: rgba(255, 255, 255, 0.08);
-      }
-
-      .metric span {
-        display: block;
-        color: rgba(197, 216, 234, 0.78);
-        font-size: 12px;
-        font-weight: 700;
-      }
-
-      .metric strong {
-        display: block;
-        margin-top: 5px;
-        color: var(--white);
-        font-size: 18px;
-      }
-
-      .update-card {
-        align-self: center;
-        margin: 40px 40px 40px 0;
-        padding: 28px;
-        background: rgba(255, 255, 255, 0.96);
-        border: 1px solid rgba(255, 255, 255, 0.72);
-        border-radius: var(--radius-5);
-        box-shadow: 0 28px 70px rgba(0, 0, 0, 0.2);
-      }
-
-      .status {
-        display: inline-flex;
-        align-items: center;
-        min-height: 30px;
-        padding: 0 11px;
-        border-radius: var(--radius-pill);
-        background: var(--first-blue);
-        color: var(--blue-hour);
-        font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
-        font-size: 11px;
-        font-weight: 800;
-        letter-spacing: 0.5px;
-      }
-
-      .update-card h2 {
-        margin-top: 18px;
-        color: var(--deep-night);
-        font-size: 28px;
-      }
-
-      .update-card p {
-        margin: 12px 0 0;
-        color: var(--dark-gray);
-      }
-
-      .download-list {
-        display: grid;
-        gap: 10px;
-        margin-top: 22px;
-      }
-
-      .download-item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 14px;
-        padding: 14px 15px;
-        border: 1px solid var(--cool-gray);
-        border-radius: var(--radius-3);
-        background: var(--white);
-        color: var(--deep-night);
-        box-shadow: var(--shadow-1);
-        transition: transform 160ms ease-out, border-color 160ms ease-out, box-shadow 160ms ease-out;
-      }
-
-      .download-item:hover {
-        transform: translateY(-1px);
-        border-color: var(--teal);
-        box-shadow: var(--shadow-3);
-      }
-
-      .download-item small {
-        display: block;
-        margin-top: 2px;
-        color: var(--silver-gray);
-      }
-
-      section {
-        margin-top: 28px;
-      }
-
-      .section-head {
-        display: grid;
-        grid-template-columns: auto minmax(190px, 0.6fr) minmax(0, 1fr);
-        gap: 16px;
-        align-items: center;
-        margin: 58px 0 18px;
-      }
-
-      .section-head::before {
-        counter-increment: section;
-        content: counter(section, decimal-leading-zero);
-        display: grid;
-        place-items: center;
-        width: 40px;
-        height: 40px;
-        border-radius: var(--radius-2);
-        background: var(--teal);
-        color: var(--white);
-        font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
-        font-size: 14px;
-        font-weight: 900;
-      }
-
-      .section-head h2 {
-        color: var(--deep-night);
-        font-size: 28px;
-        font-weight: 800;
-      }
-
-      .section-head p {
-        max-width: 660px;
-        margin: 0;
-        color: var(--dark-gray);
+        gap: 9px;
+        min-height: 48px;
+        padding: 0 22px;
+        border-radius: 13px;
         font-size: 15px;
+        font-weight: 600;
+        transition: transform 0.25s var(--ease), box-shadow 0.25s, background 0.25s, border-color 0.25s;
       }
 
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 16px;
+      .btn:active { transform: scale(0.97); }
+
+      .btn.primary {
+        background: linear-gradient(135deg, var(--teal), #1db9d8);
+        color: #04222b;
+        box-shadow: 0 8px 30px rgba(35, 224, 197, 0.3);
       }
 
-      .grid.two {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .btn.primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 40px rgba(35, 224, 197, 0.42);
       }
 
-      .panel {
-        padding: 24px;
-        background: var(--white);
-        border: 1px solid rgba(15, 40, 65, 0.08);
-        border-radius: var(--radius-4);
-        box-shadow: var(--shadow-2);
+      .btn.ghost {
+        border: 1px solid var(--line-2);
+        background: var(--panel);
+        color: var(--tx0);
       }
 
-      .panel h3 {
-        color: var(--deep-night);
-        font-size: 20px;
-        font-weight: 800;
+      .btn.ghost:hover {
+        transform: translateY(-2px);
+        border-color: rgba(255, 255, 255, 0.28);
+        background: var(--panel-2);
       }
 
-      .panel p,
-      .panel li {
-        color: var(--dark-gray);
+      .btn small {
+        font-size: 12px;
+        font-weight: 500;
+        opacity: 0.75;
       }
 
-      .panel p {
-        margin: 10px 0 0;
-      }
-
-      .panel ul,
-      .panel ol {
-        margin: 14px 0 0;
-        padding-left: 22px;
-      }
-
-      .kbd-row {
-        display: grid;
-        gap: 12px;
-        margin-top: 16px;
-      }
-
-      .kbd-item {
-        display: grid;
-        grid-template-columns: minmax(108px, 0.7fr) minmax(0, 1fr);
-        gap: 14px;
-        align-items: center;
-      }
-
-      .keys {
+      .meta-strip {
         display: flex;
         flex-wrap: wrap;
-        gap: 6px;
+        gap: 8px 22px;
+        margin-top: 22px;
+        font-family: var(--font-m);
+        font-size: 12px;
+        color: var(--tx2);
+        letter-spacing: 0.3px;
+      }
+
+      .meta-strip b { color: var(--tx1); font-weight: 600; }
+
+      .beta-note {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        max-width: 560px;
+        margin-top: 26px;
+        padding: 12px 16px;
+        border: 1px solid rgba(245, 180, 97, 0.22);
+        border-radius: var(--r3);
+        background: rgba(245, 180, 97, 0.05);
+        color: var(--tx1);
+        font-size: 13px;
+        line-height: 1.7;
+      }
+
+      .beta-note svg { flex-shrink: 0; margin-top: 3px; }
+
+      .beta-note b { color: var(--amber); font-weight: 600; }
+
+      .download-inline {
+        max-width: 620px;
+        margin-top: 18px;
+        padding: 14px 16px;
+        border: 1px solid rgba(255, 255, 255, 0.11);
+        border-radius: var(--r3);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .download-line,
+      .download-tools {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 12px;
+      }
+
+      .download-line {
+        color: var(--tx1);
+        font-size: 13px;
+      }
+
+      .download-line a {
+        color: var(--tx0);
+        font-family: var(--font-m);
+        font-size: 12.5px;
+        min-width: 0;
+        word-break: break-all;
+      }
+
+      .download-tools { margin-top: 10px; }
+
+      .download-tools .copy-btn {
+        padding: 7px 11px;
+      }
+
+      .inline-code {
+        display: block;
+        margin-top: 10px;
+        color: var(--tx2);
+        font-family: var(--font-m);
+        font-size: 11.5px;
+        white-space: nowrap;
+        overflow-x: auto;
+      }
+
+      .vwin {
+        position: relative;
+        border: 1px solid var(--line-2);
+        border-radius: var(--r4);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015) 40%), var(--bg2);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero .vwin::before {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        border-radius: inherit;
+        padding: 1px;
+        background: linear-gradient(135deg, rgba(35, 224, 197, 0.5), transparent 38%, transparent 64%, rgba(77, 141, 255, 0.4));
+        -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+        mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+      }
+
+      .vwin-bar {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        padding: 13px 16px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .vwin-bar i {
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        display: block;
+      }
+
+      .vwin-bar .t { margin-left: 8px; font-size: 12.5px; color: var(--tx2); }
+
+      .vwin-body {
+        padding: 22px 24px;
+        min-height: 118px;
+        font-size: 16px;
+        line-height: 1.8;
+        color: #dce8f6;
+      }
+
+      .vwin-body .sel {
+        background: rgba(77, 141, 255, 0.3);
+        border-radius: 3px;
+        padding: 1px 2px;
+      }
+
+      .vwin-body .fade { transition: opacity 0.45s; }
+
+      .vwin-body .fade.dim { opacity: 0.28; }
+
+      .caret {
+        display: inline-block;
+        width: 2px;
+        height: 1.1em;
+        margin-left: 2px;
+        vertical-align: -0.18em;
+        background: var(--teal);
+        animation: blink 1.05s steps(1) infinite;
+      }
+
+      @keyframes blink { 50% { opacity: 0; } }
+
+      .vwin-foot {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 12px 16px;
+        border-top: 1px solid var(--line);
       }
 
       kbd {
-        min-width: 36px;
-        padding: 5px 9px 6px;
-        border: 1px solid var(--cool-gray);
-        border-radius: var(--radius-2);
-        background: var(--cloud-gray);
-        color: var(--deep-night);
-        box-shadow: inset 0 -1px 0 rgba(15, 40, 65, 0.16);
-        font-family: inherit;
-        font-size: 14px;
-        font-weight: 800;
+        display: inline-block;
+        min-width: 30px;
+        padding: 5px 11px 6px;
+        border: 1px solid var(--line-2);
+        border-bottom-width: 3px;
+        border-radius: 8px;
+        background: var(--panel-2);
+        color: var(--tx0);
+        font-family: var(--font-m);
+        font-size: 12.5px;
+        font-weight: 600;
         text-align: center;
+        transition: transform 0.12s, border-color 0.12s, color 0.12s, box-shadow 0.12s, border-bottom-width 0.12s;
       }
 
-      .timeline {
-        display: grid;
-        gap: 12px;
-        counter-reset: step;
+      kbd.on, .kbd-demo kbd:hover {
+        transform: translateY(2px);
+        border-bottom-width: 1px;
+        color: var(--teal);
+        border-color: rgba(35, 224, 197, 0.5);
+        box-shadow: 0 0 16px rgba(35, 224, 197, 0.25);
       }
+
+      .wave {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+        height: 22px;
+      }
+
+      .wave i {
+        width: 3px;
+        height: 5px;
+        border-radius: 2px;
+        background: #34506e;
+        transform-origin: center;
+        transition: background 0.3s;
+      }
+
+      .wave i:nth-child(odd) { height: 9px; }
+      .wave i:nth-child(3n) { height: 13px; }
+
+      .wave.live i {
+        background: var(--teal);
+        animation: wv 0.55s ease-in-out infinite alternate;
+      }
+
+      .wave.live i:nth-child(2n) { animation-delay: 0.14s; }
+      .wave.live i:nth-child(3n) { animation-delay: 0.27s; }
+
+      @keyframes wv { to { transform: scaleY(2.5); } }
+
+      .stat {
+        margin-left: auto;
+        padding: 4px 12px;
+        border: 1px solid var(--line-2);
+        border-radius: var(--pill);
+        font-family: var(--font-m);
+        font-size: 11.5px;
+        color: var(--tx1);
+        white-space: nowrap;
+        transition: color 0.3s, border-color 0.3s;
+      }
+
+      .stat.rec { color: var(--teal); border-color: rgba(35, 224, 197, 0.45); }
+      .stat.ai { color: var(--violet); border-color: rgba(139, 124, 255, 0.45); }
+      .stat.ok { color: var(--green); border-color: rgba(94, 227, 158, 0.45); }
+
+      section { position: relative; }
+
+      section[id] { scroll-margin-top: 84px; }
+
+      .sec {
+        margin-top: clamp(58px, 7vw, 94px);
+      }
+
+      .sec-head {
+        max-width: 720px;
+        margin-bottom: clamp(22px, 3vw, 34px);
+      }
+
+      .sec-head .num {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--font-m);
+        font-size: 12.5px;
+        font-weight: 600;
+        color: var(--teal);
+        letter-spacing: 1px;
+      }
+
+      .sec-head .num::after {
+        content: "";
+        width: 44px;
+        height: 1px;
+        background: linear-gradient(90deg, rgba(35, 224, 197, 0.7), transparent);
+      }
+
+      h2 {
+        margin: 14px 0 0;
+        font-family: var(--font-d);
+        font-size: clamp(26px, 3.4vw, 36px);
+        font-weight: 700;
+        line-height: 1.25;
+        letter-spacing: 0.2px;
+      }
+
+      .sec-head p {
+        margin: 14px 0 0;
+        color: var(--tx1);
+        font-size: 15.5px;
+      }
+
+      .card {
+        position: relative;
+        padding: 22px 22px 21px;
+        border: 1px solid var(--line);
+        border-radius: var(--r4);
+        background: var(--panel);
+        overflow: hidden;
+        transition: border-color 0.3s, transform 0.3s var(--ease);
+      }
+
+      .card:hover { border-color: var(--line-2); }
+
+      .card .glow {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        transition: opacity 0.4s;
+        background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(35, 224, 197, 0.08), transparent 65%);
+        pointer-events: none;
+      }
+
+      .card:hover .glow { opacity: 1; }
+
+      .card h3 {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: 0.2px;
+      }
+
+      .card h3 svg { color: var(--teal); flex-shrink: 0; }
+
+      .card p {
+        margin: 10px 0 0;
+        color: var(--tx1);
+        font-size: 14px;
+        line-height: 1.75;
+      }
+
+      .dl-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+        gap: 16px;
+      }
+
+      .dl-main {
+        padding: 30px;
+        background: linear-gradient(150deg, rgba(35, 224, 197, 0.1), rgba(77, 141, 255, 0.05) 55%, transparent), var(--panel);
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 11px;
+        border-radius: var(--pill);
+        font-size: 11.5px;
+        font-weight: 600;
+        letter-spacing: 0.4px;
+      }
+
+      .badge.teal {
+        color: var(--teal);
+        background: rgba(35, 224, 197, 0.1);
+        border: 1px solid rgba(35, 224, 197, 0.35);
+      }
+
+      .badge.dim {
+        color: var(--tx2);
+        background: var(--panel);
+        border: 1px solid var(--line);
+      }
+
+      .dl-name {
+        margin: 16px 0 0;
+        font-family: var(--font-m);
+        font-size: 14.5px;
+        font-weight: 600;
+        color: var(--tx0);
+        word-break: break-all;
+      }
+
+      .dl-info {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 18px;
+        margin-top: 8px;
+        font-family: var(--font-m);
+        font-size: 12px;
+        color: var(--tx2);
+      }
+
+      .dl-acts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+
+      .copy-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 9px 14px;
+        border: 1px solid var(--line-2);
+        border-radius: 10px;
+        background: transparent;
+        color: var(--tx1);
+        font-family: var(--font-m);
+        font-size: 12px;
+        cursor: pointer;
+        transition: color 0.2s, border-color 0.2s, background 0.2s;
+      }
+
+      .copy-btn:hover { color: var(--tx0); border-color: rgba(255, 255, 255, 0.3); background: var(--panel); }
+
+      .copy-btn.done { color: var(--green); border-color: rgba(94, 227, 158, 0.5); }
+
+      .sha-block {
+        margin-top: 18px;
+        padding: 14px 16px;
+        border: 1px solid var(--line);
+        border-radius: var(--r3);
+        background: rgba(0, 0, 0, 0.28);
+        font-family: var(--font-m);
+        font-size: 12px;
+        line-height: 1.8;
+        color: var(--tx1);
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+
+      .sha-block b { color: var(--cyan); font-weight: 600; }
+
+      .modes-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+
+      .mtab {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        padding: 11px 18px;
+        border: 1px solid var(--line);
+        border-radius: var(--r3);
+        background: var(--panel);
+        color: var(--tx1);
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.25s var(--ease);
+      }
+
+      .mtab:hover { color: var(--tx0); border-color: var(--line-2); transform: translateY(-1px); }
+
+      .mtab.on {
+        color: var(--tx0);
+        border-color: rgba(35, 224, 197, 0.45);
+        background: rgba(35, 224, 197, 0.08);
+        box-shadow: 0 0 22px rgba(35, 224, 197, 0.12);
+      }
+
+      .mtab .k {
+        font-family: var(--font-m);
+        font-size: 11px;
+        color: var(--tx2);
+        padding: 2px 8px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+      }
+
+      .mtab.on .k { color: var(--teal); border-color: rgba(35, 224, 197, 0.4); }
+
+      .mode-stage .vwin-body { min-height: 132px; }
+
+      .mode-aux {
+        display: none;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .mode-aux.show { display: flex; }
+
+      .say-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 5px 13px;
+        border-radius: var(--pill);
+        border: 1px solid rgba(139, 124, 255, 0.4);
+        background: rgba(139, 124, 255, 0.1);
+        color: #c9c1ff;
+        font-size: 13px;
+      }
+
+      .styles-row {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 16px;
+      }
+
+      .style-cell h3 { font-size: 15.5px; }
+
+      .style-cell .tagline {
+        font-family: var(--font-m);
+        font-size: 11px;
+        color: var(--teal);
+        letter-spacing: 0.5px;
+      }
+
+      .guide-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+        gap: 20px;
+        align-items: stretch;
+      }
+
+      .steps { display: grid; gap: 10px; align-content: start; }
 
       .step {
-        position: relative;
-        padding: 18px 20px 18px 66px;
-        border: 1px solid rgba(15, 40, 65, 0.08);
-        border-radius: var(--radius-4);
-        background: var(--white);
-        box-shadow: var(--shadow-1);
+        display: flex;
+        gap: 16px;
+        padding: 18px 20px;
+        border: 1px solid var(--line);
+        border-radius: var(--r3);
+        background: var(--panel);
+        cursor: pointer;
+        transition: border-color 0.25s, background 0.25s;
       }
 
-      .step::before {
-        counter-increment: step;
-        content: counter(step);
-        position: absolute;
-        left: 20px;
-        top: 18px;
+      .step:hover { border-color: var(--line-2); }
+
+      .step.on {
+        border-color: rgba(35, 224, 197, 0.4);
+        background: rgba(35, 224, 197, 0.05);
+      }
+
+      .step .n {
+        flex-shrink: 0;
         display: grid;
         place-items: center;
         width: 30px;
         height: 30px;
-        border-radius: var(--radius-2);
-        background: var(--deep-night);
+        margin-top: 2px;
+        border-radius: 9px;
+        border: 1px solid var(--line-2);
+        font-family: var(--font-m);
+        font-size: 12.5px;
+        font-weight: 600;
+        color: var(--tx1);
+        transition: all 0.25s;
+      }
+
+      .step.on .n {
+        color: #04222b;
+        background: var(--teal);
+        border-color: var(--teal);
+        box-shadow: 0 0 16px rgba(35, 224, 197, 0.4);
+      }
+
+      .step h3 { margin: 0; font-size: 15.5px; font-weight: 600; }
+
+      .step p { margin: 5px 0 0; color: var(--tx1); font-size: 13.5px; line-height: 1.7; }
+
+      .guide-stage {
+        position: relative;
+        border: 1px solid var(--line);
+        border-radius: var(--r4);
+        background: var(--panel);
+        overflow: hidden;
+        min-height: 340px;
+      }
+
+      .gpane {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        padding: 30px;
+        opacity: 0;
+        transform: translateY(14px) scale(0.99);
+        transition: opacity 0.45s var(--ease), transform 0.45s var(--ease);
+        pointer-events: none;
+      }
+
+      .gpane.on { opacity: 1; transform: none; pointer-events: auto; }
+
+      .gpane .cap {
+        margin-top: 18px;
+        text-align: center;
+        font-size: 13px;
+        color: var(--tx2);
+      }
+
+      .gpane .cap b { color: var(--tx1); font-weight: 600; }
+
+      .mock {
+        width: min(380px, 100%);
+        border: 1px solid var(--line-2);
+        border-radius: var(--r3);
+        background: var(--bg2);
+        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+        padding: 18px;
+      }
+
+      .drag-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .tile {
+        flex: 1;
+        display: grid;
+        place-items: center;
+        gap: 6px;
+        padding: 18px 10px 14px;
+        border: 1px solid var(--line);
+        border-radius: var(--r3);
+        background: var(--panel);
+        font-size: 12px;
+        color: var(--tx1);
+        text-align: center;
+      }
+
+      .tile .icn {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+      }
+
+      .tile.app .icn {
+        background: #fff;
+        color: #4a7cff;
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.16);
+      }
+
+      .tile.app .icn svg { width: 34px; height: 34px; }
+
+      .tile.folder .icn { background: rgba(77, 141, 255, 0.15); color: var(--blue); }
+
+      .drag-arrow { color: var(--teal); flex-shrink: 0; animation: nudge 1.6s ease-in-out infinite; }
+
+      @keyframes nudge { 50% { transform: translateX(6px); } }
+
+      .perm-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 13px 6px;
+        border-bottom: 1px solid var(--line);
+        font-size: 13.5px;
+      }
+
+      .perm-row:last-child { border-bottom: 0; }
+
+      .perm-row .pi {
+        width: 30px;
+        height: 30px;
+        border-radius: 9px;
+        display: grid;
+        place-items: center;
+        background: var(--panel-2);
+        color: var(--tx1);
+        flex-shrink: 0;
+      }
+
+      .perm-row span { flex: 1; }
+
+      .perm-row small { display: block; color: var(--tx2); font-size: 11.5px; }
+
+      .tgl {
+        width: 40px;
+        height: 24px;
+        border-radius: var(--pill);
+        background: rgba(255, 255, 255, 0.14);
+        position: relative;
+        transition: background 0.3s;
+        flex-shrink: 0;
+      }
+
+      .tgl::after {
+        content: "";
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #fff;
+        transition: transform 0.3s var(--ease);
+      }
+
+      .gpane.on .tgl.go { background: var(--green); }
+      .gpane.on .tgl.go::after { transform: translateX(16px); }
+
+      .gpane.on .gp-wave i {
+        background: var(--teal);
+        animation: wv 0.6s ease-in-out infinite alternate;
+      }
+
+      .gpane.on .gp-wave i:nth-child(2n) { animation-delay: 0.15s; }
+      .gpane.on .gp-wave i:nth-child(3n) { animation-delay: 0.28s; }
+
+      .svc-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 6px;
+        font-size: 13.5px;
+      }
+
+      .svc-row .ok-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--green);
+        box-shadow: 0 0 10px var(--green);
+        flex-shrink: 0;
+      }
+
+      .field {
+        margin: 6px 6px 2px;
+        padding: 11px 14px;
+        border: 1px solid var(--line-2);
+        border-radius: 10px;
+        background: rgba(0, 0, 0, 0.3);
+        font-family: var(--font-m);
+        font-size: 13px;
+        color: var(--tx1);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .field .chip {
+        font-size: 10.5px;
         color: var(--teal);
-        font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
-        font-weight: 900;
+        border: 1px solid rgba(35, 224, 197, 0.4);
+        border-radius: var(--pill);
+        padding: 2px 8px;
+        white-space: nowrap;
       }
 
-      .step h3 {
-        color: var(--deep-night);
-        font-size: 18px;
-        font-weight: 800;
+      .bento {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
       }
 
-      .step p {
-        margin: 6px 0 0;
-        color: var(--dark-gray);
+      .bento .span2 { grid-column: span 2; }
+
+      .bento .feature {
+        background: linear-gradient(150deg, rgba(35, 224, 197, 0.09), rgba(77, 141, 255, 0.05) 60%, transparent), var(--panel);
       }
 
-      .note {
+      .faq { display: grid; gap: 12px; max-width: 860px; }
+
+      details {
+        border: 1px solid var(--line);
+        border-radius: var(--r3);
+        background: var(--panel);
+        transition: border-color 0.25s;
+      }
+
+      details:hover { border-color: var(--line-2); }
+
+      details[open] { border-color: rgba(35, 224, 197, 0.35); }
+
+      summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 18px 22px;
+        cursor: pointer;
+        list-style: none;
+        font-size: 15.5px;
+        font-weight: 600;
+      }
+
+      summary::-webkit-details-marker { display: none; }
+
+      summary .ind {
+        flex-shrink: 0;
+        width: 26px;
+        height: 26px;
+        border: 1px solid var(--line-2);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: var(--tx1);
+        transition: transform 0.3s var(--ease), color 0.3s, border-color 0.3s;
+      }
+
+      details[open] summary .ind {
+        transform: rotate(45deg);
+        color: var(--teal);
+        border-color: rgba(35, 224, 197, 0.5);
+      }
+
+      details .ans {
+        padding: 0 22px 20px;
+        color: var(--tx1);
+        font-size: 14px;
+        line-height: 1.8;
+      }
+
+      .support-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .support-grid .card { display: block; }
+
+      .support-grid .arr {
+        position: absolute;
+        top: 24px;
+        right: 22px;
+        color: var(--tx2);
+        transition: color 0.25s, transform 0.25s var(--ease);
+      }
+
+      .support-grid a.card:hover .arr { color: var(--teal); transform: translate(3px, -3px); }
+
+      .fb-tip {
         margin-top: 16px;
-        padding: 14px 16px;
-        border: 1px solid rgba(125, 110, 98, 0.26);
-        border-left: 4px solid var(--mid-noon);
-        border-radius: var(--radius-3);
-        background: var(--golden-hour);
-        color: var(--mid-noon);
-      }
-
-      .notice {
-        margin-top: 26px;
-        padding: 16px 18px;
-        border-left: 4px solid var(--teal);
-        border-radius: var(--radius-3);
-        background: rgba(220, 234, 250, 0.12);
-        color: var(--text-on-dark);
-      }
-
-      .notice strong {
-        color: var(--white);
-      }
-
-      code {
-        color: var(--deep-night);
-        font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
-        font-size: 0.94em;
+        padding: 14px 18px;
+        border: 1px solid var(--line);
+        border-left: 3px solid var(--teal);
+        border-radius: 0 var(--r3) var(--r3) 0;
+        color: var(--tx1);
+        font-size: 13.5px;
       }
 
       footer {
+        margin-top: clamp(58px, 7vw, 88px);
+        border-top: 1px solid var(--line);
+        padding: 30px 0 44px;
+      }
+
+      .foot-in {
         display: flex;
         flex-wrap: wrap;
+        align-items: center;
         justify-content: space-between;
         gap: 14px;
-        margin-top: 54px;
-        padding-top: 24px;
-        border-top: 1px solid var(--cool-gray);
-        color: var(--silver-gray);
-        font-size: 14px;
+        color: var(--tx2);
+        font-size: 13px;
       }
 
-      @media (max-width: 920px) {
-        .page {
-          width: min(100% - 32px, 720px);
-          padding-top: 22px;
-        }
+      .foot-links { display: flex; flex-wrap: wrap; gap: 4px 20px; }
 
-        .nav {
-          align-items: flex-start;
-          flex-direction: column;
-        }
+      .foot-links a { color: var(--tx1); transition: color 0.2s; }
 
-        .nav-links {
-          justify-content: flex-start;
-          border-radius: var(--radius-4);
-        }
+      .foot-links a:hover { color: var(--teal); }
 
-        .hero,
-        .grid,
-        .grid.two {
-          grid-template-columns: 1fr;
-        }
-
-        .hero {
-          min-height: 0;
-        }
-
-        .hero-main {
-          padding: 34px 24px 26px;
-        }
-
-        .update-card {
-          margin: 0 24px 24px;
-        }
-
-        .version-strip {
-          grid-template-columns: 1fr;
-        }
-
-        .section-head {
-          grid-template-columns: auto 1fr;
-        }
-
-        .section-head p {
-          grid-column: 2;
-        }
+      .js .rv {
+        opacity: 0;
+        transform: translateY(26px);
+        transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
       }
 
-      @media (max-width: 560px) {
-        .page {
-          width: min(100% - 20px, 520px);
-        }
+      .js .rv.in { opacity: 1; transform: none; }
 
-        h1 {
-          font-size: 38px;
-        }
+      .js .rv-kids > * {
+        opacity: 0;
+        transform: translateY(22px);
+        transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+      }
 
-        .lead {
-          font-size: 17px;
-        }
+      .js .rv-kids.in > * { opacity: 1; transform: none; }
 
-        .update-card,
-        .panel,
-        .step {
-          padding: 18px;
-        }
+      .rv-kids.in > :nth-child(2) { transition-delay: 0.08s; }
+      .rv-kids.in > :nth-child(3) { transition-delay: 0.16s; }
+      .rv-kids.in > :nth-child(4) { transition-delay: 0.24s; }
+      .rv-kids.in > :nth-child(5) { transition-delay: 0.32s; }
+      .rv-kids.in > :nth-child(6) { transition-delay: 0.4s; }
 
-        .download-item,
-        .kbd-item {
-          align-items: flex-start;
-          grid-template-columns: 1fr;
-        }
+      .js .hero-in > * {
+        opacity: 0;
+        transform: translateY(24px);
+        animation: rise 0.9s var(--ease) forwards;
+      }
 
-        .download-item {
-          flex-direction: column;
-        }
+      .hero-in > :nth-child(1) { animation-delay: 0.05s; }
+      .hero-in > :nth-child(2) { animation-delay: 0.15s; }
+      .hero-in > :nth-child(3) { animation-delay: 0.25s; }
+      .hero-in > :nth-child(4) { animation-delay: 0.35s; }
+      .hero-in > :nth-child(5) { animation-delay: 0.45s; }
+      .hero-in > :nth-child(6) { animation-delay: 0.55s; }
 
-        .step {
-          padding-left: 58px;
+      .js .hero-demo {
+        opacity: 0;
+        animation: rise 1s var(--ease) 0.4s forwards;
+      }
+
+      @keyframes rise {
+        from { opacity: 0; transform: translateY(24px); }
+        to { opacity: 1; transform: none; }
+      }
+
+      @media (max-width: 980px) {
+        .nav-links a { display: none; }
+        .nav-links a.nav-cta { display: inline-flex; }
+        .hero-grid { grid-template-columns: 1fr; }
+        .hero { padding-top: 48px; }
+        .dl-grid, .guide-grid { grid-template-columns: 1fr; }
+        .bento { grid-template-columns: 1fr 1fr; }
+        .bento .span2 { grid-column: span 2; }
+        .styles-row, .support-grid { grid-template-columns: 1fr; }
+        .guide-stage { min-height: 320px; }
+      }
+
+      @media (max-width: 600px) {
+        .wrap { width: calc(100% - 36px); }
+        .blob { opacity: 0.34; }
+        .blob.c { display: none; }
+        .bento { grid-template-columns: 1fr; }
+        .bento .span2 { grid-column: auto; }
+        h1 { font-size: 30px; }
+        .lead { font-size: 15.5px; }
+        .vwin-body { padding: 18px; font-size: 15px; }
+        .btn { width: 100%; }
+        .actions { gap: 10px; }
+        .download-inline { padding: 13px; }
+        .download-line, .download-tools { gap: 8px; }
+        .download-tools .copy-btn { flex: 1 1 calc(50% - 4px); justify-content: center; }
+        #dmg-name, #zip-name {
+          display: inline-block;
+          max-width: 235px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          vertical-align: bottom;
+          white-space: nowrap;
+        }
+        .download-tools > .download-line { flex: 1 1 100%; }
+        .inline-code { display: none; }
+        .mtab { flex: 1 1 calc(50% - 5px); justify-content: center; }
+        .mtab .k { display: none; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+        .js .rv, .js .rv-kids > *, .js .hero-in > *, .js .hero-demo {
+          opacity: 1 !important;
+          transform: none !important;
         }
       }
     </style>
   </head>
   <body>
-    <main class="page">
-      <nav class="nav" aria-label="页面导航">
-        <div class="brand">
-          <span class="logo" aria-hidden="true">
-            <svg viewBox="0 0 64 64" role="img">
-              <rect x="6" y="6" width="52" height="52" rx="13" fill="#fff"/>
-              <path d="M17 27v10M24 19v26M31 12v40M38 17v30M45 25v14M52 30v8" fill="none" stroke="#111827" stroke-width="4.5" stroke-linecap="round"/>
-              <path d="M24 44v7M38 47v6M45 39v7" fill="none" stroke="#0a84ff" stroke-width="4.5" stroke-linecap="round"/>
-            </svg>
-          </span>
-          <span>VIME macOS</span>
-        </div>
-        <div class="nav-links">
-          <a href="#download">下载</a>
-          <a href="#guide">使用引导</a>
-          <a href="#whats-new">更新内容</a>
-          <a href="#support">反馈</a>
-        </div>
-      </nav>
+    <div class="noise" aria-hidden="true"></div>
+    <div id="pgbar" aria-hidden="true"></div>
 
-      <div class="hero">
-        <section class="hero-main" aria-labelledby="hero-title">
-          <p class="eyebrow">macOS Beta · 语音输入与文字整理</p>
-          <h1 id="hero-title">在 Mac 上，把想法直接说进输入框。</h1>
-          <p class="lead">
-            VIME 是一个桌面语音输入工具。按下右 Command 说话，VIME 会完成语音转写、文本整理、自动翻译或选中文本编辑，并把结果写入当前输入位置。
-          </p>
-          <p class="notice">
-            <strong>内部测试说明：</strong>
-            VIME macOS 目前由个人开发，供内部测试用户提前试用。测试过程中如果遇到问题、不稳定或体验不符合预期，请多包涵；有问题可以在飞书联系 <strong>@kk.wang</strong>。
-          </p>
-          <div class="actions">
-            <a class="button primary" href="#download">下载 1.1.1 beta</a>
-            <a class="button" href="#guide">查看使用引导</a>
+    <header class="nav">
+      <div class="wrap nav-in">
+        <a class="brand" href="#overview" aria-label="VIME macOS 回到顶部">
+          <svg class="brand-logo" viewBox="0 0 180 180" role="img" aria-hidden="true">
+            <path fill="#FFFFFF" d="M40,0 H140 A40,40 0 0 1 180,40 V140 A40,40 0 0 1 140,180 H40 A40,40 0 0 1 0,140 V40 A40,40 0 0 1 40,0 Z"/>
+            <g fill="#1A1A1A">
+              <rect x="18" y="36" width="12" height="44" rx="6"/>
+              <rect x="39" y="46" width="12" height="60" rx="6"/>
+              <rect x="60" y="56" width="12" height="76" rx="6"/>
+              <rect x="108" y="56" width="12" height="76" rx="6"/>
+              <rect x="129" y="46" width="12" height="60" rx="6"/>
+              <rect x="150" y="36" width="12" height="44" rx="6"/>
+            </g>
+            <g fill="#4A7CFF">
+              <circle cx="90" cy="58" r="8"/>
+              <rect x="82" y="72" width="16" height="92" rx="8"/>
+            </g>
+          </svg>
+          <span>VIME <span style="color: var(--tx2); font-weight: 500;">macOS</span></span>
+        </a>
+        <nav class="nav-links" aria-label="页面导航">
+          <a href="#overview" data-spy="overview">介绍</a>
+          <a href="#whats-new" data-spy="whats-new">更新说明</a>
+          <a href="#modes" data-spy="modes">VIME 特色</a>
+          <a href="#guide" data-spy="guide">使用引导</a>
+          <a href="#faq" data-spy="faq">常见问题</a>
+          <a class="nav-cta" id="nav-dmg" href="https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.2/V_IME-1.1.2-2026061104-macos.dmg">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v13m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
+            下载
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero" id="overview" aria-labelledby="hero-title">
+        <div class="blob a" aria-hidden="true"></div>
+        <div class="blob b" aria-hidden="true"></div>
+        <div class="blob c" aria-hidden="true"></div>
+        <div class="wrap hero-grid">
+          <div class="hero-in">
+            <p style="margin: 0;"><span class="eyebrow"><span class="dot"></span>macOS Beta · 语音输入与文字整理</span></p>
+            <h1 id="hero-title">在 Mac 上，<br><span class="grad">把想法直接说进输入框。</span></h1>
+            <p class="lead">
+              按下右 Command 说话，VIME 完成语音转写、文本整理、自动翻译或选中文本编辑，把结果直接写入当前光标位置。
+            </p>
+            <div class="actions">
+              <a class="btn primary" id="cta-dmg" href="https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.2/V_IME-1.1.2-2026061104-macos.dmg">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v13m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
+                下载 DMG&nbsp;<small id="cta-size">· 2.7 MB</small>
+              </a>
+              <a class="btn ghost" href="#whats-new">查看更新</a>
+            </div>
+            <div class="download-inline" id="download" aria-label="下载与校验">
+              <div class="download-line">
+                <span class="badge teal">推荐 DMG</span>
+                <a id="dmg-link" href="https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.2/V_IME-1.1.2-2026061104-macos.dmg"><span id="dmg-name">V_IME-1.1.2-2026061104-macos.dmg</span></a>
+                <span id="dmg-size">2.7 MB</span>
+                <span>SHA-256 <b id="dmg-sha" style="color: var(--tx1);">b82d4b04…</b></span>
+              </div>
+              <div class="download-tools">
+                <button class="copy-btn" type="button" id="dmg-sha-copy" data-copy="b82d4b0454187fff271e99463b4cf8d86c9451b5a04388bee0888100c12b4ae4">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 012-2h10"/></svg>
+                  <span>复制 SHA-256</span>
+                </button>
+                <button class="copy-btn" type="button" data-copy-target="shasum-cmd"><span>复制校验命令</span></button>
+                <span class="download-line">备用：<a id="zip-link" href="https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.2/V_IME-1.1.2-2026061104-macos.zip"><span id="zip-name">V_IME-1.1.2-2026061104-macos.zip</span></a> · <span id="zip-size">2.3 MB</span> · SHA <b id="zip-sha" style="color: var(--tx1);">2279b21b…</b></span>
+              </div>
+              <code class="inline-code" id="shasum-cmd">shasum -a 256 ~/Downloads/V_IME-1.1.2-2026061104-macos.dmg</code>
+            </div>
+            <div class="meta-strip" aria-label="版本信息">
+              <span>v<b class="mf-ver">1.1.2</b> beta</span>
+              <span>build <b id="mf-build">2026061104</b></span>
+              <span>macOS <b id="mf-min">14</b>+</span>
+              <span>Developer ID 签名 · 已公证</span>
+            </div>
           </div>
-          <div class="version-strip" aria-label="版本信息">
-            <div class="metric">
-              <span>当前版本</span>
-              <strong>1.1.1 beta</strong>
+
+          <div class="hero-demo">
+            <div class="vwin" aria-label="VIME 听写过程演示动画">
+              <div class="vwin-bar">
+                <i style="background: #ff5f57;"></i><i style="background: #febc2e;"></i><i style="background: #28c840;"></i>
+                <span class="t">飞书 · 给团队的消息</span>
+              </div>
+              <div class="vwin-body"><span class="fade" id="hd-txt"></span><span class="caret" aria-hidden="true"></span></div>
+              <div class="vwin-foot">
+                <kbd id="hd-key">右 ⌘</kbd>
+                <span class="wave" id="hd-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                <span class="stat" id="hd-stat">待命</span>
+              </div>
             </div>
-            <div class="metric">
-              <span>Build</span>
-              <strong>2026061102</strong>
+          </div>
+        </div>
+      </section>
+
+      <div class="wrap">
+        <section class="sec" id="whats-new" aria-labelledby="wn-title">
+          <div class="sec-head rv">
+            <span class="num">01</span>
+            <h2 id="wn-title">v<span class="mf-ver">1.1.2</span> beta 更新内容</h2>
+            <p id="wn-sum">这一版继续修复写回判定：在 Web、Electron 和富文本输入框里，内容已实际写入但系统读回值滞后时，不再误报 E401。正在使用 1.1.0 / 1.1.1 的测试用户建议更新。</p>
+          </div>
+          <div class="bento rv-kids">
+            <div class="card feature span2">
+              <div class="glow"></div>
+              <h3>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 4v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V7z"/><path d="M9 12l2 2 4-4"/></svg>
+                修复写入成功后的 E401 误报
+              </h3>
+              <p>针对 Web、Electron 和富文本输入框，结合写入后的内容指纹判断，减少 AX 读回滞后造成的误报。</p>
             </div>
-            <div class="metric">
-              <span>系统要求</span>
-              <strong>macOS 14+</strong>
+            <div class="card">
+              <div class="glow"></div>
+              <h3>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.7 17.4A5.5 5.5 0 017.5 6.5a6 6 0 0111.6 1.8A4.5 4.5 0 0118 17.5z"/></svg>
+                不配置也能先试用
+              </h3>
+              <p>首次打开可以直接使用 VIME 默认服务；如果你保存了自己的 API Key，VIME 会优先使用个人服务。</p>
+            </div>
+            <div class="card">
+              <div class="glow"></div>
+              <h3>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10v.01M11 10v.01M15 10v.01M7 14h10"/></svg>
+                右 Command 触发更稳
+              </h3>
+              <p>按住说话、连续听写、翻译和编辑选中文本的触发更清晰，减少外接键盘或快速操作时的误触。</p>
+            </div>
+          </div>
+          <p class="rv" style="margin-top: 22px; font-size: 13.5px; color: var(--tx2);">
+            完整发布记录见
+            <a id="rel-link" href="https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.1.2" style="color: var(--teal);">GitHub Release ↗</a>
+          </p>
+        </section>
+
+        <section class="sec" id="modes" aria-labelledby="modes-title">
+          <div class="sec-head rv">
+            <span class="num">02</span>
+            <h2 id="modes-title">VIME 特色：四种输入模式</h2>
+            <p>全部围绕右 Command 设计，保持单手操作；左 Command 仍留给系统快捷键。点击切换模式，查看各自的演示。</p>
+          </div>
+          <div class="rv">
+            <div class="modes-tabs kbd-demo" role="tablist" aria-label="输入模式">
+              <button class="mtab on" type="button" role="tab" aria-selected="true" data-mode="0">按住说话 <span class="k">右⌘ 按住</span></button>
+              <button class="mtab" type="button" role="tab" aria-selected="false" data-mode="1">连续听写 <span class="k">右⌘ 双击</span></button>
+              <button class="mtab" type="button" role="tab" aria-selected="false" data-mode="2">中英互译 <span class="k">右⌘ + ,</span></button>
+              <button class="mtab" type="button" role="tab" aria-selected="false" data-mode="3">文本编辑 <span class="k">右⌘ + .</span></button>
+            </div>
+            <div class="vwin mode-stage">
+              <div class="vwin-bar">
+                <i style="background: #ff5f57;"></i><i style="background: #febc2e;"></i><i style="background: #28c840;"></i>
+                <span class="t" id="ms-title">任意输入框</span>
+              </div>
+              <div class="vwin-body">
+                <div class="mode-aux" id="ms-aux"></div>
+                <span class="fade" id="ms-txt"></span><span class="caret" aria-hidden="true"></span>
+              </div>
+              <div class="vwin-foot">
+                <span id="ms-keys" style="display: inline-flex; gap: 7px;"><kbd id="ms-key">右 ⌘</kbd></span>
+                <span class="wave" id="ms-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                <span class="stat" id="ms-stat">待命</span>
+              </div>
+            </div>
+            <p id="ms-desc" style="margin: 14px 4px 0; color: var(--tx1); font-size: 14px; min-height: 1.7em;">按住右 Command 说一句话，松开后自动转写、整理并写入光标位置。</p>
+          </div>
+          <div class="styles-row rv-kids" style="margin-top: 34px;">
+            <div class="card style-cell">
+              <div class="glow"></div>
+              <span class="tagline">默认</span>
+              <h3 style="margin-top: 8px;">智能整理</h3>
+              <p>把口语整理成清晰的正文或要点，适合消息、文档和评论。</p>
+            </div>
+            <div class="card style-cell">
+              <div class="glow"></div>
+              <span class="tagline">轻整理</span>
+              <h3 style="margin-top: 8px;">保留语气</h3>
+              <p>只修正错字、标点和断句，保留你原本的说法和语气。</p>
+            </div>
+            <div class="card style-cell">
+              <div class="glow"></div>
+              <span class="tagline">原文</span>
+              <h3 style="margin-top: 8px;">逐字稿</h3>
+              <p>尽量保留语音原文，适合会议记录与逐字引用。</p>
             </div>
           </div>
         </section>
 
-        <aside class="update-card" id="download" aria-labelledby="download-title">
-          <span class="status">Developer ID 签名</span>
-          <h2 id="download-title">下载测试版</h2>
-          <p>
-            推荐下载 DMG。打开后把 <strong>V_IME.app</strong> 拖到 Applications，再从应用程序文件夹启动。
-          </p>
-          <div class="download-list">
-            <a class="download-item" href="https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.1/V_IME-1.1.1-2026061102-macos.dmg">
-              <span>
-                <strong>V_IME-1.1.1-2026061102-macos.dmg</strong>
-                <small>推荐安装包 · SHA-256: 7f4ee677...</small>
-              </span>
-              <span>下载</span>
-            </a>
-            <a class="download-item" href="https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.1/V_IME-1.1.1-2026061102-macos.zip">
-              <span>
-                <strong>V_IME-1.1.1-2026061102-macos.zip</strong>
-                <small>备用归档包 · SHA-256: b9eae37d...</small>
-              </span>
-              <span>下载</span>
-            </a>
+        <section class="sec" id="guide" aria-labelledby="guide-title">
+          <div class="sec-head rv">
+            <span class="num">03</span>
+            <h2 id="guide-title">四步开始使用</h2>
+            <p>首次启动按这四步完成安装、权限和服务检查。默认服务可直接试用，有个人 API Key 时再填也可以。</p>
           </div>
-          <p class="note">
-            如果 macOS 提示需要授权，请在系统设置中允许麦克风和辅助功能。授权后回到 VIME 会自动刷新状态。
-          </p>
-        </aside>
-      </div>
-
-      <section id="guide" aria-labelledby="guide-title">
-        <div class="section-head">
-          <h2 id="guide-title">开始使用</h2>
-          <p>首次启动只需要完成权限、服务和快捷键三件事。未配置个人 API Key 时，也可以先使用 VIME 默认云端服务试用。</p>
-        </div>
-        <div class="timeline">
-          <div class="step">
-            <h3>安装并启动</h3>
-            <p>下载 DMG，把 V_IME.app 拖到 Applications，从应用程序文件夹启动。建议不要从下载目录或 DMG 里直接长期运行。</p>
-          </div>
-          <div class="step">
-            <h3>完成系统权限</h3>
-            <p>允许麦克风用于录音；允许辅助功能用于把转写结果写回当前输入框。VIME 会在设置页显示权限状态。</p>
-          </div>
-          <div class="step">
-            <h3>确认服务配置</h3>
-            <p>默认云端服务可直接使用。你也可以在“服务配置”中保存自己的 API Key，个人 Key 会优先于默认服务。</p>
-          </div>
-          <div class="step">
-            <h3>用右 Command 输入</h3>
-            <p>在任意输入框内按住或双击右 Command 开始听写。完成后，VIME 会把整理后的结果写入光标位置。</p>
-          </div>
-        </div>
-      </section>
-
-      <section aria-labelledby="shortcuts-title">
-        <div class="section-head">
-          <h2 id="shortcuts-title">快捷键</h2>
-          <p>默认快捷键围绕右 Command 设计，尽量保持单手操作。左 Command 仍保留给系统和常见应用快捷键。</p>
-        </div>
-        <div class="grid two">
-          <div class="panel">
-            <h3>输入模式</h3>
-            <div class="kbd-row">
-              <div class="kbd-item">
-                <div class="keys"><kbd>右⌘</kbd><kbd>按住</kbd></div>
-                <p>快速说一句，松开后转写并写入。</p>
+          <div class="guide-grid rv">
+            <div class="steps" role="tablist" aria-label="使用步骤">
+              <div class="step on" role="tab" aria-selected="true" tabindex="0" data-step="0">
+                <span class="n">1</span>
+                <div><h3>安装并启动</h3><p>把 V_IME.app 拖到 Applications，从应用程序文件夹启动，不要长期在 DMG 或下载目录里运行。</p></div>
               </div>
-              <div class="kbd-item">
-                <div class="keys"><kbd>右⌘</kbd><kbd>双击</kbd></div>
-                <p>进入连续听写；再次单击或双击右 Command 结束。</p>
+              <div class="step" role="tab" aria-selected="false" tabindex="0" data-step="1">
+                <span class="n">2</span>
+                <div><h3>完成系统权限</h3><p>麦克风用于录音，辅助功能用于把结果写回输入框。VIME 设置页会实时显示权限状态。</p></div>
               </div>
-              <div class="kbd-item">
-                <div class="keys"><kbd>右⌘</kbd><kbd>,</kbd></div>
-                <p>启动中英互译。中文自动转英文，英文自动转中文。</p>
+              <div class="step" role="tab" aria-selected="false" tabindex="0" data-step="2">
+                <span class="n">3</span>
+                <div><h3>确认服务配置</h3><p>默认服务可直接试用；保存个人 API Key 后会优先使用个人服务。</p></div>
               </div>
-              <div class="kbd-item">
-                <div class="keys"><kbd>右⌘</kbd><kbd>.</kbd></div>
-                <p>启动文本编辑。先选中文本，再口述修改要求。</p>
+              <div class="step" role="tab" aria-selected="false" tabindex="0" data-step="3">
+                <span class="n">4</span>
+                <div><h3>用右 Command 输入</h3><p>在任意输入框按住或双击右 Command 开始听写，整理后的结果写入光标位置。</p></div>
+              </div>
+            </div>
+            <div class="guide-stage" aria-live="polite">
+              <div class="gpane on" data-pane="0">
+                <div>
+                  <div class="mock">
+                    <div class="drag-row">
+                      <div class="tile app">
+                        <span class="icn">
+                          <svg viewBox="0 0 180 180" aria-hidden="true">
+                            <g fill="#1A1A1A">
+                              <rect x="18" y="36" width="12" height="44" rx="6"/><rect x="39" y="46" width="12" height="60" rx="6"/><rect x="60" y="56" width="12" height="76" rx="6"/><rect x="108" y="56" width="12" height="76" rx="6"/><rect x="129" y="46" width="12" height="60" rx="6"/><rect x="150" y="36" width="12" height="44" rx="6"/>
+                            </g>
+                            <g fill="#4A7CFF"><circle cx="90" cy="58" r="8"/><rect x="82" y="72" width="16" height="92" rx="8"/></g>
+                          </svg>
+                        </span>
+                        V_IME.app
+                      </div>
+                      <svg class="drag-arrow" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15m0 0l-6-6m6 6l-6 6"/></svg>
+                      <div class="tile folder">
+                        <span class="icn"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></span>
+                        Applications
+                      </div>
+                    </div>
+                  </div>
+                  <p class="cap">打开 DMG，<b>拖拽安装</b>，再从应用程序文件夹启动</p>
+                </div>
+              </div>
+              <div class="gpane" data-pane="1">
+                <div>
+                  <div class="mock">
+                    <div class="perm-row">
+                      <span class="pi"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0014 0M12 17v4"/></svg></span>
+                      <span>麦克风<small>用于录音转写</small></span>
+                      <span class="tgl go"></span>
+                    </div>
+                    <div class="perm-row">
+                      <span class="pi"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M12 7v.01M12 11v6"/></svg></span>
+                      <span>辅助功能<small>用于把结果写回输入框</small></span>
+                      <span class="tgl go"></span>
+                    </div>
+                  </div>
+                  <p class="cap">系统设置 → <b>隐私与安全性</b>，允许后回到 VIME 自动刷新</p>
+                </div>
+              </div>
+              <div class="gpane" data-pane="2">
+                <div>
+                  <div class="mock">
+                    <div class="svc-row"><span class="ok-dot"></span><span>默认云端服务 · 可直接使用</span></div>
+                    <div class="field"><span>sk-••••••••••••••••</span><span class="chip">个人 Key 优先</span></div>
+                  </div>
+                  <p class="cap">在<b>服务配置</b>中可保存自己的 API Key，不配置也能用</p>
+                </div>
+              </div>
+              <div class="gpane" data-pane="3">
+                <div>
+                  <div class="mock" style="padding: 22px 20px;">
+                    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 14px;">
+                      <kbd class="gp-key">右 ⌘</kbd>
+                      <span class="wave gp-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                      <span class="stat ok" style="margin-left: auto;">已写入</span>
+                    </div>
+                    <div style="font-size: 14px; color: #dce8f6; border-top: 1px solid var(--line); padding-top: 12px;">明天的评审改到下午三点。<span class="caret" aria-hidden="true"></span></div>
+                  </div>
+                  <p class="cap"><b>按住</b>说一句，松开写入；<b>双击</b>进入连续听写</p>
+                </div>
               </div>
             </div>
           </div>
-          <div class="panel">
-            <h3>输出风格</h3>
-            <p>状态栏面板可以切换输出风格，快捷键也可以快速切换。</p>
-            <ul>
-              <li><strong>智能整理：</strong>整理成清晰正文或要点。</li>
-              <li><strong>保留语气：</strong>轻微修正错字、标点和断句，保留原本说法。</li>
-              <li><strong>逐字稿：</strong>尽量保留语音原文。</li>
-            </ul>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <section id="whats-new" aria-labelledby="whats-new-title">
-        <div class="section-head">
-          <h2 id="whats-new-title">1.1.1 beta 更新内容</h2>
-          <p>这个 hotfix build 在 1.1.0 beta 基础上继续修复写回问题：文本已经正确写入飞书 / Web / Electron 富文本输入框后，不应再误报 E401。</p>
-        </div>
-        <div class="grid">
-          <div class="panel">
-            <h3>默认云端服务</h3>
-            <p>未配置个人 API Key 时，可以使用 VIME 默认云端服务；保存个人 Key 后会优先使用个人服务。</p>
+        <section class="sec" id="faq" aria-labelledby="faq-title">
+          <div class="sec-head rv">
+            <span class="num">04</span>
+            <h2 id="faq-title">常见问题</h2>
+            <p>遇到写入失败、权限未生效或网络不可用时，可以先按下面的方式排查。</p>
           </div>
-          <div class="panel">
-            <h3>右 Command 快捷键</h3>
-            <p>优化按住说话、连续听写、自动翻译、文本编辑和输出风格切换，降低误触发。</p>
+          <div class="faq rv-kids">
+            <details>
+              <summary>提示辅助功能未授权<span class="ind"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+              <div class="ans">在系统设置中允许 VIME 使用辅助功能。授权后通常自动生效；如果长时间仍不可用，再完全退出并重新打开 VIME。</div>
+            </details>
+            <details>
+              <summary>没有写入目标输入框<span class="ind"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+              <div class="ans">先确认光标在目标输入框内。若 VIME 无法安全写回，会保留结果并提示复制，避免说过的内容丢失。</div>
+            </details>
+            <details>
+              <summary>默认服务不可用<span class="ind"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+              <div class="ans">请先检查网络。也可以在「服务配置」中保存自己的 API Key，个人服务会优先使用。</div>
+            </details>
+            <details>
+              <summary>右 Command 和外接键盘冲突<span class="ind"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+              <div class="ans">部分外接键盘、远程桌面或改键工具可能拦截右 Command。可以在设置中配置备用快捷键。</div>
+            </details>
+            <details>
+              <summary>怎么反馈问题<span class="ind"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+              <div class="ans">内部测试用户可在飞书联系 @kk.wang；也可以通过 GitHub Issues 或邮件反馈。请尽量附上目标 App、输入模式、复现步骤和截图，不要发送密码、验证码或完整聊天记录。</div>
+            </details>
           </div>
-          <div class="panel">
-            <h3>写回 hotfix</h3>
-            <p>保留 1.1.0 对 Unicode 写回退化成字母 a 候选的修复，并修复“正确注入后仍报 E401”的误报。</p>
-          </div>
-          <div class="panel">
-            <h3>写回稳定性</h3>
-            <p>收紧写回后的校验逻辑：继续拦截单字残留、低比例截断和明显未写入，同时避免富文本输入框的高比例 AX 长度差异误判。</p>
-          </div>
-          <div class="panel">
-            <h3>常用词和学习</h3>
-            <p>学习体验保持可感知、可撤销、可删除；普通用户不会看到工程调试信息。</p>
-          </div>
-          <div class="panel">
-            <h3>输出策略对齐</h3>
-            <p>继续对齐 Android Clean / Tidy 基线，优先保证意图保真，再做段落整理和压缩。</p>
-          </div>
-          <div class="panel">
-            <h3>发布链路</h3>
-            <p>本 hotfix 包使用 Developer ID 签名并通过 Apple notarization，通过更新 manifest 向测试用户分发。</p>
-          </div>
-        </div>
-      </section>
-
-      <section aria-labelledby="faq-title">
-        <div class="section-head">
-          <h2 id="faq-title">常见问题</h2>
-          <p>如果遇到写入失败、权限未生效或网络不可用，可以先按下面方式排查。</p>
-        </div>
-        <div class="grid two">
-          <div class="panel">
-            <h3>提示辅助功能未授权</h3>
-            <p>在系统设置中允许 VIME 使用辅助功能。授权后通常会自动生效；如果长时间仍不可用，再完全退出并重新打开 VIME。</p>
-          </div>
-          <div class="panel">
-            <h3>没有写入目标输入框</h3>
-            <p>先确认光标在目标输入框内。若 VIME 无法安全写回，会保留结果并提示复制，避免说过的内容丢失。</p>
-          </div>
-          <div class="panel">
-            <h3>默认服务不可用</h3>
-            <p>请检查网络。也可以在“服务配置”中保存自己的 API Key，个人服务会优先使用。</p>
-          </div>
-          <div class="panel">
-            <h3>右 Command 和外接键盘冲突</h3>
-            <p>部分外接键盘、远程桌面或改键工具可能拦截右 Command。可以在设置中配置备用快捷键。</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="support" aria-labelledby="support-title">
-        <div class="section-head">
-          <h2 id="support-title">反馈</h2>
-          <p>测试期间请尽量描述复现步骤、目标 App、输入模式、是否有选中文本、错误码和截图。不要发送密码、验证码或完整聊天记录。</p>
-        </div>
-        <div class="panel">
-          <p>
-            你可以通过 <a href="https://github.com/imkida/V_IME_releases/issues">GitHub Issues</a>
-            或邮件 <a href="mailto:kida.wong@gmail.com">kida.wong@gmail.com</a> 反馈问题。
-            内部测试用户也可以在飞书直接联系 <strong>@kk.wang</strong>。
-            完整发布记录见 <a href="https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.1.1">GitHub Release</a>。
-          </p>
-        </div>
-      </section>
-
-      <footer>
-        <span>VIME macOS Beta</span>
-        <span>Last updated: 2026-06-11</span>
-      </footer>
+        </section>
+      </div>
     </main>
+
+    <footer>
+      <div class="wrap foot-in">
+        <span>VIME macOS Beta · 由个人开发，供内部测试使用</span>
+        <div class="foot-links">
+          <a href="https://github.com/imkida/V_IME_releases/releases">发布记录</a>
+          <a href="../privacy/">隐私说明</a>
+          <a href="../support/">支持页面</a>
+          <span>更新于 <span id="mf-date">2026-06-11</span></span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        "use strict";
+
+        var RM = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var $ = function (id) { return document.getElementById(id); };
+
+        var MF_URLS = [
+          "manifest.json",
+          "../../macos/manifest.json",
+          "https://raw.githubusercontent.com/imkida/V_IME_releases/main/macos/manifest.json"
+        ];
+
+        function fmtMB(bytes) {
+          return (bytes / 1e6).toFixed(1) + " MB";
+        }
+
+        function fetchManifest(i) {
+          return fetch(MF_URLS[i], { cache: "no-store" }).then(function (r) {
+            if (r.ok) return r.json();
+            if (i + 1 < MF_URLS.length) return fetchManifest(i + 1);
+            return Promise.reject();
+          }).catch(function (err) {
+            if (i + 1 < MF_URLS.length) return fetchManifest(i + 1);
+            return Promise.reject(err);
+          });
+        }
+
+        function releaseSummaryForPeople(raw) {
+          if (!raw) return null;
+          var lines = [];
+          if (/E401|误报|写入/.test(raw)) {
+            lines.push("在飞书、网页和 Electron 应用里，文字已经写进去后不再误报失败。");
+          }
+          if (/默认云端服务|个人 API Key|个人 Key/.test(raw)) {
+            lines.push("没有个人 API Key 也可以先试用默认服务；配置后仍会优先使用个人服务。");
+          }
+          if (/建议 .*更新|建议/.test(raw)) {
+            lines.push("正在使用上一版测试版的用户建议更新。");
+          }
+          return lines.length ? lines.join("") : raw;
+        }
+
+        fetchManifest(0)
+          .then(function (m) {
+            var keys = Object.keys(m.channels || {});
+            var c = (m.channels && m.channels.beta) || (keys.length ? m.channels[keys[0]] : null);
+            if (!c || !c.assets) return;
+            var dmg = null, zip = null;
+            c.assets.forEach(function (a) {
+              if (a.installerType === "dmg" && !dmg) dmg = a;
+              if (a.installerType === "zip" && !zip) zip = a;
+            });
+            document.querySelectorAll(".mf-ver").forEach(function (el) { el.textContent = c.versionName; });
+            if (c.buildNumber) $("mf-build").textContent = c.buildNumber;
+            if (c.minSystemVersion) $("mf-min").textContent = String(c.minSystemVersion).split(".")[0];
+            if (c.summary) $("wn-sum").textContent = releaseSummaryForPeople(c.summary);
+            if (c.releaseUrl) $("rel-link").href = c.releaseUrl;
+            if (m.generatedAt) $("mf-date").textContent = m.generatedAt.slice(0, 10);
+            if (dmg) {
+              $("nav-dmg").href = dmg.url;
+              $("cta-dmg").href = dmg.url;
+              $("cta-size").textContent = "· " + fmtMB(dmg.sizeBytes);
+              $("dmg-link").href = dmg.url;
+              $("dmg-name").textContent = dmg.name;
+              $("dmg-size").textContent = fmtMB(dmg.sizeBytes);
+              $("dmg-sha").textContent = dmg.sha256.slice(0, 8) + "…";
+              $("dmg-sha-copy").setAttribute("data-copy", dmg.sha256);
+              $("shasum-cmd").textContent = "shasum -a 256 ~/Downloads/" + dmg.name;
+            }
+            if (zip) {
+              $("zip-link").href = zip.url;
+              $("zip-name").textContent = zip.name;
+              $("zip-size").textContent = fmtMB(zip.sizeBytes);
+              $("zip-sha").textContent = zip.sha256.slice(0, 8) + "…";
+            }
+          })
+          .catch(function () {});
+
+        var bar = $("pgbar");
+        var spyLinks = document.querySelectorAll("[data-spy]");
+        var spySecs = [];
+        spyLinks.forEach(function (a) {
+          var s = document.getElementById(a.getAttribute("data-spy"));
+          if (s) spySecs.push({ a: a, s: s });
+        });
+
+        var ticking = false;
+        function onScroll() {
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(function () {
+            ticking = false;
+            var doc = document.documentElement;
+            var max = doc.scrollHeight - innerHeight;
+            bar.style.transform = "scaleX(" + (max > 0 ? scrollY / max : 0) + ")";
+            var pos = scrollY + innerHeight * 0.34;
+            var cur = null;
+            spySecs.forEach(function (it) {
+              if (it.s.offsetTop <= pos) cur = it;
+            });
+            spySecs.forEach(function (it) {
+              it.a.classList.toggle("on", it === cur);
+            });
+          });
+        }
+        addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+
+        if ("IntersectionObserver" in window && !RM) {
+          var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                e.target.classList.add("in");
+                io.unobserve(e.target);
+              }
+            });
+          }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+          document.querySelectorAll(".rv, .rv-kids").forEach(function (el) { io.observe(el); });
+        } else {
+          document.querySelectorAll(".rv, .rv-kids").forEach(function (el) { el.classList.add("in"); });
+        }
+
+        if (!RM && window.matchMedia && matchMedia("(pointer: fine)").matches) {
+          document.querySelectorAll(".card").forEach(function (card) {
+            card.addEventListener("pointermove", function (ev) {
+              var r = card.getBoundingClientRect();
+              card.style.setProperty("--mx", (ev.clientX - r.left) + "px");
+              card.style.setProperty("--my", (ev.clientY - r.top) + "px");
+            });
+          });
+        }
+
+        function copyText(text) {
+          function fallback() {
+            return new Promise(function (resolve, reject) {
+              var ta = document.createElement("textarea");
+              ta.value = text;
+              ta.setAttribute("readonly", "");
+              ta.style.position = "fixed";
+              ta.style.left = "-999px";
+              ta.style.top = "0";
+              document.body.appendChild(ta);
+              ta.select();
+              try {
+                if (document.execCommand && document.execCommand("copy")) resolve();
+                else reject();
+              } catch (e) {
+                reject(e);
+              } finally {
+                document.body.removeChild(ta);
+              }
+            });
+          }
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            return navigator.clipboard.writeText(text).catch(fallback);
+          }
+          return fallback();
+        }
+
+        document.querySelectorAll("[data-copy], [data-copy-target]").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var text = btn.getAttribute("data-copy");
+            var tid = btn.getAttribute("data-copy-target");
+            if (tid) text = $(tid).textContent;
+            if (!text) return;
+            copyText(text).then(function () {
+              var label = btn.querySelector("span:last-child");
+              var old = label.textContent;
+              btn.classList.add("done");
+              label.textContent = "已复制 ✓";
+              setTimeout(function () {
+                btn.classList.remove("done");
+                label.textContent = old;
+              }, 1700);
+            }).catch(function () {
+              var label = btn.querySelector("span:last-child");
+              var old = label.textContent;
+              label.textContent = "复制失败";
+              setTimeout(function () { label.textContent = old; }, 1700);
+            });
+          });
+        });
+
+        var steps = document.querySelectorAll(".step");
+        var panes = document.querySelectorAll(".gpane");
+        steps.forEach(function (st) {
+          function activate() {
+            var i = st.getAttribute("data-step");
+            steps.forEach(function (x) {
+              var on = x === st;
+              x.classList.toggle("on", on);
+              x.setAttribute("aria-selected", on ? "true" : "false");
+            });
+            panes.forEach(function (p) {
+              p.classList.toggle("on", p.getAttribute("data-pane") === i);
+            });
+          }
+          st.addEventListener("click", activate);
+          st.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" || e.key === " ") { e.preventDefault(); activate(); }
+          });
+        });
+
+        function sleepFactory(isPaused) {
+          return function (ms) {
+            return new Promise(function (res) {
+              setTimeout(function check() {
+                if (isPaused && isPaused()) { setTimeout(check, 300); return; }
+                res();
+              }, ms);
+            });
+          };
+        }
+
+        function typeText(el, str, ms, alive, sleep) {
+          return new Promise(function (res) {
+            var i = 0;
+            function tick() {
+              if (alive && !alive()) { res(false); return; }
+              i++;
+              el.textContent = str.slice(0, i);
+              if (i >= str.length) { res(true); return; }
+              sleep(ms).then(tick);
+            }
+            tick();
+          });
+        }
+
+        var heroEls = {
+          txt: $("hd-txt"), key: $("hd-key"), wave: $("hd-wave"), stat: $("hd-stat")
+        };
+
+        if (heroEls.txt) {
+          var heroVisible = true;
+          if ("IntersectionObserver" in window) {
+            new IntersectionObserver(function (en) {
+              heroVisible = en[0].isIntersecting;
+            }, { threshold: 0 }).observe(heroEls.txt.closest(".vwin"));
+          }
+          var heroPaused = function () { return !heroVisible || document.hidden; };
+          var hsleep = sleepFactory(heroPaused);
+          var RAW = "呃…就是把这个方案，那个，发给团队看一下吧";
+          var CLEAN = "把这个方案发给团队看一下。";
+
+          if (RM) {
+            heroEls.txt.textContent = CLEAN;
+            heroEls.stat.textContent = "已写入";
+            heroEls.stat.className = "stat ok";
+          } else {
+            (function heroLoop() {
+              var p = Promise.resolve();
+              p = p.then(function () {
+                heroEls.txt.textContent = "";
+                heroEls.txt.classList.remove("dim");
+                heroEls.stat.textContent = "待命";
+                heroEls.stat.className = "stat";
+                return hsleep(1100);
+              }).then(function () {
+                heroEls.key.classList.add("on");
+                heroEls.wave.classList.add("live");
+                heroEls.stat.textContent = "听写中…";
+                heroEls.stat.className = "stat rec";
+                return hsleep(380);
+              }).then(function () {
+                return typeText(heroEls.txt, RAW, 62, null, hsleep);
+              }).then(function () {
+                return hsleep(480);
+              }).then(function () {
+                heroEls.key.classList.remove("on");
+                heroEls.wave.classList.remove("live");
+                heroEls.stat.textContent = "整理中…";
+                heroEls.stat.className = "stat ai";
+                heroEls.txt.classList.add("dim");
+                return hsleep(780);
+              }).then(function () {
+                heroEls.txt.classList.remove("dim");
+                heroEls.txt.textContent = "";
+                return typeText(heroEls.txt, CLEAN, 34, null, hsleep);
+              }).then(function () {
+                heroEls.stat.textContent = "已写入";
+                heroEls.stat.className = "stat ok";
+                return hsleep(2300);
+              }).then(heroLoop);
+            })();
+          }
+        }
+
+        var SCENES = [
+          {
+            title: "飞书 · 给团队的消息",
+            desc: "按住右 Command 说一句话，松开后自动转写、整理并写入光标位置。",
+            keys: ["右 ⌘"],
+            run: function (E, alive, sleep) {
+              return Promise.resolve().then(function () {
+                E.key.classList.add("on");
+                E.wave.classList.add("live");
+                E.stat.textContent = "听写中…";
+                E.stat.className = "stat rec";
+                return sleep(350);
+              }).then(function () {
+                return typeText(E.txt, "那个…明天的评审改到下午三点吧", 58, alive, sleep);
+              }).then(function (okay) {
+                if (!okay) return false;
+                return sleep(420).then(function () {
+                  E.key.classList.remove("on");
+                  E.wave.classList.remove("live");
+                  E.stat.textContent = "整理中…";
+                  E.stat.className = "stat ai";
+                  E.txt.classList.add("dim");
+                  return sleep(700);
+                }).then(function () {
+                  if (!alive()) return false;
+                  E.txt.classList.remove("dim");
+                  E.txt.textContent = "";
+                  return typeText(E.txt, "明天的评审改到下午三点。", 32, alive, sleep);
+                }).then(function (ok2) {
+                  if (!ok2) return false;
+                  E.stat.textContent = "已写入";
+                  E.stat.className = "stat ok";
+                  return true;
+                });
+              });
+            },
+            still: "明天的评审改到下午三点。"
+          },
+          {
+            title: "文档 · 连续记录",
+            desc: "双击右 Command 进入连续听写，逐句整理写入；再次单击或双击结束。",
+            keys: ["右 ⌘", "右 ⌘"],
+            run: function (E, alive, sleep) {
+              return Promise.resolve().then(function () {
+                E.key.classList.add("on");
+                return sleep(140);
+              }).then(function () {
+                E.key.classList.remove("on");
+                return sleep(120);
+              }).then(function () {
+                E.key.classList.add("on");
+                E.wave.classList.add("live");
+                E.stat.textContent = "连续听写";
+                E.stat.className = "stat rec";
+                return typeText(E.txt, "先说结论，这版方案可以发。", 50, alive, sleep);
+              }).then(function (okay) {
+                if (!okay) return false;
+                return sleep(550).then(function () {
+                  return typeText({ set textContent(v) { E.txt.textContent = "先说结论，这版方案可以发。" + v; } },
+                    "细节我下午再补一条备注。", 50, alive, sleep);
+                }).then(function (ok2) {
+                  if (!ok2) return false;
+                  E.key.classList.remove("on");
+                  E.wave.classList.remove("live");
+                  E.stat.textContent = "已写入";
+                  E.stat.className = "stat ok";
+                  return true;
+                });
+              });
+            },
+            still: "先说结论，这版方案可以发。细节我下午再补一条备注。"
+          },
+          {
+            title: "邮件 · 回复英文同事",
+            desc: "右 Command + 逗号启动互译：说中文写英文，说英文写中文。",
+            keys: ["右 ⌘", ","],
+            run: function (E, alive, sleep) {
+              return Promise.resolve().then(function () {
+                E.key.classList.add("on");
+                E.wave.classList.add("live");
+                E.stat.textContent = "听写中…";
+                E.stat.className = "stat rec";
+                E.aux.innerHTML = "";
+                E.aux.classList.add("show");
+                var pill = document.createElement("span");
+                pill.className = "say-pill";
+                pill.textContent = "「明天上午十点和我对齐一下进度」";
+                E.aux.appendChild(pill);
+                return sleep(1300);
+              }).then(function () {
+                if (!alive()) return false;
+                E.key.classList.remove("on");
+                E.wave.classList.remove("live");
+                E.stat.textContent = "翻译中…";
+                E.stat.className = "stat ai";
+                return sleep(650);
+              }).then(function () {
+                if (!alive()) return false;
+                return typeText(E.txt, "Let's sync up on the progress at 10 a.m. tomorrow.", 28, alive, sleep);
+              }).then(function (okay) {
+                if (!okay) return false;
+                E.stat.textContent = "已写入";
+                E.stat.className = "stat ok";
+                return true;
+              });
+            },
+            still: "Let's sync up on the progress at 10 a.m. tomorrow.",
+            auxStill: "「明天上午十点和我对齐一下进度」"
+          },
+          {
+            title: "文档 · 编辑选中文本",
+            desc: "先选中文本，右 Command + 句号后口述修改要求，VIME 改写后写回。",
+            keys: ["右 ⌘", "."],
+            run: function (E, alive, sleep) {
+              return Promise.resolve().then(function () {
+                E.txt.innerHTML = "<span class='sel'>这个版本大概下周发</span>";
+                E.stat.textContent = "已选中";
+                E.stat.className = "stat";
+                return sleep(800);
+              }).then(function () {
+                if (!alive()) return false;
+                E.key.classList.add("on");
+                E.wave.classList.add("live");
+                E.stat.textContent = "听取修改要求…";
+                E.stat.className = "stat rec";
+                E.aux.innerHTML = "";
+                E.aux.classList.add("show");
+                var pill = document.createElement("span");
+                pill.className = "say-pill";
+                pill.textContent = "「改成正式一点」";
+                E.aux.appendChild(pill);
+                return sleep(1200);
+              }).then(function () {
+                if (!alive()) return false;
+                E.key.classList.remove("on");
+                E.wave.classList.remove("live");
+                E.stat.textContent = "改写中…";
+                E.stat.className = "stat ai";
+                E.txt.classList.add("dim");
+                return sleep(700);
+              }).then(function () {
+                if (!alive()) return false;
+                E.txt.classList.remove("dim");
+                E.txt.textContent = "";
+                return typeText(E.txt, "该版本预计于下周正式发布。", 34, alive, sleep);
+              }).then(function (okay) {
+                if (!okay) return false;
+                E.stat.textContent = "已写入";
+                E.stat.className = "stat ok";
+                return true;
+              });
+            },
+            still: "该版本预计于下周正式发布。",
+            auxStill: "「改成正式一点」"
+          }
+        ];
+
+        var msEls = {
+          txt: $("ms-txt"), key: $("ms-key"), keys: $("ms-keys"), wave: $("ms-wave"),
+          stat: $("ms-stat"), title: $("ms-title"), desc: $("ms-desc"), aux: $("ms-aux")
+        };
+        var mtabs = document.querySelectorAll(".mtab");
+
+        if (msEls.txt) {
+          var gen = 0;
+          var msVisible = true;
+          if ("IntersectionObserver" in window) {
+            new IntersectionObserver(function (en) {
+              msVisible = en[0].isIntersecting;
+            }, { threshold: 0 }).observe(msEls.txt.closest(".vwin"));
+          }
+          var msPaused = function () { return !msVisible || document.hidden; };
+          var msleep = sleepFactory(msPaused);
+
+          function resetStage(sc) {
+            msEls.txt.textContent = "";
+            msEls.txt.classList.remove("dim");
+            msEls.aux.classList.remove("show");
+            msEls.aux.innerHTML = "";
+            msEls.key.classList.remove("on");
+            msEls.wave.classList.remove("live");
+            msEls.stat.textContent = "待命";
+            msEls.stat.className = "stat";
+            msEls.title.textContent = sc.title;
+            msEls.desc.textContent = sc.desc;
+            msEls.keys.innerHTML = sc.keys.map(function (k, idx) {
+              return (idx === 0 ? "<kbd id='ms-key'>" : "<kbd>") + k + "</kbd>";
+            }).join("");
+            msEls.key = $("ms-key");
+          }
+
+          function playScene(i) {
+            var g = ++gen;
+            var alive = function () { return g === gen; };
+            var sc = SCENES[i];
+            mtabs.forEach(function (t, ti) {
+              var on = ti === i;
+              t.classList.toggle("on", on);
+              t.setAttribute("aria-selected", on ? "true" : "false");
+            });
+            resetStage(sc);
+            if (RM) {
+              msEls.txt.textContent = sc.still;
+              if (sc.auxStill) {
+                msEls.aux.classList.add("show");
+                msEls.aux.innerHTML = "<span class='say-pill'>" + sc.auxStill + "</span>";
+              }
+              msEls.stat.textContent = "已写入";
+              msEls.stat.className = "stat ok";
+              return;
+            }
+            msleep(650).then(function () {
+              if (!alive()) return;
+              sc.run(msEls, alive, msleep);
+            });
+          }
+
+          var current = 0;
+          var auto = setInterval(function () {
+            if (msPaused()) return;
+            current = (current + 1) % SCENES.length;
+            playScene(current);
+          }, 9000);
+
+          mtabs.forEach(function (t, i) {
+            t.addEventListener("click", function () {
+              clearInterval(auto);
+              current = i;
+              playScene(i);
+            });
+          });
+
+          playScene(0);
+        }
+      })();
+    </script>
   </body>
 </html>
