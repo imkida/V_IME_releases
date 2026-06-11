@@ -662,17 +662,17 @@
             VIME macOS 目前由个人开发，供内部测试用户提前试用。测试过程中如果遇到问题、不稳定或体验不符合预期，请多包涵；有问题可以在飞书联系 <strong>@kk.wang</strong>。
           </p>
           <div class="actions">
-            <a class="button primary" href="#download">下载 1.1.0 beta</a>
+            <a class="button primary" href="#download">下载 1.1.1 beta</a>
             <a class="button" href="#guide">查看使用引导</a>
           </div>
           <div class="version-strip" aria-label="版本信息">
             <div class="metric">
               <span>当前版本</span>
-              <strong>1.1.0 beta</strong>
+              <strong>1.1.1 beta</strong>
             </div>
             <div class="metric">
               <span>Build</span>
-              <strong>2026061001</strong>
+              <strong>2026061102</strong>
             </div>
             <div class="metric">
               <span>系统要求</span>
@@ -688,17 +688,17 @@
             推荐下载 DMG。打开后把 <strong>V_IME.app</strong> 拖到 Applications，再从应用程序文件夹启动。
           </p>
           <div class="download-list">
-            <a class="download-item" href="https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.0/V_IME-1.1.0-2026061001-macos.dmg">
+            <a class="download-item" href="https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.1/V_IME-1.1.1-2026061102-macos.dmg">
               <span>
-                <strong>V_IME-1.1.0-2026061001-macos.dmg</strong>
-                <small>推荐安装包 · SHA-256: d3dcdb1e...</small>
+                <strong>V_IME-1.1.1-2026061102-macos.dmg</strong>
+                <small>推荐安装包 · SHA-256: 7f4ee677...</small>
               </span>
               <span>下载</span>
             </a>
-            <a class="download-item" href="https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.0/V_IME-1.1.0-2026061001-macos.zip">
+            <a class="download-item" href="https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.1/V_IME-1.1.1-2026061102-macos.zip">
               <span>
-                <strong>V_IME-1.1.0-2026061001-macos.zip</strong>
-                <small>备用归档包 · SHA-256: aeb07123...</small>
+                <strong>V_IME-1.1.1-2026061102-macos.zip</strong>
+                <small>备用归档包 · SHA-256: b9eae37d...</small>
               </span>
               <span>下载</span>
             </a>
@@ -775,8 +775,8 @@
 
       <section id="whats-new" aria-labelledby="whats-new-title">
         <div class="section-head">
-          <h2 id="whats-new-title">1.1.0 beta 更新内容</h2>
-          <p>这个 hotfix build 在 1.1.0 beta 基础上修复写回退化为字母 a 候选的问题，并继续收口默认云端服务、快捷键冲突、写回稳定性和学习体验。</p>
+          <h2 id="whats-new-title">1.1.1 beta 更新内容</h2>
+          <p>这个 hotfix build 在 1.1.0 beta 基础上继续修复写回问题：文本已经正确写入飞书 / Web / Electron 富文本输入框后，不应再误报 E401。</p>
         </div>
         <div class="grid">
           <div class="panel">
@@ -789,11 +789,11 @@
           </div>
           <div class="panel">
             <h3>写回 hotfix</h3>
-            <p>修复部分输入法 / WebView 环境下 Unicode 写回退化成字母 a 候选的问题，并增强写回失败检测。</p>
+            <p>保留 1.1.0 对 Unicode 写回退化成字母 a 候选的修复，并修复“正确注入后仍报 E401”的误报。</p>
           </div>
           <div class="panel">
             <h3>写回稳定性</h3>
-            <p>改进聊天输入框、Web / Electron 应用和长文本写入，降低 E401、焦点漂移和剪贴板竞态。</p>
+            <p>收紧写回后的校验逻辑：继续拦截单字残留、低比例截断和明显未写入，同时避免富文本输入框的高比例 AX 长度差异误判。</p>
           </div>
           <div class="panel">
             <h3>常用词和学习</h3>
@@ -805,7 +805,7 @@
           </div>
           <div class="panel">
             <h3>发布链路</h3>
-            <p>本 hotfix 包使用 Developer ID 签名，并通过更新 manifest 向测试用户分发；本轮不走 Apple notarization。</p>
+            <p>本 hotfix 包使用 Developer ID 签名并通过 Apple notarization，通过更新 manifest 向测试用户分发。</p>
           </div>
         </div>
       </section>
@@ -845,14 +845,14 @@
             你可以通过 <a href="https://github.com/imkida/V_IME_releases/issues">GitHub Issues</a>
             或邮件 <a href="mailto:kida.wong@gmail.com">kida.wong@gmail.com</a> 反馈问题。
             内部测试用户也可以在飞书直接联系 <strong>@kk.wang</strong>。
-            完整发布记录见 <a href="https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.1.0">GitHub Release</a>。
+            完整发布记录见 <a href="https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.1.1">GitHub Release</a>。
           </p>
         </div>
       </section>
 
       <footer>
         <span>VIME macOS Beta</span>
-        <span>Last updated: 2026-06-10</span>
+        <span>Last updated: 2026-06-11</span>
       </footer>
     </main>
   </body>

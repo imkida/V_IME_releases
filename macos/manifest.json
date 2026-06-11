@@ -1,32 +1,30 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-06-10T10:50:23Z",
+  "generatedAt": "2026-06-11T11:14:40Z",
   "platform": "macos",
   "channels": {
     "beta": {
-      "versionName": "1.1.0",
-      "title": "VIME macOS v1.1.0 beta hotfix",
-      "summary": "本次 hotfix 修复部分输入法/WebView 环境下 Unicode 写回退化成字母 a 候选的问题，并增强写回 post-state 校验和窗口漂移 fail-closed。未配置个人 API Key 时仍可使用 VIME 默认云端服务；配置个人 Key 后优先使用个人服务。建议 1.1.0 测试用户更新。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.1.0",
+      "versionName": "1.1.1",
+      "title": "VIME macOS v1.1.1 beta hotfix",
+      "summary": "本次 hotfix 修复部分飞书 / Web / Electron 富文本输入框中，文本已正确写入后仍误报 E401 的问题。未配置个人 API Key 时仍可使用 VIME 默认云端服务；配置个人 Key 后优先使用个人服务。建议 1.1.0 测试用户更新。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.1.1",
       "mandatory": false,
-      "buildNumber": 2026061001,
+      "buildNumber": 2026061102,
       "minSystemVersion": "14.0",
       "assets": [
         {
-          "name": "V_IME-1.1.0-2026061001-macos.dmg",
-          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.0/V_IME-1.1.0-2026061001-macos.dmg",
-          "sha256": "d3dcdb1e3c1ede96eb385912db9e6b9d548b74cd3ed89fd2b6ff6bff6d06bf86",
-          "sizeBytes": 3925253,
-          "installerType": "dmg",
-          "minSystemVersion": "14.0"
+          "name": "V_IME-1.1.1-2026061102-macos.dmg",
+          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.1/V_IME-1.1.1-2026061102-macos.dmg",
+          "sha256": "7f4ee677b46592bc2dc872abc516180b4c5e5ebc4b44240fd8465c056701825a",
+          "sizeBytes": 3934851,
+          "installerType": "dmg"
         },
         {
-          "name": "V_IME-1.1.0-2026061001-macos.zip",
-          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.0/V_IME-1.1.0-2026061001-macos.zip",
-          "sha256": "aeb071235e01899f513561015a414ca46a47fcb40e858c4512ec30553609fddd",
-          "sizeBytes": 3328427,
-          "installerType": "zip",
-          "minSystemVersion": "14.0"
+          "name": "V_IME-1.1.1-2026061102-macos.zip",
+          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.1/V_IME-1.1.1-2026061102-macos.zip",
+          "sha256": "b9eae37d9b7f6efa277be0530ed35e58acf8a69757a6c1949e12806323fb221d",
+          "sizeBytes": 3334114,
+          "installerType": "zip"
         }
       ]
     }
