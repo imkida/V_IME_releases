@@ -886,8 +886,8 @@
 
       .feature-rail {
         display: grid;
+        grid-template-rows: auto 1fr;
         gap: 12px;
-        align-content: start;
       }
 
       .feature-card {
@@ -945,25 +945,36 @@
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 8px;
-        margin-top: 12px;
+        margin-top: 14px;
       }
 
-      .smart-row span {
+      .schip {
         padding: 10px 12px;
-        border: 1px solid rgba(35, 224, 197, 0.18);
+        border: 1px solid var(--line);
         border-radius: 9px;
-        background: rgba(35, 224, 197, 0.055);
+        background: rgba(255, 255, 255, 0.035);
         color: var(--tx1);
-        font-size: 11.5px;
-        line-height: 1.6;
+        font-family: inherit;
+        font-size: 13px;
+        text-align: center;
+        cursor: pointer;
+        transition: color 0.2s, border-color 0.2s, background 0.2s;
       }
 
-      .smart-row span b {
-        display: block;
-        margin-bottom: 3px;
+      .schip:hover, .schip.on {
         color: var(--tx0);
-        font-size: 12.5px;
-        font-weight: 600;
+        border-color: rgba(35, 224, 197, 0.45);
+        background: rgba(35, 224, 197, 0.08);
+      }
+
+      .style-desc {
+        margin: 14px 0 0;
+        padding-left: 12px;
+        border-left: 2px solid rgba(35, 224, 197, 0.55);
+        color: var(--tx1);
+        font-size: 13px;
+        line-height: 1.75;
+        min-height: 2.6em;
       }
 
       .style-cell h3 { font-size: 15.5px; }
@@ -1556,7 +1567,7 @@
           <a href="#modes" data-spy="modes">VIME 特色</a>
           <a href="#guide" data-spy="guide">快速开始</a>
           <a href="#faq" data-spy="faq">常见问题</a>
-          <a class="nav-cta" id="nav-dmg" href="https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.2/V_IME-1.1.2-2026061104-macos.dmg">
+          <a class="nav-cta" id="nav-dmg" href="https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.2/V_IME-1.1.2-2026061106-macos.dmg">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v13m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
             下载
           </a>
@@ -1578,24 +1589,24 @@
             </p>
             <div class="cta-row">
               <div class="actions">
-                <a class="btn primary" id="cta-dmg" href="https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.2/V_IME-1.1.2-2026061104-macos.dmg">
+                <a class="btn primary" id="cta-dmg" href="https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.2/V_IME-1.1.2-2026061106-macos.dmg">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v13m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
-                  下载 DMG&nbsp;<small id="cta-size">· 2.7 MB</small>
+                  下载 DMG&nbsp;<small id="cta-size">· 4.1 MB</small>
                 </a>
                 <a class="btn ghost" href="#whats-new">查看更新</a>
               </div>
               <div class="meta-strip" aria-label="版本信息">
                 <span>v<b class="mf-ver">1.1.2</b> beta</span>
-                <span>build <b id="mf-build">2026061104</b></span>
+                <span>build <b id="mf-build">2026061106</b></span>
                 <span>macOS <b id="mf-min">14</b>+</span>
                 <span>Developer ID 签名 · 已公证</span>
               </div>
             </div>
             <div class="dl-chips" id="download" aria-label="备用下载与校验">
-              <a id="zip-link" href="https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.2/V_IME-1.1.2-2026061104-macos.zip">备用 ZIP <span id="zip-size">· 2.3 MB</span></a>
+              <a id="zip-link" href="https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.2/V_IME-1.1.2-2026061106-macos.zip">备用 ZIP <span id="zip-size">· 3.4 MB</span></a>
               <button class="copy-btn" type="button" id="dmg-sha-copy" data-copy="b82d4b0454187fff271e99463b4cf8d86c9451b5a04388bee0888100c12b4ae4"><span>复制 SHA-256</span></button>
               <button class="copy-btn" type="button" data-copy-target="shasum-cmd"><span>复制校验命令</span></button>
-              <code class="inline-code" id="shasum-cmd">shasum -a 256 ~/Downloads/V_IME-1.1.2-2026061104-macos.dmg</code>
+              <code class="inline-code" id="shasum-cmd">shasum -a 256 ~/Downloads/V_IME-1.1.2-2026061106-macos.dmg</code>
             </div>
           </div>
 
@@ -1642,7 +1653,7 @@
               <h3>写进去了，就不该再提示失败。</h3>
               <p id="wn-sum">这一版继续提升写入稳定性：在网页、Electron 和富文本输入框里，内容已经写入时不再误报失败。正在使用早期测试版的用户建议更新。</p>
               <div class="release-meta">
-                <span>build <span id="wn-build">2026061104</span></span>
+                <span>build <span id="wn-build">2026061106</span></span>
                 <a id="rel-link" href="https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.1.2">GitHub Release</a>
               </div>
             </div>
@@ -1706,12 +1717,13 @@
                   <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h10M4 17h7"/></svg>
                   可选智能整理
                 </h3>
-                <p>三种输出风格，状态栏面板或快捷键随时切换。</p>
-                <div class="smart-row">
-                  <span><b>智能整理</b>把口述整理成更清楚的正文或要点。</span>
-                  <span><b>保留语气</b>轻微修正错字、标点和断句，保留本来的说法。</span>
-                  <span><b>逐字稿</b>尽量保留原始转写，不主动整理内容。</span>
+                <p>三种输出风格，状态栏面板或快捷键随时切换，划过查看说明。</p>
+                <div class="smart-row" role="tablist" aria-label="输出风格">
+                  <button class="schip on" type="button" data-sd="把口述整理成更清楚的正文或要点，适合消息、文档和评论。">智能整理</button>
+                  <button class="schip" type="button" data-sd="轻微修正错字、标点和断句，保留你本来的说法和语气。">保留语气</button>
+                  <button class="schip" type="button" data-sd="尽量保留原始转写，不主动整理内容，适合逐字引用。">逐字稿</button>
                 </div>
+                <p class="style-desc" id="style-desc" aria-live="polite">把口述整理成更清楚的正文或要点，适合消息、文档和评论。</p>
               </div>
             </div>
             <div class="card compact-modes">
