@@ -1,32 +1,30 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-06-11T13:44:41Z",
+  "generatedAt": "2026-06-11T15:25:11Z",
   "platform": "macos",
   "channels": {
     "beta": {
       "versionName": "1.1.2",
       "title": "VIME macOS v1.1.2 beta hotfix",
-      "summary": "## VIME macOS v1.1.2 beta hotfix\n\n本次 hotfix 重点修复 Web / Electron / 富文本输入框中的写回判定问题：在内容已实际写入、但目标 App 的 Accessibility 读回值滞后或不稳定时，VIME 不再误报 E401。\n\n### 更新内容\n\n- 修复部分飞书 / Web / Electron 富文本输入框中，内容已写入后仍提示 `[E401] 找不到当前输入位置` 的问题。\n- 增加轻量 content fingerprint 校验：结合写入后的首尾片段与归一化匹配，减少 AX 读回滞后造成的误判。\n- 继续保留明显写回失败、残留字符、低比例截断等异常场景的拦截，避免把失败误判为成功。\n- 未配置个人 API Key 时仍可使用 VIME 默认云端服务；配置个人 Key 后优先使用个人服务。\n\n建议 1.1.0 / 1.1.1 测试用户更新。\n\n### 安装\n\n下载 DMG 后拖入 Applications 覆盖安装；首次或覆盖后如系统提示权限，请按引导确认麦克风、辅助功能、输入监控与语音识别权限。",
+      "summary": "## VIME macOS v1.1.2 beta hotfix\n\n这是 VIME macOS 面向测试用户的 1.1.2 beta hotfix。建议正在使用 1.1.1 或更早 1.1.x 测试版的用户更新。\n\n### 更新内容\n\n- 修复部分 Web / Electron / 富文本输入框中，正文已经可见写入，但 VIME 仍误报 E401 的问题。\n- 修复手动添加的“统一写法”在中文短词场景不生效的问题，例如用户明确添加 `未来 -> 蔚来` 后，写回前会按用户规则替换。\n- 修复常用词和当前目标 App 变化后，下一次录音没有及时刷新词库运行配置的问题。\n- 智能学习仍保持安全默认：真实词修正不会自动升级成全局固定替换，自动学习得到的中文短词也不会自动进入固定替换。\n- 关于页新增反馈联系方式：`kida.wong@gmail.com`，内部同学可以飞书 `@kk.wang`。\n- 未配置个人 API Key 时，仍可使用 VIME 默认云端服务；配置个人 Key 后优先使用个人服务。\n\n### 安装\n\n下载 DMG 后拖入 Applications 覆盖安装；首次或覆盖后如系统提示权限，请按引导确认麦克风、辅助功能、输入监控与语音识别权限。",
       "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.1.2",
       "mandatory": false,
-      "buildNumber": 2026061104,
+      "buildNumber": 2026061106,
       "minSystemVersion": "14.0",
       "assets": [
         {
-          "name": "V_IME-1.1.2-2026061104-macos.dmg",
-          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.2/V_IME-1.1.2-2026061104-macos.dmg",
-          "sha256": "b82d4b0454187fff271e99463b4cf8d86c9451b5a04388bee0888100c12b4ae4",
-          "sizeBytes": 2747427,
-          "installerType": "dmg",
-          "minSystemVersion": "14.0"
+          "name": "V_IME-1.1.2-2026061106-macos.dmg",
+          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.2/V_IME-1.1.2-2026061106-macos.dmg",
+          "sha256": "a7d2f3eb93c86faf15efffde86aadb444ec07b788157cdc3cfd7ee9645c15194",
+          "sizeBytes": 4051518,
+          "installerType": "dmg"
         },
         {
-          "name": "V_IME-1.1.2-2026061104-macos.zip",
-          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.2/V_IME-1.1.2-2026061104-macos.zip",
-          "sha256": "2279b21b865ec5947916ec677f70d9783df80572f39bba8e4f20d730e357eff4",
-          "sizeBytes": 2264657,
-          "installerType": "zip",
-          "minSystemVersion": "14.0"
+          "name": "V_IME-1.1.2-2026061106-macos.zip",
+          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.2/V_IME-1.1.2-2026061106-macos.zip",
+          "sha256": "275b60b10f29ceb0222b52ae7b7f408300315bb52e563fc79581fdaaac2931fc",
+          "sizeBytes": 3433678,
+          "installerType": "zip"
         }
       ]
     }
