@@ -8,20 +8,20 @@
     <meta property="og:title" content="VIME for macOS">
     <meta property="og:description" content="桌面语音输入工具：按下右 Command 说话，VIME 完成转写与整理，写入当前光标位置。">
     <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20180%20180'%3E%3Cpath%20fill%3D'%23FFFFFF'%20d%3D'M40%2C0%20H140%20A40%2C40%200%200%201%20180%2C40%20V140%20A40%2C40%200%200%201%20140%2C180%20H40%20A40%2C40%200%200%201%200%2C140%20V40%20A40%2C40%200%200%201%2040%2C0%20Z'%2F%3E%3Cg%20fill%3D'%231A1A1A'%3E%3Crect%20x%3D'18'%20y%3D'36'%20width%3D'12'%20height%3D'44'%20rx%3D'6'%2F%3E%3Crect%20x%3D'39'%20y%3D'46'%20width%3D'12'%20height%3D'60'%20rx%3D'6'%2F%3E%3Crect%20x%3D'60'%20y%3D'56'%20width%3D'12'%20height%3D'76'%20rx%3D'6'%2F%3E%3Crect%20x%3D'108'%20y%3D'56'%20width%3D'12'%20height%3D'76'%20rx%3D'6'%2F%3E%3Crect%20x%3D'129'%20y%3D'46'%20width%3D'12'%20height%3D'60'%20rx%3D'6'%2F%3E%3Crect%20x%3D'150'%20y%3D'36'%20width%3D'12'%20height%3D'44'%20rx%3D'6'%2F%3E%3C%2Fg%3E%3Cg%20fill%3D'%234A7CFF'%3E%3Ccircle%20cx%3D'90'%20cy%3D'58'%20r%3D'8'%2F%3E%3Crect%20x%3D'82'%20y%3D'72'%20width%3D'16'%20height%3D'92'%20rx%3D'8'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
-    <script>document.documentElement.classList.add('js');</script>
+    <script>if (!/[?&]noanim/.test(location.search)) document.documentElement.classList.add('js');</script>
     <style>
       :root {
         color-scheme: dark;
-        --bg0: #070b14;
-        --bg1: #0a101d;
-        --bg2: #0d1626;
-        --panel: rgba(255, 255, 255, 0.035);
-        --panel-2: rgba(255, 255, 255, 0.06);
-        --line: rgba(255, 255, 255, 0.08);
-        --line-2: rgba(255, 255, 255, 0.14);
-        --tx0: #edf3fb;
-        --tx1: #a8b8ce;
-        --tx2: #64778f;
+        --bg0: #0c1526;
+        --bg1: #101c33;
+        --bg2: #16243d;
+        --panel: rgba(255, 255, 255, 0.055);
+        --panel-2: rgba(255, 255, 255, 0.09);
+        --line: rgba(255, 255, 255, 0.11);
+        --line-2: rgba(255, 255, 255, 0.18);
+        --tx0: #eef4fc;
+        --tx1: #b3c3d9;
+        --tx2: #74899f;
         --teal: #23e0c5;
         --cyan: #39c0f0;
         --blue: #4d8dff;
@@ -48,7 +48,11 @@
 
       body {
         margin: 0;
-        background: var(--bg0);
+        background:
+          radial-gradient(1100px 560px at 50% -180px, rgba(35, 224, 197, 0.1), transparent 65%),
+          radial-gradient(950px 660px at 90% 60px, rgba(77, 141, 255, 0.09), transparent 62%),
+          linear-gradient(180deg, #11203a 0%, var(--bg0) 30%, var(--bg0) 100%);
+        background-color: var(--bg0);
         color: var(--tx0);
         font-family: var(--font-s);
         font-size: 16px;
@@ -164,8 +168,20 @@
 
       .hero {
         position: relative;
-        padding: clamp(48px, 7vw, 88px) 0 clamp(34px, 4vw, 52px);
+        padding: clamp(56px, 7.5vw, 96px) 0 clamp(40px, 5vw, 64px);
         overflow: hidden;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        top: -200px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 960px;
+        height: 460px;
+        background: radial-gradient(closest-side, rgba(35, 224, 197, 0.18), rgba(77, 141, 255, 0.08) 55%, transparent 78%);
+        pointer-events: none;
       }
 
       .hero::before {
@@ -219,12 +235,13 @@
         to { transform: translate3d(-130px, 80px, 0) scale(1.08); }
       }
 
-      .hero-grid {
+      .hero-stack {
         position: relative;
-        display: grid;
-        grid-template-columns: minmax(0, 1.04fr) minmax(380px, 0.96fr);
-        gap: clamp(32px, 5vw, 64px);
+        display: flex;
+        flex-direction: column;
         align-items: center;
+        text-align: center;
+        z-index: 1;
       }
 
       .eyebrow {
@@ -257,9 +274,9 @@
       h1 {
         margin: 26px 0 0;
         font-family: var(--font-d);
-        font-size: clamp(38px, 4.2vw, 50px);
-        font-weight: 700;
-        line-height: 1.22;
+        font-size: clamp(42px, 5.4vw, 68px);
+        font-weight: 800;
+        line-height: 1.18;
         letter-spacing: 0.2px;
       }
 
@@ -268,17 +285,23 @@
       }
 
       h1 .grad {
-        background: var(--grad);
+        background: linear-gradient(100deg, var(--teal), var(--cyan) 36%, var(--blue) 62%, var(--teal));
+        background-size: 220% 100%;
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
+        animation: gradshift 9s linear infinite;
+      }
+
+      @keyframes gradshift {
+        to { background-position: 220% 0; }
       }
 
       .lead {
-        max-width: 540px;
-        margin: 20px 0 0;
+        max-width: 620px;
+        margin: 22px auto 0;
         color: var(--tx1);
-        font-size: 17px;
+        font-size: 17.5px;
         line-height: 1.8;
       }
 
@@ -286,8 +309,9 @@
         display: flex;
         flex-wrap: wrap;
         align-items: center;
+        justify-content: center;
         gap: 14px;
-        margin-top: 32px;
+        margin-top: 30px;
       }
 
       .btn {
@@ -306,15 +330,29 @@
       .btn:active { transform: scale(0.97); }
 
       .btn.primary {
+        position: relative;
+        overflow: hidden;
         background: linear-gradient(135deg, var(--teal), #1db9d8);
         color: #04222b;
-        box-shadow: 0 8px 30px rgba(35, 224, 197, 0.3);
+        box-shadow: 0 8px 30px rgba(35, 224, 197, 0.32);
+      }
+
+      .btn.primary::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.45) 50%, transparent 70%);
+        transform: translateX(-160%);
+        transition: transform 0.65s ease;
+        pointer-events: none;
       }
 
       .btn.primary:hover {
         transform: translateY(-2px);
-        box-shadow: 0 12px 40px rgba(35, 224, 197, 0.42);
+        box-shadow: 0 12px 44px rgba(35, 224, 197, 0.46);
       }
+
+      .btn.primary:hover::after { transform: translateX(160%); }
 
       .btn.ghost {
         border: 1px solid var(--line-2);
@@ -337,8 +375,9 @@
       .meta-strip {
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
         gap: 8px 22px;
-        margin-top: 22px;
+        margin-top: 20px;
         font-family: var(--font-m);
         font-size: 12px;
         color: var(--tx2);
@@ -348,71 +387,62 @@
       .meta-strip b { color: var(--tx1); font-weight: 600; }
 
       .beta-note {
-        display: flex;
-        gap: 10px;
-        align-items: flex-start;
-        max-width: 620px;
-        margin-top: 18px;
-        padding: 12px 16px;
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        max-width: 760px;
+        margin: 22px auto 0;
+        padding: 8px 16px;
         border: 1px solid rgba(245, 180, 97, 0.22);
-        border-radius: var(--r3);
-        background: rgba(245, 180, 97, 0.05);
+        border-radius: var(--pill);
+        background: rgba(245, 180, 97, 0.06);
         color: var(--tx1);
-        font-size: 13px;
+        font-size: 12.5px;
         line-height: 1.7;
       }
 
-      .beta-note svg { flex-shrink: 0; margin-top: 3px; }
+      .beta-note svg { flex-shrink: 0; }
 
       .beta-note b { color: var(--amber); font-weight: 600; }
 
       .beta-note a { color: var(--tx0); border-bottom: 1px solid rgba(245, 180, 97, 0.35); }
 
-      .download-inline {
-        max-width: 620px;
-        margin-top: 18px;
-        padding: 14px 16px;
-        border: 1px solid rgba(255, 255, 255, 0.11);
-        border-radius: var(--r3);
-        background: rgba(255, 255, 255, 0.04);
-      }
-
-      .download-line,
-      .download-tools {
+      .dl-chips {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        gap: 8px 12px;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 16px;
       }
 
-      .download-line {
-        color: var(--tx1);
-        font-size: 13px;
-      }
-
-      .download-line a {
-        color: var(--tx0);
-        font-family: var(--font-m);
-        font-size: 12.5px;
-        min-width: 0;
-        word-break: break-all;
-      }
-
-      .download-tools { margin-top: 10px; }
-
-      .download-tools .copy-btn {
-        padding: 7px 11px;
-      }
-
-      .inline-code {
-        display: block;
-        margin-top: 10px;
+      .dl-chips .copy-btn,
+      .dl-chips a {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 7px 14px;
+        border: 1px solid var(--line);
+        border-radius: var(--pill);
+        background: rgba(255, 255, 255, 0.04);
         color: var(--tx2);
         font-family: var(--font-m);
         font-size: 11.5px;
-        white-space: nowrap;
-        overflow-x: auto;
+        letter-spacing: 0.3px;
+        cursor: pointer;
+        transition: color 0.2s, border-color 0.2s, background 0.2s;
       }
+
+      .dl-chips .copy-btn:hover,
+      .dl-chips a:hover {
+        color: var(--tx0);
+        border-color: rgba(35, 224, 197, 0.45);
+        background: rgba(35, 224, 197, 0.06);
+      }
+
+      .dl-chips .copy-btn.done { color: var(--green); border-color: rgba(94, 227, 158, 0.5); }
+
+      .inline-code { display: none; }
 
       .vwin {
         position: relative;
@@ -422,19 +452,40 @@
         box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(0, 0, 0, 0.3);
       }
 
-      .hero .vwin::before {
+      .vwin.fancy::before {
         content: "";
         position: absolute;
         inset: -1px;
         border-radius: inherit;
         padding: 1px;
-        background: linear-gradient(135deg, rgba(35, 224, 197, 0.5), transparent 38%, transparent 64%, rgba(77, 141, 255, 0.4));
+        background: linear-gradient(135deg, rgba(35, 224, 197, 0.6), transparent 38%, transparent 64%, rgba(77, 141, 255, 0.5));
         -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
         mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
         -webkit-mask-composite: xor;
         mask-composite: exclude;
         pointer-events: none;
       }
+
+      .hero-demo {
+        position: relative;
+        width: min(740px, 100%);
+        margin: 34px auto 0;
+      }
+
+      .hero-demo .vwin::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -64px;
+        transform: translateX(-50%);
+        width: 82%;
+        height: 140px;
+        z-index: -1;
+        background: radial-gradient(closest-side, rgba(35, 224, 197, 0.3), rgba(77, 141, 255, 0.12) 60%, transparent 78%);
+        pointer-events: none;
+      }
+
+      .hero-demo .vwin-body { font-size: 17px; min-height: 96px; text-align: left; }
 
       .vwin-bar {
         display: flex;
@@ -560,6 +611,49 @@
       .stat.ai { color: var(--violet); border-color: rgba(139, 124, 255, 0.45); }
       .stat.ok { color: var(--green); border-color: rgba(94, 227, 158, 0.45); }
 
+      .ticker {
+        position: relative;
+        margin-top: clamp(40px, 5vw, 60px);
+        padding: 14px 0;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        overflow: hidden;
+        -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+        mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+      }
+
+      .ticker-in {
+        display: flex;
+        align-items: center;
+        gap: 34px;
+        width: max-content;
+        animation: tick 36s linear infinite;
+      }
+
+      .ticker:hover .ticker-in { animation-play-state: paused; }
+
+      .ticker-in span {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-m);
+        font-size: 12.5px;
+        color: var(--tx2);
+        letter-spacing: 0.4px;
+        white-space: nowrap;
+      }
+
+      .ticker-in span i {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: rgba(35, 224, 197, 0.5);
+      }
+
+      @keyframes tick {
+        to { transform: translateX(-50%); }
+      }
+
       section { position: relative; }
 
       section[id] { scroll-margin-top: 84px; }
@@ -567,6 +661,25 @@
       .sec {
         margin-top: clamp(58px, 7vw, 94px);
       }
+
+      .sec::before {
+        content: "";
+        position: absolute;
+        top: -120px;
+        width: 680px;
+        height: 480px;
+        z-index: -1;
+        pointer-events: none;
+        background: radial-gradient(closest-side, var(--sec-glow, rgba(35, 224, 197, 0.07)), transparent 72%);
+      }
+
+      .sec:nth-of-type(odd)::before { right: -180px; }
+      .sec:nth-of-type(even)::before { left: -180px; }
+
+      #whats-new { --sec-accent: var(--teal); --sec-glow: rgba(35, 224, 197, 0.1); }
+      #modes { --sec-accent: var(--cyan); --sec-glow: rgba(57, 192, 240, 0.1); }
+      #guide { --sec-accent: var(--violet); --sec-glow: rgba(139, 124, 255, 0.11); }
+      #faq { --sec-accent: var(--amber); --sec-glow: rgba(245, 180, 97, 0.08); }
 
       .sec-head {
         max-width: 720px;
@@ -580,7 +693,7 @@
         font-family: var(--font-m);
         font-size: 12.5px;
         font-weight: 600;
-        color: var(--teal);
+        color: var(--sec-accent, var(--teal));
         letter-spacing: 1px;
       }
 
@@ -588,7 +701,8 @@
         content: "";
         width: 44px;
         height: 1px;
-        background: linear-gradient(90deg, rgba(35, 224, 197, 0.7), transparent);
+        background: linear-gradient(90deg, currentColor, transparent);
+        opacity: 0.7;
       }
 
       h2 {
@@ -958,7 +1072,12 @@
         position: relative;
         border: 1px solid var(--line);
         border-radius: var(--r4);
-        background: var(--panel);
+        background:
+          linear-gradient(rgba(139, 124, 255, 0.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(139, 124, 255, 0.035) 1px, transparent 1px),
+          radial-gradient(420px 300px at 78% 18%, rgba(139, 124, 255, 0.09), transparent 70%),
+          var(--panel);
+        background-size: 26px 26px, 26px 26px, auto, auto;
         overflow: hidden;
         min-height: 340px;
       }
@@ -1162,6 +1281,19 @@
         border: 1px solid rgba(35, 224, 197, 0.22);
         border-radius: var(--r4);
         background: linear-gradient(150deg, rgba(35, 224, 197, 0.1), rgba(77, 141, 255, 0.05) 62%, transparent), var(--panel);
+      }
+
+      .ver-big {
+        margin-top: 14px;
+        font-family: var(--font-m);
+        font-size: clamp(34px, 4vw, 46px);
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: -0.5px;
+        background: linear-gradient(100deg, var(--teal), var(--cyan));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
       }
 
       .release-main h3 {
@@ -1382,7 +1514,6 @@
       @media (max-width: 980px) {
         .nav-links a { display: none; }
         .nav-links a.nav-cta { display: inline-flex; }
-        .hero-grid { grid-template-columns: 1fr; }
         .hero { padding-top: 48px; }
         .dl-grid, .guide-grid, .feature-grid, .release-panel { grid-template-columns: 1fr; }
         .bento { grid-template-columns: 1fr 1fr; }
@@ -1397,24 +1528,14 @@
         .blob.c { display: none; }
         .bento { grid-template-columns: 1fr; }
         .bento .span2 { grid-column: auto; }
-        h1 { font-size: 30px; }
+        h1 { font-size: clamp(24px, 8.2vw, 30px); }
         .lead { font-size: 15.5px; }
-        .vwin-body { padding: 18px; font-size: 15px; }
+        .vwin-body, .hero-demo .vwin-body { padding: 18px; font-size: 15px; min-height: 104px; }
         .btn { width: 100%; }
         .actions { gap: 10px; }
-        .download-inline { padding: 13px; }
-        .download-line, .download-tools { gap: 8px; }
-        .download-tools .copy-btn { flex: 1 1 calc(50% - 4px); justify-content: center; }
-        #dmg-name, #zip-name {
-          display: inline-block;
-          max-width: 235px;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          vertical-align: bottom;
-          white-space: nowrap;
-        }
-        .download-tools > .download-line { flex: 1 1 100%; }
-        .inline-code { display: none; }
+        .beta-note { text-align: left; }
+        .dl-chips { gap: 8px; }
+        .dl-chips .copy-btn, .dl-chips a { padding: 7px 12px; }
         .compact-modes .modes-tabs, .feature-points { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         .smart-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
         .mtab { flex: 1 1 calc(50% - 5px); justify-content: center; }
@@ -1485,8 +1606,8 @@
         <div class="blob a" aria-hidden="true"></div>
         <div class="blob b" aria-hidden="true"></div>
         <div class="blob c" aria-hidden="true"></div>
-        <div class="wrap hero-grid">
-          <div class="hero-in">
+        <div class="wrap hero-stack">
+          <div class="hero-in" style="width: 100%;">
             <p style="margin: 0;"><span class="eyebrow"><span class="dot"></span>macOS Beta · 语音输入与文字整理</span></p>
             <h1 id="hero-title">在 Mac 上，<br><span class="grad">把想法直接说进输入框。</span></h1>
             <p class="lead">
@@ -1499,37 +1620,22 @@
               </a>
               <a class="btn ghost" href="#whats-new">查看更新</a>
             </div>
-            <div class="download-inline" id="download" aria-label="下载与校验">
-              <div class="download-line">
-                <span class="badge teal">推荐 DMG</span>
-                <a id="dmg-link" href="https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.2/V_IME-1.1.2-2026061104-macos.dmg"><span id="dmg-name">V_IME-1.1.2-2026061104-macos.dmg</span></a>
-                <span id="dmg-size">2.7 MB</span>
-                <span>SHA-256 <b id="dmg-sha" style="color: var(--tx1);">b82d4b04…</b></span>
-              </div>
-              <div class="download-tools">
-                <button class="copy-btn" type="button" id="dmg-sha-copy" data-copy="b82d4b0454187fff271e99463b4cf8d86c9451b5a04388bee0888100c12b4ae4">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 012-2h10"/></svg>
-                  <span>复制 SHA-256</span>
-                </button>
-                <button class="copy-btn" type="button" data-copy-target="shasum-cmd"><span>复制校验命令</span></button>
-                <span class="download-line">备用：<a id="zip-link" href="https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.2/V_IME-1.1.2-2026061104-macos.zip"><span id="zip-name">V_IME-1.1.2-2026061104-macos.zip</span></a> · <span id="zip-size">2.3 MB</span> · SHA <b id="zip-sha" style="color: var(--tx1);">2279b21b…</b></span>
-              </div>
-              <code class="inline-code" id="shasum-cmd">shasum -a 256 ~/Downloads/V_IME-1.1.2-2026061104-macos.dmg</code>
-            </div>
             <div class="meta-strip" aria-label="版本信息">
               <span>v<b class="mf-ver">1.1.2</b> beta</span>
               <span>build <b id="mf-build">2026061104</b></span>
               <span>macOS <b id="mf-min">14</b>+</span>
               <span>Developer ID 签名 · 已公证</span>
             </div>
-            <div class="beta-note">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M12 8v5M12 16.5v.01"/></svg>
-              <span><b>早鸟测试说明：</b>VIME macOS 目前由个人开发维护，供早鸟用户提前试用。测试过程中如果遇到问题、不稳定或体验不符合预期，请多包涵；有问题可以发邮件 <a href="mailto:kida.wong@gmail.com">kida.wong@gmail.com</a>，或在飞书联系 <b>@kk.wang</b>。</span>
+            <div class="dl-chips" id="download" aria-label="备用下载与校验">
+              <a id="zip-link" href="https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.2/V_IME-1.1.2-2026061104-macos.zip">备用 ZIP <span id="zip-size">· 2.3 MB</span></a>
+              <button class="copy-btn" type="button" id="dmg-sha-copy" data-copy="b82d4b0454187fff271e99463b4cf8d86c9451b5a04388bee0888100c12b4ae4"><span>复制 SHA-256</span></button>
+              <button class="copy-btn" type="button" data-copy-target="shasum-cmd"><span>复制校验命令</span></button>
+              <code class="inline-code" id="shasum-cmd">shasum -a 256 ~/Downloads/V_IME-1.1.2-2026061104-macos.dmg</code>
             </div>
           </div>
 
           <div class="hero-demo">
-            <div class="vwin" aria-label="VIME 听写过程演示动画">
+            <div class="vwin fancy" aria-label="VIME 听写过程演示动画">
               <div class="vwin-bar">
                 <i style="background: #ff5f57;"></i><i style="background: #febc2e;"></i><i style="background: #28c840;"></i>
                 <span class="t">飞书 · 给团队的消息</span>
@@ -1541,9 +1647,20 @@
                 <span class="stat" id="hd-stat">待命</span>
               </div>
             </div>
+            <p class="beta-note">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M12 8v5M12 16.5v.01"/></svg>
+              <span><b>早鸟测试版</b> · 由个人开发维护，遇到问题请多包涵 — 反馈：<a href="mailto:kida.wong@gmail.com">kida.wong@gmail.com</a> / 飞书 <b>@kk.wang</b></span>
+            </p>
           </div>
         </div>
       </section>
+
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker-in">
+          <span><i></i>飞书</span><span><i></i>微信</span><span><i></i>Slack</span><span><i></i>Chrome</span><span><i></i>Safari</span><span><i></i>Notion</span><span><i></i>VS Code</span><span><i></i>终端</span><span><i></i>邮件</span><span><i></i>备忘录</span><span><i></i>任何输入框，都能直接说</span>
+          <span><i></i>飞书</span><span><i></i>微信</span><span><i></i>Slack</span><span><i></i>Chrome</span><span><i></i>Safari</span><span><i></i>Notion</span><span><i></i>VS Code</span><span><i></i>终端</span><span><i></i>邮件</span><span><i></i>备忘录</span><span><i></i>任何输入框，都能直接说</span>
+        </div>
+      </div>
 
       <div class="wrap">
         <section class="sec" id="whats-new" aria-labelledby="wn-title">
@@ -1555,10 +1672,10 @@
           <div class="release-panel rv-kids">
             <div class="release-main">
               <span class="badge teal">建议更新</span>
+              <div class="ver-big">v<span class="mf-ver">1.1.2</span></div>
               <h3>写进去了，就不该再提示失败。</h3>
               <p id="wn-sum">这一版继续提升写入稳定性：在网页、Electron 和富文本输入框里，内容已经写入时不再误报失败。正在使用早期测试版的用户建议更新。</p>
               <div class="release-meta">
-                <span>v<span class="mf-ver">1.1.2</span> beta</span>
                 <span>build <span id="wn-build">2026061104</span></span>
                 <a id="rel-link" href="https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.1.2">GitHub Release</a>
               </div>
@@ -1639,7 +1756,7 @@
                 <button class="mtab" type="button" role="tab" aria-selected="false" data-mode="2">中英互译 <span class="k">⌘ + ,</span></button>
                 <button class="mtab" type="button" role="tab" aria-selected="false" data-mode="3">文本编辑 <span class="k">⌘ + .</span></button>
               </div>
-              <div class="vwin mode-stage">
+              <div class="vwin fancy mode-stage">
                 <div class="vwin-bar">
                   <i style="background: #ff5f57;"></i><i style="background: #febc2e;"></i><i style="background: #28c840;"></i>
                   <span class="t" id="ms-title">任意输入框</span>
@@ -1861,18 +1978,12 @@
               $("nav-dmg").href = dmg.url;
               $("cta-dmg").href = dmg.url;
               $("cta-size").textContent = "· " + fmtMB(dmg.sizeBytes);
-              $("dmg-link").href = dmg.url;
-              $("dmg-name").textContent = dmg.name;
-              $("dmg-size").textContent = fmtMB(dmg.sizeBytes);
-              $("dmg-sha").textContent = dmg.sha256.slice(0, 8) + "…";
               $("dmg-sha-copy").setAttribute("data-copy", dmg.sha256);
               $("shasum-cmd").textContent = "shasum -a 256 ~/Downloads/" + dmg.name;
             }
             if (zip) {
               $("zip-link").href = zip.url;
-              $("zip-name").textContent = zip.name;
-              $("zip-size").textContent = fmtMB(zip.sizeBytes);
-              $("zip-sha").textContent = zip.sha256.slice(0, 8) + "…";
+              $("zip-size").textContent = "· " + fmtMB(zip.sizeBytes);
             }
           })
           .catch(function () {});
