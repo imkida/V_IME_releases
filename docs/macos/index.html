@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>VIME for macOS — 把想法直接说进输入框</title>
-    <meta name="description" content="VIME macOS 测试版下载、使用引导和更新说明。按下右 Command 说话，转写、整理、翻译、编辑，结果直接写入当前输入位置。">
+    <meta name="description" content="VIME macOS 测试版下载、快速开始和更新说明。按下右 Command 说话，转写、整理、翻译、编辑，结果直接写入当前输入位置。">
     <meta property="og:title" content="VIME for macOS">
     <meta property="og:description" content="桌面语音输入工具：按下右 Command 说话，VIME 完成转写与整理，写入当前光标位置。">
     <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20180%20180'%3E%3Cpath%20fill%3D'%23FFFFFF'%20d%3D'M40%2C0%20H140%20A40%2C40%200%200%201%20180%2C40%20V140%20A40%2C40%200%200%201%20140%2C180%20H40%20A40%2C40%200%200%201%200%2C140%20V40%20A40%2C40%200%200%201%2040%2C0%20Z'%2F%3E%3Cg%20fill%3D'%231A1A1A'%3E%3Crect%20x%3D'18'%20y%3D'36'%20width%3D'12'%20height%3D'44'%20rx%3D'6'%2F%3E%3Crect%20x%3D'39'%20y%3D'46'%20width%3D'12'%20height%3D'60'%20rx%3D'6'%2F%3E%3Crect%20x%3D'60'%20y%3D'56'%20width%3D'12'%20height%3D'76'%20rx%3D'6'%2F%3E%3Crect%20x%3D'108'%20y%3D'56'%20width%3D'12'%20height%3D'76'%20rx%3D'6'%2F%3E%3Crect%20x%3D'129'%20y%3D'46'%20width%3D'12'%20height%3D'60'%20rx%3D'6'%2F%3E%3Crect%20x%3D'150'%20y%3D'36'%20width%3D'12'%20height%3D'44'%20rx%3D'6'%2F%3E%3C%2Fg%3E%3Cg%20fill%3D'%234A7CFF'%3E%3Ccircle%20cx%3D'90'%20cy%3D'58'%20r%3D'8'%2F%3E%3Crect%20x%3D'82'%20y%3D'72'%20width%3D'16'%20height%3D'92'%20rx%3D'8'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
@@ -1463,7 +1463,7 @@
           <a href="#overview" data-spy="overview">介绍</a>
           <a href="#whats-new" data-spy="whats-new">更新说明</a>
           <a href="#modes" data-spy="modes">VIME 特色</a>
-          <a href="#guide" data-spy="guide">使用引导</a>
+          <a href="#guide" data-spy="guide">快速开始</a>
           <a href="#faq" data-spy="faq">常见问题</a>
           <a class="nav-cta" id="nav-dmg" href="https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.2/V_IME-1.1.2-2026061104-macos.dmg">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v13m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
@@ -1655,7 +1655,7 @@
         <section class="sec" id="guide" aria-labelledby="guide-title">
           <div class="sec-head rv">
             <span class="num">03</span>
-            <h2 id="guide-title">四步开始使用</h2>
+            <h2 id="guide-title">快速开始</h2>
             <p>首次启动按这四步完成安装、权限和服务检查。默认服务可直接试用，有个人 API Key 时再填也可以。</p>
           </div>
           <div class="guide-grid rv">
@@ -1771,7 +1771,7 @@
             </details>
             <details>
               <summary>怎么反馈问题<span class="ind"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></summary>
-              <div class="ans">内部测试用户可在飞书联系 @kk.wang；也可以通过 GitHub Issues 或邮件反馈。请尽量附上目标 App、输入模式、复现步骤和截图，不要发送密码、验证码或完整聊天记录。</div>
+              <div class="ans">早鸟用户遇到问题、不稳定或体验不符合预期，可以发邮件到 kida.wong@gmail.com，或在飞书联系 @kk.wang。请尽量附上目标 App、输入模式、复现步骤和截图，不要发送密码、验证码或完整聊天记录。</div>
             </details>
           </div>
         </section>
@@ -1780,7 +1780,7 @@
 
     <footer>
       <div class="wrap foot-in">
-        <span>VIME macOS Beta · 由个人开发，供内部测试使用</span>
+        <span>VIME macOS Beta · 由个人开发维护，供早鸟用户提前试用</span>
         <div class="foot-links">
           <a href="https://github.com/imkida/V_IME_releases/releases">发布记录</a>
           <a href="../privacy/">隐私说明</a>
@@ -1822,13 +1822,13 @@
           if (!raw) return null;
           var lines = [];
           if (/E401|误报|写入/.test(raw)) {
-            lines.push("在飞书、网页和 Electron 应用里，文字已经写进去后不再误报失败。");
+            lines.push("在网页、Electron 和富文本输入框里，内容已经写入时不再误报失败。");
           }
           if (/默认云端服务|个人 API Key|个人 Key/.test(raw)) {
             lines.push("没有个人 API Key 也可以先试用默认服务；配置后仍会优先使用个人服务。");
           }
           if (/建议 .*更新|建议/.test(raw)) {
-            lines.push("正在使用上一版测试版的用户建议更新。");
+            lines.push("正在使用早期测试版的用户建议更新。");
           }
           return lines.length ? lines.join("") : raw;
         }
@@ -1845,6 +1845,7 @@
             });
             document.querySelectorAll(".mf-ver").forEach(function (el) { el.textContent = c.versionName; });
             if (c.buildNumber) $("mf-build").textContent = c.buildNumber;
+            if (c.buildNumber) $("wn-build").textContent = c.buildNumber;
             if (c.minSystemVersion) $("mf-min").textContent = String(c.minSystemVersion).split(".")[0];
             if (c.summary) $("wn-sum").textContent = releaseSummaryForPeople(c.summary);
             if (c.releaseUrl) $("rel-link").href = c.releaseUrl;
