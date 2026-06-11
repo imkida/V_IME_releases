@@ -961,10 +961,21 @@
         transition: color 0.2s, border-color 0.2s, background 0.2s;
       }
 
-      .schip:hover, .schip.on {
+      .schip:hover {
+        color: var(--tx0);
+        border-color: var(--line-2);
+        background: rgba(255, 255, 255, 0.055);
+      }
+
+      .schip.on {
         color: var(--tx0);
         border-color: rgba(35, 224, 197, 0.45);
         background: rgba(35, 224, 197, 0.08);
+      }
+
+      .schip:focus-visible {
+        outline: 2px solid rgba(35, 224, 197, 0.45);
+        outline-offset: 2px;
       }
 
       .style-desc {
@@ -1692,8 +1703,8 @@
         <section class="sec" id="modes" aria-labelledby="modes-title">
           <div class="sec-head rv">
             <span class="num">02</span>
-            <h2 id="modes-title">VIME 特色：好用的快捷输入与可选智能整理</h2>
-            <p>右 Command 覆盖输入、翻译、编辑；输出风格可选，原话和清晰表达都能兼顾。</p>
+            <h2 id="modes-title">VIME 特色：好用的快捷输入与智能整理</h2>
+            <p>右 Command 覆盖输入、翻译、编辑；智能整理可按场景选择，原话和清晰表达都能兼顾。</p>
           </div>
           <div class="feature-grid rv">
             <div class="feature-rail">
@@ -1715,13 +1726,13 @@
                 <div class="glow"></div>
                 <h3>
                   <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h10M4 17h7"/></svg>
-                  可选智能整理
+                  智能整理
                 </h3>
-                <p>三种输出风格，状态栏面板或快捷键随时切换，划过查看说明。</p>
-                <div class="smart-row" role="tablist" aria-label="输出风格">
-                  <button class="schip on" type="button" data-sd="把口述整理成更清楚的正文或要点，适合消息、文档和评论。">智能整理</button>
-                  <button class="schip" type="button" data-sd="轻微修正错字、标点和断句，保留你本来的说法和语气。">保留语气</button>
-                  <button class="schip" type="button" data-sd="尽量保留原始转写，不主动整理内容，适合逐字引用。">逐字稿</button>
+                <p>三种整理方式，状态栏面板或快捷键随时切换；点击查看说明。</p>
+                <div class="smart-row" role="tablist" aria-label="智能整理方式">
+                  <button class="schip on" type="button" role="tab" aria-selected="true" data-sd="把口述整理成更清楚的正文或要点，适合消息、文档和评论。">智能整理</button>
+                  <button class="schip" type="button" role="tab" aria-selected="false" data-sd="轻微修正错字、标点和断句，保留你本来的说法和语气。">保留语气</button>
+                  <button class="schip" type="button" role="tab" aria-selected="false" data-sd="尽量保留原始转写，不主动整理内容，适合逐字引用。">逐字稿</button>
                 </div>
                 <p class="style-desc" id="style-desc" aria-live="polite">把口述整理成更清楚的正文或要点，适合消息、文档和评论。</p>
               </div>
@@ -2088,6 +2099,23 @@
           st.addEventListener("click", activate);
           st.addEventListener("keydown", function (e) {
             if (e.key === "Enter" || e.key === " ") { e.preventDefault(); activate(); }
+          });
+        });
+
+        var styleChips = document.querySelectorAll(".schip");
+        var styleDesc = $("style-desc");
+        styleChips.forEach(function (chip) {
+          function activateStyle() {
+            styleChips.forEach(function (x) {
+              var on = x === chip;
+              x.classList.toggle("on", on);
+              x.setAttribute("aria-selected", on ? "true" : "false");
+            });
+            if (styleDesc) styleDesc.textContent = chip.getAttribute("data-sd") || "";
+          }
+          chip.addEventListener("click", activateStyle);
+          chip.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" || e.key === " ") { e.preventDefault(); activateStyle(); }
           });
         });
 
