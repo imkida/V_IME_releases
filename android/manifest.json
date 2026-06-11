@@ -1,17 +1,17 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-06-07T20:04:10Z",
+  "generatedAt": "2026-06-10T20:49:09Z",
   "packageName": "com.vime.android",
   "channels": {
     "debug": {
-      "versionName": "1.5.0-dogfood.9",
-      "versionCode": 111,
-      "title": "v1.5.0-dogfood.9 — Clean V3 debug dogfood 默认 ON 与数据闭环",
-      "summary": "预发布 dogfood 包：debug channel 新装或清空 DataStore 后默认 CleanTidyV3 + RetentionFirst，用于采集真实 dogfood 样本并判断下一轮效果收敛方向。老用户不迁移；release channel 继续保持 1.4.2 / versionCode 102，release 默认仍为 CleanTidyV2；本包不代表 release 默认 ON。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.5.0-dogfood.9",
-      "apkName": "V_IME-v1.5.0-dogfood.9-debug.apk",
-      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.5.0-dogfood.9/V_IME-v1.5.0-dogfood.9-debug.apk",
-      "apkSha256": "58f728df441a46339fecf13ccf63c5c83e1217037065537781d09f8613617b30",
+      "versionName": "1.5.0-dogfood.11",
+      "versionCode": 113,
+      "title": "v1.5.0-dogfood.11 — Local ASR 主包集成 + Clean V3 评估修复 Phase 2",
+      "summary": "预发布 dogfood 包：合入 Local ASR 主包集成、Clean V3 alias 归一化评估与 Clean V3 审查修复 Phase 2。Local ASR 默认 CloudOnly，不影响现有云端链路；debug channel 继续用于真实 dogfood 验证。release channel 仍保持 1.4.2 / versionCode 102，本包不代表公开 release 默认推进。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.5.0-dogfood.11",
+      "apkName": "V_IME-v1.5.0-dogfood.11-debug.apk",
+      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.5.0-dogfood.11/V_IME-v1.5.0-dogfood.11-debug.apk",
+      "apkSha256": "2236d05be6fb5ad11d88db6142018088a86c7ac29e1dbe0790d915a3784bd9c8",
       "certificateSha256": "4513e5bc726058d40be6020e1bbfc2d0c0fbf4e81d3b04a393cba394cd195059",
       "mandatory": false,
       "minSupportedVersionCode": 1
