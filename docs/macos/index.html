@@ -407,6 +407,13 @@
 
       .beta-note a { color: var(--tx0); border-bottom: 1px solid rgba(245, 180, 97, 0.35); }
 
+      .beta-tip {
+        margin: 10px auto 0;
+        text-align: center;
+        font-size: 12.5px;
+        color: var(--tx2);
+      }
+
       .dl-chips {
         display: flex;
         flex-wrap: wrap;
@@ -762,17 +769,6 @@
         line-height: 1.75;
       }
 
-      .dl-grid {
-        display: grid;
-        grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
-        gap: 16px;
-      }
-
-      .dl-main {
-        padding: 30px;
-        background: linear-gradient(150deg, rgba(35, 224, 197, 0.1), rgba(77, 141, 255, 0.05) 55%, transparent), var(--panel);
-      }
-
       .badge {
         display: inline-flex;
         align-items: center;
@@ -789,33 +785,6 @@
         background: rgba(35, 224, 197, 0.1);
         border: 1px solid rgba(35, 224, 197, 0.35);
       }
-
-      .badge.dim {
-        color: var(--tx2);
-        background: var(--panel);
-        border: 1px solid var(--line);
-      }
-
-      .dl-name {
-        margin: 16px 0 0;
-        font-family: var(--font-m);
-        font-size: 14.5px;
-        font-weight: 600;
-        color: var(--tx0);
-        word-break: break-all;
-      }
-
-      .dl-info {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px 18px;
-        margin-top: 8px;
-        font-family: var(--font-m);
-        font-size: 12px;
-        color: var(--tx2);
-      }
-
-      .dl-acts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
 
       .copy-btn {
         display: inline-flex;
@@ -835,22 +804,6 @@
       .copy-btn:hover { color: var(--tx0); border-color: rgba(255, 255, 255, 0.3); background: var(--panel); }
 
       .copy-btn.done { color: var(--green); border-color: rgba(94, 227, 158, 0.5); }
-
-      .sha-block {
-        margin-top: 18px;
-        padding: 14px 16px;
-        border: 1px solid var(--line);
-        border-radius: var(--r3);
-        background: rgba(0, 0, 0, 0.28);
-        font-family: var(--font-m);
-        font-size: 12px;
-        line-height: 1.8;
-        color: var(--tx1);
-        overflow-x: auto;
-        white-space: nowrap;
-      }
-
-      .sha-block b { color: var(--cyan); font-weight: 600; }
 
       .modes-tabs {
         display: flex;
@@ -1515,7 +1468,7 @@
         .nav-links a { display: none; }
         .nav-links a.nav-cta { display: inline-flex; }
         .hero { padding-top: 48px; }
-        .dl-grid, .guide-grid, .feature-grid, .release-panel { grid-template-columns: 1fr; }
+        .guide-grid, .feature-grid, .release-panel { grid-template-columns: 1fr; }
         .bento { grid-template-columns: 1fr 1fr; }
         .bento .span2 { grid-column: span 2; }
         .styles-row, .support-grid { grid-template-columns: 1fr; }
@@ -1649,8 +1602,9 @@
             </div>
             <p class="beta-note">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M12 8v5M12 16.5v.01"/></svg>
-              <span><b>早鸟测试版</b> · 由个人开发维护，遇到问题请多包涵 — 反馈：<a href="mailto:kida.wong@gmail.com">kida.wong@gmail.com</a> / 飞书 <b>@kk.wang</b></span>
+              <span><b>早鸟测试版</b> · 由个人业余时间开发维护，遇到问题请多包涵 — 反馈：<a href="mailto:kida.wong@gmail.com">kida.wong@gmail.com</a> / 内部同学可以飞书 <b>@kk.wang</b></span>
             </p>
+            <p class="beta-tip">（推荐大家打开历史记录开关，录音失败可在历史记录中找到原文）</p>
           </div>
         </div>
       </section>
