@@ -949,13 +949,21 @@
       }
 
       .smart-row span {
-        padding: 8px 10px;
+        padding: 10px 12px;
         border: 1px solid rgba(35, 224, 197, 0.18);
         border-radius: 9px;
         background: rgba(35, 224, 197, 0.055);
         color: var(--tx1);
+        font-size: 11.5px;
+        line-height: 1.6;
+      }
+
+      .smart-row span b {
+        display: block;
+        margin-bottom: 3px;
+        color: var(--tx0);
         font-size: 12.5px;
-        line-height: 1.45;
+        font-weight: 600;
       }
 
       .style-cell h3 { font-size: 15.5px; }
@@ -1492,7 +1500,7 @@
         .dl-chips { gap: 8px; }
         .dl-chips .copy-btn, .dl-chips a { padding: 7px 12px; }
         .compact-modes .modes-tabs, .feature-points { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-        .smart-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        .smart-row { grid-template-columns: 1fr; }
         .mtab { flex: 1 1 calc(50% - 5px); justify-content: center; }
         .mtab .k { display: none; }
         .release-main, .feature-card, .compact-modes { padding: 16px; }
@@ -1674,7 +1682,7 @@
           <div class="sec-head rv">
             <span class="num">02</span>
             <h2 id="modes-title">VIME 特色：好用的快捷输入与可选智能整理</h2>
-            <p>右 Command 覆盖输入、翻译、编辑；整理强度可选，原话和清晰表达都能兼顾。</p>
+            <p>右 Command 覆盖输入、翻译、编辑；输出风格可选，原话和清晰表达都能兼顾。</p>
           </div>
           <div class="feature-grid rv">
             <div class="feature-rail">
@@ -1698,11 +1706,11 @@
                   <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h10M4 17h7"/></svg>
                   可选智能整理
                 </h3>
-                <p>聊天、文档、会议记录可以选不同整理强度。</p>
+                <p>三种输出风格，状态栏面板或快捷键随时切换。</p>
                 <div class="smart-row">
-                  <span>智能整理</span>
-                  <span>轻整理</span>
-                  <span>原文</span>
+                  <span><b>智能整理</b>把口述整理成更清楚的正文或要点。</span>
+                  <span><b>保留语气</b>轻微修正错字、标点和断句，保留本来的说法。</span>
+                  <span><b>逐字稿</b>尽量保留原始转写，不主动整理内容。</span>
                 </div>
               </div>
             </div>
