@@ -176,7 +176,7 @@
         content: "";
         position: absolute;
         top: -200px;
-        left: 50%;
+        left: 34%;
         transform: translateX(-50%);
         width: 960px;
         height: 460px;
@@ -237,10 +237,6 @@
 
       .hero-stack {
         position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
         z-index: 1;
       }
 
@@ -274,9 +270,9 @@
       h1 {
         margin: 26px 0 0;
         font-family: var(--font-d);
-        font-size: clamp(42px, 5.4vw, 68px);
+        font-size: clamp(44px, 5.6vw, 76px);
         font-weight: 800;
-        line-height: 1.18;
+        line-height: 1.14;
         letter-spacing: 0.2px;
       }
 
@@ -298,20 +294,28 @@
       }
 
       .lead {
-        max-width: 620px;
-        margin: 22px auto 0;
+        max-width: 680px;
+        margin: 22px 0 0;
         color: var(--tx1);
-        font-size: 17.5px;
+        font-size: 18px;
         line-height: 1.8;
       }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 14px 28px;
+        margin-top: 32px;
+      }
+
+      .cta-row .meta-strip { margin: 0 0 0 auto; }
 
       .actions {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        justify-content: center;
         gap: 14px;
-        margin-top: 30px;
       }
 
       .btn {
@@ -375,9 +379,7 @@
       .meta-strip {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
         gap: 8px 22px;
-        margin-top: 20px;
         font-family: var(--font-m);
         font-size: 12px;
         color: var(--tx2);
@@ -390,8 +392,8 @@
         display: inline-flex;
         gap: 8px;
         align-items: center;
-        max-width: 760px;
-        margin: 22px auto 0;
+        max-width: 100%;
+        margin: 20px 0 0;
         padding: 8px 16px;
         border: 1px solid rgba(245, 180, 97, 0.22);
         border-radius: var(--pill);
@@ -408,8 +410,7 @@
       .beta-note a { color: var(--tx0); border-bottom: 1px solid rgba(245, 180, 97, 0.35); }
 
       .beta-tip {
-        margin: 10px auto 0;
-        text-align: center;
+        margin: 8px 0 0;
         font-size: 12.5px;
         color: var(--tx2);
       }
@@ -418,9 +419,8 @@
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        justify-content: center;
         gap: 10px;
-        margin-top: 16px;
+        margin-top: 14px;
       }
 
       .dl-chips .copy-btn,
@@ -475,8 +475,8 @@
 
       .hero-demo {
         position: relative;
-        width: min(740px, 100%);
-        margin: 34px auto 0;
+        width: 100%;
+        margin: 42px 0 0;
       }
 
       .hero-demo .vwin::after {
@@ -492,7 +492,7 @@
         pointer-events: none;
       }
 
-      .hero-demo .vwin-body { font-size: 17px; min-height: 96px; text-align: left; }
+      .hero-demo .vwin-body { font-size: 17px; min-height: 118px; text-align: left; }
 
       .vwin-bar {
         display: flex;
@@ -1485,7 +1485,9 @@
         .lead { font-size: 15.5px; }
         .vwin-body, .hero-demo .vwin-body { padding: 18px; font-size: 15px; min-height: 104px; }
         .btn { width: 100%; }
-        .actions { gap: 10px; }
+        .actions { gap: 10px; width: 100%; }
+        .cta-row { gap: 14px; }
+        .cta-row .meta-strip { margin-left: 0; }
         .beta-note { text-align: left; }
         .dl-chips { gap: 8px; }
         .dl-chips .copy-btn, .dl-chips a { padding: 7px 12px; }
@@ -1566,18 +1568,20 @@
             <p class="lead">
               按下右 Command 说话，VIME 完成语音转写、文本整理、自动翻译或选中文本编辑，把结果直接写入当前光标位置。
             </p>
-            <div class="actions">
-              <a class="btn primary" id="cta-dmg" href="https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.2/V_IME-1.1.2-2026061104-macos.dmg">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v13m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
-                下载 DMG&nbsp;<small id="cta-size">· 2.7 MB</small>
-              </a>
-              <a class="btn ghost" href="#whats-new">查看更新</a>
-            </div>
-            <div class="meta-strip" aria-label="版本信息">
-              <span>v<b class="mf-ver">1.1.2</b> beta</span>
-              <span>build <b id="mf-build">2026061104</b></span>
-              <span>macOS <b id="mf-min">14</b>+</span>
-              <span>Developer ID 签名 · 已公证</span>
+            <div class="cta-row">
+              <div class="actions">
+                <a class="btn primary" id="cta-dmg" href="https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.2/V_IME-1.1.2-2026061104-macos.dmg">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v13m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
+                  下载 DMG&nbsp;<small id="cta-size">· 2.7 MB</small>
+                </a>
+                <a class="btn ghost" href="#whats-new">查看更新</a>
+              </div>
+              <div class="meta-strip" aria-label="版本信息">
+                <span>v<b class="mf-ver">1.1.2</b> beta</span>
+                <span>build <b id="mf-build">2026061104</b></span>
+                <span>macOS <b id="mf-min">14</b>+</span>
+                <span>Developer ID 签名 · 已公证</span>
+              </div>
             </div>
             <div class="dl-chips" id="download" aria-label="备用下载与校验">
               <a id="zip-link" href="https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.2/V_IME-1.1.2-2026061104-macos.zip">备用 ZIP <span id="zip-size">· 2.3 MB</span></a>
