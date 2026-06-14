@@ -1,30 +1,32 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-06-13T16:21:12Z",
+  "generatedAt": "2026-06-14T17:22:22Z",
   "platform": "macos",
   "channels": {
     "beta": {
       "versionName": "1.1.3",
-      "title": "VIME macOS 1.1.3 beta",
-      "summary": "# VIME macOS 1.1.3 beta\n\n这是 VIME macOS 面向测试用户的 1.1.3 beta 更新。这个版本重点整理设置页、常用词学习体验和写回反馈，适合进入下一轮小范围共测。\n\n- 重整设置页结构和二级页面，减少拥挤卡片与工程化表达，让服务、快捷键、常用词、历史与权限设置更容易扫描。\n- “常用词和学习”现在更清晰地区分手动添加的写法和 VIME 智能学习到的结果，只展示对普通用户有意义的内容。\n- 历史记录可以直接在设置里的二级页面查看本机清单，支持复制单条结果、删除单条记录，并在删除或清空前二次确认；设置页不再提供直接打开 Finder 的入口。\n- 优化常用词详情页和学习结果页文案，避免暴露 dogfood / candidate / schema 等内部术语。\n- 写回完成后增加可撤销反馈入口，误写或不符合预期时可以更快回退。\n- 修复 HUD 阴影边缘被裁切的问题，减少录音和写回反馈的视觉断裂。\n- 继续保留 1.1.2 的 Web / Electron / 富文本写回保护、默认云端服务和中文短词统一写法修复。\n- 未配置个人 API Key 时，仍可使用 VIME 默认云端服务；配置个人 Key 后优先使用个人服务。",
+      "title": "VIME macOS v1.1.3 beta · build 2026061401 · macOS 14+ · 已通过 macOS 安全检查",
+      "summary": "# VIME macOS 1.1.3 beta\n\n这是 VIME macOS 面向测试用户的 1.1.3 beta hotfix。建议正在使用 1.1.3 早期 build 的用户更新。\n\n- 优化常用词和学习结果在大小写、别名和短词场景下的稳定性。\n- 修复部分已正确输出的词语被重复学习或误判的问题。\n- 继续保留 1.1.3 的设置页整理、本地历史记录管理、学习记录可读性优化和写回后的撤销反馈。\n- 未配置个人 API Key 时，仍可使用 VIME 默认云端服务；配置个人 Key 后优先使用个人服务。",
       "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.1.3",
       "mandatory": false,
-      "buildNumber": 2026061322,
+      "buildNumber": 2026061401,
       "minSystemVersion": "14.0",
       "assets": [
         {
-          "name": "V_IME-1.1.3-2026061322-macos.dmg",
-          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.3/V_IME-1.1.3-2026061322-macos.dmg",
-          "sha256": "26e539e4e8ec95e6cfff184ae2d55323c04f7fe33b49cad726cf9c83febaae1c",
-          "sizeBytes": 4230143,
-          "installerType": "dmg"
+          "name": "V_IME-1.1.3-2026061401-macos.dmg",
+          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.3/V_IME-1.1.3-2026061401-macos.dmg",
+          "sha256": "092f6492243010847a682f6fc19b79181bb1326cb15f89aaba2505548c280cc6",
+          "sizeBytes": 4232108,
+          "installerType": "dmg",
+          "minSystemVersion": "14.0"
         },
         {
-          "name": "V_IME-1.1.3-2026061322-macos.zip",
-          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.3/V_IME-1.1.3-2026061322-macos.zip",
-          "sha256": "3db8f73d29a9dff7495019ddefb19cbf8f3a8f352012bddbcef503722ce67d3a",
-          "sizeBytes": 3590680,
-          "installerType": "zip"
+          "name": "V_IME-1.1.3-2026061401-macos.zip",
+          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.1.3/V_IME-1.1.3-2026061401-macos.zip",
+          "sha256": "a7d3d5ac8c1fc63e994f650713ae79a6cc82b95a2a47bf8e8fc0cb003d8da134",
+          "sizeBytes": 3591649,
+          "installerType": "zip",
+          "minSystemVersion": "14.0"
         }
       ]
     }
