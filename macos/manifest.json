@@ -6,7 +6,7 @@
     "beta": {
       "versionName": "1.2.0",
       "title": "VIME macOS v1.2.0 beta · build 2026061703 · macOS 14+ · 已通过 macOS 安全检查",
-      "summary": "# VIME macOS 1.2.0 beta\n\n这是 VIME macOS 1.2.0 beta 的热更新包，补齐设置页主动检查更新入口，并继续保留本地备份与恢复等 1.2.0 能力。\n\n- “关于”页面新增“版本更新”，可主动检查更新并查看更新内容。\n- 用户下载页不再展示 GitHub Release 入口，普通用户只需使用公开下载页。\n- 继续保留“备份与恢复”、历史与隐私设置优化、富文本输出顺序统一等 1.2.0 改动。\n- 默认云端服务仍通过 VIME 代理提供，包内不包含真实 provider key。",
+      "summary": "# VIME macOS 1.2.0 beta\n\n这是 VIME macOS 1.2.0 beta 的热更新包，补齐设置页主动检查更新入口，并继续保留本地备份与恢复等 1.2.0 能力。\n\n- “关于”页面新增“版本更新”，可主动检查更新并查看更新内容。\n- 用户下载页不再展示开发者发布页入口，普通用户只需使用公开下载页。\n- 继续保留“备份与恢复”、历史与隐私设置优化、富文本输出顺序统一等 1.2.0 改动。\n- 默认云端服务仍通过 VIME 代理提供，包内不包含真实 provider key。",
       "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.2.0",
       "mandatory": false,
       "buildNumber": 2026061703,
