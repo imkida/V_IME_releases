@@ -1665,7 +1665,6 @@
               <p id="wn-sum">1.2.0 新增本地备份与恢复，整理历史与隐私、系统与权限设置，并继续保留常用词学习、默认云端服务和写回保护。</p>
               <div class="release-meta">
                 <span>build <span id="wn-build">2026061702</span></span>
-                <a id="rel-link" href="https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.2.0">GitHub Release</a>
               </div>
             </div>
             <div class="update-list">
@@ -1980,7 +1979,6 @@
             if (c.buildNumber) $("wn-build").textContent = c.buildNumber;
             if (c.minSystemVersion) $("mf-min").textContent = String(c.minSystemVersion).split(".")[0];
             if (c.summary) $("wn-sum").textContent = releaseSummaryForPeople(c.summary);
-            if (c.releaseUrl) $("rel-link").href = c.releaseUrl;
             if (m.generatedAt) $("mf-date").textContent = fmtDate(m.generatedAt) || m.generatedAt.slice(0, 10);
             if (dmg) {
               $("nav-dmg").href = dmg.url;
