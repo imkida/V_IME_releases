@@ -1,30 +1,30 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-06-17T03:49:42Z",
+  "generatedAt": "2026-06-17T14:18:57Z",
   "platform": "macos",
   "channels": {
     "beta": {
       "versionName": "1.2.0",
-      "title": "VIME macOS v1.2.0 beta · build 2026061703 · macOS 14+ · 已通过 macOS 安全检查",
-      "summary": "# VIME macOS 1.2.0 beta\n\n这是 VIME macOS 1.2.0 beta 的热更新包，补齐设置页主动检查更新入口，并继续保留本地备份与恢复等 1.2.0 能力。\n\n- “关于”页面新增“版本更新”，可主动检查更新并查看更新内容。\n- 用户下载页不再展示开发者发布页入口，普通用户只需使用公开下载页。\n- 继续保留“备份与恢复”、历史与隐私设置优化、富文本输出顺序统一等 1.2.0 改动。\n- 默认云端服务仍通过 VIME 代理提供，包内不包含真实 provider key。",
+      "title": "VIME macOS v1.2.0 beta · build 2026061705 · macOS 14+ · 已通过 macOS 安全检查",
+      "summary": "# VIME macOS 1.2.0 beta\n\n这是 VIME macOS 1.2.0 beta 的热更新包，重点优化安装体验。\n\n- 安装包窗口新增“拖动 VIME 到 Applications”的直观引导。\n- 修正 Retina 屏下背景图、VIME 图标和 Applications 图标错位的问题。\n- 修正安装窗口默认高度不足，导致安装引导底部被裁切的问题。\n- 继续保留“关于”页主动检查更新、备份与恢复、历史与隐私设置优化等 1.2.0 能力。\n- 默认云端服务仍通过 VIME 代理提供，包内不包含真实 provider key。\n\n下载 DMG 后打开，把 VIME 拖到 Applications；如提示已存在，请选择“替换”。安装完成后，从 Applications 打开 VIME。",
       "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.2.0",
       "mandatory": false,
-      "buildNumber": 2026061703,
+      "buildNumber": 2026061705,
       "minSystemVersion": "14.0",
       "assets": [
         {
-          "name": "V_IME-1.2.0-2026061703-macos.dmg",
-          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.2.0/V_IME-1.2.0-2026061703-macos.dmg",
-          "sha256": "485894057981161feecc4feff4e78057140d611c8cfb0ba85fafa31cb1f34466",
-          "sizeBytes": 4537545,
+          "name": "V_IME-1.2.0-2026061705-macos.dmg",
+          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.2.0/V_IME-1.2.0-2026061705-macos.dmg",
+          "sha256": "2876f1af6db08d55c7cdabab0794bb66760b2f999e17cc172c47a238cb82b118",
+          "sizeBytes": 4484836,
           "installerType": "dmg",
           "minSystemVersion": "14.0"
         },
         {
-          "name": "V_IME-1.2.0-2026061703-macos.zip",
-          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.2.0/V_IME-1.2.0-2026061703-macos.zip",
-          "sha256": "8b9c90d98021563a04a1736967b533b8c0d106ae0d966730c4ad0ed306918ce1",
-          "sizeBytes": 3868353,
+          "name": "V_IME-1.2.0-2026061705-macos.zip",
+          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.2.0/V_IME-1.2.0-2026061705-macos.zip",
+          "sha256": "baba7c367d4dccefe5dea4c2f987e0efb4495158325642d602430d83baeec807",
+          "sizeBytes": 3867993,
           "installerType": "zip",
           "minSystemVersion": "14.0"
         }
