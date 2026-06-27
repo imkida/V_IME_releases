@@ -1,12 +1,12 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-06-27T10:33:44Z",
+  "generatedAt": "2026-06-27T13:49:34Z",
   "platform": "macos",
   "channels": {
     "beta": {
       "versionName": "1.3.0",
       "title": "VIME macOS v1.3.0 beta · build 2026062703 · macOS 14+ · 已通过 macOS 安全检查",
-      "summary": "# VIME macOS 1.3.0 beta\n\n本版把语音输入的「智能整理」默认升级为新版，整理时更完整地保留你说出的信息和语气。\n\n- 「智能整理」默认使用新版：自动输出下更注重保留信息点、否定 / 限制边界、数字、英文词和语气，更贴近你的原意，而不是一味压缩变短。\n- 新增「智能整理 新版」开关（默认开启）：更习惯上一版可在「输出设置」里关闭，立即回到上一版整理；该选择会随设置一起备份。\n- 仅影响语音输入的「智能整理」+「自动」输出；保留语气、逐字稿、中英互译和编辑文本不受影响。\n- 继续保留 1.2.0 的更新检查、下载入口、安装引导、备份恢复与写回保护。\n\n下载 DMG 后打开，把 VIME 拖到 Applications；如提示已存在请选「替换」。安装完成后从 Applications 打开 VIME。",
+      "summary": "整理得更清楚的同时，更完整地保留你说的细节、数字、专有名词和语气，不会越整越短、把意思整丢；更喜欢上一版，也能在设置里一键切回。",
       "releaseUrl": "https://imkida.github.io/V_IME_releases/macos/",
       "mandatory": false,
       "buildNumber": 2026062703,
