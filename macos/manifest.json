@@ -1,30 +1,34 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-06-27T14:00:54Z",
+  "generatedAt": "2026-07-01T10:56:35Z",
   "platform": "macos",
   "channels": {
     "beta": {
-      "versionName": "1.3.0",
-      "title": "VIME macOS v1.3.0 beta · build 2026062703 · macOS 14+ · 已通过 macOS 安全检查",
-      "summary": "整理得更清楚的同时，更完整地保留你说的细节、数字、专有名词和语气，不会越整越短、把意思整丢；更喜欢上一版，也能在设置里一键切回。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.3.0",
+      "versionName": "1.3.1",
+      "title": "VIME macOS v1.3.1 beta · build 2026070102 · macOS 14+ · 已通过 macOS 安全检查",
+      "summary": "这版继续收口「智能整理 新版」的保真和写回安全：数字、比例、编号、专有名词和混合中英文更不容易被整理丢失或误改；没有可确认焦点或输入框不可读时会更保守地停止，避免看起来成功但实际没写入。翻译和编辑文本的质量边界也已重新对照检查。D20-D26 交互式写回证据本轮不继续追加，后续真实使用发现问题再定向修复。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.3.1",
       "mandatory": false,
-      "buildNumber": 2026062703,
+      "buildNumber": 2026070102,
       "minSystemVersion": "14.0",
       "assets": [
         {
-          "name": "V_IME-1.3.0-2026062703-macos.dmg",
-          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.3.0/V_IME-1.3.0-2026062703-macos.dmg",
-          "sha256": "c9c4edfd737251e11657dd59d16b63b21cf9b52e44a0c6839db840559f624266",
-          "sizeBytes": 4565393,
-          "installerType": "dmg"
+          "name": "V_IME-1.3.1-2026070102-macos.dmg",
+          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.3.1/V_IME-1.3.1-2026070102-macos.dmg",
+          "sha256": "69c4f6ab370842e292e2b78452bb7fefa13147d47b18224f905a8242af34884d",
+          "sizeBytes": 4608537,
+          "installerType": "dmg",
+          "arch": "universal",
+          "minSystemVersion": "14.0"
         },
         {
-          "name": "V_IME-1.3.0-2026062703-macos.zip",
-          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.3.0/V_IME-1.3.0-2026062703-macos.zip",
-          "sha256": "2bb72d3d006654079734d848fb3e36e473bedc495baa51c317e1e31619d6b4ce",
-          "sizeBytes": 3940402,
-          "installerType": "zip"
+          "name": "V_IME-1.3.1-2026070102-macos.zip",
+          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.3.1/V_IME-1.3.1-2026070102-macos.zip",
+          "sha256": "3c611ca2f08db4e6e1f7618d6a8a7a305562f7f115a1cd0f5043c676f49d7d23",
+          "sizeBytes": 3981733,
+          "installerType": "zip",
+          "arch": "universal",
+          "minSystemVersion": "14.0"
         }
       ]
     }
