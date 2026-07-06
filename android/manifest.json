@@ -1,17 +1,17 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-07-02T03:08:35Z",
+  "generatedAt": "2026-07-06T14:16:22Z",
   "packageName": "com.vime.android",
   "channels": {
     "debug": {
-      "versionName": "1.6.0",
-      "versionCode": 138,
-      "title": "v1.6.0 — Translation/Edit 模式收口 + 键盘体验优化",
-      "summary": "键盘底部栏颜色跟随深浅色主题；Translation/Edit 用完一次自动回到普通听写；Edit 选中文本更稳，降低把编辑指令写成正文的概率；Quick Panel 增加常用中文标点快捷输入；普通按键触感更轻；翻译和数字表达边界优化。普通用户建议安装 release 包；debug/release 不可混装，切换签名前请先导出配置。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.6.0",
-      "apkName": "V_IME-v1.6.0-debug.apk",
-      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.6.0/V_IME-v1.6.0-debug.apk",
-      "apkSha256": "1bb6c2ba750b28f422b84a55e467e4007184933bdd4f1d21acdd079cf8171774",
+      "versionName": "1.6.1-dogfood.5",
+      "versionCode": 143,
+      "title": "v1.6.1-dogfood.5 — 中文日期数字 sanity 验证包",
+      "summary": "修复 Clean 场景中有来源依据的中文年月日被误判为“润色结果异常”的问题。此包仅面向 debug/dogfood 测试用户；release channel 仍停在 v1.6.0。debug/release 同包名不同签名，不可混装，切换签名前请先导出配置。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.6.1-dogfood.5",
+      "apkName": "V_IME-v1.6.1-dogfood.5-debug.apk",
+      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.6.1-dogfood.5/V_IME-v1.6.1-dogfood.5-debug.apk",
+      "apkSha256": "9d6c5c53c13130b932f8e002cd3cbceab75c139201495892d11e64c22d83b6d2",
       "certificateSha256": "4513e5bc726058d40be6020e1bbfc2d0c0fbf4e81d3b04a393cba394cd195059",
       "mandatory": false,
       "minSupportedVersionCode": 1
