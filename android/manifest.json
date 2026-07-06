@@ -1,17 +1,17 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-07-06T16:26:16Z",
+  "generatedAt": "2026-07-06T18:17:08Z",
   "packageName": "com.vime.android",
   "channels": {
     "debug": {
-      "versionName": "1.6.1-dogfood.6",
-      "versionCode": 144,
-      "title": "v1.6.1-dogfood.6 — 独立日期数字化 sanity 验证包",
-      "summary": "修复只有日期数字化结果时仍可能被误判为“润色结果异常”的问题；当日期转换可以从原语音内容证明来源时，Clean sanity guard 不再误拦。此包仅面向 debug/dogfood 测试用户；release channel 仍停在 v1.6.0。debug/release 同包名不同签名，不可混装，切换签名前请先导出配置。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.6.1-dogfood.6",
-      "apkName": "V_IME-v1.6.1-dogfood.6-debug.apk",
-      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.6.1-dogfood.6/V_IME-v1.6.1-dogfood.6-debug.apk",
-      "apkSha256": "3621d0ccbaa0b0df6791db958e5faecc86bcbb854b0e1d563df47448b32a638d",
+      "versionName": "1.6.1-dogfood.7",
+      "versionCode": 145,
+      "title": "v1.6.1-dogfood.7 — phone 口语长数字 sanity hotfix",
+      "summary": "修复 phone 语境下，手机号 / 电话号长口语数字在整理后仍可能被 sanity guard 误判为“润色结果异常”的问题；继续包含中文年月日和独立日期数字化 sanity 修复。此包仅面向 debug/dogfood 测试用户；release channel 仍停在 v1.6.0。debug/release 同包名不同签名，不可混装，切换签名前请先导出配置。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.6.1-dogfood.7",
+      "apkName": "V_IME-v1.6.1-dogfood.7-debug.apk",
+      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.6.1-dogfood.7/V_IME-v1.6.1-dogfood.7-debug.apk",
+      "apkSha256": "3c23811445a141170e430814ff5b07fc7f62eff7971f72e896c597972a7c2f72",
       "certificateSha256": "4513e5bc726058d40be6020e1bbfc2d0c0fbf4e81d3b04a393cba394cd195059",
       "mandatory": false,
       "minSupportedVersionCode": 1
