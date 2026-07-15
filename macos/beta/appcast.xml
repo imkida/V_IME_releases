@@ -1,0 +1,25 @@
+<?xml version="1.0" standalone="yes"?><!-- sparkle-sign-warning:
+IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>V_IME</title>
+        <item>
+            <title>1.3.6</title>
+            <pubDate>Wed, 15 Jul 2026 17:26:43 +0800</pubDate>
+            <link>https://imkida.github.io/V_IME_releases/macos/</link>
+            <sparkle:version>2026071505</sparkle:version>
+            <sparkle:shortVersionString>1.3.6</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[# VIME 1.3.6 更新验证候选
+
+- 增加 Sparkle 应用内更新链路，用于验证下载、安装和自动重启。
+- 包含当前 `main` 已合入的输入稳定性、错误提示与智能学习修复。
+- 本条目为未链接的 beta dogfood，不代表公开下载页已切换版本。
+]]></description>
+            <enclosure url="https://github.com/imkida/V_IME_releases/releases/download/macos-v1.3.6/V_IME-1.3.6-2026071505-macos.zip" length="6178436" type="application/octet-stream" sparkle:edSignature="+aOWKImtr8Ag5aV+oaBL1tw+fJ0Zf60047qjgM44o/lhq0xortyN70l8Wc5UHYLb8aDpIYYoBD0MPzKDICTODw=="></enclosure>
+        </item>
+    </channel>
+</rss><!-- sparkle-signatures:
+edSignature: y/AlRBWGgnc4wMTgzDHhQqKlcSAx8WaTR8ZaaNg5f6JJuTg6wdx56NyxOmKB5SlUoRqabxQOcbWiaMTzWl66BA==
+length: 1515
+-->
