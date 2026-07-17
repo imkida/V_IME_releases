@@ -1,37 +1,38 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-07-05T19:00:35Z",
+  "generatedAt": "2026-07-17T12:22:25Z",
   "platform": "macos",
   "channels": {
     "beta": {
-      "versionName": "1.3.6",
-      "title": "VIME macOS v1.3.6 beta · build 2026070602 · macOS 14+ · 已通过 macOS 安全检查",
-      "summary": "修复部分聊天输入框的写入误判：语音结束后，如果文字稍晚才显示在目标输入框里，VIME 不应误提示写入失败或要求手动复制；仍会保留敏感输入框和不安全写入场景的保护边界。",
+      "versionName": "1.3.7",
+      "title": "VIME macOS v1.3.7 beta · build 2026071705 · macOS 14+ · 已通过 macOS 安全检查",
+      "summary": "提升高负载写入与右 Command 停止听写稳定性，恢复智能整理排版和语义边界，优化金额阿拉伯数字、智能学习流程并修复实验性流式输入双击崩溃；流式输入仍建议仅作实验使用。",
       "releaseUrl": "https://imkida.github.io/V_IME_releases/macos/",
       "mandatory": false,
-      "buildNumber": 2026070602,
+      "buildNumber": 2026071705,
       "minSystemVersion": "14.0",
       "assets": [
         {
-          "name": "V_IME-1.3.6-2026070602-macos.dmg",
-          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.3.6/V_IME-1.3.6-2026070602-macos.dmg",
-          "sha256": "2f570d6c9328d17e4f78c74b7c40e3f84f4f67dceb7c1537ef166d2c5fb1e64b",
-          "sizeBytes": 4677709,
+          "name": "V_IME-1.3.7-2026071705-macos.dmg",
+          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.3.7/V_IME-1.3.7-2026071705-macos.dmg",
+          "sha256": "302b5017a345071770457f09da4053b2b6ae6b9d65efd8f9f647b2e831454c15",
+          "sizeBytes": 7211374,
           "installerType": "dmg",
           "arch": "universal",
           "minSystemVersion": "14.0"
         },
         {
-          "name": "V_IME-1.3.6-2026070602-macos.zip",
-          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.3.6/V_IME-1.3.6-2026070602-macos.zip",
-          "sha256": "3f9831bef1ddfb0644f0aef0c3bd6400657feea79e48cd6bd987cbaa23f6ce99",
-          "sizeBytes": 4042355,
+          "name": "V_IME-1.3.7-2026071705-macos.zip",
+          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.3.7/V_IME-1.3.7-2026071705-macos.zip",
+          "sha256": "f74da913066de90f9167811817222d71f3546bb5df9b6330f949af9146c9c8d6",
+          "sizeBytes": 6455285,
           "installerType": "zip",
           "arch": "universal",
           "minSystemVersion": "14.0"
         }
       ],
-      "versionCode": 2026070602
+      "versionCode": 2026071705,
+      "appcastUrl": "https://imkida.github.io/V_IME_releases/macos/beta/appcast.xml"
     }
   },
   "productName": "VIME",
