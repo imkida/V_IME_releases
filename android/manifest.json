@@ -1,17 +1,17 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-07-15T17:39:30Z",
+  "generatedAt": "2026-07-17T07:51:48Z",
   "packageName": "com.vime.android",
   "channels": {
     "debug": {
-      "versionName": "1.6.1-dogfood.12",
-      "versionCode": 150,
-      "title": "v1.6.1-dogfood.12 — 失败语音重试、Quick Panel 常驻与 VIME 品牌",
-      "summary": "公开 Debug 测试包：失败语音重试会复用已录语音并在输入目标变化时 fail closed；Quick Panel 常驻且不再提供关闭开关；Android 可见品牌统一为 VIME。包保持 CloudOnly 默认，不含 Local ASR runtime、模型或 C1 资产。stable release 仍为 v1.6.0。debug/release 同包名不同签名，不可混装，切换签名前请先导出配置。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.6.1-dogfood.12",
-      "apkName": "V_IME-v1.6.1-dogfood.12-debug.apk",
-      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.6.1-dogfood.12/V_IME-v1.6.1-dogfood.12-debug.apk",
-      "apkSha256": "168e6f15354e800e2d03aab6e4effbca95d7754c9b5047bba294731b51c25be7",
+      "versionName": "1.6.1-dogfood.13",
+      "versionCode": 151,
+      "title": "v1.6.1-dogfood.13 — 价格金额阿拉伯数字优先",
+      "summary": "公开 Debug 测试候选：在 Normal + Clean + CleanTidyV3 non-fallback 路径中，对来源可证的价格、报价、预算和金额表达优先使用阿拉伯数字；无法唯一证明时保持原文。Product 专业词库 Pack v0.1 仅为 test-only consumer，不接 runtime。包保持 CloudOnly 默认，不含 Local ASR runtime、模型或 C1 资产。stable release 仍为 v1.6.0。debug/release 同包名不同签名，不可混装，切换签名前请先导出配置。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.6.1-dogfood.13",
+      "apkName": "V_IME-v1.6.1-dogfood.13-debug.apk",
+      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.6.1-dogfood.13/V_IME-v1.6.1-dogfood.13-debug.apk",
+      "apkSha256": "c37f5d90ef2a8147cbf6d1a14935775f1ff93717a227495ab3b4883119681389",
       "certificateSha256": "4513e5bc726058d40be6020e1bbfc2d0c0fbf4e81d3b04a393cba394cd195059",
       "mandatory": false,
       "minSupportedVersionCode": 1
