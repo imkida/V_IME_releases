@@ -1,17 +1,17 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-07-17T07:51:48Z",
+  "generatedAt": "2026-07-17T15:08:44Z",
   "packageName": "com.vime.android",
   "channels": {
     "debug": {
-      "versionName": "1.6.1-dogfood.13",
-      "versionCode": 151,
-      "title": "v1.6.1-dogfood.13 — 价格金额阿拉伯数字优先",
-      "summary": "公开 Debug 测试候选：在 Normal + Clean + CleanTidyV3 non-fallback 路径中，对来源可证的价格、报价、预算和金额表达优先使用阿拉伯数字；无法唯一证明时保持原文。Product 专业词库 Pack v0.1 仅为 test-only consumer，不接 runtime。包保持 CloudOnly 默认，不含 Local ASR runtime、模型或 C1 资产。stable release 仍为 v1.6.0。debug/release 同包名不同签名，不可混装，切换签名前请先导出配置。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.6.1-dogfood.13",
-      "apkName": "V_IME-v1.6.1-dogfood.13-debug.apk",
-      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.6.1-dogfood.13/V_IME-v1.6.1-dogfood.13-debug.apk",
-      "apkSha256": "c37f5d90ef2a8147cbf6d1a14935775f1ff93717a227495ab3b4883119681389",
+      "versionName": "1.6.1-dogfood.14",
+      "versionCode": 152,
+      "title": "v1.6.1-dogfood.14 — 技术标识阿拉伯数字修正",
+      "summary": "公开 Debug 测试候选：Phase 3 仅在 Normal + Clean + CleanTidyV3 non-fallback 路径中，对既有 VersionModelCode / TechnicalIdentifier 子集采用 source-backed pattern gate；证据不足时保持原文。MoneyAmount pattern engine 未接入 production。包保持 CloudOnly 默认，不含 Local ASR runtime、模型或 C1 资产。stable release 仍为 v1.6.0。debug/release 同包名不同签名，不可混装，切换签名前请先导出配置。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.6.1-dogfood.14",
+      "apkName": "V_IME-v1.6.1-dogfood.14-debug.apk",
+      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.6.1-dogfood.14/V_IME-v1.6.1-dogfood.14-debug.apk",
+      "apkSha256": "8ccf1ae74b174c34ce9ced9860d28ba8c1ef947c918d31a53435f804646a03a5",
       "certificateSha256": "4513e5bc726058d40be6020e1bbfc2d0c0fbf4e81d3b04a393cba394cd195059",
       "mandatory": false,
       "minSupportedVersionCode": 1
