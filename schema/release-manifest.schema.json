@@ -214,6 +214,10 @@
           "type": "string",
           "format": "uri"
         },
+        "mirrorUrl": {
+          "type": "string",
+          "format": "uri"
+        },
         "sha256": {
           "$ref": "#/$defs/sha256"
         },

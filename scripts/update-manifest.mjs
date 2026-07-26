@@ -119,10 +119,23 @@ async function normalizeConfig(args) {
   const repo = optionalString(args.repo) ?? DEFAULT_REPO;
   const tag = optionalString(args.tag);
   const releaseUrl = optionalString(args.releaseUrl) ?? (tag ? `https://github.com/${repo}/releases/tag/${encodeUrlSegment(tag)}` : undefined);
+  if (args.assetUrl !== undefined && args.assetUrlBase !== undefined) {
+    throw new Error('--asset-url and --asset-url-base cannot be used together');
+  }
+  const assetUrlBase = optionalHttpsBaseUrl(args.assetUrlBase, '--asset-url-base');
   const assetUrl =
     optionalString(args.assetUrl) ??
     optionalString(args.downloadUrl) ??
+    (assetUrlBase && assetName ? `${assetUrlBase}${encodeUrlSegment(assetName)}` : undefined) ??
     (tag && assetName ? `https://github.com/${repo}/releases/download/${encodeUrlSegment(tag)}/${encodeUrlSegment(assetName)}` : undefined);
+  const mirrorUrl =
+    optionalHttpsUrl(args.mirrorUrl, '--mirror-url') ??
+    (assetUrlBase && tag && assetName
+      ? `https://github.com/${repo}/releases/download/${encodeUrlSegment(tag)}/${encodeUrlSegment(assetName)}`
+      : undefined);
+  if (assetUrlBase && !mirrorUrl) {
+    throw new Error('--asset-url-base requires --tag or an explicit --mirror-url');
+  }
 
   const summary = optionalString(args.summary) ?? readOptionalFile(args.summaryFile, '--summary-file');
   const title = optionalString(args.title);
@@ -174,6 +187,7 @@ async function normalizeConfig(args) {
     releaseUrl,
     assetName,
     assetUrl,
+    mirrorUrl,
     sha256,
     sizeBytes,
     certificateSha256: optionalSha256(args.certificateSha256, '--certificate-sha256'),
@@ -252,6 +266,7 @@ function updateManifest(manifest, config) {
       url: config.assetUrl,
       sha256: config.sha256
     };
+    setIfProvided(asset, 'mirrorUrl', config.mirrorUrl);
     setIfProvided(asset, 'sizeBytes', config.sizeBytes);
     setIfProvided(asset, 'installerType', config.installerType);
     setIfProvided(asset, 'arch', config.arch);
@@ -316,6 +331,9 @@ function validateManifest(manifest) {
         }
         validateSha(asset.sha256, `${path}.sha256`);
         validateSha(asset.certificateSha256, `${path}.certificateSha256`);
+        if (asset.mirrorUrl !== undefined) {
+          parseHttpsUrl(asset.mirrorUrl, `${path}.mirrorUrl`);
+        }
       }
     }
   }
@@ -364,6 +382,41 @@ function optionalString(value) {
   }
   const normalized = String(value).trim();
   return normalized.length > 0 ? normalized : undefined;
+}
+
+function optionalHttpsBaseUrl(value, label) {
+  const normalized = optionalString(value);
+  if (!normalized) return undefined;
+  const parsed = parseHttpsUrl(normalized, label);
+  if (!parsed.pathname.endsWith('/')) {
+    throw new Error(`${label} must end with /`);
+  }
+  return parsed.toString();
+}
+
+function optionalHttpsUrl(value, label) {
+  const normalized = optionalString(value);
+  if (!normalized) return undefined;
+  return parseHttpsUrl(normalized, label).toString();
+}
+
+function parseHttpsUrl(value, label) {
+  let parsed;
+  try {
+    parsed = new URL(value);
+  } catch {
+    throw new Error(`${label} must be a valid HTTPS URL`);
+  }
+  if (
+    parsed.protocol !== 'https:' ||
+    parsed.username ||
+    parsed.password ||
+    parsed.search ||
+    parsed.hash
+  ) {
+    throw new Error(`${label} must use HTTPS without credentials, query, or fragment`);
+  }
+  return parsed;
 }
 
 function optionalSha256(value, label) {
@@ -480,6 +533,8 @@ Asset input:
   --asset                     local asset path; SHA-256 and size are computed automatically
   --asset-name                asset name when no local file is available
   --asset-url                 explicit download URL
+  --asset-url-base            HTTPS base URL ending in /; asset name is appended
+  --mirror-url                optional HTTPS fallback URL recorded as asset.mirrorUrl
   --sha256                    explicit asset SHA-256 when no local file is available
 
 Common options:
