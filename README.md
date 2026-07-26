@@ -6,7 +6,8 @@ V_IME 是一个跨平台的纯语音输入应用项目。主仓 [`imkida/V_IME_A
 
 ## 仓库职责
 
-- GitHub Releases 存放安装包、归档包、安装器等二进制资产。
+- GitHub Releases 至少保留最近两个 macOS 公测版，作为安装包备用下载源。
+- macOS 主下载可使用 `cn-shanghai` OSS 默认 HTTPS 域名；canonical manifest 不绑定具体云厂商字段，只记录公开 HTTPS URL。
 - Git 文件存放 manifest、appcast、schema、发布规范和公开说明。
 - 每个平台使用独立 tag 命名空间，避免版本号冲突。
 - 每个公开下载资产必须提供 SHA-256 校验信息；有平台签名体系时同步记录签名证书或更新框架要求的签名元数据。
@@ -126,7 +127,7 @@ npm run release:manifest -- \
   --min-supported-version-code 1
 ```
 
-脚本会自动计算本地资产的 SHA-256 和文件大小，并生成 GitHub Release asset URL。Android 会更新 `apkName`、`apkUrl`、`apkSha256`；其他平台会写入 `assets` 数组。
+脚本会自动计算本地资产的 SHA-256 和文件大小。默认生成 GitHub Release asset URL；传入 `--asset-url-base` 时，主 URL 使用该 HTTPS 前缀，并把同 tag 的 GitHub asset 记录为 `mirrorUrl`。Android 会更新 `apkName`、`apkUrl`、`apkSha256`；其他平台会写入 `assets` 数组。
 
 Windows 多安装器示例：
 
@@ -178,7 +179,8 @@ macos/manifest.json
 - App 使用 Developer ID 签名。
 - 安装包完成 notarization。
 - Sparkle enclosure 包含下载 URL、版本号、文件长度、EdDSA 签名和最低系统版本。
-- `macos/manifest.json` 指向 GitHub Release 页面，并记录资产校验信息。
+- `macos/manifest.json` 保留 GitHub Release tag 兼容入口，主资产可指向 OSS，并记录同字节 GitHub 备用地址和校验信息。
+- Sparkle appcast URL 保持 GitHub Pages，不随资产托管位置变化；必须先验证 OSS 与 GitHub ZIP 字节一致，再发布 appcast。
 
 ## Windows 发布
 
