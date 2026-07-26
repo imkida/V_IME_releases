@@ -4,42 +4,41 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>VIME</title>
         <item>
-            <title>1.3.7</title>
-            <pubDate>Fri, 17 Jul 2026 20:21:55 +0800</pubDate>
+            <title>1.3.8</title>
+            <pubDate>Sun, 26 Jul 2026 16:59:23 +0800</pubDate>
             <link>https://imkida.github.io/V_IME_releases/macos/</link>
-            <sparkle:version>2026071705</sparkle:version>
-            <sparkle:shortVersionString>1.3.7</sparkle:shortVersionString>
+            <sparkle:version>2026072601</sparkle:version>
+            <sparkle:shortVersionString>1.3.8</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# VIME macOS 1.3.7 beta
+            <description sparkle:format="markdown"><![CDATA[# VIME macOS 1.3.8 beta
 
-版本：`1.3.7 (2026071705)`
+版本：`1.3.8 (2026072601)`
+
 
 ## 本次改进
 
-- 提升系统负载较高时的写入判断稳定性，减少文字已经进入 Codex 等输入框后仍误报 `E401` 的情况。
-- 修复系统卡顿时右 Command 单击偶发无法结束听写的问题。
-- 恢复智能整理中的自然分段、分行、有序清单和无序清单，同时收紧语义与语气边界，避免擅自增加“请”“麻烦”等表达或改变肯定、否定含义。
-- 优化金额表达，普通价格场景优先输出阿拉伯数字与中文单位，例如 `300元`。
-- 修复智能学习确认与立即删除流程，并允许高置信重复证据在安全边界内自动应用。
-- 修复开启实验性流式输入后双击启动听写可能导致崩溃的问题。
-- 保留 Sparkle 应用内检查更新、下载安装和自动重启能力。
+- 智能整理进一步贴近日常口述：减少开头的“嗯”“呃”“额”和无意义短重复，同时保留强调、否定、引用、列表等原有表达。
+- 改善长短输入的排版和断句，尤其是“如果……的话”等条件句的衔接，减少不自然的句号和语序调整。
+- 简化智能学习和词库设置，普通用户只需理解“智能学习”“词库增强”和“管理已学习词汇”。
+- 减少高置信常用修正的重复确认；不确定或存在冲突时仍保留人工管理入口。
+- 优化扩展 HUD 的布局、操作层级和错误提示可读性，主 HUD 的尺寸和位置保持稳定。
 
 ## 使用边界
 
 - 流式输入仍是实验选项。当前实时性、连续逐字显示和自动排版尚未达到经典输入的稳定程度，建议日常使用继续选择经典输入。
 - 敏感输入框、目标焦点不明确或无法安全验证写入结果时，VIME 仍会保持拦截或提供复制结果，不会放宽隐私与写入保护。
-- 本版本继续使用 `com.vime.app.macos`、既有数据目录与 Keychain 标识；只保持用户可见应用名为 `VIME`。
+- 本版本继续使用 `com.vime.app.macos`、既有数据目录与 Keychain 标识；用户可见应用名保持为 `VIME`。
 
 ## 安装与回滚
 
-- 新安装可下载 notarized DMG，将 `VIME.app` 拖入“应用程序”。
-- 已安装支持 Sparkle 的版本可在设置中点击“检查更新”，确认后自动下载安装并重新启动。
+- 新安装可下载经过 Apple 公证的 DMG，将 `VIME.app` 拖入“应用程序”。
+- 已安装支持自动更新的版本可在设置中点击“检查更新”，确认后由 VIME 自动下载安装并重新启动。
 - 如需回滚，请退出 VIME 后用先前版本的 `VIME.app` 覆盖安装；用户设置、历史和 Keychain 不应被删除。
 ]]></description>
-            <enclosure url="https://github.com/imkida/V_IME_releases/releases/download/macos-v1.3.7/V_IME-1.3.7-2026071705-macos.zip" length="6455285" type="application/octet-stream" sparkle:edSignature="avWX6v2eerxaMLUUb4bYxvCFLjbYbiVsjVYyc9N2Kfa7GIQy/UPinIFy2UwOaEardFWYuHNKsEigh5UEQtRfBw=="></enclosure>
+            <enclosure url="https://github.com/imkida/V_IME_releases/releases/download/macos-v1.3.8/V_IME-1.3.8-2026072601-macos.zip" length="6590908" type="application/octet-stream" sparkle:edSignature="A8GDmqYZ7RHJ3wxisj3OC6yfFRahr9dLTP1FHC3xnvWLlsrxC1V2myiuIJggo67xVby+Uu2FbXXi3XFMUGJWBg=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: qXYq4Y0IipqBY3Xw/ovSJuFLy88LQRg55zVvG5W/MWXg9MzyjOrhNokLmEH5JsENEwJiayhDW2hQEqpSfPByCg==
-length: 2929
+edSignature: J4/Fvk5cBV19EzMwssvkYAS7/BPkdnaklmvUabX5DqfQw1lRMWhzI6kBqBtAwhdnQggl+cfBW8qdj6yh2fCWBw==
+length: 2823
 -->

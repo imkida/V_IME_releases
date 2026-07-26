@@ -1,37 +1,37 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-07-17T12:22:25Z",
+  "generatedAt": "2026-07-26T08:58:27Z",
   "platform": "macos",
   "channels": {
     "beta": {
-      "versionName": "1.3.7",
-      "title": "VIME macOS v1.3.7 beta · build 2026071705 · macOS 14+ · 已通过 macOS 安全检查",
-      "summary": "提升高负载写入与右 Command 停止听写稳定性，恢复智能整理排版和语义边界，优化金额阿拉伯数字、智能学习流程并修复实验性流式输入双击崩溃；流式输入仍建议仅作实验使用。",
+      "versionName": "1.3.8",
+      "title": "VIME macOS v1.3.8 beta · build 2026072601 · macOS 14+ · 已通过 macOS 安全检查",
+      "summary": "智能整理更自然地清理口头填充与短重复，改善条件句断句；简化智能学习与词库设置，并优化扩展 HUD。流式输入仍建议仅作实验使用。",
       "releaseUrl": "https://imkida.github.io/V_IME_releases/macos/",
       "mandatory": false,
-      "buildNumber": 2026071705,
+      "buildNumber": 2026072601,
       "minSystemVersion": "14.0",
       "assets": [
         {
-          "name": "V_IME-1.3.7-2026071705-macos.dmg",
-          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.3.7/V_IME-1.3.7-2026071705-macos.dmg",
-          "sha256": "302b5017a345071770457f09da4053b2b6ae6b9d65efd8f9f647b2e831454c15",
-          "sizeBytes": 7211374,
+          "name": "V_IME-1.3.8-2026072601-macos.dmg",
+          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.3.8/V_IME-1.3.8-2026072601-macos.dmg",
+          "sha256": "4c6062783a8c37f753390ad802a30dd1d43c1c8489fb8d1b4099f32135a02527",
+          "sizeBytes": 7363855,
           "installerType": "dmg",
           "arch": "universal",
           "minSystemVersion": "14.0"
         },
         {
-          "name": "V_IME-1.3.7-2026071705-macos.zip",
-          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.3.7/V_IME-1.3.7-2026071705-macos.zip",
-          "sha256": "f74da913066de90f9167811817222d71f3546bb5df9b6330f949af9146c9c8d6",
-          "sizeBytes": 6455285,
+          "name": "V_IME-1.3.8-2026072601-macos.zip",
+          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.3.8/V_IME-1.3.8-2026072601-macos.zip",
+          "sha256": "5da5f48efd1fb0f219206e46e3a5c6ccfa2c713883c03b22ff6733dc58bc3b43",
+          "sizeBytes": 6590908,
           "installerType": "zip",
           "arch": "universal",
           "minSystemVersion": "14.0"
         }
       ],
-      "versionCode": 2026071705,
+      "versionCode": 2026072601,
       "appcastUrl": "https://imkida.github.io/V_IME_releases/macos/beta/appcast.xml"
     }
   },
