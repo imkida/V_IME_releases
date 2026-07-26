@@ -1,37 +1,39 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-07-26T08:58:27Z",
+  "generatedAt": "2026-07-26T17:45:35Z",
   "platform": "macos",
   "channels": {
     "beta": {
-      "versionName": "1.3.8",
-      "title": "VIME macOS v1.3.8 beta · build 2026072601 · macOS 14+ · 已通过 macOS 安全检查",
-      "summary": "智能整理更自然地清理口头填充与短重复，改善条件句断句；简化智能学习与词库设置，并优化扩展 HUD。流式输入仍建议仅作实验使用。",
-      "releaseUrl": "https://imkida.github.io/V_IME_releases/macos/",
+      "versionName": "1.3.9",
+      "title": "VIME macOS v1.3.9 beta · build 2026072701 · macOS 14+ · 已通过 macOS 安全检查",
+      "summary": "应用内更新优先使用中国大陆访问更顺畅的下载源，并保留 GitHub 备用下载；继续支持一键安装并自动重启。流式输入仍为实验选项。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.3.9",
       "mandatory": false,
-      "buildNumber": 2026072601,
+      "buildNumber": 2026072701,
       "minSystemVersion": "14.0",
       "assets": [
         {
-          "name": "V_IME-1.3.8-2026072601-macos.dmg",
-          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.3.8/V_IME-1.3.8-2026072601-macos.dmg",
-          "sha256": "4c6062783a8c37f753390ad802a30dd1d43c1c8489fb8d1b4099f32135a02527",
-          "sizeBytes": 7363855,
+          "name": "V_IME-1.3.9-2026072701-macos.dmg",
+          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.3.9/2026072701/V_IME-1.3.9-2026072701-macos.dmg",
+          "sha256": "fd89e6e5e269f5d933b9a5b19793b58f395a2d4e8fb53cd506d3e989c0aa0995",
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.3.9/V_IME-1.3.9-2026072701-macos.dmg",
+          "sizeBytes": 7364262,
           "installerType": "dmg",
           "arch": "universal",
           "minSystemVersion": "14.0"
         },
         {
-          "name": "V_IME-1.3.8-2026072601-macos.zip",
-          "url": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.3.8/V_IME-1.3.8-2026072601-macos.zip",
-          "sha256": "5da5f48efd1fb0f219206e46e3a5c6ccfa2c713883c03b22ff6733dc58bc3b43",
-          "sizeBytes": 6590908,
+          "name": "V_IME-1.3.9-2026072701-macos.zip",
+          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.3.9/2026072701/V_IME-1.3.9-2026072701-macos.zip",
+          "sha256": "c58dc309772089ddbe1191bce01a8330555bc17dc5e18c282dd76742919efb66",
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.3.9/V_IME-1.3.9-2026072701-macos.zip",
+          "sizeBytes": 6590938,
           "installerType": "zip",
           "arch": "universal",
           "minSystemVersion": "14.0"
         }
       ],
-      "versionCode": 2026072601,
+      "versionCode": 2026072701,
       "appcastUrl": "https://imkida.github.io/V_IME_releases/macos/beta/appcast.xml"
     }
   },
