@@ -133,6 +133,9 @@ async function normalizeConfig(args) {
     (assetUrlBase && tag && assetName
       ? `https://github.com/${repo}/releases/download/${encodeUrlSegment(tag)}/${encodeUrlSegment(assetName)}`
       : undefined);
+  if (assetUrlBase && !mirrorUrl) {
+    throw new Error('--asset-url-base requires --tag or an explicit --mirror-url');
+  }
 
   const summary = optionalString(args.summary) ?? readOptionalFile(args.summaryFile, '--summary-file');
   const title = optionalString(args.title);

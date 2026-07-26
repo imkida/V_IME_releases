@@ -43,6 +43,50 @@ test('OSS primary URL records a GitHub mirror without changing releaseUrl', () =
   });
 });
 
+test('OSS primary URL requires a GitHub mirror when tag is omitted', () => {
+  withFixture(({ artifact, manifest, summary }) => {
+    const result = run([
+      '--platform', 'macos',
+      '--channel', 'beta',
+      '--version-name', '1.4.0',
+      '--build-number', '2026072703',
+      '--title', 'VIME macOS beta',
+      '--summary-file', summary,
+      '--release-url', 'https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.4.0',
+      '--asset', artifact,
+      '--asset-url-base', 'https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.4.0/2026072703/',
+      '--manifest', manifest,
+      '--dry-run'
+    ]);
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /--asset-url-base requires --tag or an explicit --mirror-url/);
+  });
+});
+
+test('OSS primary URL accepts an explicit GitHub mirror when tag is omitted', () => {
+  withFixture(({ artifact, manifest, summary }) => {
+    const mirrorUrl =
+      'https://github.com/imkida/V_IME_releases/releases/download/' +
+      'macos-v1.4.0/V_IME-1.4.0-2026072703-macos.dmg';
+    const result = run([
+      '--platform', 'macos',
+      '--channel', 'beta',
+      '--version-name', '1.4.0',
+      '--build-number', '2026072703',
+      '--title', 'VIME macOS beta',
+      '--summary-file', summary,
+      '--release-url', 'https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.4.0',
+      '--asset', artifact,
+      '--asset-url-base', 'https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.4.0/2026072703/',
+      '--mirror-url', mirrorUrl,
+      '--manifest', manifest,
+      '--dry-run'
+    ]);
+    assert.equal(result.status, 0, result.stderr);
+    assert.equal(JSON.parse(result.stdout).channels.beta.assets[0].mirrorUrl, mirrorUrl);
+  });
+});
+
 for (const [label, base, expected] of [
   ['HTTP', 'http://example.com/macos/1.4.0/2026072703/', 'must use HTTPS'],
   ['query', 'https://example.com/macos/1.4.0/2026072703/?token=x', 'without credentials, query, or fragment'],
