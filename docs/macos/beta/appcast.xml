@@ -4,28 +4,36 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>VIME</title>
         <item>
-            <title>1.3.9</title>
-            <pubDate>Mon, 27 Jul 2026 01:35:42 +0800</pubDate>
+            <title>1.4.0</title>
+            <pubDate>Tue, 28 Jul 2026 20:42:47 +0800</pubDate>
             <link>https://imkida.github.io/V_IME_releases/macos/</link>
-            <sparkle:version>2026072701</sparkle:version>
-            <sparkle:shortVersionString>1.3.9</sparkle:shortVersionString>
+            <sparkle:version>2026072801</sparkle:version>
+            <sparkle:shortVersionString>1.4.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# VIME macOS 1.3.9 beta
+            <description sparkle:format="markdown"><![CDATA[# VIME macOS 1.4.0 beta
 
-版本：`1.3.9 (2026072701)`
+版本：`1.4.0 (2026072801)`
 
 ## 本次改进
 
-- 优化应用内更新的下载通道。检查到新版本后，VIME 会优先从中国大陆访问更顺畅的下载源获取更新包。
-- 保留 GitHub 备用下载入口；主下载源暂时不可用时，仍可从公开下载页选择备用地址。
-- 继续支持在 VIME 内确认更新、自动安装并重新启动，无需手动拖动应用覆盖安装。
-- 延续 1.3.8 对智能整理、智能学习与词库设置、扩展 HUD 的改善。
+- 默认云语音识别升级为 `fun-asr-flash-2026-06-15`，提升中英文混合、数字金额和专名等场景的识别效果。
+- 已配置 Qwen API Key 的用户，可在设置中将 Qwen 明确设为主 ASR；新的默认 Qwen ASR 模型同样使用 `fun-asr-flash-2026-06-15`。
+- 保存 Qwen API Key 不会自动改变当前主 ASR，只有用户主动选择“设为主 ASR”后才会切换。
+- 自定义 ASR 新增 `DashScope Fun-ASR` transport，同时继续支持 `OpenAI multipart`；可配置 base URL、model、API key、language 和 timeout。
+- 改进无语音输入的错误识别，仅将服务端明确返回的无语音条件归一化，其他请求或解析错误继续正常失败。
+
+## 兼容性
+
+- 默认云服务继续兼容 `1.3.9` 等旧版客户端使用的 `qwen3-asr-flash` 请求，新旧客户端可以同时使用。
+- ASR 与 `qwen-plus` 继续共用同一份 Qwen API Key，不新增 Keychain 槽位。
+- 本版本继续使用 `com.vime.app.macos`、既有数据目录与 Keychain 标识；升级不会迁移或重置用户配置。
+- Apple Speech fallback 保持可用，LLM 改写仍使用 `qwen-plus`，本次不改变改写策略。
 
 ## 使用边界
 
 - 流式输入仍是实验选项。当前实时性、连续逐字显示和自动排版尚未达到经典输入的稳定程度，建议日常使用继续选择经典输入。
 - 敏感输入框、目标焦点不明确或无法安全验证写入结果时，VIME 仍会保持拦截或提供复制结果，不会放宽隐私与写入保护。
-- 本版本继续使用 `com.vime.app.macos`、既有数据目录与 Keychain 标识；升级不会迁移或重置用户配置。
+- 自定义 ASR 本阶段不支持任意 headers、JSON 模板或 JSONPath，以避免密钥泄露和不可验证协议。
 
 ## 安装与回滚
 
@@ -33,10 +41,10 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
 - 已安装支持自动更新的版本可在设置中点击“检查更新”，确认后由 VIME 自动下载安装并重新启动。
 - 如需回滚，请退出 VIME 后用先前版本的 `VIME.app` 覆盖安装；用户设置、历史和 Keychain 不应被删除。
 ]]></description>
-            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.3.9/2026072701/V_IME-1.3.9-2026072701-macos.zip" length="6590938" type="application/octet-stream" sparkle:edSignature="0cWxYYcfUWpMGzjsh2oGpoDIMCVEoavIcRVd4koiZ29/Fte/+Ja+A6rAeoFzKyjUHMRWz31nkWuPshRfSQPkCQ=="></enclosure>
+            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.4.0/2026072801/V_IME-1.4.0-2026072801-macos.zip" length="6949386" type="application/octet-stream" sparkle:edSignature="07f7m36Qa+80XEFajqxGDioyI3isHcVQ+04srEfgXno9UA9iU/QNsauo43ClOGsf2/2T2OGGF5vjQyt1G5kEAw=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: fhtqXnReRxXT1ANv9Eke/h7rjq5Hr61ewauyhlr93Kl28+GT1q5PUrUr2jUNoMlznV2Uk410nTe0YZe9t6ixBA==
-length: 2653
+edSignature: 2E5NWWGupcJqBNXrXvOVPU+dS0z+QFpsJAVdBZsL6o1Gs6c4BTTNYg6Crow4rkADs3sb+Cjf1Wxfb3d5QuIcDw==
+length: 3371
 -->
