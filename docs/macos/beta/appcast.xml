@@ -4,39 +4,40 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>VIME</title>
         <item>
-            <title>1.4.1</title>
-            <pubDate>Thu, 30 Jul 2026 02:38:45 +0800</pubDate>
+            <title>1.4.2</title>
+            <pubDate>Thu, 30 Jul 2026 22:40:02 +0800</pubDate>
             <link>https://imkida.github.io/V_IME_releases/macos/</link>
-            <sparkle:version>2026073001</sparkle:version>
-            <sparkle:shortVersionString>1.4.1</sparkle:shortVersionString>
+            <sparkle:version>2026073002</sparkle:version>
+            <sparkle:shortVersionString>1.4.2</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# VIME macOS 1.4.1 beta
+            <description sparkle:format="markdown"><![CDATA[# VIME macOS 1.4.2 beta
 
-版本：`1.4.1 (2026073001)`
+版本：`1.4.2 (2026073002)`
 
 ## 本次改进
 
-- 修复“几十个”“几十块钱”等表达偶尔被改成“几10个”“几10块钱”的问题，保留自然的中文数量表达。
-- 改进编辑模式对选中文字的识别，尤其是在微信等应用中，减少明明已选中却提示“未选中文本”的情况。
-- 选中英文后说“翻译成中文”时，现在会更可靠地只处理所选内容，并尽量保留原意、条件、否定关系和段落结构。
-- 修复听写失败后点击“重录”可能重复启动听写的问题；重录过程中 HUD 位置保持稳定，不再挤动主状态胶囊。
+- 智能整理现在能更积极地识别“第一、第二、第三”“首先、其次、最后”等顺序表达，并生成清晰的有序列表。
+- 多项并列内容更容易整理为无序列表；背景、问题、方案和结论发生转换时，短内容也会按语义自然分段，不再只依赖文本长度。
+- 改进连续口述中的停顿和断句处理，减少停顿被误解为语义结束后造成的标点混乱或句意割裂。
+- 加强中文输入保护：当语音识别或整理结果异常变成无关英文时，会优先保留原始中文内容，避免错误结果写入输入框。
+- 继续保护否定关系、语气、数字、专有名词和技术标识，列表与分段不会通过额外的二次请求生成。
 
-## 兼容性
+## 适用范围
 
-- 本版本继续使用 `com.vime.app.macos`、既有数据目录与 Keychain 标识，升级不会迁移或重置用户配置。
-- 默认云语音识别、个人 API Key 和自定义 ASR 配置保持兼容。
-- 流式输入仍是实验选项，经典输入仍是建议的日常使用方式。
+- 新的语义布局能力目前用于默认 Qwen `qwen-plus` 的“智能整理”路径。
+- DeepSeek、SiliconFlow 和自定义模型暂时保持原有整理行为，等待各自完成兼容性验证。
+- 流式输入仍为实验选项；经典输入仍是建议的日常使用方式。
 
-## 安装与回滚
+## 安装与更新
 
 - 已安装支持自动更新的版本可在设置中点击“检查更新”，确认后由 VIME 自动下载安装并重新启动。
 - 新安装可从公开下载页获取经过 Apple 公证的 DMG，将 `VIME.app` 拖入“应用程序”。
-- 如需回滚，请退出 VIME 后用先前版本的 `VIME.app` 覆盖安装；用户设置、历史和 Keychain 不应被删除。
+- 本次升级不会修改 Bundle ID、数据目录、Keychain 标识或现有用户配置。
 ]]></description>
-            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.4.1/2026073001/V_IME-1.4.1-2026073001-macos.zip" length="7245304" type="application/octet-stream" sparkle:edSignature="bmwT4Qwno4nN/g9KUX5U5cTbtb5SeAPANG+zUg040ORabegSQ8SHdTcRsghprUCEI0pvgY97mJMEZMNoQLLWDw=="></enclosure>
+            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.4.2/2026073002/V_IME-1.4.2-2026073002-macos.zip" length="7331201" type="application/octet-stream" sparkle:edSignature="RwxuyCdcSq1A0gxCWBp8x9ERSdTcx64KXqizjghyDaFuqiP+gOfuUuDLULZJJrMV+/YnwOoT8xLbDOvWyHvoAA=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: mSYf3e9a0KPTzQ08OI7rgSH6ZajfaftHsi0k029txwj3lpEaouPf/62dMMeZYwAdDu7yp9Yn46sQTw1WqjlfBg==
-length: 2616
+edSignature: Bas4JYT6+uBYeGLlATrVxGnWcPG31pqvwDPJkup76VDkljPnK76pUTK6s2ch0ugfq3tMQQpxILEugWvp95GVCA==
+length: 2735
 -->
