@@ -1,39 +1,39 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-07-31T03:27:22Z",
+  "generatedAt": "2026-07-31T17:51:22Z",
   "platform": "macos",
   "channels": {
     "beta": {
       "versionName": "1.4.2",
-      "title": "VIME macOS v1.4.2 beta · build 2026073101 · macOS 14+ · 已通过 macOS 安全检查",
-      "summary": "智能整理的标点更自然，减少句号滥用；短而相关的内容采用紧凑换行，只有较长且相对独立的内容才留出段落间隔，同时提升顺序和并列结构的呈现稳定性。",
+      "title": "VIME macOS v1.4.2 beta · build 2026073106 · macOS 14+ · 已通过 macOS 安全检查",
+      "summary": "输入整理和列表识别更稳定，减少不必要的句号、换行和空行；加强输出保护，并修复部分网页输入框连续听写时的光标位置。",
       "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.4.2",
       "mandatory": false,
-      "buildNumber": 2026073101,
+      "buildNumber": 2026073106,
       "minSystemVersion": "14.0",
       "assets": [
         {
-          "name": "V_IME-1.4.2-2026073101-macos.dmg",
-          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.4.2/2026073101/V_IME-1.4.2-2026073101-macos.dmg",
-          "sha256": "5febb65cbe5b700fcf1804d760923c9454c17722f156101c93738813259abf2b",
-          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.4.2/V_IME-1.4.2-2026073101-macos.dmg",
-          "sizeBytes": 8190906,
+          "name": "V_IME-1.4.2-2026073106-macos.dmg",
+          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.4.2/2026073106/V_IME-1.4.2-2026073106-macos.dmg",
+          "sha256": "1e29b05fd65e1a7a171b766b60b435360ec7f565853bee539566e588534b4289",
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.4.2/V_IME-1.4.2-2026073106-macos.dmg",
+          "sizeBytes": 8255221,
           "installerType": "dmg",
           "arch": "universal",
           "minSystemVersion": "14.0"
         },
         {
-          "name": "V_IME-1.4.2-2026073101-macos.zip",
-          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.4.2/2026073101/V_IME-1.4.2-2026073101-macos.zip",
-          "sha256": "0db2559118a7282a57f3b631713ecd43f821bda1bb1adf1f0f7b9d5c6ec53288",
-          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.4.2/V_IME-1.4.2-2026073101-macos.zip",
-          "sizeBytes": 7345645,
+          "name": "V_IME-1.4.2-2026073106-macos.zip",
+          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.4.2/2026073106/V_IME-1.4.2-2026073106-macos.zip",
+          "sha256": "3588e2a54aed5a4406bf64e65a981e5cf2b82b394a222a152b56dff8ab9ef1c1",
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.4.2/V_IME-1.4.2-2026073106-macos.zip",
+          "sizeBytes": 7402945,
           "installerType": "zip",
           "arch": "universal",
           "minSystemVersion": "14.0"
         }
       ],
-      "versionCode": 2026073101,
+      "versionCode": 2026073106,
       "appcastUrl": "https://imkida.github.io/V_IME_releases/macos/beta/appcast.xml"
     }
   },
