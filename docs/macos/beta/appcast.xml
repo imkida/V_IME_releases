@@ -5,32 +5,23 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
         <title>VIME</title>
         <item>
             <title>1.4.2</title>
-            <pubDate>Fri, 31 Jul 2026 11:17:13 +0800</pubDate>
+            <pubDate>Sat, 01 Aug 2026 01:00:56 +0800</pubDate>
             <link>https://imkida.github.io/V_IME_releases/macos/</link>
-            <sparkle:version>2026073101</sparkle:version>
+            <sparkle:version>2026073106</sparkle:version>
             <sparkle:shortVersionString>1.4.2</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# VIME macOS 1.4.2 HotFix
+            <description sparkle:format="markdown"><![CDATA[# VIME 1.4.2 HotFix
 
-版本：`1.4.2 (2026073101)`
+- 输入整理更稳定，减少不必要的句号、换行和空行。
+- 明确或自然表达的顺序内容更容易呈现为合适的列表，同时不会强制把所有内容列表化。
+- 加强输出保护，避免整理指令、控制标签、重复项或无来源内容混入正文。
+- 修复部分网页输入框写入后的光标位置，连续听写时更可靠。
 
-## 本次改进
-
-- 智能整理会根据上下文选择逗号、分号、冒号或句号，减少连续口述中句号过多、句意被切碎的问题。
-- 短而紧密相关的内容使用紧凑换行，不再机械地在每个段落之间插入空行。
-- 只有较长、相对独立的内容需要明显节奏时，才会留出段落间隔。
-- 明确的顺序和并列内容更容易整理成清晰列表，同时继续保护原意、语气、否定关系、数字、专有名词和技术标识。
-
-## 安装与更新
-
-- 已安装支持自动更新的版本可在设置中点击“检查更新”，确认后由 VIME 自动下载安装并重新启动。
-- 新安装可从公开下载页获取经过 Apple 公证的 DMG，将 `VIME.app` 拖入“应用程序”。
-- 本次升级不会修改 Bundle ID、数据目录、Keychain 标识或现有用户配置。
 ]]></description>
-            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.4.2/2026073101/V_IME-1.4.2-2026073101-macos.zip" length="7345645" type="application/octet-stream" sparkle:edSignature="64jsEqszIp8iF/rTqWPQNrpALeBEPZcV63PDDhizCZBUwbPorn+KE4rzrd6xkwyHKe67KSYgrRdFghjhYFrQDQ=="></enclosure>
+            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.4.2/2026073106/V_IME-1.4.2-2026073106-macos.zip" length="7402945" type="application/octet-stream" sparkle:edSignature="P3h24haZbx/9LgU/2pDBMmQOseM2KsYwsPkXVVfllAa9vwvA6q3vSW9WJ53MtmsYpSFKkP4UEcIoCUM3M1u7CA=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: jfZIef4/QnpSzhhWMQQOEWsAkJXSQqKemlv1PUr52/35AOzXDvdls7X4NhqsT3KIOOpVtgPJxh+aT+ezoVXWDw==
-length: 2162
+edSignature: 8MX1glkFEqjEvWc118LX9AWcRJ5uvU0moQq4R+MFjgTPvuo7wU7zGK/on3l0JrGMbI7R6NRf/nEZRe1bAq0ECA==
+length: 1641
 -->
