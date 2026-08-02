@@ -4,24 +4,25 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>VIME</title>
         <item>
-            <title>1.4.2</title>
-            <pubDate>Sat, 01 Aug 2026 01:00:56 +0800</pubDate>
+            <title>1.4.3</title>
+            <pubDate>Sun, 02 Aug 2026 17:06:39 +0800</pubDate>
             <link>https://imkida.github.io/V_IME_releases/macos/</link>
-            <sparkle:version>2026073106</sparkle:version>
-            <sparkle:shortVersionString>1.4.2</sparkle:shortVersionString>
+            <sparkle:version>2026080201</sparkle:version>
+            <sparkle:shortVersionString>1.4.3</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# VIME 1.4.2 HotFix
+            <description sparkle:format="markdown"><![CDATA[# VIME 1.4.3 公测版
 
-- 输入整理更稳定，减少不必要的句号、换行和空行。
-- 明确或自然表达的顺序内容更容易呈现为合适的列表，同时不会强制把所有内容列表化。
-- 加强输出保护，避免整理指令、控制标签、重复项或无来源内容混入正文。
-- 修复部分网页输入框写入后的光标位置，连续听写时更可靠。
+- 提升中文听写整理的稳定性，减少短中文内容被误转成无关英文的情况。
+- 修复部分网页和终端类输入框中，文字已经写入却仍提示“未写入”的问题。
+- 加强写回状态判断：当文字已发送但应用无法确认显示结果时，不再误报失败，也不会重复写入。
+- 保持现有智能整理、自动更新和用户设置兼容；流式输入继续作为实验选项。
 
+如升级后遇到影响使用的问题，请退出 VIME，从 GitHub 备用下载获取上一公测版并覆盖安装。回滚不需要清除设置、历史或 Keychain。
 ]]></description>
-            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.4.2/2026073106/V_IME-1.4.2-2026073106-macos.zip" length="7402945" type="application/octet-stream" sparkle:edSignature="P3h24haZbx/9LgU/2pDBMmQOseM2KsYwsPkXVVfllAa9vwvA6q3vSW9WJ53MtmsYpSFKkP4UEcIoCUM3M1u7CA=="></enclosure>
+            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.4.3/2026080201/V_IME-1.4.3-2026080201-macos.zip" length="7499014" type="application/octet-stream" sparkle:edSignature="6ZCETohzbz+JUReG50AKeKI10Z728NUOcgVAFSpk2IegOR+O7mmSSEOZYBV4lT6crbYq9fx2jEH/pbUNYhSRAg=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: 8MX1glkFEqjEvWc118LX9AWcRJ5uvU0moQq4R+MFjgTPvuo7wU7zGK/on3l0JrGMbI7R6NRf/nEZRe1bAq0ECA==
-length: 1641
+edSignature: snWXkuR3mk9E2DeOumdSm2iS5T74Ks7Is5qjTOimDvtXj02jaVzUwLNmJaf202hx/IvzqclYOeNmG2OTQwnkAw==
+length: 1880
 -->
