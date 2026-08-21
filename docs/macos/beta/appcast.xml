@@ -5,25 +5,24 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
         <title>VIME</title>
         <item>
             <title>1.4.6</title>
-            <pubDate>Fri, 21 Aug 2026 20:30:38 +0800</pubDate>
+            <pubDate>Fri, 21 Aug 2026 21:15:37 +0800</pubDate>
             <link>https://imkida.github.io/V_IME_releases/macos/</link>
-            <sparkle:version>2026082113</sparkle:version>
+            <sparkle:version>2026082115</sparkle:version>
             <sparkle:shortVersionString>1.4.6</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
             <description sparkle:format="markdown"><![CDATA[
-# VIME 1.4.6 公测版
+# VIME 1.4.6 公测版（修复更新）
 
-- 右 Command 单击现在在任何情况下都能结束当前听写——包括用自定义键盘快捷键开始的听写和编辑。
-- 用自定义键盘快捷键停止录音后，微信等应用里的「编辑文本」能正常完成替换，不再提示「选中的文本已变化」。
-- 「编辑文本兼容捕获」现在自动适用于所有不支持选中读取的应用，无需逐个适配。
-- 内部读取与诊断链路统一，日常听写与写入行为与上一版一致。
+- 修复「检查更新」按钮可能一直不可用的问题：某次听写出错后如果没有关闭错误提示，按钮会一直置灰，需要再次听写才恢复。现在错误提示不再影响检查更新。
+
+如果你当前版本的「检查更新」按钮正处于不可用状态，重启一次 VIME 即可点击更新到本修复版。
 
 如升级后遇到影响使用的问题，请退出 VIME，从 GitHub 备用下载获取上一公测版并覆盖安装。回滚不需要清除设置、历史或 Keychain。
 ]]></description>
-            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.4.6/2026082113/V_IME-1.4.6-2026082113-macos.zip" length="8240287" type="application/octet-stream" sparkle:edSignature="H1w//Jax8bcFH9YhM65uY9g2AINV/KB9DfTc0LoXA3ebwb3w3OOkdm3vUASH3UpOov3qEE7D48BR3QFMkf2LBA=="></enclosure>
+            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.4.6/2026082115/V_IME-1.4.6-2026082115-macos.zip" length="8240496" type="application/octet-stream" sparkle:edSignature="94DxFVQ/9908g/YwRJvjtk5KNeQsjL+/lwqaAVJHhIc9RIPCc7t7U9B40fWhilVOmKyVqkmmp5UYno8bpC/4CA=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: 4q+kvORUbDU4mzGbxXIvYtMqlxyS3evnZZvVNTpHN7zQKzz07uuiaDqPsKKK99l14yzhtjIA+oxgoqLM3rjnDg==
-length: 1932
+edSignature: eG1ykjpB23jQlltSeFEc7Ndsx1s8bTWsknqVU9wblR4d0BPUpYiidWiRet88Jdn5uQ/RNU5m/bLtvjdZjAVbCA==
+length: 1808
 -->
