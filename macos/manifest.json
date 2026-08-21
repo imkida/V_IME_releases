@@ -6,7 +6,7 @@
     "beta": {
       "versionName": "1.4.5",
       "title": "VIME macOS v1.4.5 beta · build 2026082109 · macOS 14+ · 已通过 macOS 安全检查",
-      "summary": "微信「编辑文本」现已可用：选中文字后语音改写可直接替换。新增编辑文本兼容捕获（设置可关）；修复说话停顿导致的断句错误；改善写回确认与未确认提示；短口述整理响应更快。",
+      "summary": "微信里的「编辑文本」现在可以正常使用：选中文字后说出修改要求即可直接替换。新增编辑文本兼容捕获（设置里可关闭）；修复说话停顿导致的断句错误；写入提示更可靠；短口述整理更快。",
       "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.4.5",
       "mandatory": false,
       "buildNumber": 2026082109,
