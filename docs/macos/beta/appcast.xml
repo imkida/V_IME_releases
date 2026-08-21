@@ -4,25 +4,55 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>VIME</title>
         <item>
-            <title>1.4.3</title>
-            <pubDate>Sun, 02 Aug 2026 17:06:39 +0800</pubDate>
+            <title>1.4.5</title>
+            <pubDate>Fri, 21 Aug 2026 18:36:25 +0800</pubDate>
             <link>https://imkida.github.io/V_IME_releases/macos/</link>
-            <sparkle:version>2026080201</sparkle:version>
-            <sparkle:shortVersionString>1.4.3</sparkle:shortVersionString>
+            <sparkle:version>2026082109</sparkle:version>
+            <sparkle:shortVersionString>1.4.5</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# VIME 1.4.3 公测版
+            <description sparkle:format="markdown"><![CDATA[---
+title: VIME macOS 1.4.5 beta
+author: claude
+date: 2026-08-21
+status: release-candidate
+created_at: 2026-08-21T18:05
+updated_at: 2026-08-21T19:40
+---
 
-- 提升中文听写整理的稳定性，减少短中文内容被误转成无关英文的情况。
-- 修复部分网页和终端类输入框中，文字已经写入却仍提示“未写入”的问题。
-- 加强写回状态判断：当文字已发送但应用无法确认显示结果时，不再误报失败，也不会重复写入。
-- 保持现有智能整理、自动更新和用户设置兼容；流式输入继续作为实验选项。
+# VIME macOS 1.4.5 beta
 
-如升级后遇到影响使用的问题，请退出 VIME，从 GitHub 备用下载获取上一公测版并覆盖安装。回滚不需要清除设置、历史或 Keychain。
+版本：`1.4.5`
+
+## 本次改进
+
+- 微信里的「编辑文本」现在可以正常使用：选中文字后按住快捷键说出修改要求，VIME 会直接替换选中内容。此前微信始终提示无法读取选中文字（E401）。
+- 新的「编辑文本兼容捕获」能力：对不支持辅助功能读取的应用（如微信），VIME 会改用一次「拷贝」读取选中文字，随后自动恢复剪贴板原有内容。默认开启，可在设置 → 输出设置中关闭；使用剪贴板管理器的用户如不希望选中文字被其记录，可选择关闭。
+- 没有选中文字时触发编辑文本，现在会明确提示「请先选中文字」，不再报错。
+- 加强写回可靠性：修复微信输入框可能出现的「显示成功但实际未写入」；文字已发送但暂时无法确认时，采用更中性的提示，不误报失败、不重复写入。
+- 听写整理改进：修复标准识别的语句边界，减少长句被错误断开；短口述使用更快的整理路径，响应更快。
+- 编辑指令为空或无效时给出明确提示，不再静默失败。
+
+## 安全边界
+
+- 密码输入框、安全输入模式、目标窗口切换和焦点漂移场景保持拒绝写入，内容不会被投递到错误位置。
+- 兼容捕获读取的选中文字只在本次改写过程中使用，不写入日志。
+
+## 更新方式
+
+- 已安装支持自动更新的版本，可在设置中点击「检查更新」，确认后由 VIME 自动下载安装并重新启动。
+- 也可从下载页获取新版 DMG 覆盖安装：<https://imkida.github.io/V_IME_releases/macos/>
+
+## 发布信息
+
+- 构建号：`2026082109`（2026082108 因 review 修复作废，未外发）
+- 通道：公开测试（beta）
+- 签名：Developer ID Application (PGXQ8WQ6VT) + Hardened Runtime
+- Notarization：DMG submission `3f329c45-a8a2-4a32-8575-b2cfd39415bd`（Accepted，已 staple）；ZIP submission `573b8d25-3dc8-4918-9193-4bcecc0f0c1c`（Accepted）；双产物均通过 `verify-macos-release-artifact.sh --require-notarized`
 ]]></description>
-            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.4.3/2026080201/V_IME-1.4.3-2026080201-macos.zip" length="7499014" type="application/octet-stream" sparkle:edSignature="6ZCETohzbz+JUReG50AKeKI10Z728NUOcgVAFSpk2IegOR+O7mmSSEOZYBV4lT6crbYq9fx2jEH/pbUNYhSRAg=="></enclosure>
+            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.4.5/2026082109/V_IME-1.4.5-2026082109-macos.zip" length="8225159" type="application/octet-stream" sparkle:edSignature="GhcWEd7Ta81Z0LZtUDgRpdRQAzMsJXb2heAaIidmiQ8NSmNys2LGtijl3XpYA5dyzWSylP9v6VtCmadd6UvnDw=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: snWXkuR3mk9E2DeOumdSm2iS5T74Ks7Is5qjTOimDvtXj02jaVzUwLNmJaf202hx/IvzqclYOeNmG2OTQwnkAw==
-length: 1880
+edSignature: 1FXMrDL70IVE/5Fxpt6RUfrotRBOOMENI2PEaxi1CogBzE3AApGFI4lSoZH9MUV3lAqyNrGw3hGKO35DNt8SCg==
+length: 3491
 -->
