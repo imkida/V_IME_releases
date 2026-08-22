@@ -4,29 +4,27 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>VIME</title>
         <item>
-            <title>1.4.7</title>
-            <pubDate>Sat, 22 Aug 2026 11:55:06 +0800</pubDate>
+            <title>1.4.8</title>
+            <pubDate>Sat, 22 Aug 2026 14:55:32 +0800</pubDate>
             <link>https://imkida.github.io/V_IME_releases/macos/</link>
-            <sparkle:version>2026082202</sparkle:version>
-            <sparkle:shortVersionString>1.4.7</sparkle:shortVersionString>
+            <sparkle:version>2026082206</sparkle:version>
+            <sparkle:shortVersionString>1.4.8</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# VIME 1.4.7 公测版
+            <description sparkle:format="markdown"><![CDATA[# VIME 1.4.8 公测版
 
-这一版集中改进「说得长」的体验：
-
-- 长口述的智能整理明显更有效：此前说得越长，整理结果越容易几乎原样返回，这一版大幅减少了这种情况。
-- 中等长度以上的口述，整理会更主动地理顺语序、自然分段；像「第一部分……第二部分……」这样结构清晰的口述会自动分成段落。
-- 长听写的等待更短：30 秒以上的录音恢复了边录边上传，松开快捷键后的识别等待明显缩短。
-- 整理请求做了全面精简，整理响应略快一些。
-
-短口述的行为保持不变。
+- 说错了可以随口纠正：口述中说"不是，是星期四""说错了，是 3 个"这类更正时，智能整理会自动采纳更正后的说法，不再把说错的旧内容一起写出来。
+- 修复口述有序列表写入后光标位置不对的问题：光标不再跳到列表中间。
+- 长听写更流畅：录音过程中的实时字幕提示不再造成卡顿。
+- 修复部分应用（如 Claude、飞书等基于网页技术的应用）里实时预览会中途消失、感觉退回普通模式的问题。
+- 修复微信刚启动后第一次使用「编辑文本」可能失败的问题。
+- 设置页更清爽：常用设置只保留稳定选项，实验功能与旧版回退开关移入 设置 → 服务 → 高级。
 
 如升级后遇到影响使用的问题，请退出 VIME，从 GitHub 备用下载获取上一公测版并覆盖安装。回滚不需要清除设置、历史或 Keychain。
 ]]></description>
-            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.4.7/2026082202/V_IME-1.4.7-2026082202-macos.zip" length="8463290" type="application/octet-stream" sparkle:edSignature="n2appYQ6sG03axHSC+v5QhOOPmW0x5n/bgBGCEVIv4QcXPOzduieEGidoPMzbnemibWfUhTeTpPHn+A4EIW3CQ=="></enclosure>
+            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.4.8/2026082206/V_IME-1.4.8-2026082206-macos.zip" length="8653939" type="application/octet-stream" sparkle:edSignature="xULwZ5sILlNM9WxnrF7HmH81sgYsv7yrtJJ09JpIlD7FLBW5C3IIyTYUWn9UckpiJL1zTPe2Qj1+F0sp/NDHDw=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: 71Nq0S6GiqkK9FIjECZ5BWRw9ToIPNf3iGKtCrVVithrbWI57J9oEyBeePCe+zFMtneGLcrFrkG+LPBH4DGIAg==
-length: 2040
+edSignature: 2v9DgNQuR/JCuRab96QDgrzwYnm0smjqcnjt45L863+rU8X9P4rrG4i5h+HiSFgL3/my7KSwVC0jLxlDtaw1AA==
+length: 2181
 -->

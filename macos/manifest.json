@@ -1,37 +1,37 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-08-22T03:59:51Z",
+  "generatedAt": "2026-08-22T06:57:10Z",
   "platform": "macos",
   "channels": {
     "beta": {
-      "versionName": "1.4.7",
-      "title": "VIME macOS v1.4.7 beta · build 2026082202 · macOS 14+ · 已通过 macOS 安全检查",
-      "summary": "长口述的智能整理明显更有效，不再经常几乎原样返回；中长口述更主动理顺语序、自然分段。30 秒以上录音恢复边录边传，松开快捷键后的等待明显缩短。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.4.7",
+      "versionName": "1.4.8",
+      "title": "VIME macOS v1.4.8 beta · build 2026082206 · macOS 14+ · 已通过 macOS 安全检查",
+      "summary": "说错了可以随口纠正，智能整理会自动采纳更正后的说法；修复有序列表写入后光标位置不对、部分应用实时预览中途消失、微信刚启动后编辑文本可能失败的问题；长听写更流畅；设置页更清爽。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.4.8",
       "mandatory": false,
-      "buildNumber": 2026082202,
+      "buildNumber": 2026082206,
       "minSystemVersion": "14.0",
       "assets": [
         {
-          "name": "V_IME-1.4.7-2026082202-macos.dmg",
-          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.4.7/2026082202/V_IME-1.4.7-2026082202-macos.dmg",
-          "sha256": "72c31908b818d4f079f2c2b2c17aa0f45d2d72c0dba85f97f39a3b201c78f05a",
-          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.4.7/V_IME-1.4.7-2026082202-macos.dmg",
-          "sizeBytes": 9427116,
+          "name": "V_IME-1.4.8-2026082206-macos.dmg",
+          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.4.8/2026082206/V_IME-1.4.8-2026082206-macos.dmg",
+          "sha256": "2f587584ec2a6608cefa34438abbc145eef39388a48ffbd26307c33aea570200",
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.4.8/V_IME-1.4.8-2026082206-macos.dmg",
+          "sizeBytes": 9644348,
           "installerType": "dmg",
           "minSystemVersion": "14.0"
         },
         {
-          "name": "V_IME-1.4.7-2026082202-macos.zip",
-          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.4.7/2026082202/V_IME-1.4.7-2026082202-macos.zip",
-          "sha256": "f569d2037896aed4e2277543e8ed54a47642c1ed057019becbe3d57b2e5f6524",
-          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.4.7/V_IME-1.4.7-2026082202-macos.zip",
-          "sizeBytes": 8463290,
+          "name": "V_IME-1.4.8-2026082206-macos.zip",
+          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.4.8/2026082206/V_IME-1.4.8-2026082206-macos.zip",
+          "sha256": "072e9687f8d3e7910e64a489461997edc9ddaeec37f299d1898eb57411331353",
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.4.8/V_IME-1.4.8-2026082206-macos.zip",
+          "sizeBytes": 8653939,
           "installerType": "zip",
           "minSystemVersion": "14.0"
         }
       ],
-      "versionCode": 2026082202,
+      "versionCode": 2026082206,
       "appcastUrl": "https://imkida.github.io/V_IME_releases/macos/beta/appcast.xml"
     }
   },
