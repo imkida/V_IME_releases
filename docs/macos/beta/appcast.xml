@@ -4,25 +4,29 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>VIME</title>
         <item>
-            <title>1.4.6</title>
-            <pubDate>Fri, 21 Aug 2026 21:15:37 +0800</pubDate>
+            <title>1.4.7</title>
+            <pubDate>Sat, 22 Aug 2026 11:55:06 +0800</pubDate>
             <link>https://imkida.github.io/V_IME_releases/macos/</link>
-            <sparkle:version>2026082115</sparkle:version>
-            <sparkle:shortVersionString>1.4.6</sparkle:shortVersionString>
+            <sparkle:version>2026082202</sparkle:version>
+            <sparkle:shortVersionString>1.4.7</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[
-# VIME 1.4.6 公测版（修复更新）
+            <description sparkle:format="markdown"><![CDATA[# VIME 1.4.7 公测版
 
-- 修复「检查更新」按钮可能一直不可用的问题：某次听写出错后如果没有关闭错误提示，按钮会一直置灰，需要再次听写才恢复。现在错误提示不再影响检查更新。
+这一版集中改进「说得长」的体验：
 
-如果你当前版本的「检查更新」按钮正处于不可用状态，重启一次 VIME 即可点击更新到本修复版。
+- 长口述的智能整理明显更有效：此前说得越长，整理结果越容易几乎原样返回，这一版大幅减少了这种情况。
+- 中等长度以上的口述，整理会更主动地理顺语序、自然分段；像「第一部分……第二部分……」这样结构清晰的口述会自动分成段落。
+- 长听写的等待更短：30 秒以上的录音恢复了边录边上传，松开快捷键后的识别等待明显缩短。
+- 整理请求做了全面精简，整理响应略快一些。
+
+短口述的行为保持不变。
 
 如升级后遇到影响使用的问题，请退出 VIME，从 GitHub 备用下载获取上一公测版并覆盖安装。回滚不需要清除设置、历史或 Keychain。
 ]]></description>
-            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.4.6/2026082115/V_IME-1.4.6-2026082115-macos.zip" length="8240496" type="application/octet-stream" sparkle:edSignature="94DxFVQ/9908g/YwRJvjtk5KNeQsjL+/lwqaAVJHhIc9RIPCc7t7U9B40fWhilVOmKyVqkmmp5UYno8bpC/4CA=="></enclosure>
+            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.4.7/2026082202/V_IME-1.4.7-2026082202-macos.zip" length="8463290" type="application/octet-stream" sparkle:edSignature="n2appYQ6sG03axHSC+v5QhOOPmW0x5n/bgBGCEVIv4QcXPOzduieEGidoPMzbnemibWfUhTeTpPHn+A4EIW3CQ=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: eG1ykjpB23jQlltSeFEc7Ndsx1s8bTWsknqVU9wblR4d0BPUpYiidWiRet88Jdn5uQ/RNU5m/bLtvjdZjAVbCA==
-length: 1808
+edSignature: 71Nq0S6GiqkK9FIjECZ5BWRw9ToIPNf3iGKtCrVVithrbWI57J9oEyBeePCe+zFMtneGLcrFrkG+LPBH4DGIAg==
+length: 2040
 -->
