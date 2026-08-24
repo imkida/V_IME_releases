@@ -4,27 +4,29 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>VIME</title>
         <item>
-            <title>1.4.8</title>
-            <pubDate>Sat, 22 Aug 2026 14:55:32 +0800</pubDate>
+            <title>1.5.0</title>
+            <pubDate>Tue, 25 Aug 2026 01:24:18 +0800</pubDate>
             <link>https://imkida.github.io/V_IME_releases/macos/</link>
-            <sparkle:version>2026082206</sparkle:version>
-            <sparkle:shortVersionString>1.4.8</sparkle:shortVersionString>
+            <sparkle:version>2026082501</sparkle:version>
+            <sparkle:shortVersionString>1.5.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# VIME 1.4.8 公测版
+            <description sparkle:format="markdown"><![CDATA[# VIME 1.5.0 公测版
 
-- 说错了可以随口纠正：口述中说"不是，是星期四""说错了，是 3 个"这类更正时，智能整理会自动采纳更正后的说法，不再把说错的旧内容一起写出来。
-- 修复口述有序列表写入后光标位置不对的问题：光标不再跳到列表中间。
-- 长听写更流畅：录音过程中的实时字幕提示不再造成卡顿。
-- 修复部分应用（如 Claude、飞书等基于网页技术的应用）里实时预览会中途消失、感觉退回普通模式的问题。
-- 修复微信刚启动后第一次使用「编辑文本」可能失败的问题。
-- 设置页更清爽：常用设置只保留稳定选项，实验功能与旧版回退开关移入 设置 → 服务 → 高级。
+这一版把设置页做了一次精简，让常用的几项更好找。
+
+- 「转写与词库」现在只保留「输出风格」一项设置。原来的「富文本输出」已移除——它在日常使用中不改变输出结果，留着反而容易让人纠结选哪个。
+- 「编辑文本兼容捕获」移到了「系统与权限 → 兼容性」。它和辅助功能权限是同一类问题，放在一起更好找；开关本身和原来一样。
+- 「系统与权限」里去掉了重复的「登录项状态」一行，开关本身已经显示状态；需要你去系统设置里确认时仍会给出提示。
+- 「高级服务设置」里的实验选项（语音识别方式、输入策略、智能整理新版）不再对外显示。这些是内部试验用的开关，日常使用请保持默认。
+
+如果你之前手动打开过「实时识别」或「流式预览」，这一版会自动切回标准设置。标准设置的断句和整理效果更稳定。
 
 如升级后遇到影响使用的问题，请退出 VIME，从 GitHub 备用下载获取上一公测版并覆盖安装。回滚不需要清除设置、历史或 Keychain。
 ]]></description>
-            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.4.8/2026082206/V_IME-1.4.8-2026082206-macos.zip" length="8653939" type="application/octet-stream" sparkle:edSignature="xULwZ5sILlNM9WxnrF7HmH81sgYsv7yrtJJ09JpIlD7FLBW5C3IIyTYUWn9UckpiJL1zTPe2Qj1+F0sp/NDHDw=="></enclosure>
+            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.5.0/2026082501/V_IME-1.5.0-2026082501-macos.zip" length="8627753" type="application/octet-stream" sparkle:edSignature="eAvsZYIu3mwavrjaBzRhNKgfAJJMk6b0IsRWS8FtfiNw6FD8AE7lC25hUtcJt+N8jEw+pBKvgqADnoRzq47HAA=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: 2v9DgNQuR/JCuRab96QDgrzwYnm0smjqcnjt45L863+rU8X9P4rrG4i5h+HiSFgL3/my7KSwVC0jLxlDtaw1AA==
-length: 2181
+edSignature: pZSO4onlLEdxRChXVCXRL/Ory1gDPpi4WbPlLfTXckvZyOePYoq0S6S9X98ZnywC7w+HxhychxqZEEfVs8PtAw==
+length: 2414
 -->
