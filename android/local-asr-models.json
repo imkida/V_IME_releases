@@ -1,0 +1,30 @@
+{
+  "formatVersion": 1,
+  "generatedAt": "2026-08-29T22:53:12Z",
+  "runtimeVersion": "sherpa-onnx-1.13.0-arm64",
+  "models": [
+    {
+      "id": "sensevoice-small-int8",
+      "displayName": "SenseVoice small int8",
+      "version": "2026-08-30.1",
+      "status": "enabled",
+      "channel": "dogfood",
+      "downloadUrl": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/android/local-asr/sensevoice-small-int8-2026-08-30.1.zip",
+      "fallbackDownloadUrl": "https://github.com/imkida/V_IME_releases/releases/download/models-local-asr-v1/sensevoice-small-int8-2026-08-30.1.zip",
+      "archiveBytes": 159065662,
+      "archiveSha256": "ce602571546bff63a38cab7990246d9bca9558ac7395cdcc0004809219f56d13",
+      "installDirName": "sensevoice-small-int8",
+      "requiredFiles": [
+        "model.int8.onnx",
+        "tokens.txt"
+      ],
+      "fileSha256": {
+        "model.int8.onnx": "12ca1a2ae7ecf3e0019ef2822307ee0b5cadc9196569e379b4c4026f8205276d",
+        "tokens.txt": "f449eb28dc567533d7fa59be34e2abca8784f771850c78a47fb731a31429a1dc"
+      },
+      "minVersionCode": 165,
+      "recommendedNetwork": "wifi",
+      "productMode": "MixedGeneral"
+    }
+  ]
+}
