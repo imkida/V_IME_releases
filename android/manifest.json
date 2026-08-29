@@ -1,17 +1,17 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-07-17T15:08:44Z",
+  "generatedAt": "2026-08-29T13:20:00Z",
   "packageName": "com.vime.android",
   "channels": {
     "debug": {
-      "versionName": "1.6.1-dogfood.14",
-      "versionCode": 152,
-      "title": "v1.6.1-dogfood.14 — 技术标识阿拉伯数字修正",
-      "summary": "公开 Debug 测试候选：Phase 3 仅在 Normal + Clean + CleanTidyV3 non-fallback 路径中，对既有 VersionModelCode / TechnicalIdentifier 子集采用 source-backed pattern gate；证据不足时保持原文。MoneyAmount pattern engine 未接入 production。包保持 CloudOnly 默认，不含 Local ASR runtime、模型或 C1 资产。stable release 仍为 v1.6.0。debug/release 同包名不同签名，不可混装，切换签名前请先导出配置。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.6.1-dogfood.14",
-      "apkName": "V_IME-v1.6.1-dogfood.14-debug.apk",
-      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.6.1-dogfood.14/V_IME-v1.6.1-dogfood.14-debug.apk",
-      "apkSha256": "8ccf1ae74b174c34ce9ced9860d28ba8c1ef947c918d31a53435f804646a03a5",
+      "versionName": "1.7.0-dogfood.7",
+      "versionCode": 165,
+      "title": "v1.7.0-dogfood.7 — 完整移动键盘进入公开 Debug + 导入配置修复",
+      "summary": "公开 Debug 测试候选（版本从 1.6.1-dogfood.14 / 152 跨到 1.7.0-dogfood.7 / 165）。本版首次把完整移动键盘带进公开 debug 包：中文 26 键全拼、英文、数字与双页符号，随输入候选与上屏后联想；打字全程不联网、不进历史，密码与 PIN 框继续走直输保护。语音听写、智能整理与 Quick Panel 保持原有使用方式。修复：从 .vime 配置文件恢复时「导入配置」页打开即闪退（引导页的「导入已有配置」同样受影响），本版已修。包保持 CloudOnly 默认，不含 Local ASR runtime、模型或 C1 资产。stable release 仍为 v1.6.0。debug/release 同包名不同签名，不可混装，切换签名前请先导出配置。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.7.0-dogfood.7",
+      "apkName": "V_IME-v1.7.0-dogfood.7-debug.apk",
+      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.7.0-dogfood.7/V_IME-v1.7.0-dogfood.7-debug.apk",
+      "apkSha256": "0b1bbf8c378b69f3a961412fd293331fca15d05daaef35a55b8c785a12e7fced",
       "certificateSha256": "4513e5bc726058d40be6020e1bbfc2d0c0fbf4e81d3b04a393cba394cd195059",
       "mandatory": false,
       "minSupportedVersionCode": 1
