@@ -178,13 +178,19 @@ https://raw.githubusercontent.com/imkida/V_IME_releases/main/android/manifest.js
 
 ## Android 端侧语音模型分发
 
-Android 的端侧语音识别运行时随安装包分发（**仅 arm64**），**识别模型不进包**，由 App 按需下载。模型清单：
+Android 的端侧语音识别运行时随安装包分发（**仅 arm64**），**识别模型不进包**，由 App 按需下载。
+
+> **目前仅 `debug` 渠道。** 首个内含该运行时的包是 `1.7.0-dogfood.9` / versionCode 167；
+> 清单里的模型条目也带 `minVersionCode` 门控。`release` 渠道当前停在 versionCode 138，
+> **不含**端侧运行时，稳定渠道用户装到的包没有这项能力。
+
+模型清单：
 
 ```text
 android/local-asr-models.json
 ```
 
-清单记录每个模型的 `downloadUrl`、`fallbackDownloadUrl`、`archiveSha256`、逐文件 `fileSha256`、解压大小、`minVersionCode` 与建议网络类型。
+清单记录每个模型的 `downloadUrl`、`fallbackDownloadUrl`、`archiveSha256`、逐文件 `fileSha256`、`archiveBytes`（**压缩包字节数，不是解压后大小**；清单没有解压体积字段）、`minVersionCode` 与建议网络类型。
 
 **主备托管方向相反，避免单点**：
 
@@ -295,7 +301,7 @@ Vime 是一款智能语音输入法：说完即得可直接使用的文字，同
 - 两档转写风格：`Verbatim`（逐字稿，跳过 LLM）/ `Clean`（智能整理，默认）。
 - 三种 session 模式：`Normal` / `Translation`（中英互译）/ `Edit`（按语音指令改写选中文本）。
 - 云端 ASR 支持 OpenAI 兼容接口、阿里百炼 Fun-ASR、火山引擎 BigASR；LLM 改写走 OpenAI 兼容 `/v1/chat/completions`。服务地址与 API Key 全部由用户自己填。
-- 端侧语音识别运行时随包（仅 arm64），模型按需下载，可脱离云端使用。
+- 端侧语音识别运行时随包（仅 arm64，当前仅 debug 渠道），模型按需下载，用于**听写过程中的本地实时预览**；最终文本仍由云端产出，仍需自行配置云端服务。
 - 实时预览（实验室，默认关闭）：听写时实时预览识别内容，结束后自动替换为整理结果。
 
 **打字线**
