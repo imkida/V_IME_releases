@@ -1,17 +1,17 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-08-29T13:20:00Z",
+  "generatedAt": "2026-08-30T02:30:00Z",
   "packageName": "com.vime.android",
   "channels": {
     "debug": {
-      "versionName": "1.7.0-dogfood.7",
-      "versionCode": 165,
-      "title": "v1.7.0-dogfood.7 — 完整移动键盘进入公开 Debug + 导入配置修复",
-      "summary": "公开 Debug 测试候选（版本从 1.6.1-dogfood.14 / 152 跨到 1.7.0-dogfood.7 / 165）。本版首次把完整移动键盘带进公开 debug 包：中文 26 键全拼、英文、数字与双页符号，随输入候选与上屏后联想；打字全程不联网、不进历史，密码与 PIN 框继续走直输保护。语音听写、智能整理与 Quick Panel 保持原有使用方式。修复：从 .vime 配置文件恢复时「导入配置」页打开即闪退（引导页的「导入已有配置」同样受影响），本版已修。包保持 CloudOnly 默认，不含 Local ASR runtime、模型或 C1 资产。stable release 仍为 v1.6.0。debug/release 同包名不同签名，不可混装，切换签名前请先导出配置。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.7.0-dogfood.7",
-      "apkName": "V_IME-v1.7.0-dogfood.7-debug.apk",
-      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.7.0-dogfood.7/V_IME-v1.7.0-dogfood.7-debug.apk",
-      "apkSha256": "0b1bbf8c378b69f3a961412fd293331fca15d05daaef35a55b8c785a12e7fced",
+      "versionName": "1.7.0-dogfood.9",
+      "versionCode": 167,
+      "title": "v1.7.0-dogfood.9 — 实时预览进入实验室 + 本地语音模型可下载",
+      "summary": "公开 Debug 测试候选。本版把「实时预览」带进实验室：开启后听写时可实时预览识别内容，结束后自动替换为整理结果；预览为快速识别的草稿，最终文本仍由云端产出。该能力需要先下载语音模型（约 159 MB，建议 Wi-Fi），入口在 设置 → 实验室 → 实时预览 → 语音模型；**默认关闭**，不下载模型则开关不可用，行为与上一版一致。本版包内因此首次带上本地语音识别运行时，安装包体积随之增大，且仅支持 arm64 设备。另：整理在中长内容里遇到明确的先后步骤时会用「1. 2. 3.」编号分行呈现，无顺序的并列仍用顿号或换行；设置页做了一轮精简，本地转写的工程化选项已撤出，用户侧只保留「实时预览」一个概念。包内不含任何试用 API Key，云端服务仍需自行配置。debug/release 同包名不同签名，不可混装，切换签名前请先导出配置。stable release 仍为 v1.6.0。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.7.0-dogfood.9",
+      "apkName": "V_IME-v1.7.0-dogfood.9-debug.apk",
+      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.7.0-dogfood.9/V_IME-v1.7.0-dogfood.9-debug.apk",
+      "apkSha256": "adb0f821b60c903a75fd65bdcce8b1fd272b4f47cfbbd8c6e037e71a2d9e8f79",
       "certificateSha256": "4513e5bc726058d40be6020e1bbfc2d0c0fbf4e81d3b04a393cba394cd195059",
       "mandatory": false,
       "minSupportedVersionCode": 1
