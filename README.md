@@ -1,8 +1,11 @@
-# V_IME Releases - 公开分发镜像
+# Vime Releases — 公开分发镜像
 
-V_IME 是一个跨平台的纯语音输入应用项目。主仓 [`imkida/V_IME_Android`](https://github.com/imkida/V_IME_Android) 为私有源码仓；本仓库作为对外分发的只读公开镜像，承载各平台安装包、更新检查 manifest、macOS Sparkle appcast，以及 GitHub Release 资产入口。
+Vime 是一款**跨平台智能语音输入法**：说完即得可直接使用的文字，同时带一套完整的中文拼音键盘。主仓 [`imkida/V_IME_Android`](https://github.com/imkida/V_IME_Android) 为私有源码仓；本仓库作为对外分发的只读公开镜像，承载各平台安装包、更新检查 manifest、端侧模型清单、macOS Sparkle appcast，以及 GitHub Release 资产入口。
 
 源码、签名密钥、构建脚本、私有配置不进入本仓。本仓只发布可公开访问的构建产物索引和发布说明。
+
+> **命名口径**：用户可见的品牌名统一写作 `Vime`。仓库名 `V_IME_releases`、路径、GitHub URL、
+> 已发布资产文件名（`V_IME-vX.Y.Z-*.apk` 等）、schema 常量属于技术标识，保持原样不改名。
 
 ## 仓库职责
 
@@ -18,27 +21,30 @@ V_IME 是一个跨平台的纯语音输入应用项目。主仓 [`imkida/V_IME_A
 V_IME_releases/
 ├── README.md
 ├── android/
-│   └── manifest.json
+│   ├── manifest.json               # Android OTA 渠道清单（release / debug）
+│   └── local-asr-models.json       # 端侧语音识别模型清单（按需下载）
 ├── macos/
 │   ├── manifest.json
-│   └── 0.5.0/
-│       └── 2026051703/
-│           ├── SHA256SUMS.txt
-│           ├── V_IME-0.5.0-2026051703-macos.dmg
-│           └── V_IME-0.5.0-2026051703-macos.zip
+│   ├── 0.5.0/                      # 历史 build 的 DMG / ZIP + SHA256SUMS
+│   └── 0.6.0/
 ├── docs/
+│   ├── macos/
+│   │   ├── index.html              # macOS 公测下载与更新说明页
+│   │   └── beta/appcast.xml        # Sparkle appcast
 │   ├── privacy/
 │   │   └── index.html              # App Store 隐私政策页面
 │   └── support/
 │       └── index.html              # App Store 支持页面
 ├── schema/
 │   └── release-manifest.schema.json
+├── scripts/
+│   └── update-manifest.mjs         # 无外部依赖的 manifest 更新脚本
 ├── windows/
-│   └── manifest.json               # 待接入
+│   └── manifest.json               # 未接入
 ├── ios/
-│   └── manifest.json               # 待接入：App Store / TestFlight 元数据
+│   └── manifest.json               # 未接入：App Store / TestFlight 元数据
 └── harmonyos/
-    └── manifest.json               # 待接入
+    └── manifest.json               # 未接入
 ```
 
 空目录不会提交到 Git；待接入平台会在首次发布时创建对应文件。
@@ -47,15 +53,17 @@ V_IME_releases/
 
 各平台版本号独立递增，不强制对齐。tag 始终带平台前缀。
 
-| 平台 | tag 示例 | 当前状态 | 主要资产 |
+| 平台 | tag 形态 | 当前状态（核验 2026-08-30） | 主要资产 |
 |---|---|---|---|
-| Android | `android-v1.3.23` | 正在使用 | `.apk` |
-| macOS | `macos-v0.5.0` | 内测中 | `.dmg` / `.zip` / Sparkle appcast |
-| Windows | `windows-vX.Y.Z` | 内测中 | `.exe` / `.msi` / `.msix` |
-| iOS | `ios-vX.Y.Z` | 内测中 | App Store / TestFlight 元数据 |
-| HarmonyOS | `harmonyos-vX.Y.Z` | 适配中 | `.hap` 或商店分发元数据 |
+| Android | `android-vX.Y.Z` | 正在使用：`release` 与 `debug` 双渠道 | `.apk` |
+| macOS | `macos-vX.Y.Z` | 正在使用：公开公测 + Sparkle 自动更新 | `.dmg` / `.zip` / Sparkle appcast |
+| iOS | `ios-vX.Y.Z` | 未接入本仓：走 App Store Connect / TestFlight | 后续记录 Store / TestFlight 元数据 |
+| Windows | `windows-vX.Y.Z` | 未接入本仓 | `.exe` / `.msi` / `.msix` |
+| HarmonyOS | `harmonyos-vX.Y.Z` | 未接入本仓 | `.hap` 或商店分发元数据 |
 
-二进制资产命名建议：
+各渠道的当前版本以 manifest 为准，README 不作事实源：Android 见 [`android/manifest.json`](android/manifest.json)，macOS 见 [`macos/manifest.json`](macos/manifest.json)。
+
+二进制资产命名（历史命名规则，不随品牌写法变化）：
 
 ```text
 V_IME-vX.Y.Z-<channel>.<ext>
@@ -65,7 +73,7 @@ V_IME-vX.Y.Z-<channel>-<arch>.<ext>
 示例：
 
 ```text
-V_IME-v1.3.23-release.apk
+V_IME-v1.6.0-release.apk
 V_IME-v0.5.0-beta-universal.dmg
 V_IME-v1.4.0-stable-x64.msi
 ```
@@ -117,12 +125,12 @@ Android 发布示例：
 npm run release:manifest -- \
   --platform android \
   --channel release \
-  --version-name 1.3.24 \
-  --version-code 100 \
-  --title "v1.3.24 - 修复说明" \
+  --version-name 1.6.1 \
+  --version-code 139 \
+  --title "v1.6.1 - 修复说明" \
   --summary "本次更新摘要" \
-  --tag android-v1.3.24 \
-  --asset /path/to/V_IME-v1.3.24-release.apk \
+  --tag android-v1.6.1 \
+  --asset /path/to/V_IME-v1.6.1-release.apk \
   --certificate-sha256 <release-certificate-sha256> \
   --min-supported-version-code 1
 ```
@@ -149,7 +157,7 @@ npm run release:manifest -- \
 
 ## Android 发布
 
-Android App 设置页“检查更新”会 fetch：
+Android App 设置页「检查更新」会 fetch：
 
 ```text
 https://raw.githubusercontent.com/imkida/V_IME_releases/main/android/manifest.json
@@ -159,12 +167,33 @@ https://raw.githubusercontent.com/imkida/V_IME_releases/main/android/manifest.js
 
 | 用途 | 资产命名 | 说明 |
 |---|---|---|
-| 公开用户测试 / 日常安装 | `V_IME-vX.Y.Z-release.apk` | 使用 V_IME 长期 release keystore 签名 |
-| 开发者整机自测 | `V_IME-vX.Y.Z-debug.apk` | Debug 签名，不要与 Release 包混装 |
+| 公开用户 stable 安装 | `V_IME-vX.Y.Z-release.apk` | 使用 Vime 长期 release keystore 签名 |
+| 公开用户尝鲜 / 开发者自测 | `V_IME-vX.Y.Z-debug.apk` | Debug 签名，不要与 Release 包混装 |
+
+`debug` 渠道不是「内部包」：完整键盘、端侧语音识别这类新形态会先在 debug 渠道对公开用户开放，稳定后再进 `release` 渠道。两个渠道各自独立递增，`release` 通常滞后于 `debug`。
 
 同包名不同签名不可在同一台设备共存。Debug 和 Release 都使用 `applicationId = com.vime.android`，但签名指纹不同；强行覆盖会被系统拒绝，部分系统安装器会引导卸载重装，导致 DataStore、历史记录、用户词库与 Android Keystore 中的 API Key 全部丢失。
 
-需要在 Debug 与 Release 之间切换时，先用 App 内“配置导出”备份，再卸载重装并重新导入。
+需要在 Debug 与 Release 之间切换时，先用 App 内「配置导出」备份，再卸载重装并重新导入。
+
+## Android 端侧语音模型分发
+
+Android 的端侧语音识别运行时随安装包分发（**仅 arm64**），**识别模型不进包**，由 App 按需下载。模型清单：
+
+```text
+android/local-asr-models.json
+```
+
+清单记录每个模型的 `downloadUrl`、`fallbackDownloadUrl`、`archiveSha256`、逐文件 `fileSha256`、解压大小、`minVersionCode` 与建议网络类型。
+
+**主备托管方向相反，避免单点**：
+
+| 资源 | 主源 | 备源 |
+|---|---|---|
+| 模型压缩包 | 阿里云 OSS | GitHub Release（tag `models-local-asr-v1`） |
+| 模型清单 | GitHub raw | 阿里云 OSS |
+
+模型体积较大（当前基线约 159 MB），清单里标注 `recommendedNetwork: wifi`。清单由主仓的发布工具生成后同步到本仓，不用 `release:manifest` 脚本维护。
 
 ## macOS 发布
 
@@ -182,9 +211,15 @@ macos/manifest.json
 - `macos/manifest.json` 保留 GitHub Release tag 兼容入口，主资产可指向 OSS，并记录同字节 GitHub 备用地址和校验信息。
 - Sparkle appcast URL 保持 GitHub Pages，不随资产托管位置变化；必须先验证 OSS 与 GitHub ZIP 字节一致，再发布 appcast。
 
+macOS 公测下载、使用引导与更新说明页面：
+
+```text
+https://imkida.github.io/V_IME_releases/macos/
+```
+
 ## Windows 发布
 
-Windows manifest 应区分安装器类型和架构：
+Windows 客户端是 Vime 的原始实现，目前已停更，本仓尚未接入其资产。若后续恢复发布，manifest 应区分安装器类型和架构：
 
 - `installerType`: `exe` / `msi` / `msix`
 - `arch`: `x64` / `arm64` / `x86`
@@ -195,7 +230,7 @@ Windows manifest 应区分安装器类型和架构：
 
 ## iOS 发布
 
-iOS 通常不把 `.ipa` 作为公开下载包直接镜像。推荐在 `ios/manifest.json` 中公开：
+iOS 走 App Store Connect / TestFlight，`.ipa` 不作为公开下载包镜像到本仓。后续在 `ios/manifest.json` 中公开：
 
 - App Store 或 TestFlight URL
 - `versionName` 与 build number
@@ -215,12 +250,6 @@ iOS App Store 支持页面：
 https://imkida.github.io/V_IME_releases/support/
 ```
 
-macOS 测试版下载、使用引导与更新说明页面：
-
-```text
-https://imkida.github.io/V_IME_releases/macos/
-```
-
 只有在明确使用企业签名或受控测试分发时，才应记录 `.ipa` 下载资产；此类资产仍需包含 SHA-256 和签名来源说明。
 
 ## HarmonyOS 发布
@@ -235,7 +264,7 @@ HarmonyOS 首次接入时建议记录：
 
 ## 发布检查清单
 
-1. 使用目标平台的正式签名方式构建安装包。
+1. 使用目标平台的正式签名方式构建安装包。**Android 分发件必须 clean 构建**，不得使用增量构建产物。
 2. 用 `npm run release:manifest` 计算每个公开资产的 SHA-256 并更新 manifest。
 3. 创建带平台前缀的 GitHub Release tag。
 4. 上传安装包、归档包或安装器到 Release assets。
@@ -255,22 +284,29 @@ HarmonyOS 首次接入时建议记录：
 
 ## About
 
-A voice-based input method driven by large language models, designed for the Android platform. 一个自语音输入应用（对，是应用而不是输入法），支持自定义 API 和全本地化数据存储，保护隐私安全。产品功能及交互都持续打磨，适配各种场景，提供多格式输出。能说，就坚决不打字：）
+Vime 是一款智能语音输入法：说完即得可直接使用的文字，同时带一套完整的中文拼音键盘，需要打字时不用切走。支持自定义 API 和全本地化数据存储，保护隐私安全。产品功能及交互都持续打磨，适配各种场景，提供多格式输出。能说，就坚决不打字：）
 
 这个项目完全基于 VibeCoding 开发，是一次完整的无代码设计尝试。
 
-## V_IME_Android
+### 主要能力（Android 端，完成度最高）
 
-V_IME 是一个跨平台的纯语音输入应用项目。切换到 V_IME 后，在任意应用的文本框里按住麦克风说话，识别 + LLM 改写后的文字会直接落入目标文本框。
+**语音线**
 
-Android 端实现目前是整个 V_IME 家族中完成度最高的一支。
+- 两档转写风格：`Verbatim`（逐字稿，跳过 LLM）/ `Clean`（智能整理，默认）。
+- 三种 session 模式：`Normal` / `Translation`（中英互译）/ `Edit`（按语音指令改写选中文本）。
+- 云端 ASR 支持 OpenAI 兼容接口、阿里百炼 Fun-ASR、火山引擎 BigASR；LLM 改写走 OpenAI 兼容 `/v1/chat/completions`。服务地址与 API Key 全部由用户自己填。
+- 端侧语音识别运行时随包（仅 arm64），模型按需下载，可脱离云端使用。
+- 实时预览（实验室，默认关闭）：听写时实时预览识别内容，结束后自动替换为整理结果。
 
-## 主要特性（主版本 V1.x）
+**打字线**
 
-- 五种改写模式：Verbatim（直出，跳过 LLM）/ Translation / Edit / Clean / Tidy，按需路由不同 prompt。
-- 双 ASR 后端：OpenAI 兼容 `/v1/audio/transcriptions` + 阿里百炼 Qwen ASR（DashScope 专用客户端）。LLM 改写走 OpenAI 兼容 `/v1/chat/completions`。
-- Quick Panel 应急面板（可选，默认关闭）：Numbers / Letters / Symbols 三层 keypad，每键直接 commit 不走 LLM，按当前文本框 inputType 自动选首层。
-- 隐私保护：API Key 经 Android Keystore 加密后存入 DataStore，发请求那一刻才解密；密码框（`InputType` 含 password 标记）下静默拒绝写入。
-- 本地历史：识别 + 改写结果落 Room，可查询、复用、清理。
-- 轻量软键盘 UI：Jetpack Compose，含浅色 / 深色主题、音量表、partial ASR 显示。
-- 暂时不做：完整 CJK 输入法兼容 / 智能用户候选词学习、离线识别、流式识别（流式版本在 `stream/main` 长期分支独立演进）、多端同步、iOS 版。
+- 完整中文拼音键盘：候选栏与展开面板、逐字筛选、模糊音、一键撤销。
+- 自适应字频 / 词频学习；内置词库（专有名词规范化，默认关闭）+ 个人词库。
+- Quick Panel：数字 / 字母 / 符号三层快捷键盘，按目标文本框类型自动选首层。
+
+**隐私**
+
+- 客户端直连用户自己配置的 Provider，**项目没有自建业务后端**。
+- API Key 经 Android Keystore 加密存储，发请求那一刻才解密。
+- 密码输入框下静默拒绝写入。
+- 历史记录只存本机，可查询、复用、清理，也可整体关闭。
