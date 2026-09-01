@@ -5,28 +5,27 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
         <title>VIME</title>
         <item>
             <title>1.5.0</title>
-            <pubDate>Tue, 25 Aug 2026 01:24:18 +0800</pubDate>
+            <pubDate>Wed, 02 Sep 2026 00:58:27 +0800</pubDate>
             <link>https://imkida.github.io/V_IME_releases/macos/</link>
-            <sparkle:version>2026082501</sparkle:version>
+            <sparkle:version>2026090202</sparkle:version>
             <sparkle:shortVersionString>1.5.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# VIME 1.5.0 公测版
+            <description sparkle:format="markdown"><![CDATA[# Vime macOS 1.5.0 公测维护版
 
-这一版把设置页做了一次精简，让常用的几项更好找。
+这是 Vime macOS 1.5.0 的转写与智能整理维护更新，build 为 `2026090202`。建议正在使用较早 1.5.0 测试包的用户更新。
 
-- 「转写与词库」现在只保留「输出风格」一项设置。原来的「富文本输出」已移除——它在日常使用中不改变输出结果，留着反而容易让人纠结选哪个。
-- 「编辑文本兼容捕获」移到了「系统与权限 → 兼容性」。它和辅助功能权限是同一类问题，放在一起更好找；开关本身和原来一样。
-- 「系统与权限」里去掉了重复的「登录项状态」一行，开关本身已经显示状态；需要你去系统设置里确认时仍会给出提示。
-- 「高级服务设置」里的实验选项（语音识别方式、输入策略、智能整理新版）不再对外显示。这些是内部试验用的开关，日常使用请保持默认。
+- 修复长时间 Clean 听写可能因分片处理而丢失整段语义上下文的问题，整理阶段现在能基于完整转写判断前后关系。
+- 修复正确的明确枚举结果偶尔被误判为“否定语义丢失”并退回原始转写的问题。
+- 保持原有安全边界：不改变右 Command 触发方式，不改变个人 Key 配置，也不启用新的云端试用或收费策略。
 
-如果你之前手动打开过「实时识别」或「流式预览」，这一版会自动切回标准设置。标准设置的断句和整理效果更稳定。
+本包已完成 Developer ID 签名、Apple 安全检查和公证，可在 macOS 14 及以上系统安装。下载 DMG 后打开，把 Vime 拖到 Applications；如提示已存在，请选择“替换”。
 
-如升级后遇到影响使用的问题，请退出 VIME，从 GitHub 备用下载获取上一公测版并覆盖安装。回滚不需要清除设置、历史或 Keychain。
+如升级后遇到影响使用的问题，可在同一 GitHub Release 中下载较早的 `2026082501` 构建覆盖安装；回滚不需要清除设置、历史或 Keychain。
 ]]></description>
-            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.5.0/2026082501/V_IME-1.5.0-2026082501-macos.zip" length="8627753" type="application/octet-stream" sparkle:edSignature="eAvsZYIu3mwavrjaBzRhNKgfAJJMk6b0IsRWS8FtfiNw6FD8AE7lC25hUtcJt+N8jEw+pBKvgqADnoRzq47HAA=="></enclosure>
+            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.5.0/2026090202/V_IME-1.5.0-2026090202-macos.zip" length="8665280" type="application/octet-stream" sparkle:edSignature="pJZEPbfPJ734HsQbR7RepyKsD5BXulb78C+BcPQMExxKx+xlrdAWA2SJgdP8mVZ1asHgIn/nmZg83srITD36AQ=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: pZSO4onlLEdxRChXVCXRL/Ory1gDPpi4WbPlLfTXckvZyOePYoq0S6S9X98ZnywC7w+HxhychxqZEEfVs8PtAw==
-length: 2414
+edSignature: lFGmhSLZCg535Wgkspzkc3+oGEuq7HcqNZhoa39YtpuozrQ+U8nz7EL2JunRzqbZkZ5Y9gpXgduB/mFDZWw2Cg==
+length: 2218
 -->
