@@ -1,17 +1,17 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-08-30T02:30:00Z",
+  "generatedAt": "2026-09-02T10:03:28Z",
   "packageName": "com.vime.android",
   "channels": {
     "debug": {
-      "versionName": "1.7.0-dogfood.9",
-      "versionCode": 167,
-      "title": "v1.7.0-dogfood.9 — 实时预览进入实验室 + 本地语音模型可下载",
-      "summary": "公开 Debug 测试候选。本版把「实时预览」带进实验室：开启后听写时可实时预览识别内容，结束后自动替换为整理结果；预览为快速识别的草稿，最终文本仍由云端产出。该能力需要先下载语音模型（约 159 MB，建议 Wi-Fi），入口在 设置 → 实验室 → 实时预览 → 语音模型；**默认关闭**，不下载模型则开关不可用，行为与上一版一致。本版包内因此首次带上本地语音识别运行时，安装包体积随之增大，且仅支持 arm64 设备。另：整理在中长内容里遇到明确的先后步骤时会用「1. 2. 3.」编号分行呈现，无顺序的并列仍用顿号或换行；设置页做了一轮精简，本地转写的工程化选项已撤出，用户侧只保留「实时预览」一个概念。包内不含任何试用 API Key，云端服务仍需自行配置。debug/release 同包名不同签名，不可混装，切换签名前请先导出配置。stable release 仍为 v1.6.0。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.7.0-dogfood.9",
-      "apkName": "V_IME-v1.7.0-dogfood.9-debug.apk",
-      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.7.0-dogfood.9/V_IME-v1.7.0-dogfood.9-debug.apk",
-      "apkSha256": "adb0f821b60c903a75fd65bdcce8b1fd272b4f47cfbbd8c6e037e71a2d9e8f79",
+      "versionName": "1.7.0-dogfood.15",
+      "versionCode": 173,
+      "title": "v1.7.0-dogfood.15 — 整理更像聊天、实时预览更稳、键盘细节修整",
+      "summary": "公开 Debug 测试候选。智能整理在聊天场景更像聊天：消息末尾不加句号但句内该断句照常断句，有先后步骤的内容用编号分行，段落之间空一行；陈述句不再被凭空加问号，口语真问句照常保留。实时预览的句末句号与最终文本对齐，并修复识别很慢时预览与整理结果重复的问题。键盘首次设置页合为一屏、键盘高度收紧、震动分开设置，并修若干中英切换与候选问题。用户可见文案统一为 Vime。包形态与上版相同（带本地语音识别运行时、仅 arm64，模型 App 内下载）。随包第三方许可文本与修改声明已补齐。包内不含任何试用 API Key；debug/release 同包名不同签名，不可混装，切换签名前请先导出配置。stable release 仍为 v1.6.0。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.7.0-dogfood.15",
+      "apkName": "V_IME-v1.7.0-dogfood.15-debug.apk",
+      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.7.0-dogfood.15/V_IME-v1.7.0-dogfood.15-debug.apk",
+      "apkSha256": "388cdf4aae18bbbaef09ea2d323c0ce4098ad7ea5474d6f1f3097a3e441cb052",
       "certificateSha256": "4513e5bc726058d40be6020e1bbfc2d0c0fbf4e81d3b04a393cba394cd195059",
       "mandatory": false,
       "minSupportedVersionCode": 1
