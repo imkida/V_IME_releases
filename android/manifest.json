@@ -1,17 +1,17 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-09-02T10:03:28Z",
+  "generatedAt": "2026-09-05T07:26:41Z",
   "packageName": "com.vime.android",
   "channels": {
     "debug": {
-      "versionName": "1.7.0-dogfood.15",
-      "versionCode": 173,
-      "title": "v1.7.0-dogfood.15 — 整理更像聊天、实时预览更稳、键盘细节修整",
-      "summary": "公开 Debug 测试候选。智能整理在聊天场景更像聊天：消息末尾不加句号但句内该断句照常断句，有先后步骤的内容用编号分行，段落之间空一行；陈述句不再被凭空加问号，口语真问句照常保留。实时预览的句末句号与最终文本对齐，并修复识别很慢时预览与整理结果重复的问题。键盘首次设置页合为一屏、键盘高度收紧、震动分开设置，并修若干中英切换与候选问题。用户可见文案统一为 Vime。包形态与上版相同（带本地语音识别运行时、仅 arm64，模型 App 内下载）。随包第三方许可文本与修改声明已补齐。包内不含任何试用 API Key；debug/release 同包名不同签名，不可混装，切换签名前请先导出配置。stable release 仍为 v1.6.0。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.7.0-dogfood.15",
-      "apkName": "V_IME-v1.7.0-dogfood.15-debug.apk",
-      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.7.0-dogfood.15/V_IME-v1.7.0-dogfood.15-debug.apk",
-      "apkSha256": "388cdf4aae18bbbaef09ea2d323c0ce4098ad7ea5474d6f1f3097a3e441cb052",
+      "versionName": "1.7.0-dogfood.18",
+      "versionCode": 176,
+      "title": "v1.7.0-dogfood.18 — 智能整理场景规则维护版",
+      "summary": "公开 Debug 公测版。本轮集中维护智能整理的场景规则，保留既有 Prompt 与句末处理行为，不宣称列表排版效果提升。保留完整键盘与本地语音识别运行时（仅 arm64，模型仍需在 App 内下载），不改变用户设置。已完成测试机受控场景验证及主力机覆盖安装读回；这不代表全部整理场景或键盘性能已毕业。包内不含试用 API Key；debug/release 同包名不同签名，不可混装，切换签名前请先导出配置。稳定 release 渠道仍为 v1.6.0。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.7.0-dogfood.18",
+      "apkName": "V_IME-v1.7.0-dogfood.18-debug.apk",
+      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.7.0-dogfood.18/V_IME-v1.7.0-dogfood.18-debug.apk",
+      "apkSha256": "dab3c3c6d5242e73232f1ff5f4eb04c25c1c5df60dd0ea763db430c6639e4091",
       "certificateSha256": "4513e5bc726058d40be6020e1bbfc2d0c0fbf4e81d3b04a393cba394cd195059",
       "mandatory": false,
       "minSupportedVersionCode": 1
