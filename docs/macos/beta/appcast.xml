@@ -4,29 +4,40 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>VIME</title>
         <item>
-            <title>1.6.0</title>
-            <pubDate>Sun, 27 Sep 2026 16:44:29 +0800</pubDate>
+            <title>1.6.1</title>
+            <pubDate>Sun, 27 Sep 2026 22:48:26 +0800</pubDate>
             <link>https://imkida.github.io/V_IME_releases/macos/</link>
-            <sparkle:version>2026092722</sparkle:version>
-            <sparkle:shortVersionString>1.6.0</sparkle:shortVersionString>
+            <sparkle:version>2026092727</sparkle:version>
+            <sparkle:shortVersionString>1.6.1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# VIME macOS v1.6.0 beta
+            <description sparkle:format="markdown"><![CDATA[---
+title: "VIME macOS v1.6.1 beta 更新说明"
+author: claude
+status: draft
+created_at: 2026-09-27T23:15
+updated_at: 2026-09-27T23:15
+tags: [v_ime_macos, release]
+---
 
-本轮重点升级听写内容写入、撤销和云端服务配置。适用于 macOS 14 及以上，可直接覆盖安装；原有设置、个人 Key 和历史记录保留。
+# VIME macOS v1.6.1 beta
 
-- **输入与撤销**：普通编辑器统一采用原生粘贴写入，移除多条旧写入路径；改进单次写入、光标续输和本次听写撤销，减少成功输入后仍提示手动复制的情况。终端保留独立输入方式。
-- **常用词与学习**：纠错观察改为围绕本次插入片段进行，避免通过全文或后缀搜索定位；仍遵循学习开关和隐私限制。
-- **智能整理与等待时间**：延续 Product／Android 的共享整理契约，更新场景与标点处理，保留长录音无损压缩和传输优化。智能整理增强仍由用户自行开启，不改变已有选择。
-- **服务配置**：内置服务采用统一服务标识，个人 Key 配置保持可用。云端配置发布与本次客户端更新分开管理。
+本轮修复部分输入框**完全无法写入**的问题。适用于 macOS 14 及以上，可直接覆盖安装；原有设置、个人 Key 和历史记录保留。
 
-使用内置云服务的旧版本用户请升级至本版；本轮服务接口已更新。使用个人 Key 的用户不受该接口切换影响。
+- **修复部分输入框写入失败**：微信聊天框、OpenCode 首页聊天框等原本 100% 写入失败的输入框已修复，文本完整写入且只写入一份。
+- **焦点识别更可靠**：当系统无法直接读到当前焦点元素时，改为按目标应用查询；此前只要前一种方式读不到就整次放弃。
+- **不依赖焦点的写入方式**：对于不向系统暴露输入框信息的应用（如微信），改用与剪贴板配合的写入方式，并在写入后还原你的剪贴板内容。
+- **可诊断性**：写入失败时的原因记录更细，便于后续定位。
+
+其余能力（智能整理、常用词学习、长录音传输优化、内置云服务）与本轮 1.6.0 一致，未作改动。
+
+使用内置云服务的旧版本用户请升级至本版。使用个人 Key 的用户不受影响。
 
 本版为公开测试版，不包含试用分钟、30 天额度周期、续期或订阅收费功能。输入后仍建议查看结果；若目标输入框失去焦点，VIME 会保留文本供手动复制。
 ]]></description>
-            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.6.0/2026092722/V_IME-1.6.0-2026092722-macos.zip" length="9356682" type="application/octet-stream" sparkle:edSignature="KapGkIjHaPc8i+qvvKNL2dbT58/efqBx/OQFZOrMWnxWvD1F0UTLuvEuyLCf0DLOq3AmWEx6LMkOckUCILeZBw=="></enclosure>
+            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.6.1/2026092727/V_IME-1.6.1-2026092727-macos.zip" length="9378920" type="application/octet-stream" sparkle:edSignature="FyQ6vHUW0Y6V4OIkJkvwCbuTGLWLffmCa0DIwm1giKls35s+sggzfDcLLnIK91SLg2GAbtqFxgmQEsHrovMZCw=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: 2MJ+fT8/kShmw7zcae0NEGYa8gHNr3tYXzRDC7gyko4O16+BLR73JfsR4FVlknBbBB8Ek0gx7MNK4Q2wfy8PBQ==
-length: 2586
+edSignature: iQFGNabvU1Skw8LccyG7zR7MP+dDLJ3qKqgcGFq8MVrkwlV/fHO/UdhluOnv4+fdAb2nSAhW4R+2+JsZg8njBw==
+length: 2664
 -->

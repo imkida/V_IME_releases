@@ -151,8 +151,8 @@ test('sync script rebuilds a stale fallback byte for byte', () => {
     assert.equal(result.changed, true);
     assert.deepEqual(result.messages, [
       `  generatedAt 2026-09-01T17:02:07Z -> ${page.generatedAt}`,
-      '  versionName 1.5.0 -> 1.6.0',
-      '  buildNumber 2026090202 -> 2026092722'
+      '  versionName 1.5.0 -> 1.6.1',
+      '  buildNumber 2026090202 -> 2026092727'
     ]);
     assert.equal(
       readFileSync(path.join(sandbox, 'docs', 'macos', 'assets', bundleNameOf(page.html)), 'utf8'),
