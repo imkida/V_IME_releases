@@ -7,6 +7,21 @@ Vime 是一款**跨平台智能语音输入法**：说完即得可直接使用�
 > **命名口径**：用户可见的品牌名统一写作 `Vime`。仓库名 `V_IME_releases`、路径、GitHub URL、
 > 已发布资产文件名（`V_IME-vX.Y.Z-*.apk` 等）、schema 常量属于技术标识，保持原样不改名。
 
+### 两种拼写各自的适用范围
+
+`Vime` 与 `VIME` **并存是有意的，不要为了统一而互扫**：
+
+| 拼写 | 用在哪里 | 举例 |
+|---|---|---|
+| `Vime` | 用户可见的品牌与文案 | 公开页标题与正文、README 叙述、下载页与隐私/支持页 |
+| `VIME` | 生产调用与既有约定，**保持现状** | `macos/manifest.json` 的 `title`、Sparkle appcast 的 `<title>` 与发布说明正文、历史 release note |
+| `V_IME` / `V-IME` | 技术标识 | 仓库名、路径、URL、已发布资产文件名、环境变量、代码符号 |
+
+两条硬约束：
+
+- **不要**把生产/约定制品里的 `VIME` 改成 `Vime`。appcast 的正文在 EdDSA 签名覆盖范围内（见文件末尾 `length:`），改字符串会直接作废签名，必须走 `generate-macos-sparkle-appcast.sh` 重签；`manifest.json` 的 `title` 虽不受签名保护，但改动会让 OSS 与 GitHub 两份副本分叉，须配合同步脚本一起走。
+- **不要**把用户可见文案里的 `Vime` 改回 `VIME`。品牌 canonical 见 Product 仓 `docs/product/brand-naming.md`（2026-08-30 裁定）。
+
 ## 仓库职责
 
 - GitHub Releases 至少保留最近两个 macOS 公测版，作为安装包备用下载源。
