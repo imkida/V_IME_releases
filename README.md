@@ -29,6 +29,7 @@ Vime 是一款**跨平台智能语音输入法**：说完即得可直接使用�
 ```text
 V_IME_releases/
 ├── README.md
+├── package.json
 ├── android/
 │   ├── manifest.json               # Android OTA 渠道清单（release / debug）
 │   └── local-asr-models.json       # 端侧语音识别模型清单（按需下载）
@@ -37,6 +38,7 @@ V_IME_releases/
 ├── docs/
 │   ├── macos/
 │   │   ├── index.html              # macOS 公测下载与更新说明页
+│   │   ├── assets/                 # 该页构建产物（含内置 manifest 快照）
 │   │   └── beta/appcast.xml        # Sparkle appcast
 │   ├── privacy/
 │   │   └── index.html              # App Store 隐私政策页面
@@ -44,31 +46,27 @@ V_IME_releases/
 │       └── index.html              # App Store 支持页面
 ├── schema/
 │   └── release-manifest.schema.json
-├── scripts/
-│   └── update-manifest.mjs         # 无外部依赖的 manifest 更新脚本
-├── windows/
-│   └── manifest.json               # 未接入
-├── ios/
-│   └── manifest.json               # 未接入：App Store / TestFlight 元数据
-└── harmonyos/
-    └── manifest.json               # 未接入
+└── scripts/
+    ├── update-manifest.mjs         # 无外部依赖的 manifest 更新脚本
+    ├── sync-download-page.mjs      # 刷新下载页内置兜底快照（npm run release:page）
+    └── test-*.mjs                  # 上述工具的断言（npm test）
 ```
 
-空目录不会提交到 Git；待接入平台会在首次发布时创建对应文件。
+上表是**实际存在的路径**。iOS / Windows / HarmonyOS 尚未接入，因此没有对应目录；首次发布该平台时再创建，不预先占位。
 
 ## Release 命名
 
 各平台版本号独立递增，不强制对齐。tag 始终带平台前缀。
 
-| 平台 | tag 形态 | 当前状态（核验 2026-08-30） | 主要资产 |
+| 平台 | tag 形态 | 当前状态 | 主要资产 |
 |---|---|---|---|
 | Android | `android-vX.Y.Z` | 正在使用：`release` 与 `debug` 双渠道 | `.apk` |
 | macOS | `macos-vX.Y.Z` | 正在使用：公开公测 + Sparkle 自动更新 | `.dmg` / `.zip` / Sparkle appcast |
-| iOS | `ios-vX.Y.Z` | 未接入本仓：走 App Store Connect / TestFlight | 后续记录 Store / TestFlight 元数据 |
+| iOS | `ios-vX.Y.Z` | 未接入 manifest：走 App Store Connect / TestFlight；公开隐私政策与支持页已在本仓发布 | 后续记录 Store / TestFlight 元数据 |
 | Windows | `windows-vX.Y.Z` | 未接入本仓 | `.exe` / `.msi` / `.msix` |
 | HarmonyOS | `harmonyos-vX.Y.Z` | 未接入本仓 | `.hap` 或商店分发元数据 |
 
-各渠道的当前版本以 manifest 为准，README 不作事实源：Android 见 [`android/manifest.json`](android/manifest.json)，macOS 见 [`macos/manifest.json`](macos/manifest.json)。
+各渠道的当前版本以 manifest 为准，README 不重复记录版本号（历史上这里写过核验日期，每次发版都会过期）：Android 见 [`android/manifest.json`](android/manifest.json)，macOS 见 [`macos/manifest.json`](macos/manifest.json)。
 
 二进制资产命名（历史命名规则，不随品牌写法变化）：
 
@@ -81,9 +79,11 @@ V_IME-vX.Y.Z-<channel>-<arch>.<ext>
 
 ```text
 V_IME-v1.6.0-release.apk
-V_IME-v0.5.0-beta-universal.dmg
-V_IME-v1.4.0-stable-x64.msi
+V_IME-v1.7.0-dogfood.18-debug.apk
+V_IME-1.6.0-2026092722-macos.dmg
 ```
+
+macOS 资产不带 `v` 前缀（`V_IME-<version>-<build>-macos.<ext>`），这是已发布资产的既有命名，不随本节的 generic 规则改动。
 
 ## Manifest 规范
 
@@ -174,8 +174,8 @@ https://raw.githubusercontent.com/imkida/V_IME_releases/main/android/manifest.js
 
 | 用途 | 资产命名 | 说明 |
 |---|---|---|
-| 公开用户 stable 安装 | `V_IME-vX.Y.Z-release.apk` | 使用 Vime 长期 release keystore 签名 |
-| 公开用户尝鲜 / 开发者自测 | `V_IME-vX.Y.Z-debug.apk` | Debug 签名，不要与 Release 包混装 |
+| 公开用户 stable 安装 | `V_IME-vX.Y.Z-release.apk` | 使用长期 release keystore 签名 |
+| 公开用户尝鲜 / 开发者自测 | `V_IME-vX.Y.Z-dogfood.N-debug.apk` | Debug 签名；`N` 为同一版本内的自增序号（如 `1.7.0-dogfood.18`）。不要与 Release 包混装 |
 
 `debug` 渠道不是「内部包」：完整键盘、端侧语音识别这类新形态会先在 debug 渠道对公开用户开放，稳定后再进 `release` 渠道。两个渠道各自独立递增，`release` 通常滞后于 `debug`。
 
@@ -294,7 +294,7 @@ HarmonyOS 首次接入时建议记录：
 ## 反馈
 
 - 主仓 issue tracker：[`imkida/V_IME_Android` issues](https://github.com/imkida/V_IME_Android/issues)（私有，需邀请）
-- 公开反馈渠道：暂无；联系作者请用主仓主页联系方式
+- 公开反馈渠道：邮件 `kida.wong@gmail.com`（见[支持页](https://imkida.github.io/V_IME_releases/support/)与 [macOS 下载页](https://imkida.github.io/V_IME_releases/macos/) 的「联系作者」）。本仓不接受 issue。
 
 ## About
 
