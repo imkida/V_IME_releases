@@ -315,6 +315,12 @@ function validateManifest(manifest) {
     if (typeof channel.mandatory !== 'boolean') {
       throw new Error(`channels.${name}.mandatory must be boolean`);
     }
+    if (manifest.platform === 'macos' && channel.versionCode !== undefined) {
+      throw new Error(
+        `channels.${name}.versionCode is not used on macOS; MacUpdateChecker reads buildNumber only, `
+        + 'and a second release identity only creates drift between the OSS and GitHub manifest copies'
+      );
+    }
     if (!(channel.assets || (channel.apkUrl && channel.apkSha256) || (channel.downloadUrl && channel.sha256) || channel.appcastUrl || channel.storeUrl)) {
       throw new Error(`channels.${name} must include assets, apkUrl + apkSha256, downloadUrl + sha256, appcastUrl, or storeUrl`);
     }
@@ -496,9 +502,9 @@ function setIfProvided(target, key, value) {
   }
 }
 
-// macOS carries both a marketing versionCode and a buildNumber. They are the same release
-// identity everywhere in the manifest today, so keep them from silently drifting apart:
-// derive versionCode from buildNumber when it is omitted, and refuse contradictory input.
+// macOS carries only buildNumber: MacUpdateChecker reads that one field, and a second
+// release identity only invited drift between the OSS and GitHub manifest copies.
+// Android still pairs versionCode with its APK versionCode, so keep the two aligned there.
 export function assertConsistentBuildIdentity(config) {
   if (config.versionCode !== undefined
     && config.buildNumber !== undefined
@@ -507,7 +513,9 @@ export function assertConsistentBuildIdentity(config) {
       `--version-code (${config.versionCode}) must match --build-number (${config.buildNumber})`
     );
   }
-  if (config.versionCode === undefined && config.buildNumber !== undefined) {
+  if (config.versionCode === undefined
+    && config.buildNumber !== undefined
+    && config.platform !== 'macos') {
     config.versionCode = config.buildNumber;
   }
 }

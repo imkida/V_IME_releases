@@ -11,15 +11,24 @@ import { assertConsistentBuildIdentity } from './update-manifest.mjs';
 const ROOT = path.resolve(import.meta.dirname, '..');
 const SCRIPT = path.join(ROOT, 'scripts', 'update-manifest.mjs');
 
-test('versionCode is derived from buildNumber when omitted', () => {
-  const config = { buildNumber: 2026092722 };
-  assertConsistentBuildIdentity(config);
-  assert.equal(config.versionCode, 2026092722);
+test('versionCode is derived from buildNumber only where the platform uses it', () => {
+  const android = { platform: 'android', buildNumber: 89 };
+  assertConsistentBuildIdentity(android);
+  assert.equal(android.versionCode, 89);
+
+  // macOS reads buildNumber alone; a second release identity only invited OSS/GitHub drift.
+  const macos = { platform: 'macos', buildNumber: 2026092722 };
+  assertConsistentBuildIdentity(macos);
+  assert.equal(macos.versionCode, undefined);
 });
 
 test('explicit versionCode must not contradict buildNumber', () => {
   assert.throws(
-    () => assertConsistentBuildIdentity({ versionCode: 2026090202, buildNumber: 2026092722 }),
+    () => assertConsistentBuildIdentity({
+      platform: 'android',
+      versionCode: 2026090202,
+      buildNumber: 2026092722
+    }),
     /--version-code \(2026090202\) must match --build-number \(2026092722\)/
   );
 });
@@ -29,7 +38,7 @@ test('consistency holds when only one identity is supplied', () => {
   assert.doesNotThrow(() => assertConsistentBuildIdentity({}));
 });
 
-test('release script keeps versionCode aligned with buildNumber end to end', () => {
+test('macOS release script writes buildNumber without a versionCode', () => {
   withFixture(({ artifact, manifest, summary }) => {
     const result = run([
       '--platform', 'macos',
@@ -46,8 +55,38 @@ test('release script keeps versionCode aligned with buildNumber end to end', () 
     assert.equal(result.status, 0, result.stderr);
     const channel = JSON.parse(result.stdout).channels.beta;
     assert.equal(channel.buildNumber, 2026092722);
-    assert.equal(channel.versionCode, 2026092722);
+    assert.ok(!('versionCode' in channel), 'macOS manifest must not carry versionCode');
   });
+});
+
+test('macOS release script rejects an explicit versionCode', () => {
+  withFixture(({ artifact, manifest, summary }) => {
+    const result = run([
+      '--platform', 'macos',
+      '--channel', 'beta',
+      '--version-name', '1.6.0',
+      '--build-number', '2026092722',
+      '--version-code', '2026092722',
+      '--title', 'VIME macOS beta',
+      '--summary-file', summary,
+      '--tag', 'macos-v1.6.0',
+      '--asset', artifact,
+      '--manifest', manifest,
+      '--dry-run'
+    ]);
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /versionCode is not used on macOS/);
+  });
+});
+
+test('macOS manifest on disk carries no versionCode', () => {
+  const manifest = JSON.parse(readFileSync(path.join(ROOT, 'macos', 'manifest.json'), 'utf8'));
+  for (const [name, channel] of Object.entries(manifest.channels)) {
+    assert.ok(
+      !('versionCode' in channel),
+      `macos/manifest.json channels.${name} must not carry versionCode`
+    );
+  }
 });
 
 test('published page embeds the current manifest as its offline fallback', () => {
