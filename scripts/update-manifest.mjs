@@ -27,7 +27,10 @@ const SHA256_RE = /^[a-f0-9]{64}$/i;
 const scriptPath = fileURLToPath(import.meta.url);
 const repoRoot = resolve(dirname(scriptPath), '..');
 
-main();
+// Only run the CLI when invoked directly, so tests can import the invariants above.
+if (process.argv[1] && resolve(process.argv[1]) === scriptPath) {
+  main();
+}
 
 async function main() {
   const args = parseArgs(process.argv.slice(2));
@@ -243,6 +246,8 @@ function updateManifest(manifest, config) {
     releaseUrl: config.releaseUrl,
     mandatory: config.mandatory
   };
+
+  assertConsistentBuildIdentity(config);
 
   setIfProvided(base, 'versionCode', config.versionCode);
   setIfProvided(base, 'buildNumber', config.buildNumber);
@@ -488,6 +493,22 @@ function validateSha(value, label) {
 function setIfProvided(target, key, value) {
   if (value !== undefined) {
     target[key] = value;
+  }
+}
+
+// macOS carries both a marketing versionCode and a buildNumber. They are the same release
+// identity everywhere in the manifest today, so keep them from silently drifting apart:
+// derive versionCode from buildNumber when it is omitted, and refuse contradictory input.
+export function assertConsistentBuildIdentity(config) {
+  if (config.versionCode !== undefined
+    && config.buildNumber !== undefined
+    && config.versionCode !== config.buildNumber) {
+    throw new Error(
+      `--version-code (${config.versionCode}) must match --build-number (${config.buildNumber})`
+    );
+  }
+  if (config.versionCode === undefined && config.buildNumber !== undefined) {
+    config.versionCode = config.buildNumber;
   }
 }
 

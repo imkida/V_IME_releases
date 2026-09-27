@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "release:manifest": "node scripts/update-manifest.mjs",
+    "release:page": "node scripts/sync-download-page.mjs",
     "test": "node --test scripts/test-*.mjs"
   }
 }

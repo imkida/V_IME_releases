@@ -275,9 +275,10 @@ HarmonyOS 首次接入时建议记录：
 3. 创建带平台前缀的 GitHub Release tag。
 4. 上传安装包、归档包或安装器到 Release assets。
 5. 检查对应平台的 manifest 或 appcast。
-6. 校验 JSON 语法和 manifest schema。
-7. 用公开 URL 验证匿名用户可访问 Release 页面、下载资产和 raw manifest。
-8. 在真实设备或虚拟机上验证更新检查路径。
+6. macOS 同批重建 `docs/macos` 的静态兜底（`npm run release:page`），并运行 `npm test` 确认页面与 manifest 一致。
+7. 校验 JSON 语法和 manifest schema。
+8. 用公开 URL 验证匿名用户可访问 Release 页面、下载资产和 raw manifest。
+9. 在真实设备或虚拟机上验证更新检查路径。
 
 ## 历史
 
@@ -320,5 +321,13 @@ Vime 是一款智能语音输入法：说完即得可直接使用的文字，同
 ## macOS 下载主页
 
 `docs/macos/index.html` 与 `docs/macos/assets/` 为已构建的静态网页，由 GitHub Pages 从 `main:/docs` 发布。页面在加载时读取本仓 `main/macos/manifest.json` 的 raw 地址，统一更新下载、校验、系统要求与版本说明；网络不可用时保留构建时已发布的版本，并在“其他下载与校验”中提示。
+
+因此页面里的兜底版本会随发布漂移：**每次更新 `macos/manifest.json` 后必须同批重建 `docs/macos` 的静态兜底**（`assets/index-*.js` 内置的 manifest 快照与 `index.html` 的 `<noscript>` 下载链接），否则拉不到 manifest 的用户会拿到上一版包的说明与链接。重建是仓内命令，不需要页面源码仓：
+
+```bash
+npm run release:page            # 用 macos/manifest.json 刷新 docs/macos 的静态兜底
+npm run release:page -- --check # 只报告漂移，不写文件
+npm test                        # 断言兜底版本等于当前 manifest，且页面不含上一版版本号
+```
 
 网页更新通过 PR 提交构建后的 HTML、CSS、JavaScript 与实际使用的品牌 SVG，不提交客户端源码、设计审查材料或开发依赖。发布前运行 `npm test`，并以 `/V_IME_releases/macos/` 子目录验证资源、下载与安装引导。网站改版不修改安装包、发布清单或 Sparkle appcast。
