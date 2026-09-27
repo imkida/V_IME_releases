@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vime for macOS 隐私政策</title>
+    <meta name="description" content="Vime for macOS 隐私政策">
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #f8fafc;
+        --surface: #ffffff;
+        --text: #111827;
+        --muted: #4b5563;
+        --line: #d1d5db;
+        --accent: #0f766e;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0f172a;
+          --surface: #111827;
+          --text: #f9fafb;
+          --muted: #cbd5e1;
+          --line: #334155;
+          --accent: #2dd4bf;
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.7;
+      }
+
+      main {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 48px 24px 72px;
+      }
+
+      article {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 40px;
+      }
+
+      h1,
+      h2 {
+        line-height: 1.25;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: clamp(32px, 4vw, 48px);
+      }
+
+      h2 {
+        margin: 36px 0 12px;
+        font-size: 22px;
+      }
+
+      p,
+      li {
+        color: var(--muted);
+      }
+
+      a {
+        color: var(--accent);
+      }
+
+      .updated {
+        margin: 0 0 32px;
+        color: var(--muted);
+      }
+
+      .summary {
+        margin: 28px 0;
+        padding: 16px 20px;
+        border-left: 4px solid var(--accent);
+        background: color-mix(in srgb, var(--accent) 8%, transparent);
+      }
+
+      ul {
+        padding-left: 22px;
+      }
+
+      strong {
+        color: var(--text);
+      }
+
+      footer {
+        margin-top: 32px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+    </style>
+    </head>
+  <body>
+    <main>
+      <article>
+        <h1>Vime for macOS 隐私政策</h1>
+        <p class="updated">生效日期：2026 年 9 月 27 日</p>
+
+        <p>
+          本隐私政策适用于 Vime 的 macOS 客户端（下称「Vime」）。Vime 常驻菜单栏，按住右 Command 说话，
+          把识别并整理后的文字写入当前输入框。
+        </p>
+
+        <div class="summary">
+          <strong>简要说明：</strong>
+          Vime 默认不需要账号，不用于广告跟踪。语音、选中文本和修改要求只在你主动发起听写、整理、翻译或编辑时，
+          为完成该次操作而处理。
+        </div>
+
+        <h2>我们处理哪些数据</h2>
+        <p>根据 Vime 的功能实现，App 可能处理以下数据：</p>
+        <ul>
+          <li><strong>音频数据：</strong>你主动发起听写时录制的语音，用于转写。</li>
+          <li><strong>文字内容：</strong>转写得到的文本，以及翻译、整理或编辑时所需的选中文本和你的修改要求。</li>
+          <li><strong>写入目标信息：</strong>为把结果写入正确位置，Vime 会读取当前焦点输入框的可访问性信息。</li>
+          <li><strong>本地数据：</strong>应用偏好、个人服务密钥、智能整理等开关状态；本地历史默认关闭，开启后保存识别文字、最终结果、使用时间和目标应用。</li>
+        </ul>
+
+        <h2>数据如何使用</h2>
+        <p>Vime 只把这些数据用于 App 功能本身：</p>
+        <ul>
+          <li>把语音转写为文字。</li>
+          <li>按你选择的模式整理、翻译或编辑文本。</li>
+          <li>把结果写入当前输入框；写入不可用时保留文本供你手动复制。</li>
+          <li>维护本地历史与应用偏好。</li>
+        </ul>
+
+        <h2>云端服务与第三方服务</h2>
+        <p>
+          转写与文本整理需要调用云端 ASR 或 LLM 服务。Vime 默认使用内置的默认云端服务完成你主动触发的请求：
+          本次录音会发送到当前启用的识别服务；整理、翻译或编辑时，所需的识别文字、选中文本和修改要求会发送到文本处理服务。
+        </p>
+        <p>
+          该默认云端服务由 Vime 运营，并通过阿里云通义千问 / DashScope 兼容模型处理请求。
+          默认云端服务不会用于广告、用户画像或数据经纪业务，也不会长期存储你的音频、文本或 prompt。
+        </p>
+        <p>
+          你也可以在设置中填写个人服务密钥，此时会优先使用你自己的服务，数据直接发送给你所选择的 Provider。
+          个人服务密钥保存在 macOS 钥匙串中。
+        </p>
+        <p>
+          使用 Apple Speech 作为备用识别方式时，音频可能由 Apple 处理；能否在本机完成识别取决于系统、语言和相关设置。
+        </p>
+
+        <h2>本地存储</h2>
+        <ul>
+          <li>本地历史默认关闭。开启后，识别文字、最终结果、使用时间和目标应用保存在本机，<strong>不保存录音文件</strong>。</li>
+          <li>关闭本地历史后不再新增记录；已有记录需另行删除。</li>
+          <li>个人服务密钥保存在 macOS 钥匙串中，用于向你选择的服务鉴权。</li>
+        </ul>
+
+        <h2>系统权限与你的选择</h2>
+        <ul>
+          <li><strong>麦克风：</strong>用于你主动发起的听写。</li>
+          <li><strong>辅助功能：</strong>用于读取选中文本并写入识别结果。</li>
+          <li><strong>语音识别：</strong>仅在使用 Apple Speech 时需要。</li>
+        </ul>
+        <p>
+          识别到密码等敏感输入框时，Vime 会阻止自动写入。你可以随时停止听写，也可以在
+          「系统设置 → 隐私与安全性」中管理这些权限；卸载 Vime 后相关权限随之失效。
+        </p>
+
+        <h2>我们不会做什么</h2>
+        <ul>
+          <li>不会出售你的数据。</li>
+          <li>不会把你的音频或文字用于广告跟踪。</li>
+          <li>不会要求你创建账号才能使用核心功能。</li>
+        </ul>
+
+        <h2>儿童隐私</h2>
+        <p>Vime 面向一般用户，不专门面向儿童设计。我们不会有意收集儿童个人信息。</p>
+
+        <h2>政策更新</h2>
+        <p>
+          如果 Vime 的数据处理方式发生变化，我们会更新本页面，并在需要时同步更新下载页上的说明。
+        </p>
+
+        <h2>联系我们</h2>
+        <p>
+          如果你对本隐私政策或 Vime 的数据处理方式有疑问，可以通过
+          <a href="https://imkida.github.io/V_IME_releases/macos/support/">Vime for macOS 支持页面</a>
+          或邮件 <a href="mailto:kida.wong@gmail.com">kida.wong@gmail.com</a> 联系我们。
+        </p>
+
+        <footer>
+          Vime for macOS Privacy Policy
+        </footer>
+      </article>
+    </main>
+  </body>
+</html>
