@@ -316,3 +316,9 @@ Vime 是一款智能语音输入法：说完即得可直接使用的文字，同
 - API Key 经 Android Keystore 加密存储，发请求那一刻才解密。
 - 密码输入框下静默拒绝写入。
 - 历史记录只存本机，可查询、复用、清理，也可整体关闭。
+
+## macOS 下载主页
+
+`docs/macos/index.html` 与 `docs/macos/assets/` 为已构建的静态网页，由 GitHub Pages 从 `main:/docs` 发布。页面在加载时读取本仓 `main/macos/manifest.json` 的 raw 地址，统一更新下载、校验、系统要求与版本说明；网络不可用时保留构建时已发布的版本，并在“其他下载与校验”中提示。
+
+网页更新通过 PR 提交构建后的 HTML、CSS、JavaScript 与实际使用的品牌 SVG，不提交客户端源码、设计审查材料或开发依赖。发布前运行 `npm test`，并以 `/V_IME_releases/macos/` 子目录验证资源、下载与安装引导。网站改版不修改安装包、发布清单或 Sparkle appcast。
