@@ -4,28 +4,29 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>VIME</title>
         <item>
-            <title>1.5.0</title>
-            <pubDate>Wed, 02 Sep 2026 00:58:27 +0800</pubDate>
+            <title>1.6.0</title>
+            <pubDate>Sun, 27 Sep 2026 16:44:29 +0800</pubDate>
             <link>https://imkida.github.io/V_IME_releases/macos/</link>
-            <sparkle:version>2026090202</sparkle:version>
-            <sparkle:shortVersionString>1.5.0</sparkle:shortVersionString>
+            <sparkle:version>2026092722</sparkle:version>
+            <sparkle:shortVersionString>1.6.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# Vime macOS 1.5.0 公测维护版
+            <description sparkle:format="markdown"><![CDATA[# VIME macOS v1.6.0 beta
 
-这是 Vime macOS 1.5.0 的转写与智能整理维护更新，build 为 `2026090202`。建议正在使用较早 1.5.0 测试包的用户更新。
+本轮重点升级听写内容写入、撤销和云端服务配置。适用于 macOS 14 及以上，可直接覆盖安装；原有设置、个人 Key 和历史记录保留。
 
-- 修复长时间 Clean 听写可能因分片处理而丢失整段语义上下文的问题，整理阶段现在能基于完整转写判断前后关系。
-- 修复正确的明确枚举结果偶尔被误判为“否定语义丢失”并退回原始转写的问题。
-- 保持原有安全边界：不改变右 Command 触发方式，不改变个人 Key 配置，也不启用新的云端试用或收费策略。
+- **输入与撤销**：普通编辑器统一采用原生粘贴写入，移除多条旧写入路径；改进单次写入、光标续输和本次听写撤销，减少成功输入后仍提示手动复制的情况。终端保留独立输入方式。
+- **常用词与学习**：纠错观察改为围绕本次插入片段进行，避免通过全文或后缀搜索定位；仍遵循学习开关和隐私限制。
+- **智能整理与等待时间**：延续 Product／Android 的共享整理契约，更新场景与标点处理，保留长录音无损压缩和传输优化。智能整理增强仍由用户自行开启，不改变已有选择。
+- **服务配置**：内置服务采用统一服务标识，个人 Key 配置保持可用。云端配置发布与本次客户端更新分开管理。
 
-本包已完成 Developer ID 签名、Apple 安全检查和公证，可在 macOS 14 及以上系统安装。下载 DMG 后打开，把 Vime 拖到 Applications；如提示已存在，请选择“替换”。
+使用内置云服务的旧版本用户请升级至本版；本轮服务接口已更新。使用个人 Key 的用户不受该接口切换影响。
 
-如升级后遇到影响使用的问题，可在同一 GitHub Release 中下载较早的 `2026082501` 构建覆盖安装；回滚不需要清除设置、历史或 Keychain。
+本版为公开测试版，不包含试用分钟、30 天额度周期、续期或订阅收费功能。输入后仍建议查看结果；若目标输入框失去焦点，VIME 会保留文本供手动复制。
 ]]></description>
-            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.5.0/2026090202/V_IME-1.5.0-2026090202-macos.zip" length="8665280" type="application/octet-stream" sparkle:edSignature="pJZEPbfPJ734HsQbR7RepyKsD5BXulb78C+BcPQMExxKx+xlrdAWA2SJgdP8mVZ1asHgIn/nmZg83srITD36AQ=="></enclosure>
+            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.6.0/2026092722/V_IME-1.6.0-2026092722-macos.zip" length="9356682" type="application/octet-stream" sparkle:edSignature="KapGkIjHaPc8i+qvvKNL2dbT58/efqBx/OQFZOrMWnxWvD1F0UTLuvEuyLCf0DLOq3AmWEx6LMkOckUCILeZBw=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: lFGmhSLZCg535Wgkspzkc3+oGEuq7HcqNZhoa39YtpuozrQ+U8nz7EL2JunRzqbZkZ5Y9gpXgduB/mFDZWw2Cg==
-length: 2218
+edSignature: 2MJ+fT8/kShmw7zcae0NEGYa8gHNr3tYXzRDC7gyko4O16+BLR73JfsR4FVlknBbBB8Ek0gx7MNK4Q2wfy8PBQ==
+length: 2586
 -->
