@@ -15,6 +15,15 @@ Vime 是一款**跨平台智能语音输入法**：说完即得可直接使用�
 - 每个平台使用独立 tag 命名空间，避免版本号冲突。
 - 每个公开下载资产必须提供 SHA-256 校验信息；有平台签名体系时同步记录签名证书或更新框架要求的签名元数据。
 
+### 什么不进这个仓（公开仓边界）
+
+本仓是公开只读镜像。判断标准：**这个东西需要凭证或私有上下文才能生成、执行或维护吗？**需要就不进。
+
+- 安装包本体一律走 GitHub Release asset 或 OSS，不进 Git 历史。仓库体积应保持在索引量级；历史上 `macos/0.5.0`、`macos/0.6.0` 曾把 DMG/ZIP 提交进仓（26.7 MB），已从 HEAD 移除，对应资产仍在 Release `macos-v0.5.0` / `macos-v0.6.0`。
+- 客户端源码、构建脚本、发布 lane 脚本、签名与公证配置、Sparkle 私钥、OSS 上传脚本与凭证。
+- 内部交接材料：候选包验证记录、设备 smoke 数据、排查过程、私有仓 commit 引用。公开页只保留用户可读的发布说明。
+- 该原则与仓库首段一致（"源码、签名密钥、构建脚本、私有配置不进入本仓"）；`scripts/` 下只放**发布控制文件的生成与校验**工具，不放上行到 OSS / Release 的脚本——那些属于客户端仓的发布 lane。
+
 ## 目录结构
 
 ```text
@@ -24,9 +33,7 @@ V_IME_releases/
 │   ├── manifest.json               # Android OTA 渠道清单（release / debug）
 │   └── local-asr-models.json       # 端侧语音识别模型清单（按需下载）
 ├── macos/
-│   ├── manifest.json
-│   ├── 0.5.0/                      # 历史 build 的 DMG / ZIP + SHA256SUMS
-│   └── 0.6.0/
+│   └── manifest.json               # 安装包本体走 Release asset / OSS，不进 Git
 ├── docs/
 │   ├── macos/
 │   │   ├── index.html              # macOS 公测下载与更新说明页
