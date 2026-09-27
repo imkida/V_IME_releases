@@ -67,10 +67,16 @@ test('published page embeds the current manifest as its offline fallback', () =>
 });
 
 test('published page carries no previous release identity', () => {
-  const previous = previousPublishedVersion();
-  if (!previous) {
+  if (!isGitRepository()) {
+    // Cannot read release history here; test 5 still pins the page to the manifest.
     return;
   }
+  const previous = previousPublishedVersion();
+  assert.ok(
+    previous,
+    'release history is readable but no earlier release identity was found; ' +
+    'this check must not pass vacuously'
+  );
   const page = readPublishedPage(ROOT);
   for (const token of [previous.versionName, String(previous.buildNumber)]) {
     assert.ok(
@@ -132,24 +138,54 @@ function seedSandbox(root, { html, bundle }) {
   writeFileSync(path.join(root, 'docs', 'macos', 'assets', bundleNameOf(html)), bundle);
 }
 
-// The identity the page should no longer reference: the release before the current one.
+// The identity the page should no longer reference: the newest revision of the manifest
+// that represents a different release. Commits that only correct fields of the current
+// release (for example a versionCode fix) are skipped, and so are unparseable revisions.
 function previousPublishedVersion() {
+  let log;
   try {
-    const log = execFileSync(
+    log = execFileSync(
       'git',
       ['log', '--format=%H', '--', 'macos/manifest.json'],
       { cwd: ROOT, encoding: 'utf8' }
     ).trim().split('\n').filter(Boolean);
-    if (log.length < 2) return null;
-    const previous = execFileSync('git', ['show', `${log[1]}:macos/manifest.json`], {
-      cwd: ROOT,
-      encoding: 'utf8'
-    });
-    const channel = JSON.parse(previous).channels.beta;
-    return { versionName: channel.versionName, buildNumber: channel.buildNumber };
   } catch {
     return null;
   }
+
+  let current;
+  try {
+    current = identityOf(JSON.parse(readFileSync(path.join(ROOT, 'macos', 'manifest.json'), 'utf8')));
+  } catch {
+    return null;
+  }
+
+  for (const commit of log.slice(1)) {
+    try {
+      const candidate = identityOf(JSON.parse(execFileSync(
+        'git',
+        ['show', `${commit}:macos/manifest.json`],
+        { cwd: ROOT, encoding: 'utf8' }
+      )));
+      if (candidate.versionName !== current.versionName
+        || candidate.buildNumber !== current.buildNumber) {
+        return candidate;
+      }
+    } catch {
+      // Unparseable historical revision: keep looking further back.
+    }
+  }
+  return null;
+}
+
+function identityOf(manifest) {
+  const channel = manifest.channels.beta;
+  return { versionName: channel.versionName, buildNumber: channel.buildNumber };
+}
+
+function isGitRepository() {
+  const result = spawnSync('git', ['rev-parse', '--git-dir'], { cwd: ROOT, encoding: 'utf8' });
+  return result.status === 0;
 }
 
 function withFixture(callback) {
