@@ -1,32 +1,32 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-09-29T17:01:58Z",
+  "generatedAt": "2026-09-29T19:13:39Z",
   "platform": "macos",
   "channels": {
     "beta": {
-      "versionName": "1.7.0",
-      "title": "VIME macOS v1.7.0 beta · build 2026093001 · macOS 14+ · 已通过 macOS 安全检查",
-      "summary": "---\ntitle: \"VIME macOS v1.7.0 beta 更新说明\"\nauthor: claude\nstatus: draft\ncreated_at: 2026-09-29T23:58\nupdated_at: 2026-09-30T00:45\ntags: [v_ime_macos, release]\n---\n\n# VIME macOS v1.7.0 beta\n\n本轮带来官方试用额度的完整形态、智能整理的默认优化，以及一批输入与写回体验的修复。\n适用于 macOS 14 及以上，可直接覆盖安装；原有设置、个人 Key 和历史记录保留。\n\n## 官方试用服务：额度可见、自动领取\n\n- **余量直接显示在设置页**：「当前状态 / 服务与识别」区现在直接显示\n  `剩余 N 分钟 · 已用 X / Y 分钟 · 有效期至 YYYY-MM-DD`，不用再进二级页面。\n- **首次启动与开始录音时自动领取额度**：安装后第一次打开或第一次听写就会自动领取试用时长，\n  领取过程静默进行，失败不影响本次听写，下次启动会再试。\n- **可随时关闭**：未领取时显示「试用未激活 · 激活后可查看余量」并提供一键激活；\n  在设置里显式关闭后，本功能与「没有这个功能」完全等价。\n- **未领取也能正常使用**：没有额度凭据时听写照常发送，只是不计入每分钟额度体系。\n- 如果你配置了个人服务密钥，以上卡片不会出现，个人 Key 路径完全不受影响。\n\n## 智能整理：默认开启并升级到新契约\n\n- **智能整理（Normal + Clean + Auto）现在默认开启**：对齐跨端公共候选资产\n  （scene 契约 `0.19.0`、fixed-body 契约 `0.10.0`），整理后的输出在断句、语气与\n  技术词保留上更贴近原意。\n- **可在设置里显式关闭**：关掉后回到原有行为。\n- 本轮只做字节与结构层面的对齐验证，**没有**做真实模型效果评测；如果你觉得整理风格\n  有变化，欢迎反馈。\n\n## 听写与写回修复\n\n- **修复「清除个人 Key 无效」**：此前在配置里点「清除」后仍会报文本处理鉴权失败，\n  重启后 Key 还会自己回来。现在清除真正生效，失败时会明确提示而不是静默谎报成功；\n  设置页另新增「改用 Vime 默认服务」一键动作。\n- **个人 Key 失效时自动降级**：当个人 Key 返回 401/403，会自动改用默认云服务继续完成\n  本次请求，并在界面上显示当前实际生效的服务来源，不再直接失败。\n- **听写前连接预热**：开始录音时会提前预热到默认云服务的连接，减少第一次听写的等待。\n  该请求不携带任何内容，也不消耗额度；使用个人 Key 或自建服务时不会产生额外请求。\n- **单次录音时长上限收敛为 300 秒**：与上游服务实际处理上限对齐。此前 300–360 秒的\n  录音会被上游拒绝且白等一次往返，现在会明确提示而不是长时间等待。\n\n## 其它\n\n- 长文本写回的可见性判断更稳健：正文读不到时不再误判为写入成功。\n- 写回后的提示不再长时间停留，仅短暂提示即消失（真正替换选中文字的听写仍可撤销）。\n\n---\n\n**v1.7.0 beta · build 2026093001 · macOS 14+ · 已通过 macOS 安全检查**\n\n- Developer ID 签名 + Hardened Runtime\n- 公证（notarization）submission：DMG `2edb4f23-8972-4d52-9e68-6391f3115ade`、\n  ZIP `9970163d-2b1a-442a-92db-93b6bd137c0d`，均 Accepted\n- 本版为公开测试版。输入后仍建议查看结果；若目标输入框失去焦点，VIME 会保留文本供手动复制。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.7.0",
+      "versionName": "1.7.1",
+      "title": "VIME macOS v1.7.1 beta · build 2026093002 · macOS 14+ · 已通过 macOS 安全检查",
+      "summary": "---\ntitle: \"VIME macOS v1.7.1 beta 更新说明\"\nauthor: claude\nstatus: draft\ncreated_at: 2026-09-30T02:55\nupdated_at: 2026-09-30T03:15\ntags: [v_ime_macos, release]\n---\n\n# VIME macOS v1.7.1 beta\n\n本版修复「服务与识别」状态区的显示问题，并同步官方试用服务的额度口径。\n适用于 macOS 14 及以上，可直接覆盖安装；原有设置、个人 Key 和历史记录保留。\n\n## 修复：「服务与识别」状态区改为单一事实源\n\n- **旧版「已提供默认云端服务代理」提示永久删除**：此前该区域同时挂着两套彼此独立的渲染条件，\n  导致「该显示的不显示、不该显示的还在」—— 从旧版本升级上来再清除个人 Key 时，本应出现额度卡片\n  的位置显示的仍是旧版提示。现在这一块区域只有一个事实源，按当前状态渲染一种内容。\n- **修复升级安装路径下额度卡片不出现**：沿升级路径安装（含「只清了 ASR 一侧、LLM 仍留 Key」\n  这类半清状态）时，额度卡片现在能正常出现。\n- **配置了个人 Key 的用户不再看到空白**：该区域改为显示 **「个人 Key 状态」或逐角色的来源行**，\n  而不是整块空白，也不再显示与个人 Key 无关的官方试用提示。\n\n现在的行为是明确的三态：\n\n| 你的情况 | 「服务与识别」区域显示 |\n|---|---|\n| 已配置个人 Key | **个人 Key 状态**（或逐角色来源行） |\n| 未配置个人 Key | **试用额度卡片**（余量 / 已用 / 有效期） |\n| 任何情况 | **都不再显示旧版的「正在试用服务」提示** |\n\n## 官方试用服务额度口径调整\n\n- **新领取**的试用额度调整为**一次性 6000 分钟**，**有效期 365 天**（此前为 30 天）。\n- **已经领取的额度不受影响**：额度按你领取时的口径执行，本次调整只作用于此后新领取的额度。\n- 额度仍按听写时长计量；「整理 / 翻译 / 编辑」等文本处理不额外消耗分钟数，\n  但受「试用额度仍有剩余」这一条闸门约束。\n\n## 其它\n\n- 其余能力与 1.7.0 一致。\n\n---\n\n**v1.7.1 beta · build 2026093002 · macOS 14+ · 已通过 macOS 安全检查**\n\n- Developer ID 签名 + Hardened Runtime\n- 公证（notarization）submission：DMG `6475c0a0-032e-45fc-b977-e133ced50eca`、\n  ZIP `71c56c79-b2b6-4470-9cd1-de6ecd03f67f`，均 Accepted\n- 本版为公开测试版。输入后仍建议查看结果；若目标输入框失去焦点，VIME 会保留文本供手动复制。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.7.1",
       "mandatory": false,
-      "buildNumber": 2026093001,
+      "buildNumber": 2026093002,
       "minSystemVersion": "14.0",
       "assets": [
         {
-          "name": "V_IME-1.7.0-2026093001-macos.dmg",
-          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.7.0/2026093001/V_IME-1.7.0-2026093001-macos.dmg",
-          "sha256": "e9f2e3542c726af7456e3c52d89eef3e3a3e2c0dc86c132d30525ab7484186d0",
-          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.7.0/V_IME-1.7.0-2026093001-macos.dmg",
-          "sizeBytes": 10986856,
+          "name": "V_IME-1.7.1-2026093002-macos.dmg",
+          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.7.1/2026093002/V_IME-1.7.1-2026093002-macos.dmg",
+          "sha256": "4a66f1a089ffdb061a1e5f5fe7d33365e4c7c0f35e07c930216a52e6ae99944a",
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.7.1/V_IME-1.7.1-2026093002-macos.dmg",
+          "sizeBytes": 10996417,
           "installerType": "dmg",
           "minSystemVersion": "14.0"
         },
         {
-          "name": "V_IME-1.7.0-2026093001-macos.zip",
-          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.7.0/2026093001/V_IME-1.7.0-2026093001-macos.zip",
-          "sha256": "16ee7c3e71abedad3e596a903e600b12cf054488f637284fd0639afaf511a13c",
-          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.7.0/V_IME-1.7.0-2026093001-macos.zip",
-          "sizeBytes": 9872237,
+          "name": "V_IME-1.7.1-2026093002-macos.zip",
+          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.7.1/2026093002/V_IME-1.7.1-2026093002-macos.zip",
+          "sha256": "47196b5d352ec0a9897e5819f5debdbc584824fa9cabb723deafc9b1f2d89b73",
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.7.1/V_IME-1.7.1-2026093002-macos.zip",
+          "sizeBytes": 9878310,
           "installerType": "zip",
           "minSystemVersion": "14.0"
         }
