@@ -4,36 +4,76 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>VIME</title>
         <item>
-            <title>1.6.2</title>
-            <pubDate>Mon, 28 Sep 2026 02:58:07 +0800</pubDate>
+            <title>1.7.0</title>
+            <pubDate>Wed, 30 Sep 2026 00:44:05 +0800</pubDate>
             <link>https://imkida.github.io/V_IME_releases/macos/</link>
-            <sparkle:version>2026092801</sparkle:version>
-            <sparkle:shortVersionString>1.6.2</sparkle:shortVersionString>
+            <sparkle:version>2026093001</sparkle:version>
+            <sparkle:shortVersionString>1.7.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
             <description sparkle:format="markdown"><![CDATA[---
-title: "VIME macOS v1.6.2 beta 更新说明"
+title: "VIME macOS v1.7.0 beta 更新说明"
 author: claude
 status: draft
-created_at: 2026-09-28T02:40
-updated_at: 2026-09-28T02:40
+created_at: 2026-09-29T23:58
+updated_at: 2026-09-30T00:45
 tags: [v_ime_macos, release]
 ---
 
-# VIME macOS v1.6.2 beta
+# VIME macOS v1.7.0 beta
 
-本轮调整听写结束后的屏幕提示行为。适用于 macOS 14 及以上，可直接覆盖安装；原有设置、个人 Key 和历史记录保留。
+本轮带来官方试用额度的完整形态、智能整理的默认优化，以及一批输入与写回体验的修复。
+适用于 macOS 14 及以上，可直接覆盖安装；原有设置、个人 Key 和历史记录保留。
 
-- **普通听写不再长时间停留提示**：在已有内容的输入框里用光标插入方式听写时，之前屏幕提示会停留较久并显示「可撤销」；现在写入成功后仅短暂提示成功，随即消失。
-- **选中文字后听写（替换/编辑）仍可撤销**：真正替换了你选中内容的这次听写，仍会显示「可撤销」，可在提示消失前撤回。
+## 官方试用服务：额度可见、自动领取
 
-其余能力与上一版一致，未作改动。
+- **余量直接显示在设置页**：「当前状态 / 服务与识别」区现在直接显示
+  `剩余 N 分钟 · 已用 X / Y 分钟 · 有效期至 YYYY-MM-DD`，不用再进二级页面。
+- **首次启动与开始录音时自动领取额度**：安装后第一次打开或第一次听写就会自动领取试用时长，
+  领取过程静默进行，失败不影响本次听写，下次启动会再试。
+- **可随时关闭**：未领取时显示「试用未激活 · 激活后可查看余量」并提供一键激活；
+  在设置里显式关闭后，本功能与「没有这个功能」完全等价。
+- **未领取也能正常使用**：没有额度凭据时听写照常发送，只是不计入每分钟额度体系。
+- 如果你配置了个人服务密钥，以上卡片不会出现，个人 Key 路径完全不受影响。
 
-本版为公开测试版，不包含试用分钟、30 天额度周期、续期或订阅收费功能。输入后仍建议查看结果；若目标输入框失去焦点，VIME 会保留文本供手动复制。
+## 智能整理：默认开启并升级到新契约
+
+- **智能整理（Normal + Clean + Auto）现在默认开启**：对齐跨端公共候选资产
+  （scene 契约 `0.19.0`、fixed-body 契约 `0.10.0`），整理后的输出在断句、语气与
+  技术词保留上更贴近原意。
+- **可在设置里显式关闭**：关掉后回到原有行为。
+- 本轮只做字节与结构层面的对齐验证，**没有**做真实模型效果评测；如果你觉得整理风格
+  有变化，欢迎反馈。
+
+## 听写与写回修复
+
+- **修复「清除个人 Key 无效」**：此前在配置里点「清除」后仍会报文本处理鉴权失败，
+  重启后 Key 还会自己回来。现在清除真正生效，失败时会明确提示而不是静默谎报成功；
+  设置页另新增「改用 Vime 默认服务」一键动作。
+- **个人 Key 失效时自动降级**：当个人 Key 返回 401/403，会自动改用默认云服务继续完成
+  本次请求，并在界面上显示当前实际生效的服务来源，不再直接失败。
+- **听写前连接预热**：开始录音时会提前预热到默认云服务的连接，减少第一次听写的等待。
+  该请求不携带任何内容，也不消耗额度；使用个人 Key 或自建服务时不会产生额外请求。
+- **单次录音时长上限收敛为 300 秒**：与上游服务实际处理上限对齐。此前 300–360 秒的
+  录音会被上游拒绝且白等一次往返，现在会明确提示而不是长时间等待。
+
+## 其它
+
+- 长文本写回的可见性判断更稳健：正文读不到时不再误判为写入成功。
+- 写回后的提示不再长时间停留，仅短暂提示即消失（真正替换选中文字的听写仍可撤销）。
+
+---
+
+**v1.7.0 beta · build 2026093001 · macOS 14+ · 已通过 macOS 安全检查**
+
+- Developer ID 签名 + Hardened Runtime
+- 公证（notarization）submission：DMG `2edb4f23-8972-4d52-9e68-6391f3115ade`、
+  ZIP `9970163d-2b1a-442a-92db-93b6bd137c0d`，均 Accepted
+- 本版为公开测试版。输入后仍建议查看结果；若目标输入框失去焦点，VIME 会保留文本供手动复制。
 ]]></description>
-            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.6.2/2026092801/V_IME-1.6.2-2026092801-macos.zip" length="9380983" type="application/octet-stream" sparkle:edSignature="99wytxIOlKetmrSXIT8VW2UpFrJZizno22GbgLprRtuSxVrpHLkXh0meb14mJuNQfybCWAhLqLumN7sN/0BpAw=="></enclosure>
+            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.7.0/2026093001/V_IME-1.7.0-2026093001-macos.zip" length="9872237" type="application/octet-stream" sparkle:edSignature="yAFQ6+sXxgYEZMfONBwXfwLcjXfTDjgtYkfHo8a+PuicM6K2Mcj40GDqDMiRwiFpO0haubqf+yQzsy24G96yBQ=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: aA4qmHmuL3k6gOBnsP44c/0pWBHUli2KfOCdbkqOD3YfLGrI6CniAH0DRaB50H5aRgJkoLywKeij6WhSDxeRDg==
-length: 2255
+edSignature: +tbQKzTkqzK+uEiXrOVvX6NBDpQbArsWL0I9Oduz2rGNL7ekWaSfn7aOYrQT/T1NmJH89nPITd2h2tquuq8YBg==
+length: 4706
 -->
