@@ -1,17 +1,17 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-09-05T07:26:41Z",
+  "generatedAt": "2026-09-29T13:45:00Z",
   "packageName": "com.vime.android",
   "channels": {
     "debug": {
-      "versionName": "1.7.0-dogfood.18",
-      "versionCode": 176,
-      "title": "v1.7.0-dogfood.18 — 智能整理场景规则维护版",
-      "summary": "公开 Debug 公测版。本轮集中维护智能整理的场景规则，保留既有 Prompt 与句末处理行为，不宣称列表排版效果提升。保留完整键盘与本地语音识别运行时（仅 arm64，模型仍需在 App 内下载），不改变用户设置。已完成测试机受控场景验证及主力机覆盖安装读回；这不代表全部整理场景或键盘性能已毕业。包内不含试用 API Key；debug/release 同包名不同签名，不可混装，切换签名前请先导出配置。稳定 release 渠道仍为 v1.6.0。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.7.0-dogfood.18",
-      "apkName": "V_IME-v1.7.0-dogfood.18-debug.apk",
-      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.7.0-dogfood.18/V_IME-v1.7.0-dogfood.18-debug.apk",
-      "apkSha256": "dab3c3c6d5242e73232f1ff5f4eb04c25c1c5df60dd0ea763db430c6639e4091",
+      "versionName": "1.7.0-dogfood.105",
+      "versionCode": 263,
+      "title": "v1.7.0-dogfood.105 — Clean 0.19 保留本人表达（Debug dogfood，含完整键盘载荷）",
+      "summary": "Debug dogfood。Clean 成对领用 Product 0.19.0（fixed-body 0.8.0 + scene 0.19.0 + context-reference 0.19.0）：修复得更充分、替用户改说法更克制，保留本人词汇、句式、节奏与正式度、礼貌、亲近、命令强度，不补命题、因果或结论。修复 262 缺 libime 全键盘载荷导致 T9 与拼音不可用的问题，载荷已按 261 同款链路读回验证。包内含完整键盘与本地识别运行时（仅 arm64，模型仍需在 App 内下载），不改变用户设置。debug/release 同包名不同签名不可混装，切换签名前请先导出配置；稳定 release 渠道仍为 v1.6.0。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.7.0-dogfood.105",
+      "apkName": "V_IME-v1.7.0-dogfood.105-debug.apk",
+      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.7.0-dogfood.105/V_IME-v1.7.0-dogfood.105-debug.apk",
+      "apkSha256": "ad011cf5af75df3365d538efbc783eb9a0465fa7bb4370a0cc8bd5b7e99f463b",
       "certificateSha256": "4513e5bc726058d40be6020e1bbfc2d0c0fbf4e81d3b04a393cba394cd195059",
       "mandatory": false,
       "minSupportedVersionCode": 1
