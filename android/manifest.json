@@ -1,17 +1,17 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-09-29T14:30:00Z",
+  "generatedAt": "2026-09-30T01:25:00Z",
   "packageName": "com.vime.android",
   "channels": {
     "debug": {
-      "versionName": "1.7.0-dogfood.107",
-      "versionCode": 265,
-      "title": "v1.7.0-dogfood.107 — Clean 契约修复（有序列表数字 + 请托词不升格，Debug dogfood）",
-      "summary": "Debug dogfood。领用 Product fixed-body 0.10.0（main a03e45aa）：有序列表统一用阿拉伯数字序号（1. 2. 3.），请托词与强制词不新增也不升格（原文「帮我」「麻烦」保留原形式，不改成「请」「烦请」）。评测口径 #199 同步：合同要求的列表引出符与列表项标点不计入书面化标记，实质书面化仍照常计入。含完整键盘（libime + rime）与本地识别运行时（sherpa-onnx，仅 arm64，模型仍需在 App 内下载），不改变用户设置。debug/release 同包名不同签名不可混装，切换签名前请先导出配置；稳定 release 渠道仍为 v1.6.0。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.7.0-dogfood.107",
-      "apkName": "V_IME-v1.7.0-dogfood.107-debug.apk",
-      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.7.0-dogfood.107/V_IME-v1.7.0-dogfood.107-debug.apk",
-      "apkSha256": "ba93b3f8f153ee5ebb9f17eae232fc3bbcd0c0d2febf2ae3ee9cc20db37146b5",
+      "versionName": "1.7.0-dogfood.108",
+      "versionCode": 266,
+      "title": "v1.7.0-dogfood.108 — 机械层 scope 门对齐 + #199 评测口径（Debug dogfood）",
+      "summary": "Debug dogfood。机械层按 Product 资产 scope 补齐条件：仅当 Auto 布局且 R1 开启时执行 CJK-Latin 空格归一与 pause repair（非 Auto 布局或 R1 关闭不再执行，属裁决预期）。dogfood 评测口径同步 #199：合同要求的结构标记不计入书面化。含完整键盘（libime + rime）与本地识别运行时（sherpa-onnx，仅 arm64，模型仍需在 App 内下载），不改变用户设置。debug/release 同包名不同签名不可混装，切换签名前请先导出配置；稳定 release 渠道仍为 v1.6.0。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.7.0-dogfood.108",
+      "apkName": "V_IME-v1.7.0-dogfood.108-debug.apk",
+      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.7.0-dogfood.108/V_IME-v1.7.0-dogfood.108-debug.apk",
+      "apkSha256": "ab9f4eb650c005a619228c7064b0f649c788b20d801737c12ea49758b02ce05e",
       "certificateSha256": "4513e5bc726058d40be6020e1bbfc2d0c0fbf4e81d3b04a393cba394cd195059",
       "mandatory": false,
       "minSupportedVersionCode": 1
