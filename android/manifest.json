@@ -1,17 +1,17 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-09-29T13:45:00Z",
+  "generatedAt": "2026-09-29T14:30:00Z",
   "packageName": "com.vime.android",
   "channels": {
     "debug": {
-      "versionName": "1.7.0-dogfood.105",
-      "versionCode": 263,
-      "title": "v1.7.0-dogfood.105 — Clean 0.19 保留本人表达（Debug dogfood，含完整键盘载荷）",
-      "summary": "Debug dogfood。Clean 成对领用 Product 0.19.0（fixed-body 0.8.0 + scene 0.19.0 + context-reference 0.19.0）：修复得更充分、替用户改说法更克制，保留本人词汇、句式、节奏与正式度、礼貌、亲近、命令强度，不补命题、因果或结论。修复 262 缺 libime 全键盘载荷导致 T9 与拼音不可用的问题，载荷已按 261 同款链路读回验证。包内含完整键盘与本地识别运行时（仅 arm64，模型仍需在 App 内下载），不改变用户设置。debug/release 同包名不同签名不可混装，切换签名前请先导出配置；稳定 release 渠道仍为 v1.6.0。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.7.0-dogfood.105",
-      "apkName": "V_IME-v1.7.0-dogfood.105-debug.apk",
-      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.7.0-dogfood.105/V_IME-v1.7.0-dogfood.105-debug.apk",
-      "apkSha256": "ad011cf5af75df3365d538efbc783eb9a0465fa7bb4370a0cc8bd5b7e99f463b",
+      "versionName": "1.7.0-dogfood.107",
+      "versionCode": 265,
+      "title": "v1.7.0-dogfood.107 — Clean 契约修复（有序列表数字 + 请托词不升格，Debug dogfood）",
+      "summary": "Debug dogfood。领用 Product fixed-body 0.10.0（main a03e45aa）：有序列表统一用阿拉伯数字序号（1. 2. 3.），请托词与强制词不新增也不升格（原文「帮我」「麻烦」保留原形式，不改成「请」「烦请」）。评测口径 #199 同步：合同要求的列表引出符与列表项标点不计入书面化标记，实质书面化仍照常计入。含完整键盘（libime + rime）与本地识别运行时（sherpa-onnx，仅 arm64，模型仍需在 App 内下载），不改变用户设置。debug/release 同包名不同签名不可混装，切换签名前请先导出配置；稳定 release 渠道仍为 v1.6.0。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.7.0-dogfood.107",
+      "apkName": "V_IME-v1.7.0-dogfood.107-debug.apk",
+      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.7.0-dogfood.107/V_IME-v1.7.0-dogfood.107-debug.apk",
+      "apkSha256": "ba93b3f8f153ee5ebb9f17eae232fc3bbcd0c0d2febf2ae3ee9cc20db37146b5",
       "certificateSha256": "4513e5bc726058d40be6020e1bbfc2d0c0fbf4e81d3b04a393cba394cd195059",
       "mandatory": false,
       "minSupportedVersionCode": 1
