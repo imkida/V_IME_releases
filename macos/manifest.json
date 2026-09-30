@@ -1,6 +1,6 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-09-30T09:28:16Z",
+  "generatedAt": "2026-09-30T10:12:26Z",
   "platform": "macos",
   "channels": {
     "beta": {
@@ -13,16 +13,22 @@
       "minSystemVersion": "14.0",
       "assets": [
         {
+          "name": "V_IME-1.7.3-2026093006-macos.dmg",
           "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.7.3/2026093006/V_IME-1.7.3-2026093006-macos.dmg",
-          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.7.3/V_IME-1.7.3-2026093006-macos.dmg",
           "sha256": "220734c23797cf18b1e37a587668d3eaacebb6ee38e17dfc317793fbfc28ef54",
-          "sizeBytes": 11023313
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.7.3/V_IME-1.7.3-2026093006-macos.dmg",
+          "sizeBytes": 11023313,
+          "installerType": "dmg",
+          "minSystemVersion": "14.0"
         },
         {
+          "name": "V_IME-1.7.3-2026093006-macos.zip",
           "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.7.3/2026093006/V_IME-1.7.3-2026093006-macos.zip",
-          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.7.3/V_IME-1.7.3-2026093006-macos.zip",
           "sha256": "5a47083b04ed09d43054f29c9b439425cfe2ff8633884ea18d72da794609621d",
-          "sizeBytes": 9908809
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.7.3/V_IME-1.7.3-2026093006-macos.zip",
+          "sizeBytes": 9908809,
+          "installerType": "zip",
+          "minSystemVersion": "14.0"
         }
       ],
       "appcastUrl": "https://imkida.github.io/V_IME_releases/macos/beta/appcast.xml"
