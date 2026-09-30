@@ -4,68 +4,63 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>VIME</title>
         <item>
-            <title>1.7.1</title>
-            <pubDate>Wed, 30 Sep 2026 03:06:00 +0800</pubDate>
+            <title>1.7.2</title>
+            <pubDate>Wed, 30 Sep 2026 10:48:40 +0800</pubDate>
             <link>https://imkida.github.io/V_IME_releases/macos/</link>
-            <sparkle:version>2026093002</sparkle:version>
-            <sparkle:shortVersionString>1.7.1</sparkle:shortVersionString>
+            <sparkle:version>2026093003</sparkle:version>
+            <sparkle:shortVersionString>1.7.2</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
             <description sparkle:format="markdown"><![CDATA[---
-title: "VIME macOS v1.7.1 beta 更新说明"
+title: "VIME macOS v1.7.2 beta 更新说明"
 author: claude
 status: draft
-created_at: 2026-09-30T02:55
-updated_at: 2026-09-30T03:15
+created_at: 2026-09-30T10:45
+updated_at: 2026-09-30T10:50
 tags: [v_ime_macos, release]
 ---
 
-# VIME macOS v1.7.1 beta
+# VIME macOS v1.7.2 beta
 
-本版修复「服务与识别」状态区的显示问题，并同步官方试用服务的额度口径。
+本版修复官方试用服务「激活 / 刷新余量永远失败」的问题，并把失败提示拆开、让钥匙串异常能自愈。
 适用于 macOS 14 及以上，可直接覆盖安装；原有设置、个人 Key 和历史记录保留。
 
-## 修复：「服务与识别」状态区改为单一事实源
+## 修复：激活与刷新余量不再卡死
 
-- **旧版「已提供默认云端服务代理」提示永久删除**：此前该区域同时挂着两套彼此独立的渲染条件，
-  导致「该显示的不显示、不该显示的还在」—— 从旧版本升级上来再清除个人 Key 时，本应出现额度卡片
-  的位置显示的仍是旧版提示。现在这一块区域只有一个事实源，按当前状态渲染一种内容。
-- **修复升级安装路径下额度卡片不出现**：沿升级路径安装（含「只清了 ASR 一侧、LLM 仍留 Key」
-  这类半清状态）时，额度卡片现在能正常出现。
-- **配置了个人 Key 的用户不再看到空白**：该区域改为显示 **「个人 Key 状态」或逐角色的来源行**，
-  而不是整块空白，也不再显示与个人 Key 无关的官方试用提示。
+- **凭据过期后会自动重新领取**：此前只要领取过一次试用额度、且距首次领取超过约 6 小时，
+  凭据就会失效；而「激活」与「刷新余量」走的都是需要有效凭据的刷新路径，
+  于是**永远失败**并停在「请稍后重试」。现在凭据失效会自动回落到重新领取，能正常恢复。
+- **打开页面时的自动刷新失败不再打扰**：进出设置页触发的后台刷新若失败，改为**静默处理**，
+  不再弹出打扰你的提示 —— 你主动点「刷新余量」时才需要看到结果。
+- **失败提示可分辨原因**：以前无论什么原因都共用同一句话。现在会区分**网络问题 / 本机钥匙串问题 /
+  凭据已过期 / 服务端拒绝**四类，提示里直接说明是哪一类。
 
-现在的行为是明确的三态：
+## 修复：本机钥匙串异常可自愈
 
-| 你的情况 | 「服务与识别」区域显示 |
-|---|---|
-| 已配置个人 Key | **个人 Key 状态**（或逐角色来源行） |
-| 未配置个人 Key | **试用额度卡片**（余量 / 已用 / 有效期） |
-| 任何情况 | **都不再显示旧版的「正在试用服务」提示** |
+- 若本机钥匙串里的凭据记录出现重复或残留，读写会失败。现在这种情况会**自动重建**记录，
+  不需要你手动清理钥匙串。
 
-## 官方试用服务额度口径调整
+## 界面调整
 
-- **新领取**的试用额度调整为**一次性 6000 分钟**，**有效期 365 天**（此前为 30 天）。
-- **已经领取的额度不受影响**：额度按你领取时的口径执行，本次调整只作用于此后新领取的额度。
-- 额度仍按听写时长计量；「整理 / 翻译 / 编辑」等文本处理不额外消耗分钟数，
-  但受「试用额度仍有剩余」这一条闸门约束。
+- **「激活试用时长」改名为「激活使用时长」**，并挪成**独立入口**；
+  余量卡片里只保留**余量与「刷新余量」**，两件事不再混在一个按钮里。
 
 ## 其它
 
-- 其余能力与 1.7.0 一致。
+- 其余能力与 1.7.1 一致。
 
 ---
 
-**v1.7.1 beta · build 2026093002 · macOS 14+ · 已通过 macOS 安全检查**
+**v1.7.2 beta · build 2026093003 · macOS 14+ · 已通过 macOS 安全检查**
 
 - Developer ID 签名 + Hardened Runtime
-- 公证（notarization）submission：DMG `6475c0a0-032e-45fc-b977-e133ced50eca`、
-  ZIP `71c56c79-b2b6-4470-9cd1-de6ecd03f67f`，均 Accepted
+- 公证（notarization）submission：DMG `7145b1c8-978a-4f4d-bc88-3c6125deef6a`、
+  ZIP `b0a7808b-5b46-471e-b607-b05224be7c95`，均 Accepted
 - 本版为公开测试版。输入后仍建议查看结果；若目标输入框失去焦点，VIME 会保留文本供手动复制。
 ]]></description>
-            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.7.1/2026093002/V_IME-1.7.1-2026093002-macos.zip" length="9878310" type="application/octet-stream" sparkle:edSignature="aW77OpdT1U97Jm/mGsrdq+kbAmZuA1b8GNumcuDqz+WR9bfyYFrWJLtWkg3OA9r8WOsSgK/cLsG3AQk1FB05BA=="></enclosure>
+            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.7.2/2026093003/V_IME-1.7.2-2026093003-macos.zip" length="9891399" type="application/octet-stream" sparkle:edSignature="v1wHofKdh9bhpATaIjZ01gcOAonQnX/Y07a8nGgODrbLTXbdxt3wCOTduVgedOh7kCeQoMM1jjHMD2D3eOgnDw=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: /neJfwhmA+LodD2FZa9/h5uTwvb9bU+vxkJic8ABfVAXPjMzS14UrObjdlifDkn7Mzm9Z8KzvvDaj0gfjN1vBg==
-length: 3779
+edSignature: QboEDS1hCFqVHrh99Dw7MDpSkt6gL8YluOtjAGiIl4tU2bJAi9cLkoYhqvewTg5kET4lPunkSMbc2pCjndHmDw==
+length: 3422
 -->
