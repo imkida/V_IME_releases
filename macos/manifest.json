@@ -1,34 +1,28 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-09-30T02:58:46Z",
+  "generatedAt": "2026-09-30T09:28:16Z",
   "platform": "macos",
   "channels": {
     "beta": {
-      "versionName": "1.7.2",
-      "title": "VIME macOS v1.7.2 beta · build 2026093003 · macOS 14+ · 已通过 macOS 安全检查",
-      "summary": "---\ntitle: \"VIME macOS v1.7.2 beta 更新说明\"\nauthor: claude\nstatus: draft\ncreated_at: 2026-09-30T10:45\nupdated_at: 2026-09-30T10:50\ntags: [v_ime_macos, release]\n---\n\n# VIME macOS v1.7.2 beta\n\n本版修复官方试用服务「激活 / 刷新余量永远失败」的问题，并把失败提示拆开、让钥匙串异常能自愈。\n适用于 macOS 14 及以上，可直接覆盖安装；原有设置、个人 Key 和历史记录保留。\n\n## 修复：激活与刷新余量不再卡死\n\n- **凭据过期后会自动重新领取**：此前只要领取过一次试用额度、且距首次领取超过约 6 小时，\n  凭据就会失效；而「激活」与「刷新余量」走的都是需要有效凭据的刷新路径，\n  于是**永远失败**并停在「请稍后重试」。现在凭据失效会自动回落到重新领取，能正常恢复。\n- **打开页面时的自动刷新失败不再打扰**：进出设置页触发的后台刷新若失败，改为**静默处理**，\n  不再弹出打扰你的提示 —— 你主动点「刷新余量」时才需要看到结果。\n- **失败提示可分辨原因**：以前无论什么原因都共用同一句话。现在会区分**网络问题 / 本机钥匙串问题 /\n  凭据已过期 / 服务端拒绝**四类，提示里直接说明是哪一类。\n\n## 修复：本机钥匙串异常可自愈\n\n- 若本机钥匙串里的凭据记录出现重复或残留，读写会失败。现在这种情况会**自动重建**记录，\n  不需要你手动清理钥匙串。\n\n## 界面调整\n\n- **「激活试用时长」改名为「激活使用时长」**，并挪成**独立入口**；\n  余量卡片里只保留**余量与「刷新余量」**，两件事不再混在一个按钮里。\n\n## 其它\n\n- 其余能力与 1.7.1 一致。\n\n---\n\n**v1.7.2 beta · build 2026093003 · macOS 14+ · 已通过 macOS 安全检查**\n\n- Developer ID 签名 + Hardened Runtime\n- 公证（notarization）submission：DMG `7145b1c8-978a-4f4d-bc88-3c6125deef6a`、\n  ZIP `b0a7808b-5b46-471e-b607-b05224be7c95`，均 Accepted\n- 本版为公开测试版。输入后仍建议查看结果；若目标输入框失去焦点，VIME 会保留文本供手动复制。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.7.2",
+      "versionName": "1.7.3",
+      "title": "VIME macOS v1.7.3 beta · build 2026093006 · macOS 14+ · 已通过 macOS 安全检查",
+      "summary": "---\ntitle: \"VIME macOS v1.7.3 beta 更新说明\"\nauthor: claude\nstatus: draft\ncreated_at: 2026-09-30T17:15\nupdated_at: 2026-09-30T17:15\ntags: [v_ime_macos, release]\n---\n\n# VIME macOS v1.7.3 beta\n\n本版修复「隔一段时间没用，第一次听写要等好几秒」的问题。适用于 macOS 14 及以上，\n可直接覆盖安装；原有设置、个人 Key 和历史记录保留。\n\n## 修复：冷启动不再落在第一次听写里\n\n- **叫醒云端服务的请求等得不够久**：开始录音时客户端会先发一个轻量健康检查去「叫醒」\n  云端服务，好让冷启动发生在你还说话的这几秒里。但它只等 3 秒，而冷启动实测需要 5.1–5.5 秒 ——\n  于是这次预热在最需要它的时候反而失败，冷启动只好落回你说完话之后的识别里。\n  现在等待提到 8 秒。生产实测：同样一段 5 秒静音，不预热要 **7.15 秒**，预热后 **1.26 秒**。\n- **开始录音时不再取消上一次预热**：此前刚发出的那次预热会被新的触发取消并从头再来，\n  已经花掉的建立连接时间全部作废。\n- **不再发一个注定被拒绝的探测请求**：它不会创建云端实例，只是白费一次往返，\n  还会让日志看起来像「预热成功」。\n\n## 诊断增强\n\n- 新增网络「排队 / 恢复」耗时埋点，用于定位个别等待 5–9 秒的异常请求：\n  这类请求的 URLSession 阶段耗时全部正常，问题出在真正的请求发起之前。\n",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.7.3",
       "mandatory": false,
-      "buildNumber": 2026093003,
+      "buildNumber": 2026093006,
       "minSystemVersion": "14.0",
       "assets": [
         {
-          "name": "V_IME-1.7.2-2026093003-macos.dmg",
-          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.7.2/2026093003/V_IME-1.7.2-2026093003-macos.dmg",
-          "sha256": "7afce379fa44428af6dc8427c2229506696b2935d8964c85427d4896089fdd2c",
-          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.7.2/V_IME-1.7.2-2026093003-macos.dmg",
-          "sizeBytes": 11012075,
-          "installerType": "dmg",
-          "minSystemVersion": "14.0"
+          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.7.3/2026093006/V_IME-1.7.3-2026093006-macos.dmg",
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.7.3/V_IME-1.7.3-2026093006-macos.dmg",
+          "sha256": "220734c23797cf18b1e37a587668d3eaacebb6ee38e17dfc317793fbfc28ef54",
+          "sizeBytes": 11023313
         },
         {
-          "name": "V_IME-1.7.2-2026093003-macos.zip",
-          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.7.2/2026093003/V_IME-1.7.2-2026093003-macos.zip",
-          "sha256": "6afed49b5160cd22925105d716a3d6573d42dcded874c513ee91ced3f1e78a1f",
-          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.7.2/V_IME-1.7.2-2026093003-macos.zip",
-          "sizeBytes": 9891399,
-          "installerType": "zip",
-          "minSystemVersion": "14.0"
+          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.7.3/2026093006/V_IME-1.7.3-2026093006-macos.zip",
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.7.3/V_IME-1.7.3-2026093006-macos.zip",
+          "sha256": "5a47083b04ed09d43054f29c9b439425cfe2ff8633884ea18d72da794609621d",
+          "sizeBytes": 9908809
         }
       ],
       "appcastUrl": "https://imkida.github.io/V_IME_releases/macos/beta/appcast.xml"
