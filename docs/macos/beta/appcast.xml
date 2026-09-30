@@ -4,46 +4,44 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>VIME</title>
         <item>
-            <title>1.7.3</title>
-            <pubDate>Wed, 30 Sep 2026 17:21:17 +0800</pubDate>
+            <title>1.7.4</title>
+            <pubDate>Wed, 30 Sep 2026 19:46:24 +0800</pubDate>
             <link>https://imkida.github.io/V_IME_releases/macos/</link>
-            <sparkle:version>2026093006</sparkle:version>
-            <sparkle:shortVersionString>1.7.3</sparkle:shortVersionString>
+            <sparkle:version>2026093008</sparkle:version>
+            <sparkle:shortVersionString>1.7.4</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
             <description sparkle:format="markdown"><![CDATA[---
-title: "VIME macOS v1.7.3 beta 更新说明"
+title: "VIME macOS v1.7.4 beta 更新说明"
 author: claude
 status: draft
-created_at: 2026-09-30T17:15
-updated_at: 2026-09-30T17:15
+created_at: 2026-09-30T19:45
+updated_at: 2026-09-30T19:45
 tags: [v_ime_macos, release]
 ---
 
-# VIME macOS v1.7.3 beta
+# VIME macOS v1.7.4 beta
 
-本版修复「隔一段时间没用，第一次听写要等好几秒」的问题。适用于 macOS 14 及以上，
+本版修掉「说得比较久时，说完还要多等五秒」的长尾。适用于 macOS 14 及以上，
 可直接覆盖安装；原有设置、个人 Key 和历史记录保留。
 
-## 修复：冷启动不再落在第一次听写里
+## 修复：长口述不再多等五秒
 
-- **叫醒云端服务的请求等得不够久**：开始录音时客户端会先发一个轻量健康检查去「叫醒」
-  云端服务，好让冷启动发生在你还说话的这几秒里。但它只等 3 秒，而冷启动实测需要 5.1–5.5 秒 ——
-  于是这次预热在最需要它的时候反而失败，冷启动只好落回你说完话之后的识别里。
-  现在等待提到 8 秒。生产实测：同样一段 5 秒静音，不预热要 **7.15 秒**，预热后 **1.26 秒**。
-- **开始录音时不再取消上一次预热**：此前刚发出的那次预热会被新的触发取消并从头再来，
-  已经花掉的建立连接时间全部作废。
-- **不再发一个注定被拒绝的探测请求**：它不会创建云端实例，只是白费一次往返，
-  还会让日志看起来像「预热成功」。
+- **连接保活**：开始录音时会先「叫醒」云端服务。但如果你这次说得比较久（超过约 20 秒），
+  那条已经建好的连接会在你说完之前过期，识别请求只好重新建立连接 —— 而这台机器上重新建连
+  偶尔要 5 秒（该域名没有启用 OCSP stapling，系统需要联网确认证书状态，超时就是 5 秒，
+  而且只慢不报错）。
+  现在录音期间会按 20 秒的节奏轻量刷新一次：不带任何凭据、不消耗试用额度、不碰账本。
+- 实测：录音 43.6 秒的样本里，识别请求从「重新建连、tls 5.09 秒」变成「直接复用连接」。
 
-## 诊断增强
+## 上一版的修复继续有效
 
-- 新增网络「排队 / 恢复」耗时埋点，用于定位个别等待 5–9 秒的异常请求：
-  这类请求的 URLSession 阶段耗时全部正常，问题出在真正的请求发起之前。
+v1.7.3 修掉了「隔一段时间没用，第一次听写要等好几秒」（预热超时预算 3 秒 → 8 秒）：
+生产实测不预热 7.15 秒 → 预热后 1.26 秒。
 ]]></description>
-            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.7.3/2026093006/V_IME-1.7.3-2026093006-macos.zip" length="9908809" type="application/octet-stream" sparkle:edSignature="On+QF9WT8i41ikjedOxOl4lmt1ebVOjvOaQHu+75XQTZtNpore1PM2iFc6mJImi0XEdx1El9inHCt8gef1f1Cg=="></enclosure>
+            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.7.4/2026093008/V_IME-1.7.4-2026093008-macos.zip" length="9918498" type="application/octet-stream" sparkle:edSignature="6QVvHaeXCP5JaUexLnk+VvJqEGOKK3F8G47itD373zigubKjZovDNwjAIsOk48+gUG3Le320Ssbz56VvN4lPBQ=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: T5vWiUrUhaOJzbYUxuVNIiD9R/Sk0DN/zhaxtbCdav85KBpQCGVQGp387Z2cs/K9xpsXcZbllXcXSynXlYAjCQ==
-length: 2741
+edSignature: 7FHTTmnQY37R6k6f6S+NsKiXW0drVEx6efUbOCQLjn4T8nn+WlUnuJma/7P4V9TZkacGWrwN5soMg9s+MmMjCA==
+length: 2532
 -->

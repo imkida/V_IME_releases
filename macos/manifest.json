@@ -1,32 +1,32 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-09-30T10:12:26Z",
+  "generatedAt": "2026-09-30T11:47:26Z",
   "platform": "macos",
   "channels": {
     "beta": {
-      "versionName": "1.7.3",
-      "title": "VIME macOS v1.7.3 beta · build 2026093006 · macOS 14+ · 已通过 macOS 安全检查",
-      "summary": "---\ntitle: \"VIME macOS v1.7.3 beta 更新说明\"\nauthor: claude\nstatus: draft\ncreated_at: 2026-09-30T17:15\nupdated_at: 2026-09-30T17:15\ntags: [v_ime_macos, release]\n---\n\n# VIME macOS v1.7.3 beta\n\n本版修复「隔一段时间没用，第一次听写要等好几秒」的问题。适用于 macOS 14 及以上，\n可直接覆盖安装；原有设置、个人 Key 和历史记录保留。\n\n## 修复：冷启动不再落在第一次听写里\n\n- **叫醒云端服务的请求等得不够久**：开始录音时客户端会先发一个轻量健康检查去「叫醒」\n  云端服务，好让冷启动发生在你还说话的这几秒里。但它只等 3 秒，而冷启动实测需要 5.1–5.5 秒 ——\n  于是这次预热在最需要它的时候反而失败，冷启动只好落回你说完话之后的识别里。\n  现在等待提到 8 秒。生产实测：同样一段 5 秒静音，不预热要 **7.15 秒**，预热后 **1.26 秒**。\n- **开始录音时不再取消上一次预热**：此前刚发出的那次预热会被新的触发取消并从头再来，\n  已经花掉的建立连接时间全部作废。\n- **不再发一个注定被拒绝的探测请求**：它不会创建云端实例，只是白费一次往返，\n  还会让日志看起来像「预热成功」。\n\n## 诊断增强\n\n- 新增网络「排队 / 恢复」耗时埋点，用于定位个别等待 5–9 秒的异常请求：\n  这类请求的 URLSession 阶段耗时全部正常，问题出在真正的请求发起之前。\n",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.7.3",
+      "versionName": "1.7.4",
+      "title": "VIME macOS v1.7.4 beta · build 2026093008 · macOS 14+ · 已通过 macOS 安全检查",
+      "summary": "---\ntitle: \"VIME macOS v1.7.4 beta 更新说明\"\nauthor: claude\nstatus: draft\ncreated_at: 2026-09-30T19:45\nupdated_at: 2026-09-30T19:45\ntags: [v_ime_macos, release]\n---\n\n# VIME macOS v1.7.4 beta\n\n本版修掉「说得比较久时，说完还要多等五秒」的长尾。适用于 macOS 14 及以上，\n可直接覆盖安装；原有设置、个人 Key 和历史记录保留。\n\n## 修复：长口述不再多等五秒\n\n- **连接保活**：开始录音时会先「叫醒」云端服务。但如果你这次说得比较久（超过约 20 秒），\n  那条已经建好的连接会在你说完之前过期，识别请求只好重新建立连接 —— 而这台机器上重新建连\n  偶尔要 5 秒（该域名没有启用 OCSP stapling，系统需要联网确认证书状态，超时就是 5 秒，\n  而且只慢不报错）。\n  现在录音期间会按 20 秒的节奏轻量刷新一次：不带任何凭据、不消耗试用额度、不碰账本。\n- 实测：录音 43.6 秒的样本里，识别请求从「重新建连、tls 5.09 秒」变成「直接复用连接」。\n\n## 上一版的修复继续有效\n\nv1.7.3 修掉了「隔一段时间没用，第一次听写要等好几秒」（预热超时预算 3 秒 → 8 秒）：\n生产实测不预热 7.15 秒 → 预热后 1.26 秒。\n",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.7.4",
       "mandatory": false,
-      "buildNumber": 2026093006,
+      "buildNumber": 2026093008,
       "minSystemVersion": "14.0",
       "assets": [
         {
-          "name": "V_IME-1.7.3-2026093006-macos.dmg",
-          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.7.3/2026093006/V_IME-1.7.3-2026093006-macos.dmg",
-          "sha256": "220734c23797cf18b1e37a587668d3eaacebb6ee38e17dfc317793fbfc28ef54",
-          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.7.3/V_IME-1.7.3-2026093006-macos.dmg",
-          "sizeBytes": 11023313,
+          "name": "V_IME-1.7.4-2026093008-macos.dmg",
+          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.7.4/2026093008/V_IME-1.7.4-2026093008-macos.dmg",
+          "sha256": "2d7eb8122461932ba52bb9c78ef3b9be3bdbf5570abde3a97653858f1037df6f",
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.7.4/V_IME-1.7.4-2026093008-macos.dmg",
+          "sizeBytes": 11036673,
           "installerType": "dmg",
           "minSystemVersion": "14.0"
         },
         {
-          "name": "V_IME-1.7.3-2026093006-macos.zip",
-          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.7.3/2026093006/V_IME-1.7.3-2026093006-macos.zip",
-          "sha256": "5a47083b04ed09d43054f29c9b439425cfe2ff8633884ea18d72da794609621d",
-          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.7.3/V_IME-1.7.3-2026093006-macos.zip",
-          "sizeBytes": 9908809,
+          "name": "V_IME-1.7.4-2026093008-macos.zip",
+          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.7.4/2026093008/V_IME-1.7.4-2026093008-macos.zip",
+          "sha256": "1a68cf9e950b93c87b81acce1a1cd8f79f433fac1ac5627429426c36c7d7fbec",
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.7.4/V_IME-1.7.4-2026093008-macos.zip",
+          "sizeBytes": 9918498,
           "installerType": "zip",
           "minSystemVersion": "14.0"
         }
