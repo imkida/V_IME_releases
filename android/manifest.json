@@ -1,17 +1,17 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-10-01T12:42:56.019180Z",
+  "generatedAt": "2026-10-01T21:24:47.034464Z",
   "packageName": "com.vime.android",
   "channels": {
     "debug": {
-      "versionName": "1.7.0-dogfood.123",
-      "versionCode": 282,
-      "title": "v1.7.0-dogfood.123 — 联合键盘、听写与智能整理试用（Debug dogfood）",
-      "summary": "完整26/T9键盘、拼写召回与已输入片段、快速退格、确认前文与续词、词库扩表、图标精简及本地ASR运行时。智能整理含尚未正式通过保真门的完整候选，存在未定动作具体化、否定范围变化、额外补要求或改变事实状态的已知风险，本次明确接受风险公开试用；稳定版未采用。不包本地模型，不改变用户设置。仅同签名Debug可覆盖，Debug/Release不可混装。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.7.0-dogfood.123",
-      "apkName": "V_IME-v1.7.0-dogfood.123-debug.apk",
-      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.7.0-dogfood.123/V_IME-v1.7.0-dogfood.123-debug.apk",
-      "apkSha256": "03e3fd3a4104aa658a05f80884510d19669407321701bc48be7904afb56af219",
+      "versionName": "1.7.0-dogfood.127",
+      "versionCode": 286,
+      "title": "v1.7.0-dogfood.127 — 续写标点修复与完整键盘联合试用（Debug dogfood）",
+      "summary": "续写时保留与本轮识别原文一致的开头标点，回退文本不使用该例外。保留跨页候选学习、九宫格侧栏修正及停录离线接管，含完整26/T9键盘与本地识别运行时（仅arm64，模型按需下载）。智能整理仍是试用候选，已知可能具体化未定动作、改变否定范围、增加未提出的要求或改变事实状态；本次不代表正式质量验收通过。仅推进debug更新，稳定release仍为1.6.0/138。debug/release同包名不同签名不可混装。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.7.0-dogfood.127",
+      "apkName": "V_IME-v1.7.0-dogfood.127-debug.apk",
+      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.7.0-dogfood.127/V_IME-v1.7.0-dogfood.127-debug.apk",
+      "apkSha256": "78b3cba5c61cc5c5c4842a7e3b02c84a30c9bdc3899fa57be7bdc5e302c66a6d",
       "certificateSha256": "4513e5bc726058d40be6020e1bbfc2d0c0fbf4e81d3b04a393cba394cd195059",
       "mandatory": false,
       "minSupportedVersionCode": 1
