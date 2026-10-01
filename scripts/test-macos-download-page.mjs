@@ -103,6 +103,9 @@ test('published page embeds the current manifest as its offline fallback', () =>
   assert.ok(link, 'noscript must keep a no-JavaScript download link');
   assert.equal(link[1], dmg.url);
   assert.equal(link[2], `${channel.versionName} beta`);
+  const backup = noscript.match(/<a href="([^"]+)">GitHub 备用下载与更新说明<\/a>/);
+  assert.ok(backup, 'noscript must keep the GitHub backup link');
+  assert.equal(backup[1], channel.releaseUrl);
 });
 
 test('published page carries no previous release identity', () => {
@@ -143,21 +146,29 @@ test('sync script rebuilds a stale fallback byte for byte', () => {
   const staleBundle = page.bundle
     .replace(`"${page.generatedAt}"`, '"2026-09-01T17:02:07Z"')
     .replace(slot.text, JSON.stringify(staleChannel, null, 0));
+  const staleReleaseUrl = 'https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.5.0';
+  const staleHtml = page.html.replace(page.channel.releaseUrl, staleReleaseUrl);
 
   const sandbox = mkdtempSync(path.join(tmpdir(), 'vime-download-page-sync.'));
   try {
-    seedSandbox(sandbox, { html: page.html, bundle: staleBundle });
+    seedSandbox(sandbox, { html: staleHtml, bundle: staleBundle });
     const result = syncDownloadPage({ repoRoot: sandbox });
     assert.equal(result.changed, true);
     assert.deepEqual(result.messages, [
       `  generatedAt 2026-09-01T17:02:07Z -> ${page.generatedAt}`,
-      '  versionName 1.5.0 -> 1.7.2',
-      '  buildNumber 2026090202 -> 2026093003'
+      `  versionName 1.5.0 -> ${page.channel.versionName}`,
+      `  buildNumber 2026090202 -> ${page.channel.buildNumber}`,
+      `  noscript backup ${staleReleaseUrl} -> ${page.channel.releaseUrl}`
     ]);
     assert.equal(
       readFileSync(path.join(sandbox, 'docs', 'macos', 'assets', bundleNameOf(page.html)), 'utf8'),
       page.bundle,
       'sync must reproduce the published bundle exactly'
+    );
+    assert.equal(
+      readFileSync(path.join(sandbox, 'docs', 'macos', 'index.html'), 'utf8'),
+      page.html,
+      'sync must reproduce both published fallback links exactly'
     );
   } finally {
     rmSync(sandbox, { recursive: true, force: true });

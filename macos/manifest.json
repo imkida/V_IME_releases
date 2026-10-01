@@ -1,32 +1,32 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-09-30T11:47:26Z",
+  "generatedAt": "2026-10-01T21:07:14Z",
   "platform": "macos",
   "channels": {
     "beta": {
-      "versionName": "1.7.4",
-      "title": "VIME macOS v1.7.4 beta · build 2026093008 · macOS 14+ · 已通过 macOS 安全检查",
-      "summary": "---\ntitle: \"VIME macOS v1.7.4 beta 更新说明\"\nauthor: claude\nstatus: draft\ncreated_at: 2026-09-30T19:45\nupdated_at: 2026-09-30T19:45\ntags: [v_ime_macos, release]\n---\n\n# VIME macOS v1.7.4 beta\n\n本版修掉「说得比较久时，说完还要多等五秒」的长尾。适用于 macOS 14 及以上，\n可直接覆盖安装；原有设置、个人 Key 和历史记录保留。\n\n## 修复：长口述不再多等五秒\n\n- **连接保活**：开始录音时会先「叫醒」云端服务。但如果你这次说得比较久（超过约 20 秒），\n  那条已经建好的连接会在你说完之前过期，识别请求只好重新建立连接 —— 而这台机器上重新建连\n  偶尔要 5 秒（该域名没有启用 OCSP stapling，系统需要联网确认证书状态，超时就是 5 秒，\n  而且只慢不报错）。\n  现在录音期间会按 20 秒的节奏轻量刷新一次：不带任何凭据、不消耗试用额度、不碰账本。\n- 实测：录音 43.6 秒的样本里，识别请求从「重新建连、tls 5.09 秒」变成「直接复用连接」。\n\n## 上一版的修复继续有效\n\nv1.7.3 修掉了「隔一段时间没用，第一次听写要等好几秒」（预热超时预算 3 秒 → 8 秒）：\n生产实测不预热 7.15 秒 → 预热后 1.26 秒。\n",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.7.4",
+      "versionName": "1.8.0",
+      "title": "VIME macOS v1.8.0 beta · build 2026100201 · macOS 14+ · 已通过 macOS 安全检查",
+      "summary": "# Vime macOS 1.8.0 公测\n\n本次更新重点是设置体验、听写等待和输入状态展示。\n\n- 重新整理设置页，区分默认服务、官方模板与个人配置，让服务检测和配置状态更清楚。\n- 修复本地统计开关与安全存储身份问题，保留已有配置、Key 和听写历史。\n- 更新状态栏面板，使用系统玻璃材质、清晰的风格选中反馈和真实快捷键展示；历史记录与设置入口更易找到，Logo 适配深浅外观。\n- 减少听写结束后的固定等待，精简云端 ASR 音频请求编码；识别模型和智能整理默认策略不变。\n- 更新轻度毛玻璃听写状态条，支持自动、浅色和深色外观，以及整条拖动，清晰呈现选区替换或编辑后的撤销操作。\n- 改善面板占用焦点时向原输入框的写回；取消听写或切换输入目标时不抢回焦点。\n\n离线 ASR 新研究、未完成质量验证的 Clean 候选、新的云端存储业务、匿名日统计上传、实时听写预览和液态玻璃 HUD 研究不包含在本次公测中。纠错学习未出现提示的问题继续单独调查，本次不宣称已修复。\n\n支持 macOS 14 及以上。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.8.0",
       "mandatory": false,
-      "buildNumber": 2026093008,
+      "buildNumber": 2026100201,
       "minSystemVersion": "14.0",
       "assets": [
         {
-          "name": "V_IME-1.7.4-2026093008-macos.dmg",
-          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.7.4/2026093008/V_IME-1.7.4-2026093008-macos.dmg",
-          "sha256": "2d7eb8122461932ba52bb9c78ef3b9be3bdbf5570abde3a97653858f1037df6f",
-          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.7.4/V_IME-1.7.4-2026093008-macos.dmg",
-          "sizeBytes": 11036673,
+          "name": "V_IME-1.8.0-2026100201-macos.dmg",
+          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.0/2026100201/V_IME-1.8.0-2026100201-macos.dmg",
+          "sha256": "3035c06b14fd08e8aea18fcecd3c188a9866a4112fa9d96f25e1fe2b9b270a45",
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.8.0/V_IME-1.8.0-2026100201-macos.dmg",
+          "sizeBytes": 11314886,
           "installerType": "dmg",
           "minSystemVersion": "14.0"
         },
         {
-          "name": "V_IME-1.7.4-2026093008-macos.zip",
-          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.7.4/2026093008/V_IME-1.7.4-2026093008-macos.zip",
-          "sha256": "1a68cf9e950b93c87b81acce1a1cd8f79f433fac1ac5627429426c36c7d7fbec",
-          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.7.4/V_IME-1.7.4-2026093008-macos.zip",
-          "sizeBytes": 9918498,
+          "name": "V_IME-1.8.0-2026100201-macos.zip",
+          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.0/2026100201/V_IME-1.8.0-2026100201-macos.zip",
+          "sha256": "28ca67ae9ac4d9f996fdcf7841c593724a87323590be5c92f1ee2bf4a7f89524",
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.8.0/V_IME-1.8.0-2026100201-macos.zip",
+          "sizeBytes": 10108057,
           "installerType": "zip",
           "minSystemVersion": "14.0"
         }

@@ -68,7 +68,7 @@ export function syncDownloadPage({ repoRoot: root, channel: channelName = 'beta'
 
   const messages = [];
   const nextBundle = refreshEmbeddedManifest(bundle, manifest, channel, messages);
-  const nextHtml = refreshNoscriptLink(html, channel, dmg, messages);
+  const nextHtml = refreshNoscriptLinks(html, channel, dmg, messages);
   const changed = nextBundle !== bundle || nextHtml !== html;
 
   if (changed && !check) {
@@ -118,7 +118,7 @@ function refreshEmbeddedManifest(bundle, manifest, channel, messages) {
     + next.slice(slot.end);
 }
 
-function refreshNoscriptLink(html, channel, dmg, messages) {
+function refreshNoscriptLinks(html, channel, dmg, messages) {
   const noscript = html.match(/<noscript>([\s\S]*?)<\/noscript>/);
   if (!noscript) {
     throw new Error('docs/macos/index.html has no <noscript> fallback block');
@@ -128,16 +128,30 @@ function refreshNoscriptLink(html, channel, dmg, messages) {
     throw new Error('docs/macos/index.html <noscript> has no download link');
   }
   const label = `${channel.versionName} beta`;
-  if (link[1] === dmg.url && link[2] === label) {
-    return html;
+  let next = html;
+  if (link[1] !== dmg.url || link[2] !== label) {
+    messages.push(`  noscript link ${link[2]} -> ${label}`);
+    next = replaceOnce(
+      next,
+      link[0],
+      `<a href="${dmg.url}">下载 ${label}</a>`,
+      '<noscript> download link'
+    );
   }
-  messages.push(`  noscript link ${link[2]} -> ${label}`);
-  return replaceOnce(
-    html,
-    link[0],
-    `<a href="${dmg.url}">下载 ${label}</a>`,
-    '<noscript> download link'
-  );
+  const backup = noscript[1].match(/<a href="([^"]+)">GitHub 备用下载与更新说明<\/a>/);
+  if (!backup) {
+    throw new Error('docs/macos/index.html <noscript> has no GitHub backup link');
+  }
+  if (backup[1] !== channel.releaseUrl) {
+    messages.push(`  noscript backup ${backup[1]} -> ${channel.releaseUrl}`);
+    next = replaceOnce(
+      next,
+      backup[0],
+      `<a href="${channel.releaseUrl}">GitHub 备用下载与更新说明</a>`,
+      '<noscript> GitHub backup link'
+    );
+  }
+  return next;
 }
 
 function replaceOnce(text, search, replacement, label) {

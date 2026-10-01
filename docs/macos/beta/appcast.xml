@@ -4,44 +4,31 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>VIME</title>
         <item>
-            <title>1.7.4</title>
-            <pubDate>Wed, 30 Sep 2026 19:46:24 +0800</pubDate>
+            <title>1.8.0</title>
+            <pubDate>Fri, 02 Oct 2026 04:31:48 +0800</pubDate>
             <link>https://imkida.github.io/V_IME_releases/macos/</link>
-            <sparkle:version>2026093008</sparkle:version>
-            <sparkle:shortVersionString>1.7.4</sparkle:shortVersionString>
+            <sparkle:version>2026100201</sparkle:version>
+            <sparkle:shortVersionString>1.8.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[---
-title: "VIME macOS v1.7.4 beta 更新说明"
-author: claude
-status: draft
-created_at: 2026-09-30T19:45
-updated_at: 2026-09-30T19:45
-tags: [v_ime_macos, release]
----
+            <description sparkle:format="markdown"><![CDATA[# Vime macOS 1.8.0 公测
 
-# VIME macOS v1.7.4 beta
+本次更新重点是设置体验、听写等待和输入状态展示。
 
-本版修掉「说得比较久时，说完还要多等五秒」的长尾。适用于 macOS 14 及以上，
-可直接覆盖安装；原有设置、个人 Key 和历史记录保留。
+- 重新整理设置页，区分默认服务、官方模板与个人配置，让服务检测和配置状态更清楚。
+- 修复本地统计开关与安全存储身份问题，保留已有配置、Key 和听写历史。
+- 更新状态栏面板，使用系统玻璃材质、清晰的风格选中反馈和真实快捷键展示；历史记录与设置入口更易找到，Logo 适配深浅外观。
+- 减少听写结束后的固定等待，精简云端 ASR 音频请求编码；识别模型和智能整理默认策略不变。
+- 更新轻度毛玻璃听写状态条，支持自动、浅色和深色外观，以及整条拖动，清晰呈现选区替换或编辑后的撤销操作。
+- 改善面板占用焦点时向原输入框的写回；取消听写或切换输入目标时不抢回焦点。
 
-## 修复：长口述不再多等五秒
+离线 ASR 新研究、未完成质量验证的 Clean 候选、新的云端存储业务、匿名日统计上传、实时听写预览和液态玻璃 HUD 研究不包含在本次公测中。纠错学习未出现提示的问题继续单独调查，本次不宣称已修复。
 
-- **连接保活**：开始录音时会先「叫醒」云端服务。但如果你这次说得比较久（超过约 20 秒），
-  那条已经建好的连接会在你说完之前过期，识别请求只好重新建立连接 —— 而这台机器上重新建连
-  偶尔要 5 秒（该域名没有启用 OCSP stapling，系统需要联网确认证书状态，超时就是 5 秒，
-  而且只慢不报错）。
-  现在录音期间会按 20 秒的节奏轻量刷新一次：不带任何凭据、不消耗试用额度、不碰账本。
-- 实测：录音 43.6 秒的样本里，识别请求从「重新建连、tls 5.09 秒」变成「直接复用连接」。
-
-## 上一版的修复继续有效
-
-v1.7.3 修掉了「隔一段时间没用，第一次听写要等好几秒」（预热超时预算 3 秒 → 8 秒）：
-生产实测不预热 7.15 秒 → 预热后 1.26 秒。
+支持 macOS 14 及以上。
 ]]></description>
-            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.7.4/2026093008/V_IME-1.7.4-2026093008-macos.zip" length="9918498" type="application/octet-stream" sparkle:edSignature="6QVvHaeXCP5JaUexLnk+VvJqEGOKK3F8G47itD373zigubKjZovDNwjAIsOk48+gUG3Le320Ssbz56VvN4lPBQ=="></enclosure>
+            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.0/2026100201/V_IME-1.8.0-2026100201-macos.zip" length="10108057" type="application/octet-stream" sparkle:edSignature="hzDArMD/NscRTBf4MC+mGUnlCcgmqjxJ+Et63UFKMAfWCzNFq1+xpd9JfaUfpOBk6i/+xyY86O6d8sibtwpABw=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: 7FHTTmnQY37R6k6f6S+NsKiXW0drVEx6efUbOCQLjn4T8nn+WlUnuJma/7P4V9TZkacGWrwN5soMg9s+MmMjCA==
-length: 2532
+edSignature: G3zE66nnMSeuzYH+uQ5S6Y5u0KORpulp1e1furMiMQ9IcwodXGt/zTB5Gakq5tRkBjjFjPd6wHEcGVja+IITCg==
+length: 2438
 -->
