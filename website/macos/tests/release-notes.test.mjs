@@ -32,13 +32,26 @@ test('frontmatter is rejected so YAML never becomes user-facing release text', (
   assert.throws(() => parseReleaseNotes('---\ntitle: 版本\n---\n正文'), /body only/);
 });
 
-test('historical 1.8.0 copy proposal has five verified highlights and keeps the unresolved issue', () => {
+test('current 1.8.1 copy proposal has four factual highlights and keeps the open known issue', () => {
   const body=readFileSync(new URL('../COPY-PROPOSAL.md',import.meta.url),'utf8');
   const blocks=parseReleaseNotes(body);
-  assert.ok(body.includes("\u9009\u533a\u66ff\u6362\u6216\u7f16\u8f91\u540e\u7684\u64a4\u9500\u5165\u53e3\u66f4\u6e05\u695a"));
-  assert.ok(!body.includes("\u5199\u5165\u6216\u66ff\u6362\u540e\u7684\u64a4\u9500"));
+  assert.ok(body.startsWith('# Vime for macOS 1.8.1\n'));
+  assert.deepEqual(blocks[0], {
+    type:'metadata',
+    text:'2026-10-02 · macOS 14 及以上 · build 2026100203'
+  });
+  assert.deepEqual(blocks[1], {
+    type:'paragraph',
+    text:'菜单和听写预览更清晰，浅色与深色外观下的显示更一致。'
+  });
   assert.deepEqual(blocks.filter(b=>b.type==='heading').map(b=>b.text), ['优化','修复','已知问题']);
-  assert.equal(blocks.filter(b=>b.type==='list').slice(0,2).reduce((n,b)=>n+b.items.length,0),5);
-  assert.match(blocks.at(-1).items[0],/仍在调查.*未修复/);
-  assert.doesNotMatch(body,/SHA|PASS|gate|匿名日统计|实时听写|缩短等待|离线 ASR/);
+  const lists=blocks.filter(b=>b.type==='list');
+  assert.equal(lists[0].items.length,3);
+  assert.equal(lists[1].items.length,1);
+  assert.match(lists[1].items[0],/切换浅色或深色外观时，预览文字颜色会及时更新/);
+  assert.equal(lists[2].items[0],'纠错学习未出现提示的情况仍在调查，尚未确认解决。');
+  assert.ok(body.includes('可直接覆盖安装'));
+  assert.ok(body.includes('已有配置、服务密钥与听写历史保留'));
+  assert.ok(body.includes('识别模型、智能整理默认策略、输入保护与撤销行为不变'));
+  assert.doesNotMatch(body,/HUD|个人 Key|动态胶囊布局|SHA|PASS|gate|匿名日统计|缩短等待|离线 ASR|提速|提高识别准确率/);
 });
