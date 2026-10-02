@@ -1,0 +1,123 @@
+.guide-layout { display: grid; grid-template-columns: minmax(150px, 28%) minmax(0, 1fr); grid-template-areas: "steps detail" "menu detail"; grid-template-rows: auto 1fr; gap: 18px 24px; }
+.guide-steps { grid-area: steps; display: flex; flex-direction: column; }
+.step { display: flex; align-items: center; gap: 10px; padding: 13px 0; min-height: 47px; text-align: left; border-bottom: 1px solid var(--line-soft); font-size: 13px; color: var(--subtle); }
+.step > span { font-size: 11px; font-variant-numeric: tabular-nums; }
+.step > svg { flex-shrink: 0; margin-left: auto; opacity: 0; transform: translateX(-4px); transition: opacity .3s, transform .3s; }
+.step.active { color: var(--blue); }
+.step.active > svg { opacity: 1; transform: none; }
+.guide-detail { grid-area: detail; min-width: 0; }
+.guide-detail:focus-visible { outline: 3px solid var(--focus); outline-offset: 5px; border-radius: 12px; }
+.guide-window { border: 1px solid var(--line); border-radius: 13px; overflow: hidden; background: var(--surface); box-shadow: 0 7px 22px var(--surface-shadow); }
+.guide-window-bar { height: 35px; display: flex; align-items: center; gap: 10px; padding: 0 14px; background: var(--surface-soft); border-bottom: 1px solid var(--line-soft); font-size: 11px; color: var(--muted); }
+.guide-window-tag { margin-left: auto; color: var(--subtle); font-size: 10px; }
+.guide-window-content { height: 240px; padding: 20px; }
+.guide-window-content > div { height: 100%; animation: ink-arrive .4s var(--ease) both; }
+.guide-caption { display: flex; align-items: flex-start; gap: 15px; padding: 15px 2px 0; min-height: 77px; }
+.guide-caption p { flex: 1; font-size: 13px; color: var(--muted); line-height: 1.8; }
+.guide-replay { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 4px; min-height: 30px; margin: -3px -3px 0 0; padding: 5px; font-size: 11px; color: var(--subtle); border-radius: 5px; }
+.guide-replay:hover { color: var(--blue); background: var(--interactive-surface); }
+.guide-location { display: flex; align-items: center; gap: 7px; color: var(--subtle); font-size: 12px; margin-bottom: 12px; }
+
+/* The menu-bar crop is shared by first-use and the history recovery hint. */
+.menu-entry { grid-area: menu; min-width: 0; margin: 0; align-self: start; }
+.menu-entry figcaption { color: var(--muted); font-size: 11px; line-height: 1.8; }
+.menu-entry-picture { width: 100%; max-width: 224px; margin-top: 8px; }
+.menu-entry-bar { display: flex; align-items: center; height: 28px; padding: 0 9px; background: var(--section-accent); border: 1px solid var(--line); border-radius: 6px 6px 0 0; color: var(--subtle); font-size: 10px; }
+.menu-entry-trigger { display: flex; align-items: center; justify-content: center; width: 30px; height: 100%; margin-left: auto; background: var(--selection); }
+.menu-entry-logo { display: block; width: 18px; aspect-ratio: 144 / 130; background: var(--ink); mask: url('/assets/logo-monochrome.svg') center / contain no-repeat; }
+.menu-entry-popover { position: relative; display: flex; gap: 3px; margin: 8px 0 0 auto; padding: 5px; border: 1px solid var(--line); border-radius: 7px; background: var(--surface); box-shadow: 0 4px 11px var(--surface-shadow); }
+.menu-entry-popover:before { content: ""; position: absolute; top: -4px; right: 20px; width: 6px; height: 6px; background: var(--surface); border-top: 1px solid var(--line); border-left: 1px solid var(--line); transform: rotate(45deg); }
+.menu-entry-popover > span { flex: 1; text-align: center; padding: 5px 2px; border-radius: 4px; font-size: 11px; color: var(--subtle); }
+.menu-entry-popover .highlight { background: var(--interactive-surface); color: var(--blue); }
+.history-hint { margin-top: 18px; }
+
+/* DMG: the pointer carries a copy of the actual app icon into Applications. */
+.install-scene { display: flex; flex-direction: column; justify-content: center; gap: 30px; }
+.install-drag-row { position: relative; display: flex; justify-content: space-between; width: 100%; max-width: 310px; margin: 0 auto; container-type: inline-size; }
+.install-item { width: 72px; display: flex; flex-direction: column; align-items: center; gap: 12px; font-size: 12px; }
+.install-app { width: 64px; height: 64px; margin: 4px; filter: drop-shadow(0 5px 12px var(--surface-shadow)); }
+.install-direction { display: flex; flex: 1; flex-direction: column; align-items: center; justify-content: flex-start; gap: 4px; padding-top: 15px; color: var(--subtle); font-size: 11px; }
+.install-direction > svg { color: var(--wave); }
+.install-folder { position: relative; display: block; width: 72px; height: 72px; color: light-dark(#76b5ef, #6599cf); }
+.folder-app-mark { position: absolute; top: 28px; left: 22px; color: light-dark(#2870b5, #233d5d); }
+.install-done { position: absolute; right: -4px; bottom: 0; padding: 3px; border-radius: 50%; color: var(--surface); background: var(--blue); animation: guide-confirm .4s 2.3s both; }
+.install-drag-copy { position: absolute; top: 4px; left: 0; width: 72px; height: 64px; transform-origin: 36px 32px; pointer-events: none; animation: guide-drag 3s var(--ease) both; }
+.install-drag-copy > img { width: 64px; height: 64px; margin-left: 4px; filter: drop-shadow(0 10px 18px var(--floating-shadow)); }
+.install-drag-copy > svg { position: absolute; left: 45px; top: 42px; color: var(--ink); stroke: var(--surface); stroke-width: 5px; paint-order: stroke; }
+.install-launch { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 6px; font-size: 11px; color: var(--muted); }
+.install-launch > img { width: 20px; height: 20px; }
+.install-launch-label { color: var(--blue); margin-left: 3px; }
+
+/* Each permission belongs to its own macOS privacy page. */
+.permission-pages { display: grid; gap: 10px; }
+.permission-page { overflow: hidden; border: 1px solid var(--line); border-radius: 8px; }
+.permission-page-title { display: flex; align-items: center; justify-content: space-between; gap: 10px; height: 29px; padding: 0 10px; background: var(--surface-soft); font-size: 11px; }
+.permission-page-title > span { display: flex; align-items: center; gap: 6px; }
+.permission-page-title small { font-size: 10px; color: var(--subtle); }
+.permission-app { display: flex; align-items: center; gap: 9px; padding: 8px 11px; font-size: 12px; }
+.permission-app > img { width: 26px; height: 26px; }
+.permission-toggle { display: block; width: 30px; height: 18px; margin-left: auto; padding: 2px; border-radius: 20px; background: var(--button); animation: guide-toggle-color .4s .6s both; }
+.permission-toggle > i { display: block; width: 14px; height: 14px; border-radius: 50%; background: #fff; transform: translateX(12px); box-shadow: 0 1px 2px #0002; animation: guide-toggle .4s .6s var(--ease) both; }
+.permission-page:nth-child(2) .permission-toggle, .permission-page:nth-child(2) .permission-toggle > i { animation-delay: 1.3s; }
+
+.guide-service-ready { display: flex; align-items: center; gap: 12px; padding: 13px 14px; border: 1px solid var(--line); background: var(--surface-soft); border-radius: 8px; }
+.guide-ready-icon { display: flex; align-items: center; justify-content: center; width: 27px; height: 27px; border-radius: 50%; color: var(--blue); background: var(--selection); }
+.guide-service-ready > div { display: flex; flex-direction: column; gap: 5px; }
+.guide-service-ready strong { font-size: 13px; font-weight: 500; }
+.guide-service-ready > div > span { color: var(--subtle); font-size: 11px; }
+.guide-personal-service { margin-top: 18px; }
+.guide-field-label { display: flex; align-items: center; gap: 7px; margin-bottom: 8px; font-size: 12px; }
+.guide-field-label > span { color: var(--subtle); font-size: 10px; }
+.guide-key-field { display: flex; align-items: center; justify-content: space-between; gap: 7px; padding: 6px 7px 6px 11px; border: 1px solid var(--line); border-radius: 6px; color: var(--muted); font-size: 12px; }
+.guide-key-field > span:first-child { display: flex; align-items: center; gap: 9px; min-width: 0; white-space: nowrap; }
+.guide-key-field small { font-size: 10px; }
+.guide-save-key { flex-shrink: 0; padding: 5px 9px; border-radius: 4px; color: #fff; background: var(--button); font-size: 11px; }
+.guide-key-note { display: flex; align-items: center; gap: 5px; margin-top: 9px; color: var(--subtle); font-size: 10px; }
+
+.guide-dictation { display: flex; flex-direction: column; justify-content: center; gap: 25px; }
+.guide-gesture { display: flex; align-items: center; justify-content: center; gap: 15px; }
+.guide-command { position: relative; flex: 0 0 72px; height: 64px; border: 1px solid var(--key-border); border-radius: 11px; background: linear-gradient(var(--key-top),var(--key-bottom)); box-shadow: 0 4px 0 var(--key-edge),0 5px 0 1px var(--key-edge-line); color: var(--key-ink); font: inherit; animation: guide-key-press 3.2s var(--ease) both; }
+.guide-command > small { position: absolute; left: 9px; top: 8px; font-size: 9px; color: var(--key-label); }
+.guide-command > svg { position: absolute; bottom: 8px; left: 9px; }
+.guide-command > span { position: absolute; bottom: 10px; right: 10px; font-size: 10px; color: var(--key-label); }
+.guide-hold { display: flex; flex-direction: column; align-items: center; gap: 7px; color: var(--subtle); font-size: 11px; }
+.guide-wave { display: flex; align-items: center; gap: 3px; height: 28px; }
+.guide-wave > i { width: 2px; height: var(--height); border-radius: 2px; background: var(--wave); transform: scaleY(.3); animation: wave-talk .5s var(--delay) ease-in-out 6 alternate; }
+.guide-release-arrow { color: var(--wave); flex-shrink: 0; }
+.guide-release { color: var(--subtle); font-size: 11px; white-space: nowrap; }
+.guide-message { height: 88px; border: 1px solid var(--line); border-radius: 8px; padding: 14px; background: var(--surface-soft); }
+.guide-message p { color: var(--ink); font-size: 16px; font-weight: 500; line-height: 1.6; animation: guide-write .5s 3s var(--ease) both; }
+.guide-message > span { display: flex; align-items: center; gap: 5px; margin-top: 8px; color: var(--subtle); font-size: 10px; animation: guide-confirm .4s 3.4s both; }
+.guide-message > span > svg { color: var(--blue); }
+
+@keyframes guide-drag { 0%,10% { opacity: 0; transform: translateX(0) scale(.95); } 20% { opacity: .9; transform: translateX(0) scale(1); } 65%,80% { opacity: .9; transform: translateX(calc(100cqw - 72px)) scale(.8); } 100% { opacity: 0; transform: translateX(calc(100cqw - 72px)) scale(.65); } }
+@keyframes guide-confirm { from { opacity: 0; } to { opacity: 1; } }
+@keyframes guide-toggle { from { transform: translateX(0); } to { transform: translateX(12px); } }
+@keyframes guide-toggle-color { from { background: var(--inactive-dot); } to { background: var(--button); } }
+@keyframes guide-key-press { 0%,12%,88%,100% { transform: translateY(0); } 20%,78% { transform: translateY(3px); } }
+@keyframes guide-write { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: none; } }
+
+@media (max-width: 1000px) and (min-width: 801px) {
+  .guide-layout { grid-template-columns: 1fr; grid-template-areas: "steps" "detail" "menu"; gap: 18px; }
+  .guide-steps { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+}
+@media (max-width: 560px) {
+  .guide-layout { grid-template-columns: minmax(0, 1fr); grid-template-areas: "steps" "detail" "menu"; gap: 17px; }
+  .guide-steps { display: grid; grid-template-columns: 1fr 1fr; gap: 0 15px; }
+  .step { font-size: 12px; gap: 7px; }
+  .step > svg { display: none; }
+  .guide-window-content { height: 240px; padding: 17px 14px; }
+  .guide-window-bar { padding: 0 11px; gap: 7px; }
+  .guide-caption { gap: 9px; min-height: 87px; }
+  .guide-caption p { font-size: 12px; }
+  .guide-gesture { gap: 11px; }
+  .guide-message { padding: 11px; }
+  .guide-message p { font-size: 14px; }
+  .menu-entry { display: flex; align-items: center; justify-content: space-between; gap: 17px; padding: 13px 0 0; border-top: 1px solid var(--line-soft); }
+  .menu-entry figcaption { max-width: 8em; font-size: 11px; }
+  .menu-entry-picture { width: 160px; max-width: 58%; margin: 0; flex-shrink: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .guide-window-content *, .guide-window-content > div { animation: none !important; }
+  .install-drag-copy { display: none; }
+}

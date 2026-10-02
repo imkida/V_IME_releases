@@ -1,0 +1,39 @@
+{
+  "formatVersion": 1,
+  "generatedAt": "2026-10-02T09:26:23Z",
+  "platform": "macos",
+  "channels": {
+    "beta": {
+      "versionName": "1.8.1",
+      "title": "VIME macOS v1.8.1 beta · build 2026100203 · macOS 14+ · 已通过 macOS 安全检查",
+      "summary": "# Vime macOS 1.8.1 公测\n\n2026-10-02 · macOS 14 及以上 · build 2026100203\n\n让菜单更清晰，让实时听写预览与 HUD 的视觉风格更统一。\n\n- 优化：提升浅色和深色外观下的菜单文字、风格选中项和按钮对比度。\n- 优化：实时听写预览使用独立浮窗与动态胶囊布局，保持清晰的文字显示。\n- 优化：预览与 HUD 统一背景、圆角和阴影风格。\n- 修复：预览正文未变化时，切换浅色或深色外观后文字颜色不更新的问题。\n\n识别模型、智能整理默认策略、输入保护与撤销行为不变。已有配置、个人 Key 与听写历史保留，可直接覆盖安装。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.8.1",
+      "mandatory": false,
+      "buildNumber": 2026100203,
+      "minSystemVersion": "14.0",
+      "assets": [
+        {
+          "name": "V_IME-1.8.1-2026100203-macos.dmg",
+          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.1/2026100203/V_IME-1.8.1-2026100203-macos.dmg",
+          "sha256": "44354fec6cc5a3ab6eaad1fe219ef9e709a5813655abe7ebc5b39a1f74d442a8",
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.8.1/V_IME-1.8.1-2026100203-macos.dmg",
+          "sizeBytes": 11400529,
+          "installerType": "dmg",
+          "minSystemVersion": "14.0"
+        },
+        {
+          "name": "V_IME-1.8.1-2026100203-macos.zip",
+          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.1/2026100203/V_IME-1.8.1-2026100203-macos.zip",
+          "sha256": "3d79350770b17c8a0de45b8f851da9d2be22fc8b996cbf714219c2f8d0d0add2",
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.8.1/V_IME-1.8.1-2026100203-macos.zip",
+          "sizeBytes": 10187767,
+          "installerType": "zip",
+          "minSystemVersion": "14.0"
+        }
+      ],
+      "appcastUrl": "https://imkida.github.io/V_IME_releases/macos/beta/appcast.xml"
+    }
+  },
+  "productName": "VIME",
+  "bundleId": "com.vime.app.macos"
+}
