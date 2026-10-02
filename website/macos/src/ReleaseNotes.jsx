@@ -8,7 +8,7 @@ function InlineText({ text }) {
   );
 }
 
-export default function ReleaseNotes({ notes, releaseUrl }) {
+export default function ReleaseNotes({ notes }) {
   let firstParagraph = true;
   return <div className="release-detail">
     <p className="release-platform">Vime for macOS <span>公开测试版</span></p>
@@ -32,6 +32,5 @@ export default function ReleaseNotes({ notes, releaseUrl }) {
         </p>;
       })}
     </div>
-    <a className="release-original" href={releaseUrl}>查看完整发布说明 <span aria-hidden="true">↗</span></a>
   </div>;
 }

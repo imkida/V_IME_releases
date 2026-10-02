@@ -80,12 +80,12 @@ function DownloadOptions({ release, refreshFailed, onNotice }) {
     <div className="download-menu" id="download-menu" inert={!open}>
       <p>其他下载</p>
       {zip && <a href={zip.url}>ZIP 文件 <span>{(zip.sizeBytes / 1e6).toFixed(1)} MB <ArrowUpRight size={14}/></span></a>}
-      {dmg.mirrorUrl && <a href={dmg.mirrorUrl}>GitHub 备用下载 <ArrowUpRight size={14}/></a>}
+      {dmg.mirrorUrl && <a href={dmg.mirrorUrl}>备用下载 <ArrowUpRight size={14}/></a>}
       <p>文件校验</p>
       <button type="button" onClick={() => copy(dmg.sha256)}>复制 SHA-256 <Copy size={15}/></button>
       <button type="button" onClick={() => copy('shasum -a 256 ~/Downloads/' + dmg.name)}>复制校验命令 <Copy size={15}/></button>
       <small>v{channel.versionName} beta · build {channel.buildNumber}<br/>DMG · {(dmg.sizeBytes / 1e6).toFixed(1)} MB · 已通过 macOS 安全检查</small>
-      {refreshFailed && <small>暂未获取到最新版本信息，当前为已发布版本。<a href={channel.releaseUrl}>查看最新发布</a></small>}
+      {refreshFailed && <small>暂未获取到最新版本信息，当前为已发布版本。</small>}
       {fallback && <textarea readOnly value={fallback} aria-label="手动复制校验内容" onFocus={event => event.target.select()}/>}
     </div>
   </div>;
@@ -318,7 +318,7 @@ export function App() {
           </Accordion>
           <span id="whats-new" className="release-anchor" aria-hidden="true"/>
           <Accordion id="updates" title="最新更新" summary={'v' + channel.versionName + ' beta · 清单更新 ' + date} Icon={FileText} open={support === 'updates'} onToggle={() => setSupport(support === 'updates' ? '' : 'updates')}>
-            <ReleaseNotes notes={notes} releaseUrl={channel.releaseUrl}/>
+            <ReleaseNotes notes={notes}/>
           </Accordion>
           <Accordion id="privacy" title="隐私与服务" summary="可使用自有 API，历史记录仅保存本地" Icon={ShieldCheck} open={support === 'privacy'} onToggle={() => setSupport(support === 'privacy' ? '' : 'privacy')}>
             <div className="privacy-detail">

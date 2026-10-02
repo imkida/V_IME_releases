@@ -234,7 +234,6 @@ p, h1, h2, h3, h4 { margin: 0; }
 .release-body li::marker { color: var(--blue); font-size: .75em; }
 .release-body p + p { margin-top: 15px; }
 .release-body strong { color: var(--ink); font-weight: 550; }
-.release-original { display: inline-flex; align-items: center; gap: 7px; margin-top: 22px; color: var(--blue); font-size: 14px; }
 @media (max-width: 560px) { .release-body .release-overview { font-size: 16px; } }
 .faq-list { padding-left: 35px; }
 .faq-item:last-child { border-bottom: 0; }

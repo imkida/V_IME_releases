@@ -159,16 +159,16 @@ function refreshNoscriptLinks(html, channel, dmg, messages) {
       '<noscript> download link'
     );
   }
-  const backup = noscript[1].match(/<a href="([^"]+)">GitHub 备用下载与更新说明<\/a>/);
+  const backup = noscript[1].match(/<a href="([^"]+)">备用下载<\/a>/);
   if (!backup) {
     throw new Error('docs/macos/index.html <noscript> has no GitHub backup link');
   }
-  if (backup[1] !== channel.releaseUrl) {
-    messages.push(`  noscript backup ${backup[1]} -> ${channel.releaseUrl}`);
+  if (backup[1] !== dmg.mirrorUrl) {
+    messages.push(`  noscript backup ${backup[1]} -> ${dmg.mirrorUrl}`);
     next = replaceOnce(
       next,
       backup[0],
-      `<a href="${channel.releaseUrl}">GitHub 备用下载与更新说明</a>`,
+      `<a href="${dmg.mirrorUrl}">备用下载</a>`,
       '<noscript> GitHub backup link'
     );
   }
