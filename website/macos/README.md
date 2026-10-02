@@ -69,3 +69,25 @@ node --test scripts/test-macos-download-page.mjs
 首次源码保全脚本因 stdin 编码编译失败，未执行写入，改为 ASCII 与 Unicode JSON 后继续。首次 Vite 默认配置加载因临时配置写入 EPERM 失败，使用已安装 Vite 的 --configLoader native 后成功，无新依赖。Browser 技能 bootstrap 因 classic-level native build 缺失受阻，改用已有 CUA，不重复 bootstrap。局部同步脚本一次在工具层解析失败、未执行写入；HTML trailing whitespace 以及中间产物与同步后字节不同的保全断言均已定位，修正后格式与同步检查通过，中间产物保留。首次实屏发现更新区已展开却未定位，已补定位并在根页与 macOS 地址实际复核。
 
 正式发布在冻结前从 1.8.0 漂移到 1.8.1，已本地同步其公开 commit；两处生成 HTML 冲突通过正式快照重建解决，incoming manifest、公开 JSON、旧引用 bundle 与签名 appcast 字节均未改写。1.8.1 重新验证源码 10/0、静态同步 14/0、build exit 0，补桌面与 400px 正式正文和元信息实屏；此前键盘/inert/焦点证据仅按交互机制及焦点元素未变范围复用。1.8.0 原始候选 commit 26983ba、fixture、截图及中间输出保留，不伪装成当前 1.8.1 的正文。浅色桌面及窄屏、系统深色窄屏尾部均有实际截图；不扩称全站无障碍验收。两次预览服务均已 Ctrl-C / exit 130 收口。
+
+## 阿里云杭州私有迁移资格（2026-10-03）
+
+沿用户确认的迁移顺序，本线已完成官网、下载与签名 Catalog 的杭州私有副本及必要验证。统计后端由原后端线处理，本节不代表全部云服务迁移或国内公开切换完成。海外官网仍部署于 `imkida/V_IME_releases` 的 GitHub Pages（`main:/docs`）；`https://vimebot.ai/` 直接显示主页，`www.vimebot.ai` 经普通 HTTP 规范域名跳转后显示同一主页，无“正在打开”HTML 中转页。本次没有修改 Pages、DNS、上海源桶或生产消费者。
+
+| 用途 | 上海源桶 | 杭州目标桶 | 杭州当前对象 / 字节 |
+| --- | --- | --- | --- |
+| 国内官网 | `vime-official-site-cn-shanghai` | `vime-official-site-cn-hangzhou` | 21 / 1320535 |
+| 下载文件 | `vime-public-releases-cn-shanghai` | `vime-public-releases-cn-hangzhou` | 111 / 661921700 |
+| Provider Catalog | `vime-provider-catalog-cn-shanghai-2026` | `vime-provider-catalog-cn-hangzhou-2026` | 2 / 4506 |
+
+三个新目标实际采用杭州 Standard/ZRS、private ACL、阻止公共访问；无公开 BucketPolicy，匿名读取均返回 403。官网与下载目标已启用版本控制，Catalog 与源一致未启用；未添加自动删除规则。已核付费的中国内地通用标准 ZRS 存储包可抵扣同型杭州容量，但不包含请求或外网流量，本次未购买新资源包。上海下载与 Catalog 源为 LRS、官网源为 ZRS；保留上海期间的容量不能误算为已全部被该 ZRS 包覆盖。
+
+首次固定清单为 124 个当前对象；全部源→目标字节、CRC64、实际元数据和私有对象权限校验通过。最后读回发现原发布线独立新增 1.8.3，故该次源漂移检查以 exit 1 保留，未冒称副本最新；仅补复制其四个新文件与两份控制文件。最终源清单为 128 个对象，以 126 个真实非空 OSS 版本 ID 加两份未版本化 Catalog 的 ETag/If-Match 快照固定。最终杭州共 134 个当前对象、663246741 字节，源清单及最新版本/元数据无漂移，源桶配置与最初读回一致。
+
+官网目标采用已公开的正式 `fb7191ea15bd9d6eea7bcea60b5af3c89868012e`（1.8.3 / 2026100301、Pages built）21 个 `docs` 文件，逐文件与 Git blob 和目标内容读回一致。上海旧根入口的 342 字节中转页未改写；其初始复制版本在杭州仍可恢复。杭州当前根入口直接渲染正式主页，必要静态引用齐全；不以尚未公开的网站开发作为迁移前置。
+
+下载中的 manifest、appcast、校验文件、DMG/ZIP 和原签名逐字节保留，原上海 URL 不重写。初始 52 条发布校验、两份 Catalog Ed25519 签名及 Android 模型包/成员校验已通过；1.8.3 增量另通过两份安装包校验、manifest 大小/摘要、Sparkle feed（2017 个签名字节）和 ZIP 签名验证。不访问 Keychain、不重签名、不安装或运行 Provider。20 个初始非当前历史版本共 66227 字节已在本机保全；上海既有非当前版本三天到期规则未改变，本阶段不声称目标保有原 OSS 版本 ID、全部历史或上海历史永久保留。
+
+现行 macOS、Android Catalog 均拒绝重定向，macOS 更新源和 Android 模型清单回退地址仍固定上海。现有消费者继续使用上海，不能用 302 或改旧 manifest 冒称已采用杭州；后续实际采用另走具体发行资格，iOS 状态不作推断。国内官网公开访问、两个国内域名和管理域名仍待实际备案、接入资格及绑定；私有副本通过不等于中国用户已可访问，不修改管理后台或真实数据。
+
+证据沿 `/private/tmp/vime-oss-hangzhou-migration-20261003` 保留：`preflight.json`、`copy-private-receipt.json` 及 `offline-verification-receipt.json` 保存初始 124 对象/历史保全和校验；`final-readback.json` 保留首次源漂移失败；`delta-1-8-3-receipt.json`、`effective-preflight-1-8-3.json`、`offline-1-8-3-delta-verification.json`、`pages-1-8-3-receipt.json`、`website-mirror-1-8-3-receipt.json` 及 `final-readback-1-8-3.json` 保存当前固定候选和最终读回。早期 CLI 配置读取 exit 2、原 SDK 路径诊断与原始回执保留，正式复制使用固定官方 `ali-oss@6.23.0`，凭据仅在内存、不写日志。本文档收口不重跑网站构建、旧套件、GUI 或额外 CI。
