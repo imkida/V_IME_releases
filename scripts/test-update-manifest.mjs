@@ -117,7 +117,7 @@ test('download page exposes GitHub fallback only through mirrorUrl', () => {
   const script = page.match(/<script[^>]+src="(\.\/assets\/[^"]+\.js)"/)[1];
   const bundle = readFileSync(path.join(ROOT, 'docs', 'macos', script), 'utf8');
   // Keep the published UI tied to the manifest's optional mirror, never a guessed URL.
-  assert.match(bundle, /([\w$]+)\.mirrorUrl&&[\w$.]+\("a",\{href:\1\.mirrorUrl,children:\["GitHub 备用下载/);
+  assert.match(bundle, /([\w$]+)\.mirrorUrl&&[\w$.]+\("a",\{href:\1\.mirrorUrl,children:\["备用下载/);
 });
 
 test('rejects an existing manifest with a signed mirror URL', () => {
