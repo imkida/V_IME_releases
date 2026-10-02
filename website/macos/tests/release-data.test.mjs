@@ -53,14 +53,14 @@ test('published 1.8.0 fixture retains every change and unresolved issue without 
   assert.doesNotMatch(renderedBody,/# Vime macOS/);
 });
 
-test('current 1.8.1 publication preserves author metadata, overview and four changes', () => {
+test('current 1.8.2 publication preserves author metadata, overview and three changes', () => {
   const result=readRelease(snapshot);
-  assert.equal(result.channel.versionName,'1.8.1');
+  assert.equal(result.channel.versionName,'1.8.2');
   assert.equal(result.notes[0].type,'metadata');
-  assert.match(result.notes[0].text,/2026-10-02.*macOS 14.*build 2026100203/);
+  assert.match(result.notes[0].text,/2026-10-02.*macOS 14.*build 2026100204/);
   assert.equal(result.notes[1].type,'paragraph');
-  assert.match(result.notes[1].text,/菜单更清晰.*实时听写预览/);
-  assert.equal(result.notes.find(b=>b.type==='list').items.length,4);
+  assert.match(result.notes[1].text,/官网的版本说明更清楚.*App 听写能力与 1.8.1 保持一致/);
+  assert.deepEqual(result.notes.filter(b=>b.type==='list').map(b=>b.items.length),[2,1]);
   assert.match(result.notes.at(-1).text,/识别模型.*默认策略.*撤销行为不变/);
   assert.deepEqual(result.notes,parseReleaseNotes(snapshot.channels.beta.summary));
 });

@@ -103,9 +103,9 @@ test('published page embeds the current manifest as its offline fallback', () =>
   assert.ok(link, 'noscript must keep a no-JavaScript download link');
   assert.equal(link[1], dmg.url);
   assert.equal(link[2], `${channel.versionName} beta`);
-  const backup = noscript.match(/<a href="([^"]+)">GitHub 备用下载与更新说明<\/a>/);
+  const backup = noscript.match(/<a href="([^"]+)">备用下载<\/a>/);
   assert.ok(backup, 'noscript must keep the GitHub backup link');
-  assert.equal(backup[1], channel.releaseUrl);
+  assert.equal(backup[1], dmg.mirrorUrl);
 });
 
 test('published channel reader handles Vite multiline summary literals', () => {
@@ -162,9 +162,14 @@ test('published page carries no previous release identity', () => {
     'this check must not pass vacuously'
   );
   const page = readPublishedPage(ROOT);
+  assert.notEqual(page.channel.versionName, previous.versionName);
+  assert.notEqual(page.channel.buildNumber, previous.buildNumber);
+  const downloadUrls = page.channel.assets.flatMap((asset) =>
+    [asset.url, asset.mirrorUrl].filter(Boolean)
+  );
   for (const token of [previous.versionName, String(previous.buildNumber)]) {
     assert.ok(
-      !page.html.includes(token) && !page.bundle.includes(token),
+      !page.html.includes(token) && downloadUrls.every((url) => !url.includes(token)),
       `published page still references the previous release identity ${token}; ` +
       'run npm run release:page and rerun the tests'
     );
@@ -188,8 +193,9 @@ test('sync script rebuilds a stale fallback byte for byte', () => {
   const staleBundle = page.bundle
     .replace(`"${page.generatedAt}"`, '"2026-09-01T17:02:07Z"')
     .replace(slot.text, JSON.stringify(staleChannel, null, 0));
-  const staleReleaseUrl = 'https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.5.0';
-  const staleHtml = page.html.replace(page.channel.releaseUrl, staleReleaseUrl);
+  const dmg = page.channel.assets.find((asset) => asset.installerType === 'dmg');
+  const staleMirrorUrl = 'https://github.com/imkida/V_IME_releases/releases/download/macos-v1.5.0/V_IME-1.5.0-2026090202-macos.dmg';
+  const staleHtml = page.html.replace(dmg.mirrorUrl, staleMirrorUrl);
 
   const sandbox = mkdtempSync(path.join(tmpdir(), 'vime-download-page-sync.'));
   try {
@@ -200,7 +206,7 @@ test('sync script rebuilds a stale fallback byte for byte', () => {
       `  generatedAt 2026-09-01T17:02:07Z -> ${page.generatedAt}`,
       `  versionName 1.5.0 -> ${page.channel.versionName}`,
       `  buildNumber 2026090202 -> ${page.channel.buildNumber}`,
-      `  noscript backup ${staleReleaseUrl} -> ${page.channel.releaseUrl}`
+      `  noscript backup ${staleMirrorUrl} -> ${dmg.mirrorUrl}`
     ]);
     assert.equal(
       readFileSync(path.join(sandbox, 'docs', 'macos', 'assets', bundleNameOf(page.html)), 'utf8'),
