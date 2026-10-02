@@ -2,7 +2,7 @@
 
 Vime 是一款**跨平台智能语音输入法**：说完即得可直接使用的文字，同时带一套完整的中文拼音键盘。主仓 [`imkida/V_IME_Android`](https://github.com/imkida/V_IME_Android) 为私有源码仓；本仓库作为对外分发的只读公开镜像，承载各平台安装包、更新检查 manifest、端侧模型清单、macOS Sparkle appcast，以及 GitHub Release 资产入口。
 
-源码、签名密钥、构建脚本、私有配置不进入本仓。本仓只发布可公开访问的构建产物索引和发布说明。
+客户端源码、签名密钥、客户端构建脚本和私有配置不进入本仓。本仓发布可公开访问的构建产物索引和发布说明；可公开恢复的官网源码保存在 `website/macos/`，与 Pages 的 `/docs` 发布目录分开。
 
 > **命名口径**：用户可见的品牌名统一写作 `Vime`。仓库名 `V_IME_releases`、路径、GitHub URL、
 > 已发布资产文件名（`V_IME-vX.Y.Z-*.apk` 等）、schema 常量属于技术标识，保持原样不改名。
@@ -37,7 +37,7 @@ Vime 是一款**跨平台智能语音输入法**：说完即得可直接使用�
 - 安装包本体一律走 GitHub Release asset 或 OSS，不进 Git 历史。仓库体积应保持在索引量级；历史上 `macos/0.5.0`、`macos/0.6.0` 曾把 DMG/ZIP 提交进仓（26.7 MB），已从 HEAD 移除，对应资产仍在 Release `macos-v0.5.0` / `macos-v0.6.0`。
 - 客户端源码、构建脚本、发布 lane 脚本、签名与公证配置、Sparkle 私钥、OSS 上传脚本与凭证。
 - 内部交接材料：候选包验证记录、设备 smoke 数据、排查过程、私有仓 commit 引用。公开页只保留用户可读的发布说明。
-- 该原则与仓库首段一致（"源码、签名密钥、构建脚本、私有配置不进入本仓"）；`scripts/` 下只放**发布控制文件的生成与校验**工具，不放上行到 OSS / Release 的脚本——那些属于客户端仓的发布 lane。
+- 该原则与仓库首段的客户端边界一致；`scripts/` 下只放**发布控制文件的生成与校验**工具，不放上行到 OSS / Release 的脚本——那些属于客户端仓的发布 lane。
 
 ## 目录结构
 
@@ -50,6 +50,7 @@ V_IME_releases/
 │   └── local-asr-models.json       # 端侧语音识别模型清单（按需下载）
 ├── macos/
 │   └── manifest.json               # 安装包本体走 Release asset / OSS，不进 Git
+├── website/macos/                 # Recoverable website source, lock and display tests
 ├── docs/
 │   ├── macos/
 │   │   ├── index.html              # macOS 公测下载与更新说明页
@@ -347,14 +348,16 @@ Vime 是一款智能语音输入法：说完即得可直接使用的文字，同
 
 ## macOS 下载主页
 
-`docs/macos/index.html` 与 `docs/macos/assets/` 为已构建的静态网页，由 GitHub Pages 从 `main:/docs` 发布。页面在加载时读取本仓 `main/macos/manifest.json` 的 raw 地址，统一更新下载、校验、系统要求与版本说明；网络不可用时保留构建时已发布的版本，并在“其他下载与校验”中提示。
+`docs/index.html` 是域名根主页，`docs/macos/index.html` 保留原 macOS 地址，两者使用同一份构建资源。GitHub Pages 从 `main:/docs` 发布。网页从所在站点的 `./release.json` 读取当前版本，网络不可用时保留构建快照并提示；不依赖 GitHub raw。
 
-因此页面里的兜底版本会随发布漂移：**每次更新 `macos/manifest.json` 后必须同批重建 `docs/macos` 的静态兜底**（`assets/index-*.js` 内置的 manifest 快照与 `index.html` 的 `<noscript>` 下载链接），否则拉不到 manifest 的用户会拿到上一版包的说明与链接。重建是仓内命令，不需要页面源码仓：
+每次更新 `macos/manifest.json`，使用现有同步入口一起刷新公开 JSON、内置快照和无脚本下载链接：
 
 ```bash
-npm run release:page            # 用 macos/manifest.json 刷新 docs/macos 的静态兜底
-npm run release:page -- --check # 只报告漂移，不写文件
-npm test                        # 断言兜底版本等于当前 manifest，且页面不含上一版版本号
+npm run release:page
+npm run release:page -- --check
+npm test
 ```
 
-网页更新通过 PR 提交构建后的 HTML、CSS、JavaScript 与实际使用的品牌 SVG，不提交客户端源码、设计审查材料或开发依赖。发布前运行 `npm test`，并以 `/V_IME_releases/macos/` 子目录验证资源、下载与安装引导。网站改版不修改安装包、发布清单或 Sparkle appcast。
+官网可恢复源码、依赖锁和展示测试在 [website/macos](website/macos/README.md)，位于 Pages 发布目录之外。修改页面时从该目录构建，提交必要源码与实际静态输出，再运行上述同步检查；不提交安装依赖、客户端源码或签名材料。域名根页和 `/macos/` 都需验证资源、更新与安装引导。
+
+“最新更新”显示同一份发布清单中的 Markdown 正文，保留真实已知问题；客户端的 `#whats-new` 入口打开现有更新区。用户文案提案由原发布负责人审定，不自动改写已发布清单或签名 appcast。网站改版不修改安装包、下载地址、发布渠道或 Sparkle appcast。

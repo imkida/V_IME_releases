@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="18 50 144 130">
+  <g>
+    <g fill="currentColor">
+      <rect x="18" y="52" width="12" height="44" rx="6" />
+      <rect x="39" y="62" width="12" height="60" rx="6" />
+      <rect x="60" y="72" width="12" height="76" rx="6" />
+      <rect x="108" y="72" width="12" height="76" rx="6" />
+      <rect x="129" y="62" width="12" height="60" rx="6" />
+      <rect x="150" y="52" width="12" height="44" rx="6" />
+    </g>
+    <g fill="currentColor">
+      <circle cx="90" cy="58" r="8" fill="currentColor" />
+      <rect x="82" y="72" width="16" height="108" rx="8" />
+    </g>
+  </g>
+</svg>
