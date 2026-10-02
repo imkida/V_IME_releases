@@ -1,11 +1,11 @@
 import assert from 'node:assert/strict';
 import { execFileSync, spawnSync } from 'node:child_process';
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, readFileSync, realpathSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
 
-import { embeddedChannelSlot, readPublishedPage, syncDownloadPage } from './sync-download-page.mjs';
+import { embeddedChannelSlot, readPublishedChannelFromBundle, readPublishedPage, syncDownloadPage } from './sync-download-page.mjs';
 import { assertConsistentBuildIdentity } from './update-manifest.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
@@ -108,6 +108,21 @@ test('published page embeds the current manifest as its offline fallback', () =>
   assert.equal(backup[1], channel.releaseUrl);
 });
 
+test('published channel reader handles Vite multiline summary literals', () => {
+  const bundle = 'const platform="macos",channels={beta:{versionName:"1.8.0",summary:`发布说明\n{安装步骤}`,mandatory:!1}}';
+  assert.deepEqual(readPublishedChannelFromBundle(bundle), {
+    versionName: '1.8.0', summary: '发布说明\n{安装步骤}', mandatory: false
+  });
+});
+
+test('published website reads the same-origin canonical release copy', () => {
+  const canonical = readFileSync(path.join(ROOT, 'macos', 'manifest.json'), 'utf8');
+  assert.equal(readFileSync(path.join(ROOT, 'docs', 'macos', 'release.json'), 'utf8'), canonical);
+  const page = readPublishedPage(ROOT);
+  assert.match(page.bundle, /="\.\/release\.json"/);
+  assert.doesNotMatch(page.bundle, /raw\.githubusercontent\.com/);
+});
+
 test('published page carries no previous release identity', () => {
   if (!isGitRepository()) {
     // Cannot read release history here; test 5 still pins the page to the manifest.
@@ -175,6 +190,29 @@ test('sync script rebuilds a stale fallback byte for byte', () => {
   }
 });
 
+test('release JSON drift fails the read-only check and is repaired by sync', () => {
+  const page = readPublishedPage(ROOT);
+  const sandbox = mkdtempSync(path.join(tmpdir(), 'vime-website-release-sync.'));
+  try {
+    seedSandbox(sandbox, page);
+    const publicJson = path.join(sandbox, 'docs', 'macos', 'release.json');
+    const stale = '{"platform":"macos","channels":{}}\n';
+    writeFileSync(publicJson, stale);
+    mkdirSync(path.join(sandbox, 'scripts'));
+    const cli = path.join(sandbox, 'scripts', 'sync-download-page.mjs');
+    writeFileSync(cli, readFileSync(path.join(ROOT, 'scripts', 'sync-download-page.mjs')));
+    const result = spawnSync(process.execPath, [realpathSync(cli), '--check'], { encoding: 'utf8' });
+    assert.equal(result.status, 1, result.stderr);
+    assert.match(result.stdout, /release\.json differs/);
+    assert.equal(readFileSync(publicJson, 'utf8'), stale, '--check must not write');
+    syncDownloadPage({ repoRoot: sandbox });
+    assert.equal(readFileSync(publicJson, 'utf8'), readFileSync(path.join(ROOT, 'macos', 'manifest.json'), 'utf8'));
+    assert.equal(syncDownloadPage({ repoRoot: sandbox, check: true }).changed, false);
+  } finally {
+    rmSync(sandbox, { recursive: true, force: true });
+  }
+});
+
 function bundleNameOf(html) {
   return html.match(/<script[^>]+src="\.\/assets\/([^"]+\.js)"/)[1];
 }
@@ -185,6 +223,7 @@ function seedSandbox(root, { html, bundle }) {
   mkdirSync(path.join(root, 'docs', 'macos', 'assets'), { recursive: true });
   writeFileSync(path.join(root, 'macos', 'manifest.json'), manifest);
   writeFileSync(path.join(root, 'docs', 'macos', 'index.html'), html);
+  writeFileSync(path.join(root, 'docs', 'macos', 'release.json'), manifest);
   writeFileSync(path.join(root, 'docs', 'macos', 'assets', bundleNameOf(html)), bundle);
 }
 
