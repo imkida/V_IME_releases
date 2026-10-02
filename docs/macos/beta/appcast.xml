@@ -4,33 +4,33 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>VIME</title>
         <item>
-            <title>1.8.2</title>
-            <pubDate>Fri, 02 Oct 2026 18:34:23 +0800</pubDate>
+            <title>1.8.3</title>
+            <pubDate>Sat, 03 Oct 2026 03:20:57 +0800</pubDate>
             <link>https://imkida.github.io/V_IME_releases/macos/</link>
-            <sparkle:version>2026100204</sparkle:version>
-            <sparkle:shortVersionString>1.8.2</sparkle:shortVersionString>
+            <sparkle:version>2026100301</sparkle:version>
+            <sparkle:shortVersionString>1.8.3</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# Vime for macOS 1.8.2
+            <description sparkle:format="markdown"><![CDATA[# Vime for macOS 1.8.3
 
-2026-10-02 · macOS 14 及以上 · build 2026100204
+2026-10-03 · macOS 14 及以上 · build 2026100301
 
-本次更新让官网的版本说明更清楚、更易读，App 听写能力与 1.8.1 保持一致。
+本次更新改善听写浮窗与菜单栏面板的视觉体验，让文字、按钮和选中状态更清晰。
+
+## 新增
+
+- **两种浮窗材质可选**：在支持液态玻璃的系统上，可选择原生液态玻璃或 Vime 胶囊；材质与浅色／深色外观分别设置。
 
 ## 优化
 
-- **更新说明更清楚**：官网按标题、段落和分类列表展示本次变化。
-- **手机阅读更舒适**：增大官网更新说明的正文字号。
-
-## 修复
-
-- **更新入口直达正文**：从更新说明链接打开官网时，自动展开并定位到最新更新。
+- **菜单更简洁**：采用无框玻璃面板，浅色按钮与选中状态的层级更清楚。
+- **浮窗更协调**：统一玻璃材质与文字表现，减少额外亮边，改善不同背景下的可读性。
 
 支持 macOS 14 及以上，可直接覆盖安装。已有配置、服务密钥与听写历史保留；识别模型、智能整理默认策略、输入保护与撤销行为不变。
 ]]></description>
-            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.2/2026100204/V_IME-1.8.2-2026100204-macos.zip" length="10187776" type="application/octet-stream" sparkle:edSignature="9coqkEHZA6ETcEdZY9lrKJbZDVgZrrStNsCV3AoLzb+z8aLexpas2mngS6/Uk7xDL2dsuUgcK3yiCHs+KILfDw=="></enclosure>
+            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.3/2026100301/V_IME-1.8.3-2026100301-macos.zip" length="10270522" type="application/octet-stream" sparkle:edSignature="9rqJp3q2i/aOxJZ3dlPTPuIXUmG5c8MTM8XOHcbeWeA9hffyU3jbLpCYT9KEWzmx+Rr16ieufvz3bmPj/XPjAA=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: U4rEnGJLDN1o4q89QHj0pJ+ACSNh0Bydm2kAs4mF1pEwmyl5mhW5qjV2ZqHE5ud0Z1xDlEL8P7ixdy8JF6V3CA==
-length: 1905
+edSignature: SPzdt4k7HBwjhJqxanJH8W4NazoguMYqj5dwVeMMXfw3HQl7vnxg+q/r/TqwzkiM+nYE66vJqQbAKIqMG/SMBw==
+length: 2017
 -->
