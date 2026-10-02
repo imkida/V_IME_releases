@@ -75,15 +75,29 @@ export function syncDownloadPage({ repoRoot: root, channel: channelName = 'beta'
     ? readFileSync(publishedManifestPath, 'utf8') : null;
   const manifestChanged = publishedManifest !== manifestText;
   if (manifestChanged) messages.push('  release.json differs from macos/manifest.json');
-  const changed = nextBundle !== bundle || nextHtml !== html || manifestChanged;
+  // The domain root renders the same page without an intermediate redirect.
+  // Reuse the macOS assets and refresh both public manifest copies from one source.
+  const rootHtmlPath = join(root, 'docs', 'index.html');
+  const nextRootHtml = nextHtml.replaceAll('="./assets/', '="./macos/assets/');
+  const rootHtmlChanged = !existsSync(rootHtmlPath)
+    || readFileSync(rootHtmlPath, 'utf8') !== nextRootHtml;
+  const rootManifestPath = join(root, 'docs', 'release.json');
+  const rootManifestChanged = !existsSync(rootManifestPath)
+    || readFileSync(rootManifestPath, 'utf8') !== manifestText;
+  if (rootHtmlChanged) messages.push('  root homepage differs from the macOS page');
+  if (rootManifestChanged) messages.push('  root release.json differs from macos/manifest.json');
+  const changed = nextBundle !== bundle || nextHtml !== html || manifestChanged
+    || rootHtmlChanged || rootManifestChanged;
 
   if (changed && !check) {
     writeFileSync(bundlePath, nextBundle, 'utf8');
     writeFileSync(htmlPath, nextHtml, 'utf8');
     writeFileSync(publishedManifestPath, manifestText, 'utf8');
+    writeFileSync(rootHtmlPath, nextRootHtml, 'utf8');
+    writeFileSync(rootManifestPath, manifestText, 'utf8');
   }
 
-  return { changed, check, messages, htmlPath, bundlePath, publishedManifestPath };
+  return { changed, check, messages, htmlPath, bundlePath, publishedManifestPath, rootHtmlPath };
 }
 
 function refreshEmbeddedManifest(bundle, manifest, channel, messages) {

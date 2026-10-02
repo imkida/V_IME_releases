@@ -123,6 +123,33 @@ test('published website reads the same-origin canonical release copy', () => {
   assert.doesNotMatch(page.bundle, /raw\.githubusercontent\.com/);
 });
 
+test('domain root renders the homepage directly and sync repairs a redirect regression', () => {
+  const html = readFileSync(path.join(ROOT, 'docs', 'index.html'), 'utf8');
+  assert.doesNotMatch(html, /http-equiv="refresh"/i);
+  assert.match(html, /<div id="root"><\/div>/);
+  for (const [, asset] of html.matchAll(/(?:src|href)="(\.\/macos\/assets\/[^"]+)"/g)) {
+    assert.ok(readFileSync(path.join(ROOT, 'docs', asset)).length > 0, asset);
+  }
+  assert.equal(
+    readFileSync(path.join(ROOT, 'docs', 'release.json'), 'utf8'),
+    readFileSync(path.join(ROOT, 'macos', 'manifest.json'), 'utf8')
+  );
+  const sandbox = mkdtempSync(path.join(tmpdir(), 'vime-root-homepage-sync.'));
+  try {
+    seedSandbox(sandbox, readPublishedPage(ROOT));
+    const entry = path.join(sandbox, 'docs', 'index.html');
+    const redirect = '<meta http-equiv="refresh" content="0; url=./macos/">';
+    writeFileSync(entry, redirect);
+    assert.equal(syncDownloadPage({ repoRoot: sandbox, check: true }).changed, true);
+    assert.equal(readFileSync(entry, 'utf8'), redirect, '--check must not write');
+    syncDownloadPage({ repoRoot: sandbox });
+    assert.equal(readFileSync(entry, 'utf8'), html);
+    assert.equal(syncDownloadPage({ repoRoot: sandbox, check: true }).changed, false);
+  } finally {
+    rmSync(sandbox, { recursive: true, force: true });
+  }
+});
+
 test('published page carries no previous release identity', () => {
   if (!isGitRepository()) {
     // Cannot read release history here; test 5 still pins the page to the manifest.
@@ -224,6 +251,8 @@ function seedSandbox(root, { html, bundle }) {
   writeFileSync(path.join(root, 'macos', 'manifest.json'), manifest);
   writeFileSync(path.join(root, 'docs', 'macos', 'index.html'), html);
   writeFileSync(path.join(root, 'docs', 'macos', 'release.json'), manifest);
+  writeFileSync(path.join(root, 'docs', 'release.json'), manifest);
+  writeFileSync(path.join(root, 'docs', 'index.html'), readFileSync(path.join(ROOT, 'docs', 'index.html'), 'utf8'));
   writeFileSync(path.join(root, 'docs', 'macos', 'assets', bundleNameOf(html)), bundle);
 }
 
