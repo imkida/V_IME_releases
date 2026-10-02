@@ -32,7 +32,7 @@ test('frontmatter is rejected so YAML never becomes user-facing release text', (
   assert.throws(() => parseReleaseNotes('---\ntitle: 版本\n---\n正文'), /body only/);
 });
 
-test('current product copy proposal has five verified highlights and keeps the unresolved issue', () => {
+test('historical 1.8.0 copy proposal has five verified highlights and keeps the unresolved issue', () => {
   const body=readFileSync(new URL('../COPY-PROPOSAL.md',import.meta.url),'utf8');
   const blocks=parseReleaseNotes(body);
   assert.ok(body.includes("\u9009\u533a\u66ff\u6362\u6216\u7f16\u8f91\u540e\u7684\u64a4\u9500\u5165\u53e3\u66f4\u6e05\u695a"));

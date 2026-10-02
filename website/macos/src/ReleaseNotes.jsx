@@ -14,6 +14,9 @@ export default function ReleaseNotes({ notes, releaseUrl }) {
     <p className="release-platform">Vime for macOS <span>公开测试版</span></p>
     <div className="release-body">
       {notes.map((block, index) => {
+        if (block.type === 'metadata') {
+          return <p key={index} className="release-metadata"><InlineText text={block.text}/></p>;
+        }
         if (block.type === 'heading') {
           return <h4 key={index}><InlineText text={block.text}/></h4>;
         }

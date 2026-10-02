@@ -225,6 +225,7 @@ p, h1, h2, h3, h4 { margin: 0; }
 .release-platform { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; color: var(--ink); font-size: 13px; font-weight: 550; }
 .release-platform > span { color: var(--subtle); font-size: 12px; font-weight: 400; }
 .release-body { margin-top: 18px; }
+.release-body .release-metadata { color: var(--subtle); font-size: 13px; margin-bottom: 15px; }
 .release-body .release-overview { color: var(--ink); font-size: 17px; line-height: 1.8; margin-bottom: 20px; }
 .release-body h4 { color: var(--ink); font-size: 15px; font-weight: 600; margin: 24px 0 10px; }
 .release-body ul { margin: 0 0 20px; padding-left: 21px; }

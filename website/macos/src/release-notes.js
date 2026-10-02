@@ -8,7 +8,9 @@ export function parseReleaseNotes(markdown) {
   let paragraph = [];
   const flush = () => {
     if (paragraph.length) {
-      blocks.push({ type: 'paragraph', text: paragraph.join(' ') });
+      const text = paragraph.join(' ');
+      const type = /^\d{4}-\d{2}-\d{2}\s+\u00b7\s+macOS\b.+\bbuild\s+\d+$/.test(text) ? 'metadata' : 'paragraph';
+      blocks.push({ type, text });
       paragraph = [];
     }
   };

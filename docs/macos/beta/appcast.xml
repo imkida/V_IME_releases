@@ -4,31 +4,29 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>VIME</title>
         <item>
-            <title>1.8.0</title>
-            <pubDate>Fri, 02 Oct 2026 04:31:48 +0800</pubDate>
+            <title>1.8.1</title>
+            <pubDate>Fri, 02 Oct 2026 17:20:52 +0800</pubDate>
             <link>https://imkida.github.io/V_IME_releases/macos/</link>
-            <sparkle:version>2026100201</sparkle:version>
-            <sparkle:shortVersionString>1.8.0</sparkle:shortVersionString>
+            <sparkle:version>2026100203</sparkle:version>
+            <sparkle:shortVersionString>1.8.1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# Vime macOS 1.8.0 公测
+            <description sparkle:format="markdown"><![CDATA[# Vime macOS 1.8.1 公测
 
-本次更新重点是设置体验、听写等待和输入状态展示。
+2026-10-02 · macOS 14 及以上 · build 2026100203
 
-- 重新整理设置页，区分默认服务、官方模板与个人配置，让服务检测和配置状态更清楚。
-- 修复本地统计开关与安全存储身份问题，保留已有配置、Key 和听写历史。
-- 更新状态栏面板，使用系统玻璃材质、清晰的风格选中反馈和真实快捷键展示；历史记录与设置入口更易找到，Logo 适配深浅外观。
-- 减少听写结束后的固定等待，精简云端 ASR 音频请求编码；识别模型和智能整理默认策略不变。
-- 更新轻度毛玻璃听写状态条，支持自动、浅色和深色外观，以及整条拖动，清晰呈现选区替换或编辑后的撤销操作。
-- 改善面板占用焦点时向原输入框的写回；取消听写或切换输入目标时不抢回焦点。
+让菜单更清晰，让实时听写预览与 HUD 的视觉风格更统一。
 
-离线 ASR 新研究、未完成质量验证的 Clean 候选、新的云端存储业务、匿名日统计上传、实时听写预览和液态玻璃 HUD 研究不包含在本次公测中。纠错学习未出现提示的问题继续单独调查，本次不宣称已修复。
+- 优化：提升浅色和深色外观下的菜单文字、风格选中项和按钮对比度。
+- 优化：实时听写预览使用独立浮窗与动态胶囊布局，保持清晰的文字显示。
+- 优化：预览与 HUD 统一背景、圆角和阴影风格。
+- 修复：预览正文未变化时，切换浅色或深色外观后文字颜色不更新的问题。
 
-支持 macOS 14 及以上。
+识别模型、智能整理默认策略、输入保护与撤销行为不变。已有配置、个人 Key 与听写历史保留，可直接覆盖安装。
 ]]></description>
-            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.0/2026100201/V_IME-1.8.0-2026100201-macos.zip" length="10108057" type="application/octet-stream" sparkle:edSignature="hzDArMD/NscRTBf4MC+mGUnlCcgmqjxJ+Et63UFKMAfWCzNFq1+xpd9JfaUfpOBk6i/+xyY86O6d8sibtwpABw=="></enclosure>
+            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.1/2026100203/V_IME-1.8.1-2026100203-macos.zip" length="10187767" type="application/octet-stream" sparkle:edSignature="//POPypCIO/ykHonsM+kMcO3oi690mr58mU0r+PPeWiV09dhiD+VnjDiXhMLXTz9SDRwNwLS4kkjkH9fKzoaDw=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: G3zE66nnMSeuzYH+uQ5S6Y5u0KORpulp1e1furMiMQ9IcwodXGt/zTB5Gakq5tRkBjjFjPd6wHEcGVja+IITCg==
-length: 2438
+edSignature: U2dwrf4K6kMkcfNytip8qzZyMbpRISWmvBRznZq/POdfEQFmZ4haaSScIweQLa3TRA/9Yfv/sayKuy2LZK0uCQ==
+length: 1921
 -->
