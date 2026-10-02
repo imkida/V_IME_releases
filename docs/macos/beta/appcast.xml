@@ -4,29 +4,33 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>VIME</title>
         <item>
-            <title>1.8.1</title>
-            <pubDate>Fri, 02 Oct 2026 17:20:52 +0800</pubDate>
+            <title>1.8.2</title>
+            <pubDate>Fri, 02 Oct 2026 18:34:23 +0800</pubDate>
             <link>https://imkida.github.io/V_IME_releases/macos/</link>
-            <sparkle:version>2026100203</sparkle:version>
-            <sparkle:shortVersionString>1.8.1</sparkle:shortVersionString>
+            <sparkle:version>2026100204</sparkle:version>
+            <sparkle:shortVersionString>1.8.2</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# Vime macOS 1.8.1 公测
+            <description sparkle:format="markdown"><![CDATA[# Vime for macOS 1.8.2
 
-2026-10-02 · macOS 14 及以上 · build 2026100203
+2026-10-02 · macOS 14 及以上 · build 2026100204
 
-让菜单更清晰，让实时听写预览与 HUD 的视觉风格更统一。
+本次更新让官网的版本说明更清楚、更易读，App 听写能力与 1.8.1 保持一致。
 
-- 优化：提升浅色和深色外观下的菜单文字、风格选中项和按钮对比度。
-- 优化：实时听写预览使用独立浮窗与动态胶囊布局，保持清晰的文字显示。
-- 优化：预览与 HUD 统一背景、圆角和阴影风格。
-- 修复：预览正文未变化时，切换浅色或深色外观后文字颜色不更新的问题。
+## 优化
 
-识别模型、智能整理默认策略、输入保护与撤销行为不变。已有配置、个人 Key 与听写历史保留，可直接覆盖安装。
+- **更新说明更清楚**：官网按标题、段落和分类列表展示本次变化。
+- **手机阅读更舒适**：增大官网更新说明的正文字号。
+
+## 修复
+
+- **更新入口直达正文**：从更新说明链接打开官网时，自动展开并定位到最新更新。
+
+支持 macOS 14 及以上，可直接覆盖安装。已有配置、服务密钥与听写历史保留；识别模型、智能整理默认策略、输入保护与撤销行为不变。
 ]]></description>
-            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.1/2026100203/V_IME-1.8.1-2026100203-macos.zip" length="10187767" type="application/octet-stream" sparkle:edSignature="//POPypCIO/ykHonsM+kMcO3oi690mr58mU0r+PPeWiV09dhiD+VnjDiXhMLXTz9SDRwNwLS4kkjkH9fKzoaDw=="></enclosure>
+            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.2/2026100204/V_IME-1.8.2-2026100204-macos.zip" length="10187776" type="application/octet-stream" sparkle:edSignature="9coqkEHZA6ETcEdZY9lrKJbZDVgZrrStNsCV3AoLzb+z8aLexpas2mngS6/Uk7xDL2dsuUgcK3yiCHs+KILfDw=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: U2dwrf4K6kMkcfNytip8qzZyMbpRISWmvBRznZq/POdfEQFmZ4haaSScIweQLa3TRA/9Yfv/sayKuy2LZK0uCQ==
-length: 1921
+edSignature: U4rEnGJLDN1o4q89QHj0pJ+ACSNh0Bydm2kAs4mF1pEwmyl5mhW5qjV2ZqHE5ud0Z1xDlEL8P7ixdy8JF6V3CA==
+length: 1905
 -->
