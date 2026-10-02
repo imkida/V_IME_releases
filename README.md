@@ -54,6 +54,7 @@ V_IME_releases/
 │   ├── macos/
 │   │   ├── index.html              # macOS 公测下载与更新说明页
 │   │   ├── assets/                 # 该页构建产物（含内置 manifest 快照）
+│   │   ├── release.json            # 官网同源清单，由 macos/manifest.json 同步生成
 │   │   └── beta/appcast.xml        # Sparkle appcast
 │   ├── privacy/
 │   │   └── index.html              # App Store 隐私政策页面
@@ -63,7 +64,7 @@ V_IME_releases/
 │   └── release-manifest.schema.json
 └── scripts/
     ├── update-manifest.mjs         # 无外部依赖的 manifest 更新脚本
-    ├── sync-download-page.mjs      # 刷新下载页内置兜底快照（npm run release:page）
+    ├── sync-download-page.mjs      # 同步官网清单、内置快照及下载链接（npm run release:page）
     └── test-*.mjs                  # 上述工具的断言（npm test）
 ```
 
@@ -244,6 +245,10 @@ macOS 公测下载、使用引导与更新说明页面：
 ```text
 https://imkida.github.io/V_IME_releases/macos/
 ```
+
+官网镜像使用同一份 `docs/` 静态产物：网页从各自站点的 `./release.json` 读取版本信息，不依赖 GitHub raw。每次更新 `macos/manifest.json` 后运行 `npm run release:page`，再运行 `npm run release:page -- --check` 和相关测试；公开 JSON、页面快照和无脚本下载入口一起更新。`--check` 发现漂移时不写文件并返回失败。
+
+`docs/CNAME` 是 GitHub Pages 的域名绑定文件；其他静态托管使用其自身域名配置。官网镜像不改变 App 使用的 manifest、签名 appcast 或安装包地址。
 
 ## Windows 发布
 

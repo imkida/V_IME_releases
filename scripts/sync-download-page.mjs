@@ -1,16 +1,15 @@
 #!/usr/bin/env node
-// Rebuild the macOS download page's static fallback from macos/manifest.json.
+// Publish the macOS page's same-origin release.json and fallback from macos/manifest.json.
 //
-// docs/macos/ publishes only the built artifact, so the page carries a minified snapshot of
-// the manifest channel for visitors whose browser cannot reach raw.githubusercontent.com.
-// That snapshot goes stale on every release, so this script rewrites it — plus the
-// <noscript> download link — and is the "rebuild docs/macos" step of the release checklist.
+// The same docs/ tree is deployed to every website host. Refresh its public JSON,
+// embedded snapshot and <noscript> links together after each release.
 //
 // Usage:
 //   node scripts/sync-download-page.mjs [--channel beta] [--check]
-import { readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { runInNewContext } from 'node:vm';
 
 const scriptPath = fileURLToPath(import.meta.url);
 const repoRoot = resolve(dirname(scriptPath), '..');
@@ -40,6 +39,7 @@ function main() {
       console.log(result.check
         ? 'docs/macos is out of sync with macos/manifest.json'
         : 'Synced docs/macos');
+      if (result.check) process.exitCode = 1;
     } else {
       console.log('docs/macos already matches macos/manifest.json');
     }
@@ -50,7 +50,8 @@ function main() {
 }
 
 export function syncDownloadPage({ repoRoot: root, channel: channelName = 'beta', check = false }) {
-  const manifest = JSON.parse(readFileSync(join(root, 'macos', 'manifest.json'), 'utf8'));
+  const manifestText = readFileSync(join(root, 'macos', 'manifest.json'), 'utf8');
+  const manifest = JSON.parse(manifestText);
   const channel = manifest.channels?.[channelName];
   if (!channel) {
     throw new Error(`macos/manifest.json has no channels.${channelName}`);
@@ -69,14 +70,20 @@ export function syncDownloadPage({ repoRoot: root, channel: channelName = 'beta'
   const messages = [];
   const nextBundle = refreshEmbeddedManifest(bundle, manifest, channel, messages);
   const nextHtml = refreshNoscriptLinks(html, channel, dmg, messages);
-  const changed = nextBundle !== bundle || nextHtml !== html;
+  const publishedManifestPath = join(pageDir, 'release.json');
+  const publishedManifest = existsSync(publishedManifestPath)
+    ? readFileSync(publishedManifestPath, 'utf8') : null;
+  const manifestChanged = publishedManifest !== manifestText;
+  if (manifestChanged) messages.push('  release.json differs from macos/manifest.json');
+  const changed = nextBundle !== bundle || nextHtml !== html || manifestChanged;
 
   if (changed && !check) {
     writeFileSync(bundlePath, nextBundle, 'utf8');
     writeFileSync(htmlPath, nextHtml, 'utf8');
+    writeFileSync(publishedManifestPath, manifestText, 'utf8');
   }
 
-  return { changed, messages, htmlPath, bundlePath };
+  return { changed, check, messages, htmlPath, bundlePath, publishedManifestPath };
 }
 
 function refreshEmbeddedManifest(bundle, manifest, channel, messages) {
@@ -196,7 +203,9 @@ export function readPublishedGeneratedAt(bundle) {
 // its own first field and brace-matched rather than by the minifier's variable names.
 // Keys may be quoted or bare depending on how the page was last built.
 export function readPublishedChannelFromBundle(bundle) {
-  return JSON.parse(deMinifyObject(embeddedChannelSlot(bundle).text));
+  // Vite emits JavaScript literals, including template strings for multiline summaries.
+  const channel = runInNewContext(`(${embeddedChannelSlot(bundle).text})`, Object.create(null), { timeout: 1000 });
+  return JSON.parse(JSON.stringify(channel));
 }
 
 export function embeddedChannelSlot(bundle) {
@@ -211,25 +220,18 @@ export function embeddedChannelSlot(bundle) {
   return braceObjectAt(bundle, platformMarker + anchor);
 }
 
-export function deMinifyObject(text) {
-  return text
-    .replace(/!0/g, 'true')
-    .replace(/!1/g, 'false')
-    .replace(/([{,]\s*)([A-Za-z_$][\w$]*)\s*:/g, '$1"$2":');
-}
-
 export function braceObjectAt(text, from) {
   let depth = 0;
   let start = null;
-  let inString = false;
+  let quote = null;
   let escaped = false;
   for (let i = from; i < text.length; i += 1) {
     const char = text[i];
-    if (inString) {
+    if (quote) {
       if (escaped) escaped = false;
       else if (char === '\\') escaped = true;
-      else if (char === '"') inString = false;
-    } else if (char === '"') inString = true;
+      else if (char === quote) quote = null;
+    } else if (['"', "'", '`'].includes(char)) quote = char;
     else if (char === '{') {
       depth += 1;
       if (depth === 1) start = i;
