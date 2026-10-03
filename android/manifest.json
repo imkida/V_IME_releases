@@ -1,17 +1,17 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-10-03T17:46:44Z",
+  "generatedAt": "2026-10-03T21:45:19Z",
   "packageName": "com.vime.android",
   "channels": {
     "debug": {
-      "versionName": "1.8.0",
-      "versionCode": 291,
-      "title": "v1.8.0 — 听写、键盘与设置联合新基线（Debug）",
-      "summary": "Vime 1.8.0 建立新的 Debug 联合试用基线，整合已确认的听写、键盘、智能整理和设置更新。\n\n新增\n- 设置页面统一为列表样式，中文键盘布局入口移到“键盘与输入行为”，更新说明按新增、优化、修复、风险和安装提示分组显示。\n- 拼音与九宫格采用已验收的原生补尾匹配，保留完整词库、候选学习、分段选择和确认上下文能力。\n\n优化\n- 录音按键采用更清晰的热区与连续反馈；普通听写保留实时预览、当前文字直接上屏、完整录音重试，以及离线和等待超时后的本地接管。\n- 全拼先显示当前输入，候选异步更新；26键与九宫格的候选网格、侧栏和布局继续保留已验修正。\n- 保留本地识别运行时与模型下载管理；安装包不内置识别模型或 API Key。\n\n修复\n- 合法松手附带轻微位移时不再漏处理；面板收起再打开回到默认首页。\n- 修正前文失效、预览文本扣除和约数处理边界，移除基于尾部词语自行推断问号的规则，并退役不可达旧整理路径。\n\n已知问题\n- 智能整理仍按现有个人试用配置交付，可能具体化未定动作、改变否定范围、增加未提出的要求或改变事实状态；此包不代表新的正式质量采用。\n\n安装提示\n- 本版只更新公开 Debug 渠道，版本1.8.0 / versionCode291；稳定 Release 渠道仍为1.6.0 / 138。\n- 请使用与当前应用相同渠道的安装包。Debug 与 Release 同包名、签名不同，不能直接混装；不要为覆盖安装卸载或清除数据。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.8.0",
-      "apkName": "V_IME-v1.8.0-debug.apk",
-      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.8.0/V_IME-v1.8.0-debug.apk",
-      "apkSha256": "700dea3c98cf7b8546a6e6127727ebe2deb9849bcfded839c422f7df531893c3",
+      "versionName": "1.8.1-dogfood.1",
+      "versionCode": 292,
+      "title": "v1.8.1-dogfood.1 — 取消听写后的麦克风居中修复（Debug）",
+      "summary": "本次基于1.8.0完整联合基线，修复听写取消后默认麦克风图标错位和跳动。\n\n修复\n- 点击取消，或滑入下方取消区后松手返回默认状态时，麦克风在淡入淡出过程中保持居中，不再先偏移后跳回。\n- 保留原按钮大小、图标大小、手势和听写流程，沿用完整1.8.0的键盘、词库、本地识别运行时与设置功能。\n\n已知问题\n- 智能整理仍沿现有个人试用配置，可能具体化未定动作、改变否定范围、增加未提出的要求或改变事实状态；此包不代表新的正式质量采用。\n\n安装提示\n- Debug试用版本1.8.1-dogfood.1 / versionCode292；稳定Release仍为1.6.0 /138。\n- 只能覆盖相同签名的Debug包；不要为覆盖安装卸载或清除数据。安装包不内置识别模型或API Key。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.8.1-dogfood.1",
+      "apkName": "V_IME-v1.8.1-dogfood.1-debug.apk",
+      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.8.1-dogfood.1/V_IME-v1.8.1-dogfood.1-debug.apk",
+      "apkSha256": "500665a1db6409874cefb3876687541010cf172845221762604d531c582f7e42",
       "certificateSha256": "4513e5bc726058d40be6020e1bbfc2d0c0fbf4e81d3b04a393cba394cd195059",
       "mandatory": false,
       "minSupportedVersionCode": 1
