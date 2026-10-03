@@ -4,35 +4,35 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>VIME</title>
         <item>
-            <title>1.8.4</title>
-            <pubDate>Sat, 03 Oct 2026 17:16:43 +0800</pubDate>
+            <title>1.8.5</title>
+            <pubDate>Sat, 03 Oct 2026 22:52:34 +0800</pubDate>
             <link>https://imkida.github.io/V_IME_releases/macos/</link>
-            <sparkle:version>2026100302</sparkle:version>
-            <sparkle:shortVersionString>1.8.4</sparkle:shortVersionString>
+            <sparkle:version>2026100308</sparkle:version>
+            <sparkle:shortVersionString>1.8.5</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
             <description sparkle:format="markdown"><![CDATA[
-# Vime for macOS 1.8.4
+# Vime for macOS 1.8.5
 
-2026-10-03 · macOS 14 及以上 · build 2026100302
+2026-10-03 · macOS 14 及以上 · build 2026100308
 
-本次更新让听写提示更清楚、浮窗进退更协调，并让后台预热为转写让路。
+本次更新进一步改善听写浮窗的层次、操作提示与收起动画。
 
 ## 优化
 
-- **提示更易读**：浮窗主要提示统一字号，关闭、提示与操作的位置保持稳定；菜单文字与快捷键提示更清晰。
-- **浮窗进退更自然**：从底部平滑展开，收起前先淡出文字和按钮，避免残片与提示错位。
-- **选中状态更连贯**：在 macOS 26 及以上，切换输出风格时，原生玻璃选中态在固定标签之间平滑移动。
+- **浮窗层次更清楚**：原生玻璃样式增加克制的轮廓高光；Vime 胶囊样式采用更平整的填充与柔和投影。
+- **操作图标更易辨认**：按钮图标统一尺寸并保持居中，正文与提示字号保持稳定。
+- **收起动画更连贯**：手动复制提示独立淡出，主浮窗收起末段平滑消失，减少残留与突变。
 
 ## 修复
 
-- **转写优先开始**：听写与首次引导试录音进入转写时，让后台云服务预热及时让路，避免两者竞争连接。
+- **取消录音时省去无用读取**：取消后不再读取已废弃的音频文件，正常听写仍沿原完整音频处理链路。
 
 支持 macOS 14 及以上，可直接覆盖安装。已有配置、服务密钥与听写历史保留；识别模型、智能整理默认策略与写入方式保持不变。
 ]]></description>
-            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.4/2026100302/V_IME-1.8.4-2026100302-macos.zip" length="10323779" type="application/octet-stream" sparkle:edSignature="d5UEQGc3O8U0KxKhnvW2E5MtJxB/j9hVKUZhIbhhAnlIfiWxEcov3LPi7sHvXl6BOYp7zOYGzpWBuaKlcNOwAA=="></enclosure>
+            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.5/2026100308/V_IME-1.8.5-2026100308-macos.zip" length="10386705" type="application/octet-stream" sparkle:edSignature="u32sp3l8j/8ijPGSAty/flM9eT0HUQnF+z52MuH+8/Fip0duTCoVG/Ihn0hXeSi1fGEvvMgy3Npnclc8bE30DA=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: cFYhA73l4XaclCExPctVVd1lma3d44qjG1jJKZz1Y52WxbrJBVOXhbW9ego6xfMlCsO2JpVWQIziKmieA3e9Dw==
-length: 2167
+edSignature: t7+kNPmYaDczBAf7UeYzLTPWq1BknvR3f9o70QftE3RPLCXWMBe9ySOgC6lJAiD82dyJ0akNL+fr6KinYC1DBA==
+length: 2114
 -->
