@@ -4,33 +4,35 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>VIME</title>
         <item>
-            <title>1.8.3</title>
-            <pubDate>Sat, 03 Oct 2026 03:20:57 +0800</pubDate>
+            <title>1.8.4</title>
+            <pubDate>Sat, 03 Oct 2026 17:16:43 +0800</pubDate>
             <link>https://imkida.github.io/V_IME_releases/macos/</link>
-            <sparkle:version>2026100301</sparkle:version>
-            <sparkle:shortVersionString>1.8.3</sparkle:shortVersionString>
+            <sparkle:version>2026100302</sparkle:version>
+            <sparkle:shortVersionString>1.8.4</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# Vime for macOS 1.8.3
+            <description sparkle:format="markdown"><![CDATA[
+# Vime for macOS 1.8.4
 
-2026-10-03 · macOS 14 及以上 · build 2026100301
+2026-10-03 · macOS 14 及以上 · build 2026100302
 
-本次更新改善听写浮窗与菜单栏面板的视觉体验，让文字、按钮和选中状态更清晰。
-
-## 新增
-
-- **两种浮窗材质可选**：在支持液态玻璃的系统上，可选择原生液态玻璃或 Vime 胶囊；材质与浅色／深色外观分别设置。
+本次更新让听写提示更清楚、浮窗进退更协调，并让后台预热为转写让路。
 
 ## 优化
 
-- **菜单更简洁**：采用无框玻璃面板，浅色按钮与选中状态的层级更清楚。
-- **浮窗更协调**：统一玻璃材质与文字表现，减少额外亮边，改善不同背景下的可读性。
+- **提示更易读**：浮窗主要提示统一字号，关闭、提示与操作的位置保持稳定；菜单文字与快捷键提示更清晰。
+- **浮窗进退更自然**：从底部平滑展开，收起前先淡出文字和按钮，避免残片与提示错位。
+- **选中状态更连贯**：在 macOS 26 及以上，切换输出风格时，原生玻璃选中态在固定标签之间平滑移动。
 
-支持 macOS 14 及以上，可直接覆盖安装。已有配置、服务密钥与听写历史保留；识别模型、智能整理默认策略、输入保护与撤销行为不变。
+## 修复
+
+- **转写优先开始**：听写与首次引导试录音进入转写时，让后台云服务预热及时让路，避免两者竞争连接。
+
+支持 macOS 14 及以上，可直接覆盖安装。已有配置、服务密钥与听写历史保留；识别模型、智能整理默认策略与写入方式保持不变。
 ]]></description>
-            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.3/2026100301/V_IME-1.8.3-2026100301-macos.zip" length="10270522" type="application/octet-stream" sparkle:edSignature="9rqJp3q2i/aOxJZ3dlPTPuIXUmG5c8MTM8XOHcbeWeA9hffyU3jbLpCYT9KEWzmx+Rr16ieufvz3bmPj/XPjAA=="></enclosure>
+            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.4/2026100302/V_IME-1.8.4-2026100302-macos.zip" length="10323779" type="application/octet-stream" sparkle:edSignature="d5UEQGc3O8U0KxKhnvW2E5MtJxB/j9hVKUZhIbhhAnlIfiWxEcov3LPi7sHvXl6BOYp7zOYGzpWBuaKlcNOwAA=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: SPzdt4k7HBwjhJqxanJH8W4NazoguMYqj5dwVeMMXfw3HQl7vnxg+q/r/TqwzkiM+nYE66vJqQbAKIqMG/SMBw==
-length: 2017
+edSignature: cFYhA73l4XaclCExPctVVd1lma3d44qjG1jJKZz1Y52WxbrJBVOXhbW9ego6xfMlCsO2JpVWQIziKmieA3e9Dw==
+length: 2167
 -->
