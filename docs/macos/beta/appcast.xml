@@ -5,7 +5,7 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
         <title>VIME</title>
         <item>
             <title>1.8.5</title>
-            <pubDate>Sun, 04 Oct 2026 22:42:29 +0800</pubDate>
+            <pubDate>Mon, 05 Oct 2026 01:46:58 +0800</pubDate>
             <link>https://imkida.github.io/V_IME_releases/macos/</link>
             <sparkle:version>2026100477</sparkle:version>
             <sparkle:shortVersionString>1.8.5</sparkle:shortVersionString>
@@ -24,10 +24,10 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
 
 支持 macOS 14 及以上，可直接覆盖安装。已有配置、服务密钥与听写历史保留；智能整理默认策略与写入方式保持不变。
 ]]></description>
-            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.5/2026100477/V_IME-1.8.5-2026100477-macos.zip" length="10457077" type="application/octet-stream" sparkle:edSignature="WFb2jc2MIHzIgTC/A+ilPYrTr2kbBClQb7TzyM2DqVw22LNwrgw/pAROD0lY6ER1bw2ipqrTNiDpRutRbs5ZCQ=="></enclosure>
+            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.5/2026100477/V_IME-1.8.5-2026100477-macos.zip" length="10457554" type="application/octet-stream" sparkle:edSignature="sOVe1W+m5vb8A9OGq/uGusNhCpVxeCg5MDfCtl0T66g3IVv+QAvsYVQPTZQBqILTOES05zzweolDkdMOggfxAA=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: cTjL7zYb3WptjH6sW7D8MtH/uMbsyidNbx7Q5AkTsnrDLvKnBgIBcGP//mjzTLLqAwsxrzsGWf7eMXiAhdQgCw==
+edSignature: PFRZHPBuyMTe/SVtnNvvDLSZHb9NSv1eLvRTzZimck5ctAiFDlHYsa+dx3JauaNZnBZa8YOXLsPMiRxY2VMJAg==
 length: 1844
 -->

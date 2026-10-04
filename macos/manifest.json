@@ -1,6 +1,6 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-10-04T14:42:57Z",
+  "generatedAt": "2026-10-04T17:49:16Z",
   "platform": "macos",
   "channels": {
     "beta": {
@@ -11,27 +11,27 @@
       "mandatory": false,
       "buildNumber": 2026100477,
       "minSystemVersion": "14.0",
-      "appcastUrl": "https://imkida.github.io/V_IME_releases/macos/beta/appcast.xml",
       "assets": [
         {
           "name": "V_IME-1.8.5-2026100477-macos.dmg",
           "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.5/2026100477/V_IME-1.8.5-2026100477-macos.dmg",
-          "sha256": "90ef109d9abcf00ed55c5b4def0a49b012e97ef2889af42589a4ee9ce692a2a8",
+          "sha256": "b24c3894fdeb2c4fa9411a2a2a893b397e0d3ac8fff460064c344c7388de3233",
           "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.8.5/V_IME-1.8.5-2026100477-macos.dmg",
-          "sizeBytes": 11699523,
+          "sizeBytes": 11703429,
           "installerType": "dmg",
           "minSystemVersion": "14.0"
         },
         {
           "name": "V_IME-1.8.5-2026100477-macos.zip",
           "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.5/2026100477/V_IME-1.8.5-2026100477-macos.zip",
-          "sha256": "8914714ec94042e13bd591f77c5b6509dd51d981c0a58ee1f1a0999698a2e246",
+          "sha256": "d9415d72b05324dd095e5946f6ecd8e53cdc62e104acdabffdcc67a202a3ab05",
           "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.8.5/V_IME-1.8.5-2026100477-macos.zip",
-          "sizeBytes": 10457077,
+          "sizeBytes": 10457554,
           "installerType": "zip",
           "minSystemVersion": "14.0"
         }
-      ]
+      ],
+      "appcastUrl": "https://imkida.github.io/V_IME_releases/macos/beta/appcast.xml"
     }
   },
   "productName": "VIME",
