@@ -5,29 +5,29 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
         <title>VIME</title>
         <item>
             <title>1.8.5</title>
-            <pubDate>Mon, 05 Oct 2026 01:46:58 +0800</pubDate>
+            <pubDate>Mon, 05 Oct 2026 05:18:58 +0800</pubDate>
             <link>https://imkida.github.io/V_IME_releases/macos/</link>
-            <sparkle:version>2026100477</sparkle:version>
+            <sparkle:version>2026100501</sparkle:version>
             <sparkle:shortVersionString>1.8.5</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
             <description sparkle:format="markdown"><![CDATA[# Vime for macOS 1.8.5
 
-2026-10-04 · macOS 14 及以上 · build 2026100477
+2026-10-05 · macOS 14 及以上 · build 2026100501
 
 这是 1.8.5 的增量更新，建议使用较早构建的用户更新。
 
 ## 优化
 
-- 更新百炼业务空间服务接入配置，保持现有识别模型和智能整理策略。
-- 改善默认服务配置识别，避免将默认配置误记为用户的本地配置。
-- 保留此前版本的等待动效、外观设置、多屏定位和无语音录音过滤。
+- 语音识别连接检查改用内置公开合成语音样本，修正静音测试输入可能造成的连接失败误报。
+- 官方模板更新状态更明确：远端模板版本较旧时，会提示继续使用现有模板，不影响当前服务配置。
+- 保留百炼业务空间服务接入更新、等待动效、外观设置、多屏定位和无语音录音过滤。
 
-支持 macOS 14 及以上，可直接覆盖安装。已有配置、服务密钥与听写历史保留；智能整理默认策略与写入方式保持不变。
+支持 macOS 14 及以上，可直接覆盖安装。已有配置、服务密钥与听写历史保留；识别模型、智能整理默认策略与写入方式保持不变。
 ]]></description>
-            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.5/2026100477/V_IME-1.8.5-2026100477-macos.zip" length="10457554" type="application/octet-stream" sparkle:edSignature="sOVe1W+m5vb8A9OGq/uGusNhCpVxeCg5MDfCtl0T66g3IVv+QAvsYVQPTZQBqILTOES05zzweolDkdMOggfxAA=="></enclosure>
+            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.5/2026100501/V_IME-1.8.5-2026100501-macos.zip" length="10534494" type="application/octet-stream" sparkle:edSignature="1MNGgrYVz8+9RgZkHkXVsnfWjRbiBi3VssNiFg+MQGbPru8N2KyZbcqycQDhxshjmxxRmXfLvedXnbV/ZYn9AQ=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: PFRZHPBuyMTe/SVtnNvvDLSZHb9NSv1eLvRTzZimck5ctAiFDlHYsa+dx3JauaNZnBZa8YOXLsPMiRxY2VMJAg==
-length: 1844
+edSignature: 2l8HO3booxsrjOFlALj8Ov9Mb2Kw2+lKvwoI4NWqcE+7kq1QCWC45sn8CRzHM4kiuHWU0inSi/M8bdwBjGrjBw==
+length: 1958
 -->
