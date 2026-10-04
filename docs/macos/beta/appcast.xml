@@ -5,30 +5,29 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
         <title>VIME</title>
         <item>
             <title>1.8.5</title>
-            <pubDate>Sun, 04 Oct 2026 11:28:12 +0800</pubDate>
+            <pubDate>Sun, 04 Oct 2026 22:42:29 +0800</pubDate>
             <link>https://imkida.github.io/V_IME_releases/macos/</link>
-            <sparkle:version>2026100402</sparkle:version>
+            <sparkle:version>2026100477</sparkle:version>
             <sparkle:shortVersionString>1.8.5</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
             <description sparkle:format="markdown"><![CDATA[# Vime for macOS 1.8.5
 
-2026-10-04 · macOS 14 及以上 · build 2026100402
+2026-10-04 · macOS 14 及以上 · build 2026100477
 
 这是 1.8.5 的增量更新，建议使用较早构建的用户更新。
 
 ## 优化
 
-- **等待状态更清晰**：识别与整理过程中显示清晰转环，可选择「寻光」或「活力」动效；浅色采用淡冰蓝，减少灰暗感。
-- **外观设置更简洁**：外观、HUD 样式与动态效果分别设置，可一键重置浮窗位置，保留已有明确选择。
-- **多屏定位更自然**：开始听写时，浮窗跟随输入框所在屏幕；同次识别、整理与结果提示保持在该屏，拖动及位置重置同步适配。
-- **减少无效识别请求**：默认云服务上传完整录音前先在本机判断；确认整段没有语音时直接结束，未确定或检测失败仍继续识别。
+- 更新百炼业务空间服务接入配置，保持现有识别模型和智能整理策略。
+- 改善默认服务配置识别，避免将默认配置误记为用户的本地配置。
+- 保留此前版本的等待动效、外观设置、多屏定位和无语音录音过滤。
 
-支持 macOS 14 及以上，可直接覆盖安装。已有配置、服务密钥与听写历史保留；识别模型、智能整理默认策略与写入方式保持不变。
+支持 macOS 14 及以上，可直接覆盖安装。已有配置、服务密钥与听写历史保留；智能整理默认策略与写入方式保持不变。
 ]]></description>
-            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.5/2026100402/V_IME-1.8.5-2026100402-macos.zip" length="10459742" type="application/octet-stream" sparkle:edSignature="lzP0HFGSsnk+lGmfbXEmBi2caNKJRxCEQ5uQrvevK40KoLH3SBKDSudWB9G5NZ7qdQtc5/od6Uez7CkQnx7HBw=="></enclosure>
+            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.5/2026100477/V_IME-1.8.5-2026100477-macos.zip" length="10457077" type="application/octet-stream" sparkle:edSignature="WFb2jc2MIHzIgTC/A+ilPYrTr2kbBClQb7TzyM2DqVw22LNwrgw/pAROD0lY6ER1bw2ipqrTNiDpRutRbs5ZCQ=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: 1pNtFe4Hbhs7/dVbPTTGzELQRwJKoo/Y/Wj8H+cVnvktIFD6apMMS8+Lqt6k/unuTcpwLsPhJUSDYrCLLr8TDg==
-length: 2230
+edSignature: cTjL7zYb3WptjH6sW7D8MtH/uMbsyidNbx7Q5AkTsnrDLvKnBgIBcGP//mjzTLLqAwsxrzsGWf7eMXiAhdQgCw==
+length: 1844
 -->

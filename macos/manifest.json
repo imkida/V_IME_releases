@@ -1,37 +1,37 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-10-04T03:35:56Z",
+  "generatedAt": "2026-10-04T14:42:57Z",
   "platform": "macos",
   "channels": {
     "beta": {
       "versionName": "1.8.5",
-      "title": "VIME macOS v1.8.5 beta · build 2026100402 · macOS 14+ · 已通过 macOS 安全检查",
-      "summary": "# Vime for macOS 1.8.5\n\n2026-10-04 · macOS 14 及以上 · build 2026100402\n\n这是 1.8.5 的增量更新，建议使用较早构建的用户更新。\n\n## 优化\n\n- **等待状态更清晰**：识别与整理过程中显示清晰转环，可选择「寻光」或「活力」动效；浅色采用淡冰蓝，减少灰暗感。\n- **外观设置更简洁**：外观、HUD 样式与动态效果分别设置，可一键重置浮窗位置，保留已有明确选择。\n- **多屏定位更自然**：开始听写时，浮窗跟随输入框所在屏幕；同次识别、整理与结果提示保持在该屏，拖动及位置重置同步适配。\n- **减少无效识别请求**：默认云服务上传完整录音前先在本机判断；确认整段没有语音时直接结束，未确定或检测失败仍继续识别。\n\n支持 macOS 14 及以上，可直接覆盖安装。已有配置、服务密钥与听写历史保留；识别模型、智能整理默认策略与写入方式保持不变。",
+      "title": "VIME macOS v1.8.5 beta · build 2026100477 · macOS 14+ · 已通过 macOS 安全检查",
+      "summary": "# Vime for macOS 1.8.5\n\n2026-10-04 · macOS 14 及以上 · build 2026100477\n\n这是 1.8.5 的增量更新，建议使用较早构建的用户更新。\n\n## 优化\n\n- 更新百炼业务空间服务接入配置，保持现有识别模型和智能整理策略。\n- 改善默认服务配置识别，避免将默认配置误记为用户的本地配置。\n- 保留此前版本的等待动效、外观设置、多屏定位和无语音录音过滤。\n\n支持 macOS 14 及以上，可直接覆盖安装。已有配置、服务密钥与听写历史保留；智能整理默认策略与写入方式保持不变。",
       "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.8.5",
       "mandatory": false,
-      "buildNumber": 2026100402,
+      "buildNumber": 2026100477,
       "minSystemVersion": "14.0",
+      "appcastUrl": "https://imkida.github.io/V_IME_releases/macos/beta/appcast.xml",
       "assets": [
         {
-          "name": "V_IME-1.8.5-2026100402-macos.dmg",
-          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.5/2026100402/V_IME-1.8.5-2026100402-macos.dmg",
-          "sha256": "72948b9a068922aad4da947d25adbbf5262147423c70f02c4bfffbc058e888af",
-          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.8.5/V_IME-1.8.5-2026100402-macos.dmg",
-          "sizeBytes": 11701395,
+          "name": "V_IME-1.8.5-2026100477-macos.dmg",
+          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.5/2026100477/V_IME-1.8.5-2026100477-macos.dmg",
+          "sha256": "90ef109d9abcf00ed55c5b4def0a49b012e97ef2889af42589a4ee9ce692a2a8",
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.8.5/V_IME-1.8.5-2026100477-macos.dmg",
+          "sizeBytes": 11699523,
           "installerType": "dmg",
           "minSystemVersion": "14.0"
         },
         {
-          "name": "V_IME-1.8.5-2026100402-macos.zip",
-          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.5/2026100402/V_IME-1.8.5-2026100402-macos.zip",
-          "sha256": "8afa91dc75efdcb51ebc09a5f9738ba88ca725b3687be1c78793365f6a81d36f",
-          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.8.5/V_IME-1.8.5-2026100402-macos.zip",
-          "sizeBytes": 10459742,
+          "name": "V_IME-1.8.5-2026100477-macos.zip",
+          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.5/2026100477/V_IME-1.8.5-2026100477-macos.zip",
+          "sha256": "8914714ec94042e13bd591f77c5b6509dd51d981c0a58ee1f1a0999698a2e246",
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.8.5/V_IME-1.8.5-2026100477-macos.zip",
+          "sizeBytes": 10457077,
           "installerType": "zip",
           "minSystemVersion": "14.0"
         }
-      ],
-      "appcastUrl": "https://imkida.github.io/V_IME_releases/macos/beta/appcast.xml"
+      ]
     }
   },
   "productName": "VIME",
