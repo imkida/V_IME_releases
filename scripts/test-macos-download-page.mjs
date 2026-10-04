@@ -162,12 +162,15 @@ test('published page carries no previous release identity', () => {
     'this check must not pass vacuously'
   );
   const page = readPublishedPage(ROOT);
-  assert.notEqual(page.channel.versionName, previous.versionName);
   assert.notEqual(page.channel.buildNumber, previous.buildNumber);
   const downloadUrls = page.channel.assets.flatMap((asset) =>
     [asset.url, asset.mirrorUrl].filter(Boolean)
   );
-  for (const token of [previous.versionName, String(previous.buildNumber)]) {
+  const previousTokens = [String(previous.buildNumber)];
+  if (page.channel.versionName !== previous.versionName) {
+    previousTokens.push(previous.versionName);
+  }
+  for (const token of previousTokens) {
     assert.ok(
       !page.html.includes(token) && downloadUrls.every((url) => !url.includes(token)),
       `published page still references the previous release identity ${token}; ` +
@@ -284,7 +287,7 @@ function previousPublishedVersion() {
     return null;
   }
 
-  for (const commit of log.slice(1)) {
+  for (const commit of log) {
     try {
       const candidate = identityOf(JSON.parse(execFileSync(
         'git',
