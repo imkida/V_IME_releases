@@ -95,3 +95,11 @@ node --test scripts/test-macos-download-page.mjs
 2026-10-03 备案进展：原后端线在既有页面读回，`vimebot.com` 已于当日 14:16 提交，目前“阿里云初审：审核中”；页面预计 10 月 7 日 20 点前审核，属于预计时间。待提交管局、工信部短信核验及管局审核均为“未进行”。本线已直接目视 `/private/tmp/vime-icp-submitted-progress-20261003.png`，上述阶段与原后端线 turn `01a10069-14d4-7c43-b618-33cfd0f10c69` 的读回一致。原后端线操作前页面已提交，未重复提交；本增量只同步状态，备案尚未通过，隐私技术答复仍待核，不修改 DNS、公开接入或发布，也不重新构建、下载或云端复验。
 
 证据沿 `/private/tmp/vime-oss-hangzhou-migration-20261003` 保留：`preflight.json`、`copy-private-receipt.json` 及 `offline-verification-receipt.json` 保存初始 124 对象/历史保全和校验；`final-readback.json` 保留首次源漂移失败；`delta-1-8-3-receipt.json`、`effective-preflight-1-8-3.json`、`offline-1-8-3-delta-verification.json`、`pages-1-8-3-receipt.json`、`website-mirror-1-8-3-receipt.json` 及 `final-readback-1-8-3.json` 保存当前固定候选和最终读回。早期 CLI 配置读取 exit 2、原 SDK 路径诊断与原始回执保留，正式复制使用固定官方 `ali-oss@6.23.0`，凭据仅在内存、不写日志。本文档收口不重跑网站构建、旧套件、GUI 或额外 CI。
+
+## 海外官网 HTTPS 修复（2026-10-06）
+
+用户报告浏览器连接不安全。实际 GitHub Pages 证书已获批准，覆盖 `vimebot.ai` 与 `www.vimebot.ai`，但 `https_enforced=false`；普通 HTTP 根入口返回 200 并停留在 HTTP，是本次确认的问题。沿现有官网授权，仅将 `https_enforced` 改为 true，官方 API 返回 204，随后设置读回确认。域名、`main:/docs` 发布源、网站内容及 DNS 均未更改。
+
+首次公网复验仍命中旧 HTTP 响应缓存而未通过；实际响应为 HIT、`max-age=600`，另一现有页面 `index.html` 的新请求已返回 HTTPS 301。原失败回执保留，根据实际缓存到期时间等待后只复验一次，根域名与 www 的 HTTP/HTTPS 四入口均最终进入有效 HTTPS 并返回 200，主页脚本、样式和图标的 HTTPS 读取与证书校验通过。资源中的 W3C HTTP 命名空间标识不是网络加载地址，未发现其他 HTTP 加载引用；不扩称其他设备或全球所有边缘节点均已实测。
+
+证据沿 `/private/tmp/vimebot-https-fix-20261006` 保留：`before-public-readback.json`、`pages-https-setting-readback.json`、首次未通过的 `after-public-readback.json`、`asset-and-cache-diagnostic.json` 及最终 `after-cache-expiry-public-readback.json`。本次设置修复与文档收口不改国内私有资产、备案状态或消费者，不重构建、不额外触发 CI，也不关闭或绕过浏览器证书验证。
