@@ -1,17 +1,17 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-10-05T18:53:07.300389Z",
+  "generatedAt": "2026-10-05T23:44:12.005511Z",
   "packageName": "com.vime.android",
   "channels": {
     "debug": {
-      "versionName": "1.8.1-dogfood.7",
-      "versionCode": 298,
-      "title": "v1.8.1-dogfood.7 — 智能整理、百炼连接检测与键盘反馈更新（Debug 预发布）",
-      "summary": "更新\n- 百炼内置服务配置统一使用所属业务空间地址，保留自定义地址和 Key。\n- 智能整理默认采用完整 Clean 0.23，保留模型已保留的重复表达，避免端侧二次误删。\n- 修复编辑服务 Key 的角色与配置保留、旧模板状态提示和连接检测误报；只有有效识别结果才判成功。\n- 修复麦克风图标偏移，柔化取消和直接上屏的滑动提示；翻译失败提示重新听写，避免未翻译原文上屏。\n- 修复九宫格确认上下文和退格清理，改进候选解析与学习事件处理；图标按需打包。\n- 保留完整键盘、词库、预测及本地识别运行时，识别模型在 App 内下载。\n\n配置采用\n- 最低服务模板版本为 20261004001；更旧模板不会覆盖新版内置配置。\n- 自定义 Key 应配合所属业务空间地址。\n\n渠道\n- Debug 试用版 1.8.1-dogfood.7 / 298，沿同签名渠道覆盖升级。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.8.1-dogfood.7",
-      "apkName": "V_IME-v1.8.1-dogfood.7-debug.apk",
-      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.8.1-dogfood.7/V_IME-v1.8.1-dogfood.7-debug.apk",
-      "apkSha256": "85d9a8ef7b21fa5c5ee29347a808da3c64b7b7a8507af47887d2b668b0bd8279",
+      "versionName": "1.8.2-dogfood.1",
+      "versionCode": 299,
+      "title": "v1.8.2-dogfood.1 — 修复内置更新下载与安装（Debug hotfix）",
+      "summary": "修复\n- 修复 APK 下载完成后被本地模型下载接收器误删，导致安装包无法读取或下载任务已移除。\n- 保留 APK 的 SHA、包名、版本和同渠道签名校验，校验通过后交由系统确认安装。\n\n安装提示\n- 296／298 的旧客户端仍包含错误代码，首次请从发布页直接下载本次 APK，同签名覆盖安装，无需卸载或清除数据。\n- 保留 298 的完整键盘、词库、预测与本地识别运行时；识别模型仍在 App 内下载。\n\n渠道\n- Debug 试用版 1.8.2-dogfood.1 / 299；稳定 Release 1.6.0 / 138 不变。\n- Debug 与 Release 签名不同，不能混装。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.8.2-dogfood.1",
+      "apkName": "V_IME-v1.8.2-dogfood.1-debug.apk",
+      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.8.2-dogfood.1/V_IME-v1.8.2-dogfood.1-debug.apk",
+      "apkSha256": "b844558cc7403dc7a26a0e249f566781916a427116cb389716564d51aae5538f",
       "certificateSha256": "4513e5bc726058d40be6020e1bbfc2d0c0fbf4e81d3b04a393cba394cd195059",
       "mandatory": false,
       "minSupportedVersionCode": 1
