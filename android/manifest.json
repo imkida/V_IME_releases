@@ -1,17 +1,17 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-10-05T23:44:12.005511Z",
+  "generatedAt": "2026-10-06T07:01:14.146894Z",
   "packageName": "com.vime.android",
   "channels": {
     "debug": {
-      "versionName": "1.8.2-dogfood.1",
-      "versionCode": 299,
-      "title": "v1.8.2-dogfood.1 — 修复内置更新下载与安装（Debug hotfix）",
-      "summary": "修复\n- 修复 APK 下载完成后被本地模型下载接收器误删，导致安装包无法读取或下载任务已移除。\n- 保留 APK 的 SHA、包名、版本和同渠道签名校验，校验通过后交由系统确认安装。\n\n安装提示\n- 296／298 的旧客户端仍包含错误代码，首次请从发布页直接下载本次 APK，同签名覆盖安装，无需卸载或清除数据。\n- 保留 298 的完整键盘、词库、预测与本地识别运行时；识别模型仍在 App 内下载。\n\n渠道\n- Debug 试用版 1.8.2-dogfood.1 / 299；稳定 Release 1.6.0 / 138 不变。\n- Debug 与 Release 签名不同，不能混装。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.8.2-dogfood.1",
-      "apkName": "V_IME-v1.8.2-dogfood.1-debug.apk",
-      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.8.2-dogfood.1/V_IME-v1.8.2-dogfood.1-debug.apk",
-      "apkSha256": "b844558cc7403dc7a26a0e249f566781916a427116cb389716564d51aae5538f",
+      "versionName": "1.8.3-dogfood.1",
+      "versionCode": 300,
+      "title": "v1.8.3-dogfood.1 — 智能整理 Clean 0.25（Debug）",
+      "summary": "改进\n- 智能整理采用固定正文契约 0.25，场景层 0.23、上下文层 0.21 保持。\n- 移除旧破折号映射，保留原稿结构与范围表达；包含已合入的机械重复修正。\n- 保留 299 的下载归属修复、完整键盘、Q5 双预测及本地识别运行时。\n\n安装提示\n- 296／298 首次请从发布页直接下载本次 APK，同签名覆盖安装，无需卸载或清除数据。\n\n渠道\n- Debug 试用版 1.8.3-dogfood.1 / 300；稳定 Release 1.6.0 / 138 不变。\n- Debug 与 Release 签名不同，不能混装。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.8.3-dogfood.1",
+      "apkName": "V_IME-v1.8.3-dogfood.1-debug.apk",
+      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.8.3-dogfood.1/V_IME-v1.8.3-dogfood.1-debug.apk",
+      "apkSha256": "e08e5769a3d3c1ff40d283d7f66c3841f4a4758d8ecce0b801065792eb5d22fb",
       "certificateSha256": "4513e5bc726058d40be6020e1bbfc2d0c0fbf4e81d3b04a393cba394cd195059",
       "mandatory": false,
       "minSupportedVersionCode": 1
