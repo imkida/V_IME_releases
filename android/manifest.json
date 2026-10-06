@@ -1,6 +1,6 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-10-06T07:01:14.146894Z",
+  "generatedAt": "2026-10-06T08:15:07.793187Z",
   "packageName": "com.vime.android",
   "channels": {
     "debug": {
@@ -17,14 +17,14 @@
       "minSupportedVersionCode": 1
     },
     "release": {
-      "versionName": "1.6.0",
-      "versionCode": 138,
-      "title": "v1.6.0 — Translation/Edit 模式收口 + 键盘体验优化",
-      "summary": "键盘底部栏颜色跟随深浅色主题；Translation/Edit 用完一次自动回到普通听写；Edit 选中文本更稳，降低把编辑指令写成正文的概率；Quick Panel 增加常用中文标点快捷输入；普通按键触感更轻；翻译和数字表达边界优化。普通用户建议安装 release 包；debug/release 不可混装，切换签名前请先导出配置。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.6.0",
-      "apkName": "V_IME-v1.6.0-release.apk",
-      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.6.0/V_IME-v1.6.0-release.apk",
-      "apkSha256": "491613ac3560b0f8f54a01f1055728b168bf06f829e8d9abb465f02eb055d94f",
+      "versionName": "1.8.3-dogfood.1",
+      "versionCode": 300,
+      "title": "v1.8.3-dogfood.1 — 正式签名优化预发布（Release）",
+      "summary": "正式签名 Release 300 预发布；采用 Clean 0.25，完整 Q5 双预测与本地识别运行时保持。裁剪开发取证日志，启用 R8 和资源压缩，实际完整包约117MB。Debug 与 Release 签名不同，不可混装；Release 用户可从本页同签名覆盖更新，无需卸载或清数据。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.8.3-dogfood.1",
+      "apkName": "V_IME-v1.8.3-dogfood.1-release.apk",
+      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.8.3-dogfood.1/V_IME-v1.8.3-dogfood.1-release.apk",
+      "apkSha256": "d41711c9fbc83b5df933d7ebcbaaf1548350cac4a36b16c21281db6f082de984",
       "certificateSha256": "1a5177214cd36ccd57126b532442b6e2f74461c9686f9b78b56e79c686afcbe6",
       "mandatory": false,
       "minSupportedVersionCode": 1
