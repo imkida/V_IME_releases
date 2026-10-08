@@ -1,39 +1,41 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-10-05T18:06:03Z",
+  "generatedAt": "2026-10-08T11:06:00Z",
   "platform": "macos",
   "channels": {
     "beta": {
-      "versionName": "1.8.5",
-      "title": "VIME macOS v1.8.5 beta · build 2026100601 · macOS 14+ · 已通过 macOS 安全检查",
-      "summary": "# Vime for macOS 1.8.5\n\n2026-10-06 · macOS 14 及以上 · build 2026100601\n\n设置中的折叠菜单现在可点击整行标题或空白区域展开、收起，无需精确点中左侧箭头。展开内容里的按钮仍各自执行原操作。\n\n这是单项界面优化，保留已有全部功能；识别模型、智能整理默认策略和写入方式不变。可直接覆盖安装，已有配置、服务密钥及听写历史保留。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.8.5",
+      "versionName": "1.8.6",
+      "title": "VIME macOS v1.8.6 beta · build 2026100801 · macOS 14+ · 已通过 macOS 安全检查",
+      "summary": "---\ntitle: \"Vime for macOS 1.8.6：唤醒后的听写准备\"\nauthor: [codex]\nstatus: candidate\ncreated_at: 2026-10-08\nupdated_at: 2026-10-08\n---\n\n# Vime for macOS 1.8.6\n\n2026-10-08 · macOS 14 及以上 · build 2026100801\n\nMac 从睡眠中唤醒后，Vime 会提前尝试准备默认云服务连接，继续沿用已有防抖与取消机制。补充了起录阶段的匿名耗时记录，便于结合日常使用定位等待。\n\n保留 1.8.5 的设置整行展开、听写、智能整理、原生写入和撤销能力；识别模型、整理默认策略和服务商不变。不增加周期保活或重试。可直接覆盖安装，已有配置、服务密钥及听写历史保留。\n\n本次尚未证明系统唤醒或长时间静默后的稳定提速，也未宣称冷却等待已经解决；这些效果将继续通过新包的真实使用观察。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.8.6",
       "mandatory": false,
-      "buildNumber": 2026100601,
+      "buildNumber": 2026100801,
       "minSystemVersion": "14.0",
       "assets": [
         {
-          "name": "V_IME-1.8.5-2026100601-macos.dmg",
-          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.5/2026100601/V_IME-1.8.5-2026100601-macos.dmg",
-          "sha256": "e755f1b649fe80c6fe1aa28f0e703c3d92aaab7e591402ecee1bf462dd6eb28e",
-          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.8.5/V_IME-1.8.5-2026100601-macos.dmg",
-          "sizeBytes": 11800893,
+          "name": "V_IME-1.8.6-2026100801-macos.dmg",
+          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.6/2026100801/V_IME-1.8.6-2026100801-macos.dmg",
+          "sha256": "f2f933d3fbb50a8709f65834b1d1737c97c225ec488c7a592a46e7679cf5fc6a",
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.8.6/V_IME-1.8.6-2026100801-macos.dmg",
+          "sizeBytes": 11805980,
           "installerType": "dmg",
           "arch": "universal",
           "minSystemVersion": "14.0"
         },
         {
-          "name": "V_IME-1.8.5-2026100601-macos.zip",
-          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.5/2026100601/V_IME-1.8.5-2026100601-macos.zip",
-          "sha256": "053072be2b97df750d23f80e4e06beadb70de730a4709a60fe0e9ad102daeec1",
-          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.8.5/V_IME-1.8.5-2026100601-macos.zip",
-          "sizeBytes": 10552328,
+          "name": "V_IME-1.8.6-2026100801-macos.zip",
+          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.6/2026100801/V_IME-1.8.6-2026100801-macos.zip",
+          "sha256": "1ad93699cdd04630b52c388c931ffd167a84b8e0abe8c62b1f4091204b5bbc3f",
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.8.6/V_IME-1.8.6-2026100801-macos.zip",
+          "sizeBytes": 10559959,
           "installerType": "zip",
           "arch": "universal",
-          "minSystemVersion": "14.0"
+          "minSystemVersion": "14.0",
+          "sparkleEdDsaSignature": "xCFiHRazJAEE7IMRvoUWh16LPzRi3H0KPHzKpiOfK1XadTFFXzwDjAmTroIUn/v3ptY7wMxIfu4Qgo95xJR4Dw=="
         }
       ],
-      "appcastUrl": "https://imkida.github.io/V_IME_releases/macos/beta/appcast.xml"
+      "appcastUrl": "https://imkida.github.io/V_IME_releases/macos/beta/appcast.xml",
+      "sparkleEdDsaSignature": "xCFiHRazJAEE7IMRvoUWh16LPzRi3H0KPHzKpiOfK1XadTFFXzwDjAmTroIUn/v3ptY7wMxIfu4Qgo95xJR4Dw=="
     }
   },
   "productName": "VIME",
