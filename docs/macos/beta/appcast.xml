@@ -5,33 +5,29 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
         <title>VIME</title>
         <item>
             <title>1.8.6</title>
-            <pubDate>Thu, 08 Oct 2026 19:04:27 +0800</pubDate>
+            <pubDate>Fri, 09 Oct 2026 13:29:36 +0800</pubDate>
             <link>https://imkida.github.io/V_IME_releases/macos/</link>
-            <sparkle:version>2026100801</sparkle:version>
+            <sparkle:version>2026100904</sparkle:version>
             <sparkle:shortVersionString>1.8.6</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[---
-title: "Vime for macOS 1.8.6：唤醒后的听写准备"
-author: [codex]
-status: candidate
-created_at: 2026-10-08
-updated_at: 2026-10-08
----
+            <description sparkle:format="markdown"><![CDATA[# Vime for macOS 1.8.6
 
-# Vime for macOS 1.8.6
+2026-10-09 · macOS 14 及以上 · build 2026100904
 
-2026-10-08 · macOS 14 及以上 · build 2026100801
+修正阿里百炼北京区的内置个人 Key 模板，语音识别和文本整理改用公共服务入口，不再绑定 Vime 的业务空间。旧的官方模板缓存不再覆盖本次修正；识别模型、整理模型和请求协议不变。
 
-Mac 从睡眠中唤醒后，Vime 会提前尝试准备默认云服务连接，继续沿用已有防抖与取消机制。补充了起录阶段的匿名耗时记录，便于结合日常使用定位等待。
+保留用户自己保存的服务地址、模型和 Key，不自动覆盖自建配置。如果此前保存的是旧模板，可在对应配置的编辑页面选择“恢复官方默认配置”，确认后保存；也可重新载入并启用官方模板。
 
-保留 1.8.5 的设置整行展开、听写、智能整理、原生写入和撤销能力；识别模型、整理默认策略和服务商不变。不增加周期保活或重试。可直接覆盖安装，已有配置、服务密钥及听写历史保留。
+推荐百炼模板的添加、更换和选择入口统一进入现有个人配置编辑器。北京公共地址仅为推荐初值，可直接填写个人 Key 对应地域的地址与可用模型；保存、连接检查和按用途启用使用同一配置，不需要另建自定义服务商。
 
-本次尚未证明系统唤醒或长时间静默后的稳定提速，也未宣称冷却等待已经解决；这些效果将继续通过新包的真实使用观察。
+选择两项能力时，通过两步分别确认语音识别、文本处理的服务地址和模型，再分别启用；不再把双用途选择静默当作单用途。
+
+保留 1.8.6 已有的设置、听写、智能整理、原生写入、撤销和唤醒后的连接准备能力。可直接覆盖安装，已有设置、密钥和历史保留。
 ]]></description>
-            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.6/2026100801/V_IME-1.8.6-2026100801-macos.zip" length="10559959" type="application/octet-stream" sparkle:edSignature="xCFiHRazJAEE7IMRvoUWh16LPzRi3H0KPHzKpiOfK1XadTFFXzwDjAmTroIUn/v3ptY7wMxIfu4Qgo95xJR4Dw=="></enclosure>
+            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.6/2026100904/V_IME-1.8.6-2026100904-macos.zip" length="10578186" type="application/octet-stream" sparkle:edSignature="cyEaSB9viDMJIkOFkOUomU3b3q4MO6qMF1c6VhGJ1DBCj8E89R6gbF8FO2tg+i284X+8/Wg5dhxgHYh7H7zJCQ=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: 19Sx59SFuDQAiC8vsVgYqjSulVSVzBDZ38AZzQzrrm5fiyc5eUxsLjLczTlO0ZSv8xAI0BETgQEdJMxsVX8rCg==
-length: 2093
+edSignature: RRv7/V9a2TohNyzqEFihffMfZDZmA33OHGeUn4YwPTvebgvYpdynSeMJMC/TfslCLx3V7gw07Z1KT1w/wtU1CA==
+length: 2469
 -->
