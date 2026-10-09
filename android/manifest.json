@@ -1,17 +1,17 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-10-06T08:15:07.793187Z",
+  "generatedAt": "2026-10-09T09:24:31.724749Z",
   "packageName": "com.vime.android",
   "channels": {
     "debug": {
-      "versionName": "1.8.3-dogfood.1",
-      "versionCode": 300,
-      "title": "v1.8.3-dogfood.1 — 智能整理 Clean 0.25（Debug）",
-      "summary": "改进\n- 智能整理采用固定正文契约 0.25，场景层 0.23、上下文层 0.21 保持。\n- 移除旧破折号映射，保留原稿结构与范围表达；包含已合入的机械重复修正。\n- 保留 299 的下载归属修复、完整键盘、Q5 双预测及本地识别运行时。\n\n安装提示\n- 296／298 首次请从发布页直接下载本次 APK，同签名覆盖安装，无需卸载或清除数据。\n\n渠道\n- Debug 试用版 1.8.3-dogfood.1 / 300；稳定 Release 1.6.0 / 138 不变。\n- Debug 与 Release 签名不同，不能混装。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.8.3-dogfood.1",
-      "apkName": "V_IME-v1.8.3-dogfood.1-debug.apk",
-      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.8.3-dogfood.1/V_IME-v1.8.3-dogfood.1-debug.apk",
-      "apkSha256": "e08e5769a3d3c1ff40d283d7f66c3841f4a4758d8ecce0b801065792eb5d22fb",
+      "versionName": "1.8.9-dogfood.1",
+      "versionCode": 307,
+      "title": "Vime 1.8.9-dogfood.1 — 百炼个人Key修正",
+      "summary": "内置百炼支持个人地域地址与模型配置，同一向导检测、保存及激活；Debug测试渠道。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.8.9-dogfood.1",
+      "apkName": "V_IME-v1.8.9-dogfood.1-debug.apk",
+      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.8.9-dogfood.1/V_IME-v1.8.9-dogfood.1-debug.apk",
+      "apkSha256": "842bbd4cf9c1fcc8b3c591d3a3333733fecd12283deeaaef689f3de4225e69fb",
       "certificateSha256": "4513e5bc726058d40be6020e1bbfc2d0c0fbf4e81d3b04a393cba394cd195059",
       "mandatory": false,
       "minSupportedVersionCode": 1
