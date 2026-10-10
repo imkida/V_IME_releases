@@ -1,41 +1,41 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-10-10T02:42:49Z",
+  "generatedAt": "2026-10-10T23:09:52Z",
   "platform": "macos",
   "channels": {
     "beta": {
-      "versionName": "1.8.7",
-      "title": "VIME macOS v1.8.7 beta · build 2026100906 · macOS 14+ · 已通过 macOS 安全检查",
-      "summary": "# Vime for macOS 1.8.7\n\n2026-10-10 · macOS 14 及以上 · build 2026100906\n\n默认云服务接入新的显式资格管理：在设置中查看并领取可用资格后，语音识别与文本整理分别使用已经准备好的服务票据。启动和录音不再自动领取；资格尚未准备时会明确提示，不在请求失败后自动续取或重复投递。\n\n修正默认云请求缺少协议身份信息导致的连接检查失败。普通听写和当前服务检查使用同一套服务配置与请求规则；识别模型、整理模型和写入方式不变。\n\n保留 1.8.6 的个人 Key 模板修正与双用途配置入口。用户自行保存的服务地址、模型和 Key 不受默认云资格管理影响。\n\n可直接覆盖安装，已有设置、密钥和历史保留。保留既有听写、原生写入、HUD 撤销与面板焦点恢复；本次不包含尚在独立验证中的新 Clean 上下文契约或离线 ASR 研究。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.8.7",
-      "mandatory": true,
-      "buildNumber": 2026100906,
+      "versionName": "1.8.8",
+      "title": "VIME macOS v1.8.8 beta · build 2026101007 · macOS 14+ · 已通过 macOS 安全检查",
+      "summary": "# Vime 1.8.8 公测更新\n\n- 优化设置界面与试用领取流程，让待领取、已准备和实际连接成功的状态更清楚。\n- 新增火山方舟与 Grok 文本整理服务模板，支持个人 Key 与自定义模型；语音识别服务不变。\n- 改进智能整理的信息边界保留，避免新增标题或列表层级改变原有指令、条件与事项归属。\n\n建议更新，原有设置、Key 与听写历史保留。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.8.8",
+      "mandatory": false,
+      "buildNumber": 2026101007,
       "minSystemVersion": "14.0",
       "assets": [
         {
-          "name": "V_IME-1.8.7-2026100906-macos.dmg",
-          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.7/2026100906/V_IME-1.8.7-2026100906-macos.dmg",
-          "sha256": "f77d4d051bc0454edc02e05c781d0d8808632be770d70abfc24bc320671798e6",
-          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.8.7/V_IME-1.8.7-2026100906-macos.dmg",
-          "sizeBytes": 11879133,
+          "name": "V_IME-1.8.8-2026101007-macos.dmg",
+          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.8/2026101007/V_IME-1.8.8-2026101007-macos.dmg",
+          "sha256": "4fa545aa8bcb84d059ae1736a78ad0a5d8819b303615b92e1dec63af07109889",
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.8.8/V_IME-1.8.8-2026101007-macos.dmg",
+          "sizeBytes": 12169038,
           "installerType": "dmg",
           "arch": "universal",
           "minSystemVersion": "14.0"
         },
         {
-          "name": "V_IME-1.8.7-2026100906-macos.zip",
-          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.7/2026100906/V_IME-1.8.7-2026100906-macos.zip",
-          "sha256": "6b1bc2511bd3ca08241fa0519fcea6ee5f429500d7dc0d784b59df63ed6daebc",
-          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.8.7/V_IME-1.8.7-2026100906-macos.zip",
-          "sizeBytes": 10625835,
+          "name": "V_IME-1.8.8-2026101007-macos.zip",
+          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.8/2026101007/V_IME-1.8.8-2026101007-macos.zip",
+          "sha256": "8959abc54f263f850f5d7279d95595efcfd6fce150e7520f7c52efc32b86642a",
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.8.8/V_IME-1.8.8-2026101007-macos.zip",
+          "sizeBytes": 10874317,
           "installerType": "zip",
           "arch": "universal",
           "minSystemVersion": "14.0",
-          "sparkleEdDsaSignature": "cqn0BS6osMcqPgGwq4WgjvQreJ2ptJENZnR8K4SurbPlc1hQ8sSIB9lqYcmpdU5rarILtHDMfvGHSQX5QmYtDQ=="
+          "sparkleEdDsaSignature": "tB5yecOubC6LJLwGsB0TdIiz2XihyC/vFIgcoo83X2LKq6qK2hgGSqjFjP4Eht1GOjafo87Skjqdxw/IVWFmAg=="
         }
       ],
       "appcastUrl": "https://imkida.github.io/V_IME_releases/macos/beta/appcast.xml",
-      "sparkleEdDsaSignature": "cqn0BS6osMcqPgGwq4WgjvQreJ2ptJENZnR8K4SurbPlc1hQ8sSIB9lqYcmpdU5rarILtHDMfvGHSQX5QmYtDQ=="
+      "sparkleEdDsaSignature": "tB5yecOubC6LJLwGsB0TdIiz2XihyC/vFIgcoo83X2LKq6qK2hgGSqjFjP4Eht1GOjafo87Skjqdxw/IVWFmAg=="
     }
   },
   "productName": "VIME",
