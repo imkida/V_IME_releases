@@ -1,17 +1,17 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-10-09T09:24:31.724749Z",
+  "generatedAt": "2026-10-10T17:43:05.390711Z",
   "packageName": "com.vime.android",
   "channels": {
     "debug": {
-      "versionName": "1.8.9-dogfood.1",
-      "versionCode": 307,
-      "title": "Vime 1.8.9-dogfood.1 — 百炼个人Key修正",
-      "summary": "内置百炼支持个人地域地址与模型配置，同一向导检测、保存及激活；Debug测试渠道。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.8.9-dogfood.1",
-      "apkName": "V_IME-v1.8.9-dogfood.1-debug.apk",
-      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.8.9-dogfood.1/V_IME-v1.8.9-dogfood.1-debug.apk",
-      "apkSha256": "842bbd4cf9c1fcc8b3c591d3a3333733fecd12283deeaaef689f3de4225e69fb",
+      "versionName": "1.8.13-dogfood.1",
+      "versionCode": 311,
+      "title": "联合公测311：拼写、整理和翻译修复",
+      "summary": "整合拼写原生修复、Clean 0.26、持续收音翻译及两阶段整理后翻译、官方服务真实状态显示。拼写 P95 仍为148.995ms，未达到50ms目标，本版按已授权公测例外发行。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.8.13-dogfood.1",
+      "apkName": "V_IME-v1.8.13-dogfood.1-debug.apk",
+      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.8.13-dogfood.1/V_IME-v1.8.13-dogfood.1-debug.apk",
+      "apkSha256": "312acf7986396749859782d6990cccf3be0b95a16a52f031197b44cf92bced21",
       "certificateSha256": "4513e5bc726058d40be6020e1bbfc2d0c0fbf4e81d3b04a393cba394cd195059",
       "mandatory": false,
       "minSupportedVersionCode": 1
