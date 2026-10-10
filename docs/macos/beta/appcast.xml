@@ -1,6 +1,6 @@
 <?xml version="1.0" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0" xmlns:vime="https://vime.app/xml-namespaces/policy">
     <channel>
         <title>VIME</title>
         <item>
@@ -23,9 +23,14 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
 可直接覆盖安装，已有设置、密钥和历史保留。保留既有听写、原生写入、HUD 撤销与面板焦点恢复；本次不包含尚在独立验证中的新 Clean 上下文契约或离线 ASR 研究。
 ]]></description>
             <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.7/2026100906/V_IME-1.8.7-2026100906-macos.zip" length="10625835" type="application/octet-stream" sparkle:edSignature="cqn0BS6osMcqPgGwq4WgjvQreJ2ptJENZnR8K4SurbPlc1hQ8sSIB9lqYcmpdU5rarILtHDMfvGHSQX5QmYtDQ=="></enclosure>
+            <vime:policyRevision>2026101001</vime:policyRevision>
+            <vime:mandatory>true</vime:mandatory>
+            <vime:minSupportedBuild>2026100906</vime:minSupportedBuild>
+            <vime:mandatoryReason>默认云服务协议已更新，请升级至 1.8.7 以继续使用内置语音识别和文本整理。</vime:mandatoryReason>
+            <vime:supportURL>https://imkida.github.io/V_IME_releases/macos/</vime:supportURL>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: YZvwP+/1SL237CJYl30Izbm0YJxH2l4zKJwOPlju5F/cN4s2O6TqW1y+bLn5H7Q/1rRppPKa0jO3+RTja9l/CA==
-length: 2194
+edSignature: htSaPNxSTwWxkg9aOIuIqX4Ojslcy+uOYOLUdDU50y0MfoM/VvuwKOO/T30SjnDk4FTKp4zAuqDv3/FmHvHEAQ==
+length: 2689
 -->
