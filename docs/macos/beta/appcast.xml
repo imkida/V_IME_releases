@@ -4,22 +4,23 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>VIME</title>
         <item>
-            <title>1.8.8</title>
-            <pubDate>Sun, 11 Oct 2026 07:06:25 +0800</pubDate>
+            <title>1.8.9</title>
+            <pubDate>Mon, 12 Oct 2026 15:15:16 +0800</pubDate>
             <link>https://imkida.github.io/V_IME_releases/macos/</link>
-            <sparkle:version>2026101007</sparkle:version>
-            <sparkle:shortVersionString>1.8.8</sparkle:shortVersionString>
+            <sparkle:version>2026101202</sparkle:version>
+            <sparkle:shortVersionString>1.8.9</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# Vime 1.8.8 公测更新
+            <description sparkle:format="markdown"><![CDATA[# Vime 1.8.9 公测更新
 
-- 优化设置界面与试用领取流程，让待领取、已准备和实际连接成功的状态更清楚。
-- 新增火山方舟与 Grok 文本整理服务模板，支持个人 Key 与自定义模型；语音识别服务不变。
-- 改进智能整理的信息边界保留，避免新增标题或列表层级改变原有指令、条件与事项归属。
+- 默认云服务完成识别或整理后，设置页的使用时长会自动更新，正文上屏不等待余额刷新。
+- 新增实验室「听写实时预览」：在本机显示进行中的转写；暂时无法安全写入时，可在同一窗口查看并复制完整结果。
 
-建议更新，原有设置、Key 与听写历史保留。
+实时预览默认关闭，可在「设置 → 系统与权限 → 实验室」中手动开启。
+
+建议更新。原有设置、个人 Key 和听写历史保留。
 ]]></description>
-            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.8/2026101007/V_IME-1.8.8-2026101007-macos.zip" length="10874317" type="application/octet-stream" sparkle:edSignature="tB5yecOubC6LJLwGsB0TdIiz2XihyC/vFIgcoo83X2LKq6qK2hgGSqjFjP4Eht1GOjafo87Skjqdxw/IVWFmAg=="></enclosure>
-            <vime:policyRevision>2026101101</vime:policyRevision>
+            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.9/2026101202/V_IME-1.8.9-2026101202-macos.zip" length="10928871" type="application/octet-stream" sparkle:edSignature="tXx3hhq0AvmkpFlxxw9gXLoMXT5Uh6NRyxUDezHpWiFpEXIjwK3Y3c8ck1y/j7LTGOTUKXPNWlhGLmjJPFOwDQ=="></enclosure>
+            <vime:policyRevision>2026101201</vime:policyRevision>
             <vime:mandatory>false</vime:mandatory>
             <vime:minSupportedBuild>2026100906</vime:minSupportedBuild>
             <vime:mandatoryReason>旧版默认云服务协议已停止支持，请更新至当前公测版。</vime:mandatoryReason>
@@ -27,6 +28,6 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: 1+LxHlzEAP0Rdy3qScK90k5LvGxbZpUZMa6gjG/fgMEkZfl17cEXHluOnq0MvA1GxUuFOwVTBksjl2cfRTmlDg==
-length: 2153
+edSignature: YWtqZKwXxQhbftadv5NvaDDjnnynQpCMioPRyxWh7wNIlh14z9dGA1HKLR5swGE6rZVLk/u+4R3dsAd/a3iqAg==
+length: 2185
 -->
