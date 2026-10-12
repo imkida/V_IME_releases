@@ -1,17 +1,17 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-10-10T17:43:05.390711Z",
+  "generatedAt": "2026-10-12T16:19:53.363543Z",
   "packageName": "com.vime.android",
   "channels": {
     "debug": {
-      "versionName": "1.8.13-dogfood.1",
-      "versionCode": 311,
-      "title": "联合公测311：拼写、整理和翻译修复",
-      "summary": "整合拼写原生修复、Clean 0.26、持续收音翻译及两阶段整理后翻译、官方服务真实状态显示。拼写 P95 仍为148.995ms，未达到50ms目标，本版按已授权公测例外发行。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.8.13-dogfood.1",
-      "apkName": "V_IME-v1.8.13-dogfood.1-debug.apk",
-      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.8.13-dogfood.1/V_IME-v1.8.13-dogfood.1-debug.apk",
-      "apkSha256": "312acf7986396749859782d6990cccf3be0b95a16a52f031197b44cf92bced21",
+      "versionName": "1.8.21-dogfood.1",
+      "versionCode": 319,
+      "title": "联合公测319：听写收尾、整理与拼写修复",
+      "summary": "纳入直接上屏/右滑接受后的录音停止修复、ASR故障分类、整理上下文0.25、官方服务及既定联合特性。拼写P95仍159.154125ms，未达50ms，本版为功能合格的实验公测；不宣称性能毕业或稳定Release资格。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.8.21-dogfood.1",
+      "apkName": "V_IME-v1.8.21-dogfood.1-debug.apk",
+      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.8.21-dogfood.1/V_IME-v1.8.21-dogfood.1-debug.apk",
+      "apkSha256": "81b9a9d829beb7daaaeee4a81dedc6f633959df90ec3447e90358f2c7f61ff10",
       "certificateSha256": "4513e5bc726058d40be6020e1bbfc2d0c0fbf4e81d3b04a393cba394cd195059",
       "mandatory": false,
       "minSupportedVersionCode": 1
