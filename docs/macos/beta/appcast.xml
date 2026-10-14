@@ -5,24 +5,25 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
         <title>VIME</title>
         <item>
             <title>1.8.10</title>
-            <pubDate>Tue, 13 Oct 2026 17:10:24 +0800</pubDate>
+            <pubDate>Thu, 15 Oct 2026 00:05:40 +0800</pubDate>
             <link>https://imkida.github.io/V_IME_releases/macos/</link>
-            <sparkle:version>2026101303</sparkle:version>
+            <sparkle:version>2026101403</sparkle:version>
             <sparkle:shortVersionString>1.8.10</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# Vime 1.8.10 公测更新
+            <description sparkle:format="markdown"><![CDATA[# Vime 1.8.10 HotFix
 
-- 设置界面按用途重新分组，服务、转写、快捷键、历史与隐私、系统与权限更容易查找；相关配置弹窗统一整理。
-- 历史记录界面更清晰，转写记录与已学习词条可分别管理，手动添加和导入的词条保留。
-- 新增原生更新导览：新版首次启动展示更新内容，也可从「关于 → 查看更新说明」再次打开。
-- 优化数字书写：明确的中文或阿拉伯数字书写范例保留原样，同段普通金额仍正常规范化。
+构建号：2026101403 · macOS 14+
 
-建议更新。原有设置、个人 Key 和听写历史保留，听写实时预览仍默认关闭。
+修复菜单栏面板顶部转写风格无法通过鼠标切换的问题，可直接点击「智能整理」「保留语气」「逐字稿」选择。
 
-v1.8.10 beta · build 2026101303 · macOS 14+ · 已通过 macOS 安全检查
+保留 1.8.10 的已有特性、个人设置、Key 和历史。听写实时预览仍默认关闭，本次不改变默认云端服务或整理规则。
+
+建议更新，不新增强制升级；旧构建安装包保留。
+
+源码：0b53e3c3cd022785ed92d430e9551bf8cf45f012（PR #666）。同版本 tag 内以构建号和资产文件名区分此 HotFix。
 ]]></description>
-            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.10/2026101303/V_IME-1.8.10-2026101303-macos.zip" length="11094583" type="application/octet-stream" sparkle:edSignature="NKMUkgPFw3B+belTWm5jX4ThoG8rxN1AcEbZZrC7RHBmsuHo45btkmqdLnb7iCf/vCUk3j/aBVDWgmy2NfjmAA=="></enclosure>
-            <vime:policyRevision>2026101303</vime:policyRevision>
+            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.10/2026101403/V_IME-1.8.10-2026101403-macos.zip" length="11092990" type="application/octet-stream" sparkle:edSignature="/87AgAZa1Q1T7/1+LGhofrq3quR6SObY4DLBup+ymC/E2P7gAKxExUgeHeDJtx81uxBDNdeeOIqw5l1G1y0QAA=="></enclosure>
+            <vime:policyRevision>2026101403</vime:policyRevision>
             <vime:mandatory>false</vime:mandatory>
             <vime:minSupportedBuild>2026100906</vime:minSupportedBuild>
             <vime:mandatoryReason>旧版默认云服务协议已停止支持，请更新至当前公测版。</vime:mandatoryReason>
@@ -30,6 +31,6 @@ v1.8.10 beta · build 2026101303 · macOS 14+ · 已通过 macOS 安全检查
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: w082jDMiapalWHOp2VB5bhZKx1pTpIVMgxlSjXi98qLICVJBk4AXfG0idrKT1n3I0t9KewikHLfrhV/nIgj1CQ==
-length: 2448
+edSignature: usA8kC2dx7XhRdHg3UGbRH9tX5AG4TjKW4Vg5hOgAO3GtHU2Wg8reXgkEYo8nnbKmeoRTOp8O9+6HIP126PgAg==
+length: 2277
 -->
