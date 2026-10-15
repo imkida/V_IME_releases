@@ -1,9 +1,11 @@
 """Focused checks for the public-file boundary and metadata drift."""
 import importlib.util
+import os
 from pathlib import Path
 import shutil
 import tempfile
 import unittest
+from unittest.mock import patch
 
 SPEC = importlib.util.spec_from_file_location("website_sync", Path(__file__).with_name("sync-website-oss.py"))
 sync = importlib.util.module_from_spec(SPEC)
@@ -11,6 +13,25 @@ SPEC.loader.exec_module(sync)
 
 
 class WebsiteSyncTests(unittest.TestCase):
+    def test_action_credentials_reach_oss_and_public_upload(self):
+        import alibabacloud_oss_v2 as oss
+
+        action_environment = {
+            "ALIBABA_CLOUD_ACCESS_KEY_ID": "synthetic-id",
+            "ALIBABA_CLOUD_ACCESS_KEY_SECRET": "synthetic-secret",
+            "ALIBABA_CLOUD_SECURITY_TOKEN": "synthetic-session",
+        }
+        with patch.dict(os.environ, action_environment, clear=True), patch.object(oss, "Client") as client:
+            client.return_value.head_object.return_value = oss.HeadObjectResult(metadata={})
+            self.assertEqual(sync.deploy({"index.html": b"synthetic page"}, "synthetic-commit"), ["index.html"])
+            credentials = client.call_args.args[0].credentials_provider.get_credentials()
+            self.assertEqual(credentials.access_key_id, "synthetic-id")
+            self.assertEqual(credentials.access_key_secret, "synthetic-secret")
+            self.assertEqual(credentials.security_token, "synthetic-session")
+            request = client.return_value.put_object.call_args.args[0]
+            self.assertEqual((request.bucket, request.key, request.body, request.acl),
+                             (sync.BUCKET, "index.html", b"synthetic page", "public-read"))
+
     def test_only_current_website_files_and_assets_before_entry_pages(self):
         files = sync.website_files()
         assets = [key for key in files if key.endswith((".css", ".js"))]

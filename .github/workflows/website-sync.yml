@@ -39,6 +39,8 @@ jobs:
         run: node scripts/sync-download-page.mjs --check
       - name: Install OSS SDK
         run: python3 -m pip install -r scripts/website-sync-requirements.txt
+      - name: Check website upload contract
+        run: python3 -B scripts/test-website-sync.py
       - name: Obtain short-lived website-only credentials
         uses: aliyun/configure-aliyun-credentials-action@1e5248c8d5d93a8781ac344a68e19a43341e79e6 # v1
         with:
