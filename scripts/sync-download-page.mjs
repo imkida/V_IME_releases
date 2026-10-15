@@ -7,6 +7,7 @@
 // Usage:
 //   node scripts/sync-download-page.mjs [--channel beta] [--check]
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { runInNewContext } from 'node:vm';
@@ -64,12 +65,26 @@ export function syncDownloadPage({ repoRoot: root, channel: channelName = 'beta'
   const pageDir = join(root, 'docs', 'macos');
   const htmlPath = join(pageDir, 'index.html');
   const html = readFileSync(htmlPath, 'utf8');
-  const bundlePath = join(pageDir, 'assets', bundleName(html));
+  const previousBundleName = bundleName(html);
+  const bundlePath = join(pageDir, 'assets', previousBundleName);
   const bundle = readFileSync(bundlePath, 'utf8');
 
   const messages = [];
   const nextBundle = refreshEmbeddedManifest(bundle, manifest, channel, messages);
-  const nextHtml = refreshNoscriptLinks(html, channel, dmg, messages);
+  // OSS caches assets as immutable: changed snapshots must have a new URL.
+  // Retain the old file for pages already open during publication.
+  const nextBundleName = nextBundle === bundle ? previousBundleName
+    : `index-${createHash('sha256').update(nextBundle).digest('hex').slice(0, 16)}.js`;
+  const nextBundlePath = join(pageDir, 'assets', nextBundleName);
+  const nextHtml = refreshNoscriptLinks(html, channel, dmg, messages)
+    .replace(`./assets/${previousBundleName}`, `./assets/${nextBundleName}`);
+  const sourceManifestPath = join(root, 'website', 'macos', 'public', 'release.json');
+  const sourceHtmlPath = join(root, 'website', 'macos', 'index.html');
+  const sourceHtml = readFileSync(sourceHtmlPath, 'utf8');
+  const nextSourceHtml = refreshNoscriptLinks(sourceHtml, channel, dmg, []);
+  const sourceChanged = readFileSync(sourceManifestPath, 'utf8') !== manifestText
+    || sourceHtml !== nextSourceHtml;
+  if (sourceChanged) messages.push('  website source snapshot or fallback differs from macos/manifest.json');
   const publishedManifestPath = join(pageDir, 'release.json');
   const publishedManifest = existsSync(publishedManifestPath)
     ? readFileSync(publishedManifestPath, 'utf8') : null;
@@ -87,17 +102,19 @@ export function syncDownloadPage({ repoRoot: root, channel: channelName = 'beta'
   if (rootHtmlChanged) messages.push('  root homepage differs from the macOS page');
   if (rootManifestChanged) messages.push('  root release.json differs from macos/manifest.json');
   const changed = nextBundle !== bundle || nextHtml !== html || manifestChanged
-    || rootHtmlChanged || rootManifestChanged;
+    || rootHtmlChanged || rootManifestChanged || sourceChanged;
 
   if (changed && !check) {
-    writeFileSync(bundlePath, nextBundle, 'utf8');
+    writeFileSync(nextBundlePath, nextBundle, 'utf8');
     writeFileSync(htmlPath, nextHtml, 'utf8');
     writeFileSync(publishedManifestPath, manifestText, 'utf8');
     writeFileSync(rootHtmlPath, nextRootHtml, 'utf8');
     writeFileSync(rootManifestPath, manifestText, 'utf8');
+    writeFileSync(sourceManifestPath, manifestText, 'utf8');
+    writeFileSync(sourceHtmlPath, nextSourceHtml, 'utf8');
   }
 
-  return { changed, check, messages, htmlPath, bundlePath, publishedManifestPath, rootHtmlPath };
+  return { changed, check, messages, htmlPath, bundlePath: nextBundlePath, publishedManifestPath, rootHtmlPath };
 }
 
 function refreshEmbeddedManifest(bundle, manifest, channel, messages) {

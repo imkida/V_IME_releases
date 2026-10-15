@@ -1,0 +1,61 @@
+name: Website sync
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'macos/manifest.json'
+      - 'docs/**'
+      - 'website/macos/**'
+      - 'scripts/sync-download-page.mjs'
+      - 'scripts/update-manifest.mjs'
+      - 'scripts/sync-website-oss.py'
+      - 'scripts/website-sync-requirements.txt'
+      - '.github/workflows/website-sync.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Preserve an in-flight upload; a later main runs after it and checks its own SHA.
+concurrency:
+  group: vime-website-production
+  cancel-in-progress: false
+
+jobs:
+  mirror:
+    if: github.repository == 'imkida/V_IME_releases' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+      - name: Check page and release metadata
+        run: node scripts/sync-download-page.mjs --check
+      - name: Install OSS SDK
+        run: python3 -m pip install -r scripts/website-sync-requirements.txt
+      - name: Obtain short-lived website-only credentials
+        uses: aliyun/configure-aliyun-credentials-action@1e5248c8d5d93a8781ac344a68e19a43341e79e6 # v1
+        with:
+          role-to-assume: ${{ vars.VIME_WEBSITE_ROLE_ARN }}
+          oidc-provider-arn: ${{ vars.VIME_WEBSITE_OIDC_PROVIDER_ARN }}
+          audience: sts.aliyuncs.com
+          role-session-name: website-${{ github.run_id }}
+          role-session-expiration: 1800
+      - name: Wait for Pages, sync OSS and verify all four domains
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 scripts/sync-website-oss.py --deploy --receipt "$RUNNER_TEMP/website-sync.json"
+      - name: Record published version
+        run: |
+          {
+            echo '### Website publication verified'
+            echo '```json'
+            cat "$RUNNER_TEMP/website-sync.json"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
