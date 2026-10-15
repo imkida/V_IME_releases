@@ -1,37 +1,41 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-10-03T14:57:19Z",
+  "generatedAt": "2026-10-14T17:31:01Z",
   "platform": "macos",
   "channels": {
     "beta": {
-      "versionName": "1.8.5",
-      "title": "VIME macOS v1.8.5 beta · build 2026100308 · macOS 14+ · 已通过 macOS 安全检查",
-      "summary": "# Vime for macOS 1.8.5\n\n2026-10-03 · macOS 14 及以上 · build 2026100308\n\n本次更新进一步改善听写浮窗的层次、操作提示与收起动画。\n\n## 优化\n\n- **浮窗层次更清楚**：原生玻璃样式增加克制的轮廓高光；Vime 胶囊样式采用更平整的填充与柔和投影。\n- **操作图标更易辨认**：按钮图标统一尺寸并保持居中，正文与提示字号保持稳定。\n- **收起动画更连贯**：手动复制提示独立淡出，主浮窗收起末段平滑消失，减少残留与突变。\n\n## 修复\n\n- **取消录音时省去无用读取**：取消后不再读取已废弃的音频文件，正常听写仍沿原完整音频处理链路。\n\n支持 macOS 14 及以上，可直接覆盖安装。已有配置、服务密钥与听写历史保留；识别模型、智能整理默认策略与写入方式保持不变。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.8.5",
+      "versionName": "1.8.10",
+      "title": "VIME macOS v1.8.10 beta · build 2026101403 · macOS 14+ · 已通过 macOS 安全检查",
+      "summary": "# Vime 1.8.10 HotFix\n\n构建号：2026101403 · macOS 14+\n\n修复菜单栏面板顶部转写风格无法通过鼠标切换的问题，可直接点击「智能整理」「保留语气」「逐字稿」选择。\n\n保留 1.8.10 的已有特性、个人设置、Key 和历史。听写实时预览仍默认关闭，本次不改变默认云端服务或整理规则。\n\n建议更新，不新增强制升级；旧构建安装包保留。\n\n源码：0b53e3c3cd022785ed92d430e9551bf8cf45f012（PR #666）。同版本 tag 内以构建号和资产文件名区分此 HotFix。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.8.10",
       "mandatory": false,
-      "buildNumber": 2026100308,
+      "buildNumber": 2026101403,
       "minSystemVersion": "14.0",
       "assets": [
         {
-          "name": "V_IME-1.8.5-2026100308-macos.dmg",
-          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.5/2026100308/V_IME-1.8.5-2026100308-macos.dmg",
-          "sha256": "206cdb1fbbcbdc95c723c204b9799d39f6eb9d6636ae0ce8f57076b3bc774829",
-          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.8.5/V_IME-1.8.5-2026100308-macos.dmg",
-          "sizeBytes": 11623083,
+          "name": "V_IME-1.8.10-2026101403-macos.dmg",
+          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.10/2026101403/V_IME-1.8.10-2026101403-macos.dmg",
+          "sha256": "88d52a997afc0ab45ce929da1662e1509340ef1ca895969b242e7854c1d802e6",
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.8.10/V_IME-1.8.10-2026101403-macos.dmg",
+          "sizeBytes": 13493806,
           "installerType": "dmg",
+          "arch": "universal",
           "minSystemVersion": "14.0"
         },
         {
-          "name": "V_IME-1.8.5-2026100308-macos.zip",
-          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.5/2026100308/V_IME-1.8.5-2026100308-macos.zip",
-          "sha256": "f1186a88fbe8507d09650325254e710d8b546c5289448f9b2c92f9bcf115e49c",
-          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.8.5/V_IME-1.8.5-2026100308-macos.zip",
-          "sizeBytes": 10386705,
+          "name": "V_IME-1.8.10-2026101403-macos.zip",
+          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.10/2026101403/V_IME-1.8.10-2026101403-macos.zip",
+          "sha256": "d3017fa623ef0869e6f6c725367c906e45a7294f87f7a427dc9afc714f3872fc",
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.8.10/V_IME-1.8.10-2026101403-macos.zip",
+          "sizeBytes": 11092990,
           "installerType": "zip",
-          "minSystemVersion": "14.0"
+          "arch": "universal",
+          "minSystemVersion": "14.0",
+          "sparkleEdDsaSignature": "/87AgAZa1Q1T7/1+LGhofrq3quR6SObY4DLBup+ymC/E2P7gAKxExUgeHeDJtx81uxBDNdeeOIqw5l1G1y0QAA=="
         }
       ],
-      "appcastUrl": "https://imkida.github.io/V_IME_releases/macos/beta/appcast.xml"
+      "appcastUrl": "https://imkida.github.io/V_IME_releases/macos/beta/appcast.xml",
+      "sparkleEdDsaSignature": "/87AgAZa1Q1T7/1+LGhofrq3quR6SObY4DLBup+ymC/E2P7gAKxExUgeHeDJtx81uxBDNdeeOIqw5l1G1y0QAA=="
     }
   },
   "productName": "VIME",
