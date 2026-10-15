@@ -108,7 +108,11 @@ def deploy(files, sha):
     import alibabacloud_oss_v2 as oss
     cfg = oss.config.load_default()
     cfg.region = REGION
-    cfg.credentials_provider = oss.credentials.EnvironmentVariableCredentialsProvider()
+    # The official GitHub action exports Alibaba Cloud names, not OSS_* names.
+    cfg.credentials_provider = oss.credentials.StaticCredentialsProvider(
+        os.environ["ALIBABA_CLOUD_ACCESS_KEY_ID"],
+        os.environ["ALIBABA_CLOUD_ACCESS_KEY_SECRET"],
+        os.environ["ALIBABA_CLOUD_SECURITY_TOKEN"])
     client = oss.Client(cfg)
     uploaded = []
     for key, data in files.items():
