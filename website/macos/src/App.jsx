@@ -233,6 +233,8 @@ function Accordion({ id, title, summary, Icon, open, onToggle, children, classNa
 }
 
 export function App() {
+  const showIcpFiling = typeof window !== 'undefined'
+    && ['vimebot.com', 'www.vimebot.com'].includes(window.location.hostname.toLowerCase());
   const [release, setRelease] = useState(initialRelease);
   const [refreshFailed, setRefreshFailed] = useState(false);
   const { channel, dmg, minSystemVersion, date, notes } = release;
@@ -351,7 +353,7 @@ export function App() {
       </section>
       <section className="closing" aria-labelledby="closing-title"><div data-reveal><img src={appIconUrl} alt="" className="closing-icon"/><h2 id="closing-title">有想法，<br/><span>Vime 帮你<wbr/><span className="closing-phrase">自然表达</span></span></h2><div className="closing-action"><DownloadButton dmg={dmg}/><p>macOS {minSystemVersion}+ · 公开测试版</p></div></div></section>
     </main>
-    <footer className="footer"><div className="footer-brand"><a href="#top">Vime</a><span>由个人开发维护</span></div><div className="footer-links"><a href="#privacy" onClick={event => openSupport(event, 'privacy')}>隐私说明</a><a href="#help" onClick={event => openSupport(event, 'help')}>帮助与支持</a><a href="mailto:kida.wong@gmail.com">联系作者</a><a href="#updates" onClick={event => openSupport(event, 'updates')}>最新更新</a></div></footer>
+    <footer className="footer"><div className="footer-brand"><a href="#top">Vime</a><span>由个人开发维护</span></div><div className="footer-links"><a href="#privacy" onClick={event => openSupport(event, 'privacy')}>隐私说明</a><a href="#help" onClick={event => openSupport(event, 'help')}>帮助与支持</a><a href="mailto:kida.wong@gmail.com">联系作者</a><a href="#updates" onClick={event => openSupport(event, 'updates')}>最新更新</a>{showIcpFiling && <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">京ICP备2026046839号-2</a>}</div></footer>
     <div className={'toast' + (notice ? ' visible' : '')} role="status">{notice && <><Check size={16}/>{notice}</>}</div>
   </>;
 }
