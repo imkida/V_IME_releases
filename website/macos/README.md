@@ -26,6 +26,8 @@ node --test scripts/test-macos-download-page.mjs
 
 现有同步脚本从 macOS 页面生成根主页，刷新公开 JSON、内置快照及无脚本下载链接。根页和 `/macos/` 使用同一份资产，不新增中转页。不要提交 node_modules 或临时预览服务。
 
+当前自动发布：正式 macOS beta 发布命令会同时刷新上述发布文件及 `public/release.json`、源码无脚本链接；新快照使用新脚本 URL，不能覆盖已有 immutable 文件。合入 main 后由 `Website sync` 自动跟随 GitHub Pages 同步国内 OSS，并核对四域名实际内容，详见仓库 README 的「国内外自动同步」。国内条件备案页脚和 800px 下载菜单对齐规则必须保留；此流程不改证书续期或客户端发布资格。
+
 ## 官网链接范围
 
 官网只展示当前正式版本的精简更新说明，不提供完整发布说明、失败提示中的发布页或支持页 GitHub Issues 出口。备用下载（包括无 JavaScript 入口）直接使用现有 `dmg.mirrorUrl` 安装包地址；它不打开仓库或 Release 页面。同步脚本沿用此规则，下载渠道、校验信息、签名 feed 和 GitHub Release 正文不变。

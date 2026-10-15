@@ -209,18 +209,20 @@ test('sync script rebuilds a stale fallback byte for byte', () => {
       `  generatedAt 2026-09-01T17:02:07Z -> ${page.generatedAt}`,
       `  versionName 1.5.0 -> ${page.channel.versionName}`,
       `  buildNumber 2026090202 -> ${page.channel.buildNumber}`,
-      `  noscript backup ${staleMirrorUrl} -> ${dmg.mirrorUrl}`
+      `  noscript backup ${staleMirrorUrl} -> ${dmg.mirrorUrl}`,
+      '  root homepage differs from the macOS page'
     ]);
-    assert.equal(
-      readFileSync(path.join(sandbox, 'docs', 'macos', 'assets', bundleNameOf(page.html)), 'utf8'),
-      page.bundle,
-      'sync must reproduce the published bundle exactly'
-    );
+    assert.equal(readFileSync(result.bundlePath, 'utf8'), page.bundle,
+      'sync must reproduce the published bundle bytes under a fresh immutable URL');
+    assert.notEqual(path.basename(result.bundlePath), bundleNameOf(page.html));
+    assert.equal(readFileSync(path.join(sandbox, 'docs', 'macos', 'assets', bundleNameOf(page.html)), 'utf8'),
+      staleBundle, 'old cached bundles must not be overwritten');
     assert.equal(
       readFileSync(path.join(sandbox, 'docs', 'macos', 'index.html'), 'utf8'),
-      page.html,
+      page.html.replace(bundleNameOf(page.html), path.basename(result.bundlePath)),
       'sync must reproduce both published fallback links exactly'
     );
+    assert.equal(syncDownloadPage({ repoRoot: sandbox, check: true }).changed, false);
   } finally {
     rmSync(sandbox, { recursive: true, force: true });
   }
@@ -263,7 +265,43 @@ function seedSandbox(root, { html, bundle }) {
   writeFileSync(path.join(root, 'docs', 'release.json'), manifest);
   writeFileSync(path.join(root, 'docs', 'index.html'), readFileSync(path.join(ROOT, 'docs', 'index.html'), 'utf8'));
   writeFileSync(path.join(root, 'docs', 'macos', 'assets', bundleNameOf(html)), bundle);
+  mkdirSync(path.join(root, 'website', 'macos', 'public'), { recursive: true });
+  writeFileSync(path.join(root, 'website', 'macos', 'public', 'release.json'), manifest);
+  writeFileSync(path.join(root, 'website', 'macos', 'index.html'),
+    readFileSync(path.join(ROOT, 'website', 'macos', 'index.html')));
 }
+
+test('the canonical macOS release command refreshes both sites and source without a second command', () => {
+  const sandbox = mkdtempSync(path.join(tmpdir(), 'vime-release-auto-page.'));
+  try {
+    seedSandbox(sandbox, readPublishedPage(ROOT));
+    mkdirSync(path.join(sandbox, 'scripts'));
+    for (const name of ['update-manifest.mjs', 'sync-download-page.mjs']) {
+      writeFileSync(path.join(sandbox, 'scripts', name), readFileSync(path.join(ROOT, 'scripts', name)));
+    }
+    const artifact = path.join(sandbox, 'V_IME-1.8.11-2026101501-macos.dmg');
+    writeFileSync(artifact, 'synthetic release, never published');
+    const result = spawnSync(process.execPath, [realpathSync(path.join(sandbox, 'scripts', 'update-manifest.mjs')),
+      '--platform', 'macos', '--channel', 'beta', '--version-name', '1.8.11',
+      '--build-number', '2026101501', '--title', 'Synthetic website sync',
+      '--summary', 'Synthetic release metadata test', '--tag', 'macos-v1.8.11',
+      '--asset', artifact, '--asset-url-base', 'https://example.com/macos/1.8.11/2026101501/'],
+    { encoding: 'utf8', cwd: sandbox });
+    assert.equal(result.status, 0, result.stderr);
+    assert.match(result.stdout, /Synced website pages/);
+    const manifest = readFileSync(path.join(sandbox, 'macos/manifest.json'), 'utf8');
+    for (const file of ['docs/release.json', 'docs/macos/release.json', 'website/macos/public/release.json']) {
+      assert.equal(readFileSync(path.join(sandbox, file), 'utf8'), manifest);
+    }
+    const published = readPublishedPage(sandbox);
+    assert.deepEqual(published.channel, JSON.parse(manifest).channels.beta);
+    assert.equal(published.channel.buildNumber, 2026101501);
+    assert.match(published.html, /example.com\/macos\/1.8.11\/2026101501/);
+    assert.equal(syncDownloadPage({ repoRoot: sandbox, check: true }).changed, false);
+  } finally {
+    rmSync(sandbox, { recursive: true, force: true });
+  }
+});
 
 // The identity the page should no longer reference: the newest revision of the manifest
 // that represents a different release. Commits that only correct fields of the current

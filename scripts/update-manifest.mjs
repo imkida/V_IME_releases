@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto';
 import { createReadStream, existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { basename, dirname, extname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { syncDownloadPage } from './sync-download-page.mjs';
 
 const DEFAULT_REPO = 'imkida/V_IME_releases';
 const VALID_PLATFORMS = new Set(['android', 'macos', 'windows', 'ios', 'harmonyos']);
@@ -53,6 +54,12 @@ async function main() {
       mkdirSync(dirname(config.manifestPath), { recursive: true });
       writeFileSync(config.manifestPath, output, 'utf8');
       console.log(`Updated ${relativeToRoot(config.manifestPath)}`);
+      if (config.platform === 'macos' && config.channel === 'beta'
+          && config.manifestPath === join(repoRoot, 'macos', 'manifest.json')) {
+        const page = syncDownloadPage({ repoRoot });
+        console.log(page.changed ? 'Synced website pages, source snapshot and download metadata'
+          : 'Website already matches this release');
+      }
     }
   } catch (error) {
     console.error(`error: ${error.message}`);

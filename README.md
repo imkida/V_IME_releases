@@ -39,6 +39,8 @@ Vime 是一款**跨平台智能语音输入法**：说完即得可直接使用�
 - 内部交接材料：候选包验证记录、设备 smoke 数据、排查过程、私有仓 commit 引用。公开页只保留用户可读的发布说明。
 - 该原则与仓库首段的客户端边界一致；`scripts/` 下只放**发布控制文件的生成与校验**工具，不放上行到 OSS / Release 的脚本——那些属于客户端仓的发布 lane。
 
+用户已要求官网随发布自动同步；官网静态镜像是上述脚本边界的限定例外：`.github/workflows/website-sync.yml` 和 `scripts/sync-website-oss.py` 仅同步本仓已公开的官网页面及资源，不发布客户端、安装包或签名更新控制文件。GitHub 通过 OIDC 获取仅限官网对象的短期权限，不保存长期阿里云密钥；角色标识保存在仓库变量中，凭据、证书和私有配置不进 Git。
+
 ## 目录结构
 
 ```text
@@ -247,7 +249,7 @@ macOS 公测下载、使用引导与更新说明页面：
 https://imkida.github.io/V_IME_releases/macos/
 ```
 
-官网镜像使用同一份 `docs/` 静态产物：网页从各自站点的 `./release.json` 读取版本信息，不依赖 GitHub raw。每次更新 `macos/manifest.json` 后运行 `npm run release:page`，再运行 `npm run release:page -- --check` 和相关测试；公开 JSON、页面快照和无脚本下载入口一起更新。`--check` 发现漂移时不写文件并返回失败。
+官网镜像使用同一份 `docs/` 静态产物：网页从各自站点的 `./release.json` 读取版本信息，不依赖 GitHub raw。现有 `npm run release:manifest -- --platform macos --channel beta ...` 在写入本仓正式清单后自动刷新官网公开 JSON、页面内置快照、无脚本下载链接和源码快照；`--dry-run` 不写页面。快照内容变化时生成新的脚本 URL，保留旧脚本，避免 immutable 缓存继续提供旧版本。发布前的 `npm run release:page -- --check` 发现漂移时返回失败；直接修改清单或重建页面时，仍使用 `npm run release:page` 修复实际差异。
 
 `docs/CNAME` 是 GitHub Pages 的域名绑定文件；其他静态托管使用其自身域名配置。官网镜像不改变 App 使用的 manifest、签名 appcast 或安装包地址。
 
@@ -303,7 +305,7 @@ HarmonyOS 首次接入时建议记录：
 3. 创建带平台前缀的 GitHub Release tag。
 4. 上传安装包、归档包或安装器到 Release assets。
 5. 检查对应平台的 manifest 或 appcast。
-6. macOS 同批重建 `docs/macos` 的静态兜底（`npm run release:page`），并运行 `npm test` 确认页面与 manifest 一致。
+6. macOS 发布命令自动刷新官网静态数据；确认生成的 `docs/` 和 `website/macos/` 快照一起提交，并执行受影响的同步检查。官网上线需等待下面的 `Website sync` 成功，不能只以 GitHub Pages 成功判断国内同步完成。
 7. 校验 JSON 语法和 manifest schema。
 8. 用公开 URL 验证匿名用户可访问 Release 页面、下载资产和 raw manifest。
 9. 在真实设备或虚拟机上验证更新检查路径。
@@ -350,7 +352,7 @@ Vime 是一款智能语音输入法：说完即得可直接使用的文字，同
 
 `docs/index.html` 是域名根主页，`docs/macos/index.html` 保留原 macOS 地址，两者使用同一份构建资源。GitHub Pages 从 `main:/docs` 发布。网页从所在站点的 `./release.json` 读取当前版本，网络不可用时保留构建快照并提示；不依赖 GitHub raw。
 
-每次更新 `macos/manifest.json`，使用现有同步入口一起刷新公开 JSON、内置快照和无脚本下载链接：
+发布命令已自动刷新公开 JSON、内置快照和无脚本下载链接。修改官网源码或直接编辑清单后，可使用现有同步入口；发布前仍需只读一致性检查：
 
 ```bash
 npm run release:page
@@ -359,5 +361,13 @@ npm test
 ```
 
 官网可恢复源码、依赖锁和展示测试在 [website/macos](website/macos/README.md)，位于 Pages 发布目录之外。修改页面时从该目录构建，提交必要源码与实际静态输出，再运行上述同步检查；不提交安装依赖、客户端源码或签名材料。域名根页和 `/macos/` 都需验证资源、更新与安装引导。
+
+### 国内外自动同步
+
+正式发布清单与页面进入 `main` 后，GitHub Pages 沿现有 `main:/docs` 自动发布 vimebot.ai / www.vimebot.ai；`Website sync` 工作流等待海外实际页面与该提交相同，再同步国内 vimebot.com / www.vimebot.com。执行前确认 source 仍是当前 main，串行完成一次发布；之后核对四域名 HTTPS、首页、清单与实际资源字节。下载地址、文件大小、SHA-256、版本与构建来自同一份正式 manifest，不独立维护国内数据。
+
+国内只写官网的首页、隐私/支持页、两份 release.json 和当前引用的公开资源，先资源后清单再首页，旧资源保留。不会写 appcast、安装包、管理后台、DNS、OSS 桶策略、证书、RAM 或 FC。备案页脚由现有按域名逻辑保留，HTTPS 自动续期继续由现有阿里云函数负责。官网同步运行在 GitHub 托管执行器，不需要 Mac 开机。
+
+运行摘要记录 source commit、版本、构建、实际上传文件及四域名核对结果。漂移、上传失败或核对失败时工作流失败，不记已同步；先定位对应运行，再从 Actions 的 `Website sync` 对当前 main 手动恢复，禁止为了刷绿重复启动。发布角色仅信任本仓 main 的 OIDC token，不授予 PR/其他仓库权限；`VIME_WEBSITE_ROLE_ARN`、`VIME_WEBSITE_OIDC_PROVIDER_ARN` 为部署所需仓库变量。
 
 “最新更新”显示同一份发布清单中的 Markdown 正文，保留真实已知问题；客户端的 `#whats-new` 入口打开现有更新区。用户文案提案由原发布负责人审定，不自动改写已发布清单或签名 appcast。网站改版不修改安装包、下载地址、发布渠道或 Sparkle appcast。
