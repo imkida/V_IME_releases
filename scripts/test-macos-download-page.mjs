@@ -198,11 +198,15 @@ test('sync script rebuilds a stale fallback byte for byte', () => {
     .replace(slot.text, JSON.stringify(staleChannel, null, 0));
   const dmg = page.channel.assets.find((asset) => asset.installerType === 'dmg');
   const staleMirrorUrl = 'https://github.com/imkida/V_IME_releases/releases/download/macos-v1.5.0/V_IME-1.5.0-2026090202-macos.dmg';
-  const staleHtml = page.html.replace(dmg.mirrorUrl, staleMirrorUrl);
+  const staleBundleName = 'index-stale-fixture.js';
+  const staleHtml = page.html.replace(dmg.mirrorUrl, staleMirrorUrl)
+    .replace(bundleNameOf(page.html), staleBundleName);
 
   const sandbox = mkdtempSync(path.join(tmpdir(), 'vime-download-page-sync.'));
   try {
     seedSandbox(sandbox, { html: staleHtml, bundle: staleBundle });
+    writeFileSync(path.join(sandbox, 'docs', 'index.html'),
+      staleHtml.replaceAll('="./assets/', '="./macos/assets/'));
     const result = syncDownloadPage({ repoRoot: sandbox });
     assert.equal(result.changed, true);
     assert.deepEqual(result.messages, [
@@ -214,8 +218,8 @@ test('sync script rebuilds a stale fallback byte for byte', () => {
     ]);
     assert.equal(readFileSync(result.bundlePath, 'utf8'), page.bundle,
       'sync must reproduce the published bundle bytes under a fresh immutable URL');
-    assert.notEqual(path.basename(result.bundlePath), bundleNameOf(page.html));
-    assert.equal(readFileSync(path.join(sandbox, 'docs', 'macos', 'assets', bundleNameOf(page.html)), 'utf8'),
+    assert.notEqual(path.basename(result.bundlePath), staleBundleName);
+    assert.equal(readFileSync(path.join(sandbox, 'docs', 'macos', 'assets', staleBundleName), 'utf8'),
       staleBundle, 'old cached bundles must not be overwritten');
     assert.equal(
       readFileSync(path.join(sandbox, 'docs', 'macos', 'index.html'), 'utf8'),

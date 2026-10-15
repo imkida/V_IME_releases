@@ -5,25 +5,28 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
         <title>VIME</title>
         <item>
             <title>1.8.10</title>
-            <pubDate>Thu, 15 Oct 2026 00:05:40 +0800</pubDate>
+            <pubDate>Thu, 15 Oct 2026 22:40:28 +0800</pubDate>
             <link>https://imkida.github.io/V_IME_releases/macos/</link>
-            <sparkle:version>2026101403</sparkle:version>
+            <sparkle:version>2026101503</sparkle:version>
             <sparkle:shortVersionString>1.8.10</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# Vime 1.8.10 HotFix
+            <description sparkle:format="markdown"><![CDATA[# Vime 1.8.10 设置体验更新
 
-构建号：2026101403 · macOS 14+
+构建号：2026101503 · macOS 14+
 
-修复菜单栏面板顶部转写风格无法通过鼠标切换的问题，可直接点击「智能整理」「保留语气」「逐字稿」选择。
+- 重新整理个人 API Key 配置链路：更换 Key 使用简洁的独立面板，高级参数按需展开，自定义服务单独添加。
+- 明确区分「检查连接」「保存配置」和「选择使用」；保存不会自动切换当前服务，共享 Key 的影响范围更清楚。
+- 恢复官方模板先载入草稿，确认保存后生效；补齐未保存离开的提醒，保留已有地址、模型和用途选择。
+- 清除个人 Key 失败时保留更准确的系统诊断，并明确切回 Vime 默认云服务无需删除个人 Key。
 
-保留 1.8.10 的已有特性、个人设置、Key 和历史。听写实时预览仍默认关闭，本次不改变默认云端服务或整理规则。
+保留菜单栏风格点击修复及 1.8.10 已有特性、个人设置和历史。实时预览等实验室功能仍默认关闭；本次不改变默认云服务、识别模型或整理规则。
 
 建议更新，不新增强制升级；旧构建安装包保留。
 
-源码：0b53e3c3cd022785ed92d430e9551bf8cf45f012（PR #666）。同版本 tag 内以构建号和资产文件名区分此 HotFix。
+源码：771c85a3a15922db9edf98d9be13cdd4dacc15c2（PR #668、#667）。
 ]]></description>
-            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.10/2026101403/V_IME-1.8.10-2026101403-macos.zip" length="11092990" type="application/octet-stream" sparkle:edSignature="/87AgAZa1Q1T7/1+LGhofrq3quR6SObY4DLBup+ymC/E2P7gAKxExUgeHeDJtx81uxBDNdeeOIqw5l1G1y0QAA=="></enclosure>
-            <vime:policyRevision>2026101403</vime:policyRevision>
+            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.10/2026101503/V_IME-1.8.10-2026101503-macos.zip" length="11243749" type="application/octet-stream" sparkle:edSignature="LJrWGoIx4YQEK/5bqQFsBdbyQ0TZR6JdKv8Pg969W5CZw9umIytBbu3hPKh4SkoQnuligvdSfj3B23BL8LhzAg=="></enclosure>
+            <vime:policyRevision>2026101503</vime:policyRevision>
             <vime:mandatory>false</vime:mandatory>
             <vime:minSupportedBuild>2026100906</vime:minSupportedBuild>
             <vime:mandatoryReason>旧版默认云服务协议已停止支持，请更新至当前公测版。</vime:mandatoryReason>
@@ -31,6 +34,6 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: usA8kC2dx7XhRdHg3UGbRH9tX5AG4TjKW4Vg5hOgAO3GtHU2Wg8reXgkEYo8nnbKmeoRTOp8O9+6HIP126PgAg==
-length: 2277
+edSignature: Lm+MmN02kpxURzh9o7bDwxBSb4VARmvHoKN5LMHg/+1pC1UMn+2kslapdt7/JwD+dTeaSarbxSmvUn6jJdG5Bg==
+length: 2682
 -->

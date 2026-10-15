@@ -1,41 +1,41 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-10-14T17:31:01Z",
+  "generatedAt": "2026-10-15T14:47:12Z",
   "platform": "macos",
   "channels": {
     "beta": {
       "versionName": "1.8.10",
-      "title": "VIME macOS v1.8.10 beta · build 2026101403 · macOS 14+ · 已通过 macOS 安全检查",
-      "summary": "# Vime 1.8.10 HotFix\n\n构建号：2026101403 · macOS 14+\n\n修复菜单栏面板顶部转写风格无法通过鼠标切换的问题，可直接点击「智能整理」「保留语气」「逐字稿」选择。\n\n保留 1.8.10 的已有特性、个人设置、Key 和历史。听写实时预览仍默认关闭，本次不改变默认云端服务或整理规则。\n\n建议更新，不新增强制升级；旧构建安装包保留。\n\n源码：0b53e3c3cd022785ed92d430e9551bf8cf45f012（PR #666）。同版本 tag 内以构建号和资产文件名区分此 HotFix。",
+      "title": "VIME macOS v1.8.10 beta · build 2026101503 · macOS 14+ · 已通过 macOS 安全检查",
+      "summary": "# Vime 1.8.10 设置体验更新\n\n构建号：2026101503 · macOS 14+\n\n- 重新整理个人 API Key 配置链路：更换 Key 使用简洁的独立面板，高级参数按需展开，自定义服务单独添加。\n- 明确区分「检查连接」「保存配置」和「选择使用」；保存不会自动切换当前服务，共享 Key 的影响范围更清楚。\n- 恢复官方模板先载入草稿，确认保存后生效；补齐未保存离开的提醒，保留已有地址、模型和用途选择。\n- 清除个人 Key 失败时保留更准确的系统诊断，并明确切回 Vime 默认云服务无需删除个人 Key。\n\n保留菜单栏风格点击修复及 1.8.10 已有特性、个人设置和历史。实时预览等实验室功能仍默认关闭；本次不改变默认云服务、识别模型或整理规则。\n\n建议更新，不新增强制升级；旧构建安装包保留。\n\n源码：771c85a3a15922db9edf98d9be13cdd4dacc15c2（PR #668、#667）。",
       "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.8.10",
       "mandatory": false,
-      "buildNumber": 2026101403,
+      "buildNumber": 2026101503,
       "minSystemVersion": "14.0",
       "assets": [
         {
-          "name": "V_IME-1.8.10-2026101403-macos.dmg",
-          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.10/2026101403/V_IME-1.8.10-2026101403-macos.dmg",
-          "sha256": "88d52a997afc0ab45ce929da1662e1509340ef1ca895969b242e7854c1d802e6",
-          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.8.10/V_IME-1.8.10-2026101403-macos.dmg",
-          "sizeBytes": 13493806,
+          "name": "V_IME-1.8.10-2026101503-macos.dmg",
+          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.10/2026101503/V_IME-1.8.10-2026101503-macos.dmg",
+          "sha256": "a265143c9c3e8ea61a5476756925e98c2616268b96791b20900022ea755e9742",
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.8.10/V_IME-1.8.10-2026101503-macos.dmg",
+          "sizeBytes": 12605055,
           "installerType": "dmg",
           "arch": "universal",
           "minSystemVersion": "14.0"
         },
         {
-          "name": "V_IME-1.8.10-2026101403-macos.zip",
-          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.10/2026101403/V_IME-1.8.10-2026101403-macos.zip",
-          "sha256": "d3017fa623ef0869e6f6c725367c906e45a7294f87f7a427dc9afc714f3872fc",
-          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.8.10/V_IME-1.8.10-2026101403-macos.zip",
-          "sizeBytes": 11092990,
+          "name": "V_IME-1.8.10-2026101503-macos.zip",
+          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.10/2026101503/V_IME-1.8.10-2026101503-macos.zip",
+          "sha256": "2a794ada5c184f3764b4066b98d7e265919322bb063d66cde027057b96da8263",
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.8.10/V_IME-1.8.10-2026101503-macos.zip",
+          "sizeBytes": 11243749,
           "installerType": "zip",
           "arch": "universal",
           "minSystemVersion": "14.0",
-          "sparkleEdDsaSignature": "/87AgAZa1Q1T7/1+LGhofrq3quR6SObY4DLBup+ymC/E2P7gAKxExUgeHeDJtx81uxBDNdeeOIqw5l1G1y0QAA=="
+          "sparkleEdDsaSignature": "LJrWGoIx4YQEK/5bqQFsBdbyQ0TZR6JdKv8Pg969W5CZw9umIytBbu3hPKh4SkoQnuligvdSfj3B23BL8LhzAg=="
         }
       ],
       "appcastUrl": "https://imkida.github.io/V_IME_releases/macos/beta/appcast.xml",
-      "sparkleEdDsaSignature": "/87AgAZa1Q1T7/1+LGhofrq3quR6SObY4DLBup+ymC/E2P7gAKxExUgeHeDJtx81uxBDNdeeOIqw5l1G1y0QAA=="
+      "sparkleEdDsaSignature": "LJrWGoIx4YQEK/5bqQFsBdbyQ0TZR6JdKv8Pg969W5CZw9umIytBbu3hPKh4SkoQnuligvdSfj3B23BL8LhzAg=="
     }
   },
   "productName": "VIME",
