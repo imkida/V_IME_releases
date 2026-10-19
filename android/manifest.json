@@ -1,17 +1,17 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-10-19T10:07:12.263089Z",
+  "generatedAt": "2026-10-19T11:19:14.992827Z",
   "packageName": "com.vime.android",
   "channels": {
     "debug": {
-      "versionName": "1.8.28-dogfood.1",
-      "versionCode": 326,
-      "title": "v1.8.28-dogfood.1 — 会话归属修正与连接提示联合公测",
-      "summary": "公开 Debug 联合测试版。包含会话、草稿与重试归属修正及更准确的连接错误提示，保留完整键盘和本地语音识别运行时（仅 arm64，模型仍需在 App 内下载）。本地识别缺少整理配置时的保真路径仍待实际消费者验收，不代表稳定 Release 或键盘性能毕业。仅能同 Debug 签名覆盖升级，不卸载或清数据；Debug/Release 不可混装。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.8.28-dogfood.1",
-      "apkName": "V_IME-v1.8.28-dogfood.1-debug.apk",
-      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.8.28-dogfood.1/V_IME-v1.8.28-dogfood.1-debug.apk",
-      "apkSha256": "51c12d7338af361881df41f1552e0617a2d3eccf355a3c7e453fbac1a1b4795b",
+      "versionName": "1.8.29-dogfood.1",
+      "versionCode": 327,
+      "title": "v1.8.29-dogfood.1 — 更新页错误归属修复联合公测",
+      "summary": "公开 Debug 联合测试版。修复新版详情误显示旧下载任务错误；当前更新的真实错误及版本、包名、字节、签名严格检查保持。保留完整键盘与本地语音识别运行时（仅 arm64，模型仍需在 App 内下载）。本地识别缺少整理配置时的保真路径仍待实际消费者验收，不代表稳定 Release 或键盘性能毕业。仅同 Debug 签名覆盖升级，不卸载或清数据；Debug/Release 不可混装。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.8.29-dogfood.1",
+      "apkName": "V_IME-v1.8.29-dogfood.1-debug.apk",
+      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.8.29-dogfood.1/V_IME-v1.8.29-dogfood.1-debug.apk",
+      "apkSha256": "95cac0b3e71c4bffb141405dbe9fcc1f4b87d2a8e94488fd3c249f5a1b481480",
       "certificateSha256": "4513e5bc726058d40be6020e1bbfc2d0c0fbf4e81d3b04a393cba394cd195059",
       "mandatory": false,
       "minSupportedVersionCode": 1
