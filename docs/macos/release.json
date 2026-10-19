@@ -1,41 +1,41 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-10-19T10:01:00Z",
+  "generatedAt": "2026-10-19T18:11:44Z",
   "platform": "macos",
   "channels": {
     "beta": {
-      "versionName": "1.9.0",
-      "title": "VIME macOS v1.9.0 beta · build 2026101902 · macOS 14+ · 已通过 macOS 安全检查",
-      "summary": "# Vime 1.9.0 公测更新\n\n构建号：2026101902 · macOS 14+\n\n- 修复智能整理中合法列表编号、加粗格式可能导致结果退回原稿的问题，保留对正文信息的原有保护。\n- 完善设置页面的字段校验、保存反馈和未保存离开提醒，减少无效操作与重复提示。\n- 改进常用词输入、采用反馈及编辑区域展示，明确说明未采用原因。\n- 补充不含正文的整理路线诊断，方便定位问题；不改变服务地址、识别模型或整理提示内容。\n\n保留菜单栏风格切换修复、现有输入能力、个人设置和历史记录。实验室功能继续默认关闭，本次不启用新的统计上传，也不包含离线语音识别研究或未验收的整理策略。\n\n建议更新，不新增强制升级；旧版安装包保留。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.9.0",
+      "versionName": "1.9.1",
+      "title": "VIME macOS v1.9.1 beta · build 2026102001 · macOS 14+ · 已通过 macOS 安全检查",
+      "summary": "# Vime 1.9.1 公测更新\n\n构建号：2026102001 · macOS 14+\n\n- 修复逐个念出常见技术缩写的字母后，整理成 API、SDK 等规范缩写可能导致结果退回原话的问题。\n- 改进整理回退的问题分类，便于准确定位原因。\n- 改进诊断隐私保护，避免在公开诊断字段中出现口述内容片段。\n\n保留现有输入能力、个人设置和历史记录；实验室功能继续默认关闭，不改变服务地址、识别模型或整理提示内容。\n\n本次不包含离线语音识别研究或其他未验收候选，不宣称长文整理成功率已经提升。\n\n建议更新，不新增强制升级；旧版安装包保留。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.9.1",
       "mandatory": false,
-      "buildNumber": 2026101902,
+      "buildNumber": 2026102001,
       "minSystemVersion": "14.0",
       "assets": [
         {
-          "name": "V_IME-1.9.0-2026101902-macos.dmg",
-          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.9.0/2026101902/V_IME-1.9.0-2026101902-macos.dmg",
-          "sha256": "d08d6d2de1d87b6e17db2e055749f0a43dd1470172a8443c4a67f514bfa76d54",
-          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.9.0/V_IME-1.9.0-2026101902-macos.dmg",
-          "sizeBytes": 12645657,
+          "name": "V_IME-1.9.1-2026102001-macos.dmg",
+          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.9.1/2026102001/V_IME-1.9.1-2026102001-macos.dmg",
+          "sha256": "3a645caea5eefe9bcf5c7bcf6ba32e0327afddbda63453cc94288bdc9e3c12fd",
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.9.1/V_IME-1.9.1-2026102001-macos.dmg",
+          "sizeBytes": 12655347,
           "installerType": "dmg",
           "arch": "universal",
           "minSystemVersion": "14.0"
         },
         {
-          "name": "V_IME-1.9.0-2026101902-macos.zip",
-          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.9.0/2026101902/V_IME-1.9.0-2026101902-macos.zip",
-          "sha256": "d4c8eaf77e95d37ce2e4e61b2caa2456d1147f419a3b8a48c0da9e0ad6aabbc1",
-          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.9.0/V_IME-1.9.0-2026101902-macos.zip",
-          "sizeBytes": 11280085,
+          "name": "V_IME-1.9.1-2026102001-macos.zip",
+          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.9.1/2026102001/V_IME-1.9.1-2026102001-macos.zip",
+          "sha256": "1e0850b455692f9bc9229b6d88fbf978bceb6e44c3fb8295d880efc7ce4adf71",
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.9.1/V_IME-1.9.1-2026102001-macos.zip",
+          "sizeBytes": 11335018,
           "installerType": "zip",
           "arch": "universal",
           "minSystemVersion": "14.0",
-          "sparkleEdDsaSignature": "1N2qzDrBc1wzpUvAnoomvio54Q/lVB9SlLmYdeAVuUG8kMtPtzTJNq3oHnDNzDwK13YxTNoHSodKwViN0TVDDw=="
+          "sparkleEdDsaSignature": "mYs+FMVgfS6R7te5rO0+H/FaYzU3QvJ2bxgr6/TMQQhyB/aZ5ZKiklfnsNl6eysnRNemH6ZuHdJ1Be4loT1XCA=="
         }
       ],
       "appcastUrl": "https://imkida.github.io/V_IME_releases/macos/beta/appcast.xml",
-      "sparkleEdDsaSignature": "1N2qzDrBc1wzpUvAnoomvio54Q/lVB9SlLmYdeAVuUG8kMtPtzTJNq3oHnDNzDwK13YxTNoHSodKwViN0TVDDw=="
+      "sparkleEdDsaSignature": "mYs+FMVgfS6R7te5rO0+H/FaYzU3QvJ2bxgr6/TMQQhyB/aZ5ZKiklfnsNl6eysnRNemH6ZuHdJ1Be4loT1XCA=="
     }
   },
   "productName": "VIME",
