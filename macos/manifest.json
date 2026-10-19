@@ -1,41 +1,41 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-10-15T14:47:12Z",
+  "generatedAt": "2026-10-19T10:01:00Z",
   "platform": "macos",
   "channels": {
     "beta": {
-      "versionName": "1.8.10",
-      "title": "VIME macOS v1.8.10 beta · build 2026101503 · macOS 14+ · 已通过 macOS 安全检查",
-      "summary": "# Vime 1.8.10 设置体验更新\n\n构建号：2026101503 · macOS 14+\n\n- 重新整理个人 API Key 配置链路：更换 Key 使用简洁的独立面板，高级参数按需展开，自定义服务单独添加。\n- 明确区分「检查连接」「保存配置」和「选择使用」；保存不会自动切换当前服务，共享 Key 的影响范围更清楚。\n- 恢复官方模板先载入草稿，确认保存后生效；补齐未保存离开的提醒，保留已有地址、模型和用途选择。\n- 清除个人 Key 失败时保留更准确的系统诊断，并明确切回 Vime 默认云服务无需删除个人 Key。\n\n保留菜单栏风格点击修复及 1.8.10 已有特性、个人设置和历史。实时预览等实验室功能仍默认关闭；本次不改变默认云服务、识别模型或整理规则。\n\n建议更新，不新增强制升级；旧构建安装包保留。\n\n源码：771c85a3a15922db9edf98d9be13cdd4dacc15c2（PR #668、#667）。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.8.10",
+      "versionName": "1.9.0",
+      "title": "VIME macOS v1.9.0 beta · build 2026101902 · macOS 14+ · 已通过 macOS 安全检查",
+      "summary": "# Vime 1.9.0 公测更新\n\n构建号：2026101902 · macOS 14+\n\n- 修复智能整理中合法列表编号、加粗格式可能导致结果退回原稿的问题，保留对正文信息的原有保护。\n- 完善设置页面的字段校验、保存反馈和未保存离开提醒，减少无效操作与重复提示。\n- 改进常用词输入、采用反馈及编辑区域展示，明确说明未采用原因。\n- 补充不含正文的整理路线诊断，方便定位问题；不改变服务地址、识别模型或整理提示内容。\n\n保留菜单栏风格切换修复、现有输入能力、个人设置和历史记录。实验室功能继续默认关闭，本次不启用新的统计上传，也不包含离线语音识别研究或未验收的整理策略。\n\n建议更新，不新增强制升级；旧版安装包保留。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.9.0",
       "mandatory": false,
-      "buildNumber": 2026101503,
+      "buildNumber": 2026101902,
       "minSystemVersion": "14.0",
       "assets": [
         {
-          "name": "V_IME-1.8.10-2026101503-macos.dmg",
-          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.10/2026101503/V_IME-1.8.10-2026101503-macos.dmg",
-          "sha256": "a265143c9c3e8ea61a5476756925e98c2616268b96791b20900022ea755e9742",
-          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.8.10/V_IME-1.8.10-2026101503-macos.dmg",
-          "sizeBytes": 12605055,
+          "name": "V_IME-1.9.0-2026101902-macos.dmg",
+          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.9.0/2026101902/V_IME-1.9.0-2026101902-macos.dmg",
+          "sha256": "d08d6d2de1d87b6e17db2e055749f0a43dd1470172a8443c4a67f514bfa76d54",
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.9.0/V_IME-1.9.0-2026101902-macos.dmg",
+          "sizeBytes": 12645657,
           "installerType": "dmg",
           "arch": "universal",
           "minSystemVersion": "14.0"
         },
         {
-          "name": "V_IME-1.8.10-2026101503-macos.zip",
-          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.8.10/2026101503/V_IME-1.8.10-2026101503-macos.zip",
-          "sha256": "2a794ada5c184f3764b4066b98d7e265919322bb063d66cde027057b96da8263",
-          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.8.10/V_IME-1.8.10-2026101503-macos.zip",
-          "sizeBytes": 11243749,
+          "name": "V_IME-1.9.0-2026101902-macos.zip",
+          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.9.0/2026101902/V_IME-1.9.0-2026101902-macos.zip",
+          "sha256": "d4c8eaf77e95d37ce2e4e61b2caa2456d1147f419a3b8a48c0da9e0ad6aabbc1",
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.9.0/V_IME-1.9.0-2026101902-macos.zip",
+          "sizeBytes": 11280085,
           "installerType": "zip",
           "arch": "universal",
           "minSystemVersion": "14.0",
-          "sparkleEdDsaSignature": "LJrWGoIx4YQEK/5bqQFsBdbyQ0TZR6JdKv8Pg969W5CZw9umIytBbu3hPKh4SkoQnuligvdSfj3B23BL8LhzAg=="
+          "sparkleEdDsaSignature": "1N2qzDrBc1wzpUvAnoomvio54Q/lVB9SlLmYdeAVuUG8kMtPtzTJNq3oHnDNzDwK13YxTNoHSodKwViN0TVDDw=="
         }
       ],
       "appcastUrl": "https://imkida.github.io/V_IME_releases/macos/beta/appcast.xml",
-      "sparkleEdDsaSignature": "LJrWGoIx4YQEK/5bqQFsBdbyQ0TZR6JdKv8Pg969W5CZw9umIytBbu3hPKh4SkoQnuligvdSfj3B23BL8LhzAg=="
+      "sparkleEdDsaSignature": "1N2qzDrBc1wzpUvAnoomvio54Q/lVB9SlLmYdeAVuUG8kMtPtzTJNq3oHnDNzDwK13YxTNoHSodKwViN0TVDDw=="
     }
   },
   "productName": "VIME",
