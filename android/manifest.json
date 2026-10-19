@@ -1,17 +1,17 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-10-19T14:05:54.145888Z",
+  "generatedAt": "2026-10-19T17:54:59.133251Z",
   "packageName": "com.vime.android",
   "channels": {
     "debug": {
-      "versionName": "1.8.30-dogfood.1",
-      "versionCode": 328,
-      "title": "v1.8.30-dogfood.1 — 智能整理数字来源修正联合公测",
-      "summary": "公开 Debug 联合测试版。修复智能整理数字归一后误删用户原有说明的问题，模型新增或不同数字的说明仍被过滤，完整来源匹配和安全校验保持。保留更新页错误归属修复、完整键盘及本地识别运行时（仅 arm64，模型仍需 App 内下载）。本地识别缺少整理配置时的保真路径仍待实际消费者验收，不代表稳定 Release 或键盘性能毕业。仅同 Debug 签名覆盖升级，不卸载或清数据；Debug/Release 不可混装。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.8.30-dogfood.1",
-      "apkName": "V_IME-v1.8.30-dogfood.1-debug.apk",
-      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.8.30-dogfood.1/V_IME-v1.8.30-dogfood.1-debug.apk",
-      "apkSha256": "45b5a80398ff67541cc0ee55983f58a4622e4fab6206dce8ee27a27f05b38e6a",
+      "versionName": "1.8.31-dogfood.1",
+      "versionCode": 329,
+      "title": "v1.8.31-dogfood.1 — 拼音修订路径联合公测",
+      "summary": "公开 Debug 联合测试版。改进拼音中段修订路径及失败后的本会话清理，保留完整键盘、本地语音识别和既有智能整理/更新修正。仅 arm64，模型仍需在 App 内下载。329实机消费及本地识别缺少整理配置的保真路径仍待实际消费者验收；原50ms性能目标未通过，不代表稳定Release或性能毕业。仅同Debug签名覆盖升级，不卸载或清数据；Debug/Release不可混装。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.8.31-dogfood.1",
+      "apkName": "V_IME-v1.8.31-dogfood.1-debug.apk",
+      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.8.31-dogfood.1/V_IME-v1.8.31-dogfood.1-debug.apk",
+      "apkSha256": "dd4e03da525dab221168d846b1545372222129db4d9884275221d695e9b038db",
       "certificateSha256": "4513e5bc726058d40be6020e1bbfc2d0c0fbf4e81d3b04a393cba394cd195059",
       "mandatory": false,
       "minSupportedVersionCode": 1
