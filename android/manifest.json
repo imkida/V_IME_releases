@@ -1,17 +1,17 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-10-20T14:12:52.926707Z",
+  "generatedAt": "2026-10-20T16:26:26.126479Z",
   "packageName": "com.vime.android",
   "channels": {
     "debug": {
-      "versionName": "1.9.0-dogfood.1",
-      "versionCode": 331,
-      "title": "v1.9.0-dogfood.1 — 弱网听写与续接修正联合公测",
-      "summary": "公开Debug联合公测版。改进已握手Message听写遇到指定网络读写错误时的整段录音保全，并在停录后云终稿超时或指定网络错误时按既有资格尝试本地识别；修复整理续接时多补句号。保留完整键盘、双预测和本地识别运行时，仅arm64，模型仍在App内下载。真实弱网体验与本地缺少整理配置路径仍待消费者验证，键盘性能目标尚未达成；不代表稳定Release。只能同Debug签名覆盖升级，不卸载或清数据，Debug/Release不可混装。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.9.0-dogfood.1",
-      "apkName": "V_IME-v1.9.0-dogfood.1-debug.apk",
-      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.9.0-dogfood.1/V_IME-v1.9.0-dogfood.1-debug.apk",
-      "apkSha256": "ebecaf46b692971bc7662837a1875a989b718c3f993f5226ffb35299778d80b5",
+      "versionName": "1.9.2-dogfood.1",
+      "versionCode": 333,
+      "title": "v1.9.2-dogfood.1 — 上下文整理与弱网恢复联合公测",
+      "summary": "公开Debug联合公测版。统一纳入上下文整理、续接标点与换行修正，补齐Message听写握手及传输异常后的保全和恢复，优化键盘拼写路径。保留完整键盘、双预测、翻译和本地语音识别运行时；仅arm64，模型仍需在App内下载。本地识别缺少整理配置的路径仍待实际使用验证，键盘性能目标尚未达成；不代表稳定Release。只能同Debug签名覆盖升级，不卸载或清数据，Debug/Release不可混装。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.9.2-dogfood.1",
+      "apkName": "V_IME-v1.9.2-dogfood.1-debug.apk",
+      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.9.2-dogfood.1/V_IME-v1.9.2-dogfood.1-debug.apk",
+      "apkSha256": "5a417c52a97d6cd5b8655eb81e44e1cfd3cb92989e7e41c3d441bf6579a75ca6",
       "certificateSha256": "4513e5bc726058d40be6020e1bbfc2d0c0fbf4e81d3b04a393cba394cd195059",
       "mandatory": false,
       "minSupportedVersionCode": 1
