@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
 
-import { embeddedChannelSlot, readPublishedChannelFromBundle, readPublishedPage, syncDownloadPage } from './sync-download-page.mjs';
+import { embeddedChannelSlot, readPublishedChannelFromBundle, readPublishedPage, refreshAndroidPage, syncDownloadPage } from './sync-download-page.mjs';
 import { assertConsistentBuildIdentity } from './update-manifest.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
@@ -249,6 +249,50 @@ test('release JSON drift fails the read-only check and is repaired by sync', () 
     assert.equal(readFileSync(publicJson, 'utf8'), stale, '--check must not write');
     syncDownloadPage({ repoRoot: sandbox });
     assert.equal(readFileSync(publicJson, 'utf8'), readFileSync(path.join(ROOT, 'macos', 'manifest.json'), 'utf8'));
+    assert.equal(syncDownloadPage({ repoRoot: sandbox, check: true }).changed, false);
+  } finally {
+    rmSync(sandbox, { recursive: true, force: true });
+  }
+});
+
+test('Android page carries the canonical Android download data', () => {
+  const manifest = JSON.parse(readFileSync(path.join(ROOT, 'android', 'manifest.json'), 'utf8'));
+  const html = readFileSync(path.join(ROOT, 'docs', 'android', 'index.html'), 'utf8');
+  for (const name of ['release', 'debug']) {
+    const channel = manifest.channels[name];
+    assert.ok(html.includes(`data-android="${name}:apk" href="${channel.apkUrl}"`), `${name} download link`);
+    assert.ok(html.includes(`data-android="${name}:sha" data-copy="${channel.apkSha256}"`), `${name} checksum`);
+  }
+  assert.equal(refreshAndroidPage(html, manifest), html);
+  assert.throws(() => refreshAndroidPage(html.replace('data-android="debug:apk"', 'data-android="beta:apk"'), manifest),
+    /no channels\.beta/);
+});
+
+test('an Android release refreshes the Android page without a second command', () => {
+  const sandbox = mkdtempSync(path.join(tmpdir(), 'vime-release-android-page.'));
+  try {
+    seedSandbox(sandbox, readPublishedPage(ROOT));
+    mkdirSync(path.join(sandbox, 'android'));
+    mkdirSync(path.join(sandbox, 'docs', 'android'));
+    writeFileSync(path.join(sandbox, 'android', 'manifest.json'), readFileSync(path.join(ROOT, 'android', 'manifest.json')));
+    writeFileSync(path.join(sandbox, 'docs', 'android', 'index.html'), readFileSync(path.join(ROOT, 'docs', 'android', 'index.html')));
+    mkdirSync(path.join(sandbox, 'scripts'));
+    for (const name of ['update-manifest.mjs', 'sync-download-page.mjs']) {
+      writeFileSync(path.join(sandbox, 'scripts', name), readFileSync(path.join(ROOT, 'scripts', name)));
+    }
+    const apkUrl = 'https://example.com/android/V_IME-v9.9.9-dogfood.1-debug.apk';
+    const result = spawnSync(process.execPath, [realpathSync(path.join(sandbox, 'scripts', 'update-manifest.mjs')),
+      '--platform', 'android', '--channel', 'debug', '--version-name', '9.9.9-dogfood.1', '--version-code', '999',
+      '--title', 'v9.9.9-dogfood.1 — 合成网页同步', '--summary', 'Synthetic release metadata test', '--tag', 'android-v9.9.9-dogfood.1',
+      '--asset-name', 'V_IME-v9.9.9-dogfood.1-debug.apk', '--asset-url', apkUrl, '--sha256', 'a'.repeat(64),
+      '--certificate-sha256', 'b'.repeat(64)],
+    { encoding: 'utf8', cwd: sandbox });
+    assert.equal(result.status, 0, result.stderr);
+    assert.match(result.stdout, /Synced website pages/);
+    const html = readFileSync(path.join(sandbox, 'docs', 'android', 'index.html'), 'utf8');
+    assert.ok(html.includes(`data-android="debug:apk" href="${apkUrl}"`));
+    assert.ok(html.includes('data-android="debug:version">v9.9.9<'));
+    assert.ok(html.includes('data-android="debug:title">合成网页同步<'));
     assert.equal(syncDownloadPage({ repoRoot: sandbox, check: true }).changed, false);
   } finally {
     rmSync(sandbox, { recursive: true, force: true });

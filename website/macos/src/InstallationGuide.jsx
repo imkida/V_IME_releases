@@ -1,98 +1,131 @@
 import appIconUrl from '../public/assets/app-icon-preview.svg?url';
-import { useState } from 'react';
-import {
-  AppStoreLogo, ArrowClockwise, ArrowRight, CaretRight, Check, Command, Cursor,
-  Folder, GearSix, Microphone, ShieldCheck
-} from '@phosphor-icons/react';
-import './InstallationGuide.css';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { ArrowClockwise, CaretLeft, CaretRight, Check } from '@phosphor-icons/react';
+import { useTimeline, useVisible } from './hooks';
 
 const steps = [
-  { title: '安装并启动', window: 'Vime 安装', caption: '打开 DMG，拖入 Applications，再从应用程序中启动。' },
-  { title: '允许录音和输入', window: '系统设置', caption: '分别打开麦克风和辅助功能中的 Vime 开关，再回到 Vime。' },
-  { title: '确认服务配置', window: 'Vime 设置', caption: '默认服务可直接试用；有自己的 API Key 再填写。' },
-  { title: '用右 ⌘ 输入', window: '给团队的消息', caption: '点进输入框，按住右 Command 说话，松开后写入。' }
+  { title: '安装并启动', caption: '打开 DMG，拖入 Applications，再从应用程序中启动。', duration: 5000 },
+  { title: '允许录音和输入', caption: '分别打开麦克风和辅助功能中的 Vime 开关，再回到 Vime。', duration: 5400 },
+  { title: '确认服务配置', caption: '默认服务可直接试用；有自己的 API Key 再填写。', duration: 5600 },
+  { title: '用右 ⌘ 输入', caption: '点进输入框，按住右 Command 说话，松开后写入。', duration: 6400 }
+];
+const Icon = () => <img className="appicon" src={appIconUrl} alt=""/>;
+const Pointer = () => <div className="cur"><svg viewBox="0 0 24 24"><path d="M5 3l14 8.2-6.2 1.3L9.4 19z" fill="#111" stroke="#fff" strokeWidth="1.4" strokeLinejoin="round"/></svg></div>;
+const Bar = ({ title }) => <div className="bar"><span className="dots"><i/><i/><i/></span><span className="t">{title}</span></div>;
+// Menu-bar glyph follows the bar's text colour.
+const MenuMark = () => <svg className="vm" viewBox="18 46 144 134" fill="currentColor" aria-hidden="true">
+  {[[18,52,44],[39,62,60],[60,72,76],[108,72,76],[129,62,60],[150,52,44]].map(([x, y, h]) => <rect key={x} x={x} y={y} width="12" height={h} rx="6"/>)}
+  <rect x="82" y="72" width="16" height="108" rx="8"/><circle cx="90" cy="56" r="10"/>
+</svg>;
+const dictation = [
+  [null, '准备说话'],
+  [<i className="rd" key="rec"/>, '正在听写'],
+  [<span className="dt" key="dots"><i style={{ '--k': 0 }}/><i style={{ '--k': 1 }}/><i style={{ '--k': 2 }}/></span>, '正在整理'],
+  [<Check key="ok"/>, '已写入']
 ];
 
-export function MenuBarGuide({ historyHint = false }) {
-  return <figure className={'menu-entry' + (historyHint ? ' history-hint' : '')}>
-    <figcaption>{historyHint ? '从菜单栏打开「历史」' : '启动后，在菜单栏找到 Vime'}</figcaption>
-    <div className="menu-entry-picture" role="img" aria-label="点击屏幕顶部菜单栏的 Vime 图标，展开的面板底部有历史、设置和退出入口。">
-      <div className="menu-entry-bar"><span>菜单栏</span><span className="menu-entry-trigger"><span className="menu-entry-logo" aria-hidden="true"/></span></div>
-      <div className="menu-entry-popover"><span className={historyHint ? 'highlight' : ''}>历史</span><span className={!historyHint ? 'highlight' : ''}>设置</span><span>退出</span></div>
+function Scenes({ step, typing }) {
+  return <>
+    <div className={'sv s1' + (step === 0 ? ' on' : '')}>
+      <div className="mwin" style={{ left: '10%', top: '10%', width: '80%', height: '80%' }}><Bar title="Vime 安装"/></div>
+      <div className="ico" style={{ left: '30%', top: '42%' }}><Icon/><span>Vime</span></div>
+      <div className="arrow" style={{ left: '50%', top: '40%' }}><svg viewBox="0 0 50 30"><path d="M4 15h40m-10-9 10 9-10 9" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>拖入</div>
+      <div className="ico" style={{ left: '69%', top: '42%' }}><div className="folder">A</div><span>Applications</span></div>
+      <div className="check" style={{ left: '74%', top: '35%' }}><Check weight="bold"/></div>
+      <div className="launch"><span>应用程序</span><span>›</span><Icon/><span>Vime</span><span className="tag">双击启动</span></div>
+      <div className="ghost"><Icon/></div>
+      <span className="click a"/><span className="click b"/><Pointer/>
     </div>
-  </figure>;
-}
-
-function InstallScene() {
-  return <div className="install-scene" role="img" aria-label="将左侧 Vime 应用拖到右侧 Applications 文件夹，然后从应用程序中启动。">
-    <div className="install-drag-row" aria-hidden="true">
-      <div className="install-item"><img className="install-app" src={appIconUrl} alt=""/><span>Vime</span></div>
-      <div className="install-direction"><ArrowRight size={31} weight="light"/><span>拖入</span></div>
-      <div className="install-item install-destination"><span className="install-folder"><Folder size={72} weight="fill"/><AppStoreLogo className="folder-app-mark" size={28}/><Check className="install-done" size={21} weight="bold"/></span><span>Applications</span></div>
-      <div className="install-drag-copy"><img src={appIconUrl} alt=""/><Cursor size={24} weight="fill"/></div>
-    </div>
-    <div className="install-launch" aria-hidden="true"><Folder size={15}/><span>应用程序</span><CaretRight size={12}/><img src={appIconUrl} alt=""/><span>Vime</span><span className="install-launch-label">双击启动</span></div>
-  </div>;
-}
-
-function PermissionScene() {
-  return <div className="permission-scene" role="img" aria-label="在系统设置的隐私与安全性中，分别进入麦克风和辅助功能，开启各自的 Vime 开关。">
-    <div className="guide-location" aria-hidden="true"><ShieldCheck size={15}/>隐私与安全性</div>
-    <div className="permission-pages" aria-hidden="true">
-      {[{ name: '麦克风', purpose: '录音', Icon: Microphone }, { name: '辅助功能', purpose: '输入文字', Icon: ShieldCheck }].map(({ name, purpose, Icon }) => <div className="permission-page" key={name}>
-        <div className="permission-page-title"><span><Icon size={14}/>{name}</span><small>{purpose}</small></div>
-        <div className="permission-app"><img src={appIconUrl} alt=""/><span>Vime</span><span className="permission-toggle"><i/></span></div>
-      </div>)}
-    </div>
-  </div>;
-}
-
-function ServiceScene() {
-  return <div className="service-scene" role="img" aria-label="从菜单栏打开设置，确认默认云端服务；个人 API Key 为可选项，保存后优先使用个人服务。">
-    <div className="guide-location" aria-hidden="true"><GearSix size={15}/>服务配置</div>
-    <div className="guide-service-ready" aria-hidden="true"><span className="guide-ready-icon"><Check size={17} weight="bold"/></span><div><strong>默认云端服务</strong><span>可直接试用</span></div></div>
-    <div className="guide-personal-service" aria-hidden="true">
-      <div className="guide-field-label">个人服务密钥<span>可选</span></div>
-      <div className="guide-key-field"><span><small>API Key</small>••••••••••••</span><span className="guide-save-key">保存</span></div>
-      <div className="guide-key-note"><ArrowRight size={13}/>保存后优先使用个人服务</div>
-    </div>
-  </div>;
-}
-
-function DictationScene() {
-  return <div className="guide-dictation" role="img" aria-label="先点进输入框，按住右 Command 说话，松开后，Vime 将明天的评审改到下午三点写入输入框。">
-    <div className="guide-gesture" aria-hidden="true">
-      <kbd className="guide-command"><small>command</small><Command size={28}/><span>右</span></kbd>
-      <div className="guide-hold"><span className="guide-wave">{[11,21,16,30,23,34,19,27,14,22,12].map((height,index) => <i key={index} style={{ '--height': height + 'px', '--delay': index * -.07 + 's' }}/>)}</span><span>按住说话</span></div>
-      <ArrowRight className="guide-release-arrow" size={21}/><span className="guide-release">松开</span>
-    </div>
-    <div className="guide-message" aria-hidden="true"><p>明天的评审改到下午三点。</p><span><Check size={14}/>已写入</span></div>
-  </div>;
-}
-
-const scenes = [InstallScene, PermissionScene, ServiceScene, DictationScene];
-
-export default function InstallationGuide({ step, onStepChange, open }) {
-  const [replay, setReplay] = useState(0);
-  const Scene = scenes[step];
-  return <div className="guide-layout">
-    <div className="guide-steps" role="tablist" aria-label="安装步骤" aria-orientation="vertical">
-      {steps.map((item, index) => <button type="button" role="tab" id={'guide-step-' + index} aria-label={index === 3 ? '04 用右 Command 输入' : undefined} aria-controls="guide-step-panel" aria-selected={step === index} tabIndex={step === index ? 0 : -1} className={'step' + (step === index ? ' active' : '')} key={item.title} onClick={() => onStepChange(index)} onKeyDown={event => {
-        let next;
-        if (event.key === 'ArrowDown' || event.key === 'ArrowRight') next = (index + 1) % steps.length;
-        if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') next = (index + steps.length - 1) % steps.length;
-        if (event.key === 'Home') next = 0;
-        if (event.key === 'End') next = steps.length - 1;
-        if (next !== undefined) { event.preventDefault(); onStepChange(next); event.currentTarget.parentNode.children[next].focus(); }
-      }}><span>{String(index + 1).padStart(2,'0')}</span>{item.title}<ArrowRight size={15}/></button>)}
-    </div>
-    <MenuBarGuide/>
-    <div className="guide-detail" role="tabpanel" id="guide-step-panel" aria-labelledby={'guide-step-' + step} tabIndex={0}>
-      <div className="guide-window">
-        <div className="guide-window-bar"><span className="window-dots" aria-hidden="true"><i/><i/><i/></span><span>{steps[step].window}</span><span className="guide-window-tag">操作示意</span></div>
-        <div className="guide-window-content" key={step + '-' + replay + '-' + open}>{open && <Scene/>}</div>
+    <div className={'sv s2' + (step === 1 ? ' on' : '')}>
+      <div className="mwin" style={{ left: '6%', top: '8%', width: '88%', height: '86%' }}><Bar title="系统设置"/>
+        <div className="side"><span>通用</span><span>外观</span><span>通知</span><span className="hl">隐私与安全性</span><span>键盘</span></div>
       </div>
-      <div className="guide-caption"><p>{steps[step].caption}</p>{step !== 2 && <button type="button" className="guide-replay" onClick={() => setReplay(value => value + 1)} aria-label="重播操作示意"><ArrowClockwise size={15}/><span>重播</span></button>}</div>
+      <div className="pane">
+        <h4>隐私与安全性</h4>
+        <div className="pcard"><div className="ph"><span>麦克风</span><span>录音</span></div><div className="prow"><Icon/>Vime<span className="tog t1"/></div></div>
+        <div className="pcard"><div className="ph"><span>辅助功能</span><span>输入文字</span></div><div className="prow"><Icon/>Vime<span className="tog t2"/></div></div>
+      </div>
+      <div className="backhint"><Check/>两个开关都打开后，回到 Vime</div>
+      <span className="click a"/><span className="click b"/><Pointer/>
     </div>
-  </div>;
+    <div className={'sv s3' + (step === 2 ? ' on' : '')}>
+      <div className="mbar"><b/><span>访达</span><span>文件</span><span>编辑</span><span className="r"><span>Wi‑Fi</span><MenuMark/><span>周二 10:24</span></span></div>
+      <div className="pop"><div className="hd"><i/>Vime 已就绪</div><span className="it">历史</span><span className="it set">设置</span><span className="it">退出</span></div>
+      <div className="mwin swin"><Bar title="Vime 设置 · 服务配置"/>
+        <div className="in">
+          <div className="ready"><span className="ck"><Check weight="bold"/></span><div><b>默认云端服务</b><small>可直接试用</small></div></div>
+          <div className="kfield"><div className="lb"><span>个人服务密钥</span><span>可选</span></div><div className="v"><code>••••••••••••</code><span className="save">保存</span></div></div>
+          <div className="knote">→ 保存后优先使用个人服务</div>
+        </div>
+      </div>
+      <span className="click a"/><span className="click b"/><span className="click c"/><Pointer/>
+    </div>
+    <div className={'sv s4' + (step === 3 ? ' on' : '')}>
+      <div className="mwin twin"><Bar title="给团队的消息"/>
+        <div className="txt"><span className="w">明天的评审改到下午三点，大家提前看一下文档。</span><i className="caret"/></div>
+        <div className="tstat sline"><span className="st">{dictation[typing][0]}</span><span>{dictation[typing][1]}</span></div>
+      </div>
+      <div className="kc"><small>右</small>⌘</div>
+      <span className="click a"/><Pointer/>
+    </div>
+  </>;
+}
+
+export default function InstallationGuide({ open, reduced }) {
+  const screen = useRef(null);
+  const visible = useVisible(screen, .35);
+  const advance = useTimeline(), status = useTimeline();
+  const [step, setStep] = useState(0);
+  const [run, setRun] = useState(0);
+  const [typing, setTyping] = useState(3);
+  const playing = open && visible && !reduced;
+  const go = next => { setStep((next + steps.length) % steps.length); setRun(value => value + 1); };
+
+  useEffect(() => { if (playing) setRun(value => value + 1); }, [playing]);
+  useEffect(() => {
+    advance.clear();
+    if (playing) advance.later(() => go(step + 1), steps[step].duration + 1100);
+  }, [step, run, playing]);
+  // Step 4's status line follows the key press: listening, organizing, written.
+  useEffect(() => {
+    status.clear();
+    if (step !== 3 || !playing) { setTyping(3); return; }
+    setTyping(0);
+    [.26, .63, .9].forEach((at, index) => status.later(() => setTyping(index + 1), steps[3].duration * at));
+  }, [step, run, playing]);
+  // Point the cursor at the real toggles, wherever the layout put them.
+  useLayoutEffect(() => {
+    if (step !== 1) return;
+    const box = screen.current.getBoundingClientRect();
+    ['.t1', '.t2'].forEach((selector, index) => {
+      const toggle = screen.current.querySelector('.s2 ' + selector).getBoundingClientRect();
+      screen.current.style.setProperty('--x' + (index + 1), ((toggle.left + toggle.width * .7 - box.left) / box.width * 100).toFixed(2) + '%');
+      screen.current.style.setProperty('--y' + (index + 1), ((toggle.top + toggle.height / 2 - box.top) / box.height * 100).toFixed(2) + '%');
+    });
+  }, [step, run]);
+
+  return <>
+    <div className="gsteps" role="tablist" aria-label="安装步骤">
+      {steps.map((item, index) => <button key={item.title} type="button" role="tab" aria-selected={index === step} tabIndex={index === step ? 0 : -1}
+        className={index < step ? 'done' : index === step && playing ? 'run' : undefined} style={{ '--dur': item.duration + 'ms' }}
+        onClick={() => go(index)}
+        onKeyDown={event => {
+          const delta = ['ArrowRight', 'ArrowDown'].includes(event.key) ? 1 : ['ArrowLeft', 'ArrowUp'].includes(event.key) ? -1 : 0;
+          if (delta) { event.preventDefault(); go(index + delta); event.currentTarget.parentNode.children[(index + delta + steps.length) % steps.length].focus(); }
+        }}>
+        <span className="rg"><svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="16"/><circle className="fg" cx="18" cy="18" r="16" key={index === step ? run : 'idle'}/></svg><span className="n">{index + 1}</span></span>
+        <b>{item.title}</b>
+      </button>)}
+    </div>
+    <div className="scr" ref={screen} role="img" aria-label={'操作示意：' + steps[step].caption}>
+      <div className="play" key={run} style={{ position: 'absolute', inset: 0 }}><Scenes step={step} typing={typing}/></div>
+    </div>
+    <div className="ghint"><span>{steps[step].caption}</span>
+      <span className="ctrls">
+        <button type="button" aria-label="上一步" onClick={() => go(step - 1)}><CaretLeft/></button>
+        <button type="button" aria-label="重播这一步" onClick={() => go(step)}><ArrowClockwise/></button>
+        <button type="button" aria-label="下一步" onClick={() => go(step + 1)}><CaretRight/></button>
+      </span>
+    </div>
+  </>;
 }

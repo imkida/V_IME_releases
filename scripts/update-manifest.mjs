@@ -54,8 +54,9 @@ async function main() {
       mkdirSync(dirname(config.manifestPath), { recursive: true });
       writeFileSync(config.manifestPath, output, 'utf8');
       console.log(`Updated ${relativeToRoot(config.manifestPath)}`);
-      if (config.platform === 'macos' && config.channel === 'beta'
-          && config.manifestPath === join(repoRoot, 'macos', 'manifest.json')) {
+      const canonical = join(repoRoot, config.platform, 'manifest.json');
+      if (config.manifestPath === canonical
+          && ((config.platform === 'macos' && config.channel === 'beta') || config.platform === 'android')) {
         const page = syncDownloadPage({ repoRoot });
         console.log(page.changed ? 'Synced website pages, source snapshot and download metadata'
           : 'Website already matches this release');

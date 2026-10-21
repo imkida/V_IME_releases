@@ -42,6 +42,9 @@ class WebsiteSyncTests(unittest.TestCase):
         keys = list(files)
         self.assertTrue(all(keys.index(key) < keys.index("release.json") for key in assets))
         self.assertLess(keys.index("release.json"), keys.index("index.html"))
+        # The Android page ships with the keyboard screenshots it references.
+        self.assertIn("android/index.html", files)
+        self.assertTrue({"macos/assets/kb-voice.png", "macos/assets/kb-pinyin.png"} <= set(files))
 
     def test_metadata_drift_and_external_symlink_abort_before_cloud_access(self):
         with tempfile.TemporaryDirectory(prefix="vime-website-plan-") as temporary:

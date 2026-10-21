@@ -101,8 +101,15 @@ export function syncDownloadPage({ repoRoot: root, channel: channelName = 'beta'
     || readFileSync(rootManifestPath, 'utf8') !== manifestText;
   if (rootHtmlChanged) messages.push('  root homepage differs from the macOS page');
   if (rootManifestChanged) messages.push('  root release.json differs from macos/manifest.json');
+  // The Android page bakes its download data into HTML from android/manifest.json.
+  const androidHtmlPath = join(root, 'docs', 'android', 'index.html');
+  const androidHtml = existsSync(androidHtmlPath) ? readFileSync(androidHtmlPath, 'utf8') : null;
+  const nextAndroidHtml = androidHtml === null ? null
+    : refreshAndroidPage(androidHtml, JSON.parse(readFileSync(join(root, 'android', 'manifest.json'), 'utf8')));
+  const androidChanged = nextAndroidHtml !== androidHtml;
+  if (androidChanged) messages.push('  Android page differs from android/manifest.json');
   const changed = nextBundle !== bundle || nextHtml !== html || manifestChanged
-    || rootHtmlChanged || rootManifestChanged || sourceChanged;
+    || rootHtmlChanged || rootManifestChanged || sourceChanged || androidChanged;
 
   if (changed && !check) {
     writeFileSync(nextBundlePath, nextBundle, 'utf8');
@@ -112,9 +119,40 @@ export function syncDownloadPage({ repoRoot: root, channel: channelName = 'beta'
     writeFileSync(rootManifestPath, manifestText, 'utf8');
     writeFileSync(sourceManifestPath, manifestText, 'utf8');
     writeFileSync(sourceHtmlPath, nextSourceHtml, 'utf8');
+    if (androidChanged) writeFileSync(androidHtmlPath, nextAndroidHtml, 'utf8');
   }
 
   return { changed, check, messages, htmlPath, bundlePath: nextBundlePath, publishedManifestPath, rootHtmlPath };
+}
+
+// Elements carry data-android="<channel>:<field>"; fields are apk (href), sha (data-copy),
+// version and title (text). Unknown channels fail instead of leaving stale download data.
+export function refreshAndroidPage(html, manifest) {
+  const channel = name => {
+    const value = manifest.channels?.[name];
+    if (!value) throw new Error(`android/manifest.json has no channels.${name} for the Android page`);
+    return value;
+  };
+  const escape = text => text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  const fields = {
+    apk: value => value.apkUrl,
+    sha: value => value.apkSha256,
+    // Public pages name the build by its release number; the channel tag stays in the download.
+    version: value => 'v' + value.versionName.replace(/-dogfood\.\d+$/, ''),
+    title: value => value.title.split(' — ').slice(1).join(' — ') || value.title
+  };
+  let found = 0;
+  const next = html
+    .replace(/(data-android="(\w+):(apk|sha)" (?:href|data-copy)=")[^"]*(")/g, (_, head, name, field, tail) => {
+      found += 1; return head + escape(fields[field](channel(name))) + tail;
+    })
+    .replace(/(data-android="(\w+):(version|title)">)[^<]*(<)/g, (_, head, name, field, tail) => {
+      found += 1; return head + escape(fields[field](channel(name))) + tail;
+    });
+  if (found !== (html.match(/data-android="/g) ?? []).length) {
+    throw new Error('docs/android/index.html has a data-android marker the sync does not understand');
+  }
+  return next;
 }
 
 function refreshEmbeddedManifest(bundle, manifest, channel, messages) {

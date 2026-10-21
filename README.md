@@ -54,6 +54,8 @@ V_IME_releases/
 │   └── manifest.json               # 安装包本体走 Release asset / OSS，不进 Git
 ├── website/macos/                 # Recoverable website source, lock and display tests
 ├── docs/
+│   ├── android/
+│   │   └── index.html              # Android 下载单页，下载数据由 android/manifest.json 同步
 │   ├── macos/
 │   │   ├── index.html              # macOS 公测下载与更新说明页
 │   │   ├── assets/                 # 该页构建产物（含内置 manifest 快照）
@@ -201,6 +203,8 @@ https://raw.githubusercontent.com/imkida/V_IME_releases/main/android/manifest.js
 同包名不同签名不可在同一台设备共存。Debug 和 Release 都使用 `applicationId = com.vime.android`，但签名指纹不同；强行覆盖会被系统拒绝，部分系统安装器会引导卸载重装，导致 DataStore、历史记录、用户词库与 Android Keystore 中的 API Key 全部丢失。
 
 需要在 Debug 与 Release 之间切换时，先用 App 内「配置导出」备份，再卸载重装并重新导入。
+
+官网 Android 单页 `docs/android/index.html` 的版本、标题、下载地址与 SHA-256 来自同一份 `android/manifest.json`：`npm run release:manifest -- --platform android ...` 写入清单后自动刷新该页，不需要第二条命令；直接修改清单后用 `npm run release:page` 同步，`-- --check` 发现漂移时失败。
 
 ## Android 端侧语音模型分发
 
@@ -350,7 +354,7 @@ Vime 是一款智能语音输入法：说完即得可直接使用的文字，同
 
 ## macOS 下载主页
 
-`docs/index.html` 是域名根主页，`docs/macos/index.html` 保留原 macOS 地址，两者使用同一份构建资源。GitHub Pages 从 `main:/docs` 发布。网页从所在站点的 `./release.json` 读取当前版本，网络不可用时保留构建快照并提示；不依赖 GitHub raw。
+`docs/index.html` 是域名根主页，`docs/macos/index.html` 保留原 macOS 地址，两者使用同一份构建资源。`docs/android/index.html` 是 Android 独立单页（静态页面，键盘截图位于 `macos/assets/`），页头可在 Mac / Android 之间切换。GitHub Pages 从 `main:/docs` 发布。网页从所在站点的 `./release.json` 读取当前版本，网络不可用时保留构建快照并提示；不依赖 GitHub raw。
 
 发布命令已自动刷新公开 JSON、内置快照和无脚本下载链接。修改官网源码或直接编辑清单后，可使用现有同步入口；发布前仍需只读一致性检查：
 

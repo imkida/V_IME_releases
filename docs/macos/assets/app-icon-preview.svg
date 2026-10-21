@@ -10,7 +10,7 @@
       <rect x="150" y="52" width="12" height="44" rx="6" />
     </g>
     <g fill="#4A7CFF">
-      <circle cx="90" cy="58" r="8" fill="#E5484D" />
+      <circle cx="90" cy="56" r="10" fill="#E5484D" />
       <rect x="82" y="72" width="16" height="108" rx="8" />
     </g>
   </g>
