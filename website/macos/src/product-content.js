@@ -32,18 +32,20 @@ export const modes = [
 export const originalText = '那个，明天下午三点咱们过一下方案吧，文档我会提前发，主要看一下登录流程，支付这块这次先不看。';
 export const outputStyles = [
   {
-    name: '智能整理', short: '理清表达',
+    name: '智能整理', short: '理清表达', busy: '正在整理',
     output: '明天下午三点过一下方案，主要看登录流程，这次先不看支付。文档我会提前发。',
     focus: '主要看登录流程，这次先不看支付。'
   },
   {
-    name: '保留语气', short: '轻微修正',
+    name: '保留语气', short: '轻微修正', busy: '正在修正',
     output: '明天下午三点咱们过一下方案吧。文档我会提前发，主要看一下登录流程，支付这块这次先不看。',
     focus: '咱们过一下方案吧。'
   },
   {
-    name: '逐字稿', short: '保留原文',
+    name: '逐字稿', short: '保留原文', busy: '正在处理',
     output: originalText,
     focus: ''
   }
 ];
+
+export const appNames = ['飞书', '微信', 'Slack', 'Chrome', 'Safari', 'Notion', 'VS Code', '终端', '邮件', '备忘录'];

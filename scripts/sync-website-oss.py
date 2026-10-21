@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parent.parent
 BUCKET = "vime-official-site-cn-hangzhou"
 REGION = "cn-hangzhou"
 HOSTS = ("vimebot.ai", "www.vimebot.ai", "vimebot.com", "www.vimebot.com")
-PAGES = ("index.html", "macos/index.html", "privacy/index.html",
+PAGES = ("index.html", "macos/index.html", "android/index.html", "privacy/index.html",
          "support/index.html", "macos/privacy/index.html", "macos/support/index.html")
 FIXED = (*PAGES, "release.json", "macos/release.json",
          "macos/assets/app-icon-preview.svg", "macos/assets/logo-monochrome.svg")
