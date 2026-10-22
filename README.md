@@ -211,12 +211,12 @@ https://raw.githubusercontent.com/imkida/V_IME_releases/main/android/manifest.js
 
 现有 Release 300 / Debug 333 的 App 内检查更新仍为 GitHub 单源（清单与 APK），不会识别官网的 `apkOssUrl` 或自动切换下载源；本次官网分发调整不改变已安装 App 的行为。
 
-App 更新源候选使用 `https://vimebot.com/android/manifest.json` 为主、GitHub raw 为备，APK 仍由
+支持主备更新的新 App 使用 `https://vimebot.com/android/manifest.json` 为主、GitHub raw 为备，APK 仍由
 `apkOssUrl` / `apkUrl` 提供同一版本的主备地址。此目录的公开 JSON 由同一次 `release:page`
 从 canonical `android/manifest.json` 按字节生成，现有 Website sync 负责发布及四域名读回；
 新清单对象必须先单独授权官网发布角色对 `acs:oss:*:*:vime-official-site-cn-hangzhou/android/manifest.json`
 执行原有 `oss:GetObject`、`oss:PutObject`、`oss:PutObjectAcl` 三动作，不能放宽整个目录或桶。
-本次仅准备该接线候选，未更改云权限或部署，也未发布含新更新策略的 App。
+清单镜像的部署与 Android 新版本发布独立；旧 App 不会因官网同步而自动获得新的更新策略。
 
 ## Android 端侧语音模型分发
 
