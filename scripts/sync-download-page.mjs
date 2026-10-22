@@ -125,17 +125,32 @@ export function syncDownloadPage({ repoRoot: root, channel: channelName = 'beta'
   return { changed, check, messages, htmlPath, bundlePath: nextBundlePath, publishedManifestPath, rootHtmlPath };
 }
 
-// Elements carry data-android="<channel>:<field>"; fields are apk (href), sha (data-copy),
+// Elements carry data-android="<channel>:<field>"; fields are apk/mirror (href), sha (data-copy),
 // version and title (text). Unknown channels fail instead of leaving stale download data.
+export function assertAndroidDownloadSources(name, value) {
+  if (!value.apkOssUrl) throw new Error(`channels.${name}.apkOssUrl is required for the Android page`);
+  if (!Number.isSafeInteger(value.versionCode) || value.versionCode < 1) {
+    throw new Error(`channels.${name}.versionCode must be a positive safe integer`);
+  }
+  const apkName = `V_IME-v${value.versionName}-${name}.apk`;
+  const github = `https://github.com/imkida/V_IME_releases/releases/download/android-v${encodeURIComponent(value.versionName)}/${encodeURIComponent(apkName)}`;
+  const oss = `https://vimebot.com/downloads/android/${encodeURIComponent(value.versionName)}/${value.versionCode}/${encodeURIComponent(apkName)}`;
+  if (value.apkName !== apkName || value.apkUrl !== github || value.apkOssUrl !== oss) {
+    throw new Error(`channels.${name} APK name, GitHub backup and OSS primary must match this version and channel`);
+  }
+}
+
 export function refreshAndroidPage(html, manifest) {
   const channel = name => {
     const value = manifest.channels?.[name];
     if (!value) throw new Error(`android/manifest.json has no channels.${name} for the Android page`);
+    assertAndroidDownloadSources(name, value);
     return value;
   };
   const escape = text => text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   const fields = {
-    apk: value => value.apkUrl,
+    apk: value => value.apkOssUrl,
+    mirror: value => value.apkUrl,
     sha: value => value.apkSha256,
     // Public pages name the build by its release number; the channel tag stays in the download.
     version: value => 'v' + value.versionName.replace(/-dogfood\.\d+$/, ''),
@@ -143,7 +158,7 @@ export function refreshAndroidPage(html, manifest) {
   };
   let found = 0;
   const next = html
-    .replace(/(data-android="(\w+):(apk|sha)" (?:href|data-copy)=")[^"]*(")/g, (_, head, name, field, tail) => {
+    .replace(/(data-android="(\w+):(apk|mirror|sha)" (?:href|data-copy)=")[^"]*(")/g, (_, head, name, field, tail) => {
       found += 1; return head + escape(fields[field](channel(name))) + tail;
     })
     .replace(/(data-android="(\w+):(version|title)">)[^<]*(<)/g, (_, head, name, field, tail) => {
