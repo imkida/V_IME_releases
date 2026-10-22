@@ -300,6 +300,8 @@ test('an Android release refreshes the Android page without a second command', (
     assert.ok(html.includes(`data-android="debug:mirror" href="${apkUrl}"`));
     assert.ok(html.includes('data-android="debug:version">v9.9.9<'));
     assert.ok(html.includes('data-android="debug:title">合成网页同步<'));
+    assert.equal(readFileSync(path.join(sandbox, 'docs/android/manifest.json'), 'utf8'),
+      readFileSync(path.join(sandbox, 'android/manifest.json'), 'utf8'));
     assert.equal(syncDownloadPage({ repoRoot: sandbox, check: true }).changed, false);
   } finally {
     rmSync(sandbox, { recursive: true, force: true });

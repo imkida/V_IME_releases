@@ -44,6 +44,7 @@ class WebsiteSyncTests(unittest.TestCase):
         self.assertLess(keys.index("release.json"), keys.index("index.html"))
         # The Android page ships with the keyboard screenshots it references.
         self.assertIn("android/index.html", files)
+        self.assertEqual(files["android/manifest.json"], (sync.ROOT / "android/manifest.json").read_bytes())
         self.assertTrue({"macos/assets/kb-voice.png", "macos/assets/kb-pinyin.png"} <= set(files))
 
     def test_metadata_drift_and_external_symlink_abort_before_cloud_access(self):
@@ -51,11 +52,18 @@ class WebsiteSyncTests(unittest.TestCase):
             root = Path(temporary)
             shutil.copytree(sync.ROOT / "docs", root / "docs")
             (root / "macos").mkdir()
+            (root / "android").mkdir()
+            shutil.copyfile(sync.ROOT / "android/manifest.json", root / "android/manifest.json")
             shutil.copyfile(sync.ROOT / "macos/manifest.json", root / "macos/manifest.json")
             (root / "docs/release.json").write_text('{}')
             with self.assertRaisesRegex(ValueError, "canonical manifest"):
                 sync.website_files(root)
             shutil.copyfile(root / "macos/manifest.json", root / "docs/release.json")
+            canonical_android = root / "docs/android/manifest.json"
+            canonical_android.write_text('{}')
+            with self.assertRaisesRegex(ValueError, "Android update metadata"):
+                sync.website_files(root)
+            shutil.copyfile(root / "android/manifest.json", canonical_android)
             asset = root / "docs/macos/assets/logo-monochrome.svg"
             asset.unlink()
             asset.symlink_to(root / "macos/manifest.json")

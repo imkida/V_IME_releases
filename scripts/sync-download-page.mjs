@@ -104,12 +104,18 @@ export function syncDownloadPage({ repoRoot: root, channel: channelName = 'beta'
   // The Android page bakes its download data into HTML from android/manifest.json.
   const androidHtmlPath = join(root, 'docs', 'android', 'index.html');
   const androidHtml = existsSync(androidHtmlPath) ? readFileSync(androidHtmlPath, 'utf8') : null;
+  const androidManifestText = androidHtml === null ? null
+    : readFileSync(join(root, 'android', 'manifest.json'), 'utf8');
   const nextAndroidHtml = androidHtml === null ? null
-    : refreshAndroidPage(androidHtml, JSON.parse(readFileSync(join(root, 'android', 'manifest.json'), 'utf8')));
+    : refreshAndroidPage(androidHtml, JSON.parse(androidManifestText));
+  const androidManifestPath = join(root, 'docs', 'android', 'manifest.json');
+  const androidManifestChanged = androidManifestText !== null &&
+    (!existsSync(androidManifestPath) || readFileSync(androidManifestPath, 'utf8') !== androidManifestText);
+  if (androidManifestChanged) messages.push('  Android update manifest differs from android/manifest.json');
   const androidChanged = nextAndroidHtml !== androidHtml;
   if (androidChanged) messages.push('  Android page differs from android/manifest.json');
   const changed = nextBundle !== bundle || nextHtml !== html || manifestChanged
-    || rootHtmlChanged || rootManifestChanged || sourceChanged || androidChanged;
+    || rootHtmlChanged || rootManifestChanged || sourceChanged || androidChanged || androidManifestChanged;
 
   if (changed && !check) {
     writeFileSync(nextBundlePath, nextBundle, 'utf8');
@@ -120,6 +126,7 @@ export function syncDownloadPage({ repoRoot: root, channel: channelName = 'beta'
     writeFileSync(sourceManifestPath, manifestText, 'utf8');
     writeFileSync(sourceHtmlPath, nextSourceHtml, 'utf8');
     if (androidChanged) writeFileSync(androidHtmlPath, nextAndroidHtml, 'utf8');
+    if (androidManifestChanged) writeFileSync(androidManifestPath, androidManifestText, 'utf8');
   }
 
   return { changed, check, messages, htmlPath, bundlePath: nextBundlePath, publishedManifestPath, rootHtmlPath };
