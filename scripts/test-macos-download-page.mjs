@@ -260,12 +260,16 @@ test('Android page carries the canonical Android download data', () => {
   const html = readFileSync(path.join(ROOT, 'docs', 'android', 'index.html'), 'utf8');
   for (const name of ['release', 'debug']) {
     const channel = manifest.channels[name];
-    assert.ok(html.includes(`data-android="${name}:apk" href="${channel.apkUrl}"`), `${name} download link`);
+    assert.ok(html.includes(`data-android="${name}:apk" href="${channel.apkOssUrl}"`), `${name} OSS primary`);
+    assert.ok(html.includes(`data-android="${name}:mirror" href="${channel.apkUrl}"`), `${name} GitHub backup`);
     assert.ok(html.includes(`data-android="${name}:sha" data-copy="${channel.apkSha256}"`), `${name} checksum`);
   }
   assert.equal(refreshAndroidPage(html, manifest), html);
   assert.throws(() => refreshAndroidPage(html.replace('data-android="debug:apk"', 'data-android="beta:apk"'), manifest),
     /no channels\.beta/);
+  const stale = structuredClone(manifest);
+  stale.channels.debug.versionCode += 1;
+  assert.throws(() => refreshAndroidPage(html, stale), /must match this version and channel/);
 });
 
 test('an Android release refreshes the Android page without a second command', () => {
@@ -280,17 +284,20 @@ test('an Android release refreshes the Android page without a second command', (
     for (const name of ['update-manifest.mjs', 'sync-download-page.mjs']) {
       writeFileSync(path.join(sandbox, 'scripts', name), readFileSync(path.join(ROOT, 'scripts', name)));
     }
-    const apkUrl = 'https://example.com/android/V_IME-v9.9.9-dogfood.1-debug.apk';
+    const apkUrl = 'https://github.com/imkida/V_IME_releases/releases/download/android-v9.9.9-dogfood.1/V_IME-v9.9.9-dogfood.1-debug.apk';
+    const apkOssUrl = 'https://vimebot.com/downloads/android/9.9.9-dogfood.1/999/V_IME-v9.9.9-dogfood.1-debug.apk';
     const result = spawnSync(process.execPath, [realpathSync(path.join(sandbox, 'scripts', 'update-manifest.mjs')),
       '--platform', 'android', '--channel', 'debug', '--version-name', '9.9.9-dogfood.1', '--version-code', '999',
       '--title', 'v9.9.9-dogfood.1 — 合成网页同步', '--summary', 'Synthetic release metadata test', '--tag', 'android-v9.9.9-dogfood.1',
       '--asset-name', 'V_IME-v9.9.9-dogfood.1-debug.apk', '--asset-url', apkUrl, '--sha256', 'a'.repeat(64),
+      '--apk-oss-url', apkOssUrl,
       '--certificate-sha256', 'b'.repeat(64)],
     { encoding: 'utf8', cwd: sandbox });
     assert.equal(result.status, 0, result.stderr);
     assert.match(result.stdout, /Synced website pages/);
     const html = readFileSync(path.join(sandbox, 'docs', 'android', 'index.html'), 'utf8');
-    assert.ok(html.includes(`data-android="debug:apk" href="${apkUrl}"`));
+    assert.ok(html.includes(`data-android="debug:apk" href="${apkOssUrl}"`));
+    assert.ok(html.includes(`data-android="debug:mirror" href="${apkUrl}"`));
     assert.ok(html.includes('data-android="debug:version">v9.9.9<'));
     assert.ok(html.includes('data-android="debug:title">合成网页同步<'));
     assert.equal(syncDownloadPage({ repoRoot: sandbox, check: true }).changed, false);

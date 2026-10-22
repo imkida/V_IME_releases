@@ -14,7 +14,8 @@
       "apkSha256": "5a417c52a97d6cd5b8655eb81e44e1cfd3cb92989e7e41c3d441bf6579a75ca6",
       "certificateSha256": "4513e5bc726058d40be6020e1bbfc2d0c0fbf4e81d3b04a393cba394cd195059",
       "mandatory": false,
-      "minSupportedVersionCode": 1
+      "minSupportedVersionCode": 1,
+      "apkOssUrl": "https://vimebot.com/downloads/android/1.9.2-dogfood.1/333/V_IME-v1.9.2-dogfood.1-debug.apk"
     },
     "release": {
       "versionName": "1.8.3-dogfood.1",
@@ -27,7 +28,8 @@
       "apkSha256": "d41711c9fbc83b5df933d7ebcbaaf1548350cac4a36b16c21281db6f082de984",
       "certificateSha256": "1a5177214cd36ccd57126b532442b6e2f74461c9686f9b78b56e79c686afcbe6",
       "mandatory": false,
-      "minSupportedVersionCode": 1
+      "minSupportedVersionCode": 1,
+      "apkOssUrl": "https://vimebot.com/downloads/android/1.8.3-dogfood.1/300/V_IME-v1.8.3-dogfood.1-release.apk"
     }
   }
 }

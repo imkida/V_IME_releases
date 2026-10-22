@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 import { createReadStream, existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { basename, dirname, extname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { syncDownloadPage } from './sync-download-page.mjs';
+import { assertAndroidDownloadSources, syncDownloadPage } from './sync-download-page.mjs';
 
 const DEFAULT_REPO = 'imkida/V_IME_releases';
 const VALID_PLATFORMS = new Set(['android', 'macos', 'windows', 'ios', 'harmonyos']);
@@ -144,6 +144,7 @@ async function normalizeConfig(args) {
     (assetUrlBase && tag && assetName
       ? `https://github.com/${repo}/releases/download/${encodeUrlSegment(tag)}/${encodeUrlSegment(assetName)}`
       : undefined);
+  const apkOssUrl = optionalHttpsUrl(args.apkOssUrl, '--apk-oss-url');
   if (assetUrlBase && !mirrorUrl) {
     throw new Error('--asset-url-base requires --tag or an explicit --mirror-url');
   }
@@ -167,6 +168,7 @@ async function normalizeConfig(args) {
     if (!assetName || !assetUrl || !sha256) {
       throw new Error('android releases require --asset, or --asset-name + --asset-url + --sha256');
     }
+    if (!apkOssUrl) throw new Error('android releases require --apk-oss-url for the website primary download');
   } else if (!assetUrl && !appcastUrl && !storeUrl) {
     throw new Error('non-android releases require an asset URL, --appcast-url, or --store-url');
   }
@@ -199,6 +201,7 @@ async function normalizeConfig(args) {
     assetName,
     assetUrl,
     mirrorUrl,
+    apkOssUrl,
     sha256,
     sizeBytes,
     certificateSha256: optionalSha256(args.certificateSha256, '--certificate-sha256'),
@@ -271,6 +274,7 @@ function updateManifest(manifest, config) {
     deleteKeys(base, ['assets', 'downloadName', 'downloadUrl', 'sha256', 'appcastUrl', 'storeUrl', 'installerType', 'arch', 'sparkleEdDsaSignature']);
     base.apkName = config.assetName;
     base.apkUrl = config.assetUrl;
+    base.apkOssUrl = config.apkOssUrl;
     base.apkSha256 = config.sha256;
   } else if (config.assetUrl) {
     deleteKeys(base, ['apkName', 'apkUrl', 'apkSha256', 'downloadName', 'downloadUrl', 'sha256']);
@@ -336,6 +340,10 @@ function validateManifest(manifest) {
     validateSha(channel.apkSha256, `channels.${name}.apkSha256`);
     validateSha(channel.sha256, `channels.${name}.sha256`);
     validateSha(channel.certificateSha256, `channels.${name}.certificateSha256`);
+    if (manifest.platform === 'android') assertAndroidDownloadSources(name, channel);
+    if (channel.apkOssUrl !== undefined) {
+      parseHttpsUrl(channel.apkOssUrl, `channels.${name}.apkOssUrl`);
+    }
 
     if (channel.assets) {
       if (!Array.isArray(channel.assets) || channel.assets.length === 0) {
@@ -572,6 +580,7 @@ Asset input:
   --asset-url                 explicit download URL
   --asset-url-base            HTTPS base URL ending in /; asset name is appended
   --mirror-url                optional HTTPS fallback URL recorded as asset.mirrorUrl
+  --apk-oss-url               Android website primary APK URL; apkUrl stays the GitHub App update source
   --sha256                    explicit asset SHA-256 when no local file is available
 
 Common options:

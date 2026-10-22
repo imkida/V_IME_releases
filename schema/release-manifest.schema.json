@@ -138,6 +138,11 @@
           "type": "string",
           "format": "uri"
         },
+        "apkOssUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "Verified OSS mirror used as the Android website primary download; apkUrl remains the GitHub App update source and website backup. Both URLs serve apkSha256."
+        },
         "apkSha256": {
           "$ref": "#/$defs/sha256"
         },
