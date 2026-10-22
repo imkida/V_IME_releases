@@ -20,7 +20,7 @@ REGION = "cn-hangzhou"
 HOSTS = ("vimebot.ai", "www.vimebot.ai", "vimebot.com", "www.vimebot.com")
 PAGES = ("index.html", "macos/index.html", "android/index.html", "privacy/index.html",
          "support/index.html", "macos/privacy/index.html", "macos/support/index.html")
-FIXED = (*PAGES, "release.json", "macos/release.json",
+FIXED = (*PAGES, "release.json", "macos/release.json", "android/manifest.json",
          "macos/assets/app-icon-preview.svg", "macos/assets/logo-monochrome.svg")
 
 
@@ -54,6 +54,8 @@ def website_files(root=ROOT):
     canonical = (root / "macos/manifest.json").read_bytes()
     if any(files[key] != canonical for key in ("release.json", "macos/release.json")):
         raise ValueError("Website metadata differs from the canonical manifest")
+    if files["android/manifest.json"] != (root / "android/manifest.json").read_bytes():
+        raise ValueError("Android update metadata differs from the canonical manifest")
     # Immutable assets first, metadata second, entry pages last. No delete/mirror --delete.
     return dict(sorted(files.items(), key=lambda item: (
         2 if item[0].endswith(".html") else 1 if item[0].endswith(".json") else 0,
