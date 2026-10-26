@@ -1,21 +1,21 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-10-20T16:26:26.126479Z",
+  "generatedAt": "2026-10-26T10:16:27Z",
   "packageName": "com.vime.android",
   "channels": {
     "debug": {
-      "versionName": "1.9.2-dogfood.1",
-      "versionCode": 333,
-      "title": "v1.9.2-dogfood.1 — 上下文整理与弱网恢复联合公测",
-      "summary": "公开Debug联合公测版。统一纳入上下文整理、续接标点与换行修正，补齐Message听写握手及传输异常后的保全和恢复，优化键盘拼写路径。保留完整键盘、双预测、翻译和本地语音识别运行时；仅arm64，模型仍需在App内下载。本地识别缺少整理配置的路径仍待实际使用验证，键盘性能目标尚未达成；不代表稳定Release。只能同Debug签名覆盖升级，不卸载或清数据，Debug/Release不可混装。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.9.2-dogfood.1",
-      "apkName": "V_IME-v1.9.2-dogfood.1-debug.apk",
-      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.9.2-dogfood.1/V_IME-v1.9.2-dogfood.1-debug.apk",
-      "apkSha256": "5a417c52a97d6cd5b8655eb81e44e1cfd3cb92989e7e41c3d441bf6579a75ca6",
+      "versionName": "1.9.9-dogfood.1",
+      "versionCode": 340,
+      "title": "v1.9.9-dogfood.1 — Clean0.39 与手动排版联合公测",
+      "summary": "公开 Debug 联合公测。采用以 0.27 内容规则为基线的 Clean0.39 有限公测，侧重断句、段落与可读性并保留原意、语气和口语风格；加入独立手动排版及一次撤销，空格键恢复原位，排版按钮移到候选栏右侧。保留完整键盘、双预测、本地语音识别运行时（仅 arm64，模型仍需在 App 内下载）和严格更新校验，不含新 Rime。少数窄屏布局仍需观察，键盘 50ms 性能目标尚未达成，不代表稳定 Release。只能同 Debug 签名覆盖升级，不卸载或清数据；Debug/Release 不可混装。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.9.9-dogfood.1",
+      "apkName": "V_IME-v1.9.9-dogfood.1-debug.apk",
+      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.9.9-dogfood.1/V_IME-v1.9.9-dogfood.1-debug.apk",
+      "apkSha256": "a2e0798da363b34e50ecec539f10ec3167229553706b482cb4ea62d31584169d",
       "certificateSha256": "4513e5bc726058d40be6020e1bbfc2d0c0fbf4e81d3b04a393cba394cd195059",
       "mandatory": false,
       "minSupportedVersionCode": 1,
-      "apkOssUrl": "https://vimebot.com/downloads/android/1.9.2-dogfood.1/333/V_IME-v1.9.2-dogfood.1-debug.apk"
+      "apkOssUrl": "https://vimebot.com/downloads/android/1.9.9-dogfood.1/340/V_IME-v1.9.9-dogfood.1-debug.apk"
     },
     "release": {
       "versionName": "1.8.3-dogfood.1",
@@ -31,5 +31,6 @@
       "minSupportedVersionCode": 1,
       "apkOssUrl": "https://vimebot.com/downloads/android/1.8.3-dogfood.1/300/V_IME-v1.8.3-dogfood.1-release.apk"
     }
-  }
+  },
+  "platform": "android"
 }
