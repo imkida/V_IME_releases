@@ -1,6 +1,6 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-10-26T10:16:27Z",
+  "generatedAt": "2026-10-28T12:48:29Z",
   "packageName": "com.vime.android",
   "channels": {
     "debug": {
@@ -18,18 +18,18 @@
       "apkOssUrl": "https://vimebot.com/downloads/android/1.9.9-dogfood.1/340/V_IME-v1.9.9-dogfood.1-debug.apk"
     },
     "release": {
-      "versionName": "1.8.3-dogfood.1",
-      "versionCode": 300,
-      "title": "v1.8.3-dogfood.1 — 正式签名优化预发布（Release）",
-      "summary": "正式签名 Release 300 预发布；采用 Clean 0.25，完整 Q5 双预测与本地识别运行时保持。裁剪开发取证日志，启用 R8 和资源压缩，实际完整包约117MB。Debug 与 Release 签名不同，不可混装；Release 用户可从本页同签名覆盖更新，无需卸载或清数据。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.8.3-dogfood.1",
-      "apkName": "V_IME-v1.8.3-dogfood.1-release.apk",
-      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.8.3-dogfood.1/V_IME-v1.8.3-dogfood.1-release.apk",
-      "apkSha256": "d41711c9fbc83b5df933d7ebcbaaf1548350cac4a36b16c21281db6f082de984",
+      "versionName": "1.9.12",
+      "versionCode": 343,
+      "title": "v1.9.12 — Clean0.39 正式签名优化版",
+      "summary": "采用 Clean0.39，改善断句、段落与可读性，保留原意、语气和口语风格；纳入已接受的手动排版入口布局。包含完整键盘、两项预测与本地识别运行时（仅 arm64，模型仍需在 App 内下载），保留严格更新校验。键盘50ms性能目标及部分完整运行指标尚未闭合，本次发布边界以批准说明为准。只能同 Release 签名覆盖更新，无需卸载或清数据；Debug/Release 不可混装。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.9.12",
+      "apkName": "V_IME-v1.9.12-release.apk",
+      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.9.12/V_IME-v1.9.12-release.apk",
+      "apkSha256": "522217cef21109a44296bca3249f67e6f8c9210742bc4f6cdf90df2dd91453d7",
       "certificateSha256": "1a5177214cd36ccd57126b532442b6e2f74461c9686f9b78b56e79c686afcbe6",
       "mandatory": false,
       "minSupportedVersionCode": 1,
-      "apkOssUrl": "https://vimebot.com/downloads/android/1.8.3-dogfood.1/300/V_IME-v1.8.3-dogfood.1-release.apk"
+      "apkOssUrl": "https://vimebot.com/downloads/android/1.9.12/343/V_IME-v1.9.12-release.apk"
     }
   },
   "platform": "android"
