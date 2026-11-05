@@ -93,7 +93,12 @@ export function syncDownloadPage({ repoRoot: root, channel: channelName = 'beta'
   // The domain root renders the same page without an intermediate redirect.
   // Reuse the macOS assets and refresh both public manifest copies from one source.
   const rootHtmlPath = join(root, 'docs', 'index.html');
-  const nextRootHtml = nextHtml.replaceAll('="./assets/', '="./macos/assets/');
+  const nextRootHtml = replaceOnce(
+    nextHtml.replaceAll('="./assets/', '="./macos/assets/'),
+    '<meta property="og:url" content="https://vimebot.ai/macos/">',
+    '<meta property="og:url" content="https://vimebot.ai/">',
+    'macOS og:url for root homepage'
+  );
   const rootHtmlChanged = !existsSync(rootHtmlPath)
     || readFileSync(rootHtmlPath, 'utf8') !== nextRootHtml;
   const rootManifestPath = join(root, 'docs', 'release.json');
@@ -133,7 +138,7 @@ export function syncDownloadPage({ repoRoot: root, channel: channelName = 'beta'
 }
 
 // Elements carry data-android="<channel>:<field>"; fields are apk/mirror (href), sha (data-copy),
-// version and title (text). Unknown channels fail instead of leaving stale download data.
+// version (text). Unknown channels fail instead of leaving stale download data.
 export function assertAndroidDownloadSources(name, value) {
   if (!value.apkOssUrl) throw new Error(`channels.${name}.apkOssUrl is required for the Android page`);
   if (!Number.isSafeInteger(value.versionCode) || value.versionCode < 1) {
@@ -160,15 +165,14 @@ export function refreshAndroidPage(html, manifest) {
     mirror: value => value.apkUrl,
     sha: value => value.apkSha256,
     // Public pages name the build by its release number; the channel tag stays in the download.
-    version: value => 'v' + value.versionName.replace(/-dogfood\.\d+$/, ''),
-    title: value => value.title.split(' — ').slice(1).join(' — ') || value.title
+    version: value => 'v' + value.versionName.replace(/-dogfood\.\d+$/, '')
   };
   let found = 0;
   const next = html
     .replace(/(data-android="(\w+):(apk|mirror|sha)" (?:href|data-copy)=")[^"]*(")/g, (_, head, name, field, tail) => {
       found += 1; return head + escape(fields[field](channel(name))) + tail;
     })
-    .replace(/(data-android="(\w+):(version|title)">)[^<]*(<)/g, (_, head, name, field, tail) => {
+    .replace(/(data-android="(\w+):(version)">)[^<]*(<)/g, (_, head, name, field, tail) => {
       found += 1; return head + escape(fields[field](channel(name))) + tail;
     });
   if (found !== (html.match(/data-android="/g) ?? []).length) {

@@ -1,110 +1,34 @@
 <!doctype html>
-<html lang="zh-Hans">
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Vime for macOS 隐私政策</title>
     <meta name="description" content="Vime for macOS 隐私政策">
-    <style>
-      :root {
-        color-scheme: light dark;
-        --bg: #f8fafc;
-        --surface: #ffffff;
-        --text: #111827;
-        --muted: #4b5563;
-        --line: #d1d5db;
-        --accent: #0f766e;
-      }
-
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --bg: #0f172a;
-          --surface: #111827;
-          --text: #f9fafb;
-          --muted: #cbd5e1;
-          --line: #334155;
-          --accent: #2dd4bf;
-        }
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      body {
-        margin: 0;
-        background: var(--bg);
-        color: var(--text);
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        line-height: 1.7;
-      }
-
-      main {
-        max-width: 880px;
-        margin: 0 auto;
-        padding: 48px 24px 72px;
-      }
-
-      article {
-        background: var(--surface);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        padding: 40px;
-      }
-
-      h1,
-      h2 {
-        line-height: 1.25;
-      }
-
-      h1 {
-        margin: 0 0 8px;
-        font-size: clamp(32px, 4vw, 48px);
-      }
-
-      h2 {
-        margin: 36px 0 12px;
-        font-size: 22px;
-      }
-
-      p,
-      li {
-        color: var(--muted);
-      }
-
-      a {
-        color: var(--accent);
-      }
-
-      .updated {
-        margin: 0 0 32px;
-        color: var(--muted);
-      }
-
-      .summary {
-        margin: 28px 0;
-        padding: 16px 20px;
-        border-left: 4px solid var(--accent);
-        background: color-mix(in srgb, var(--accent) 8%, transparent);
-      }
-
-      ul {
-        padding-left: 22px;
-      }
-
-      strong {
-        color: var(--text);
-      }
-
-      footer {
-        margin-top: 32px;
-        color: var(--muted);
-        font-size: 14px;
-      }
-    </style>
-    </head>
+    <meta name="color-scheme" content="light dark">
+    <link rel="icon" href="/macos/assets/app-icon-preview.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/macos/assets/site-legal.css">
+    <link rel="canonical" href="https://vimebot.ai/macos/privacy/">
+    <meta property="og:title" content="Vime for macOS 隐私政策">
+    <meta property="og:description" content="Vime for macOS 隐私政策">
+    <meta property="og:url" content="https://vimebot.ai/macos/privacy/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Vime">
+    <meta name="twitter:card" content="summary">
+  </head>
   <body>
-    <main>
+    <a class="skip-link" href="#main">跳至主要内容</a>
+    <header class="header"><div class="wrap">
+      <a class="brand" href="/" aria-label="Vime 首页"><img class="appicon" src="/macos/assets/app-icon-preview.svg" alt=""><span>Vime</span></a>
+      <nav class="plat" aria-label="选择平台"><a href="/">Mac</a><a href="/android/">Android</a><span class="soon">iOS<em>即将推出</em></span></nav>
+    </div></header>
+    <main id="main">
+      <nav class="plat document-platforms" aria-label="隐私政策平台">
+        <a href="/macos/privacy/" aria-current="page">Mac</a>
+        <a href="/privacy/">iOS</a>
+      </nav>
+
+      <p class="document-scope">适用于 Vime for macOS</p>
       <article>
         <h1>Vime for macOS 隐私政策</h1>
         <p class="updated">生效日期：2026 年 9 月 27 日</p>
@@ -200,5 +124,19 @@
         </footer>
       </article>
     </main>
+    <footer class="site-footer"><div class="wrap">
+      <div class="fb"><a href="/">Vime</a><span>由个人开发维护</span></div>
+      <div class="links">
+        <a href="/android/">Android 版</a>
+        <a href="/#privacy">隐私说明</a>
+        <a href="/#help">帮助与支持</a>
+        <a href="mailto:kida.wong@gmail.com">联系作者</a>
+        <a href="/#updates">最新更新</a>
+        <a id="icp" href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer" hidden>京ICP备2026046839号-2</a>
+      </div>
+    </div></footer>
+    <script>
+      if (['vimebot.com', 'www.vimebot.com'].includes(location.hostname.toLowerCase())) document.getElementById('icp').hidden = false;
+    </script>
   </body>
 </html>
