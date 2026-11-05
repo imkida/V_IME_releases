@@ -7,6 +7,13 @@
 <meta name="description" content="Vime for Android：装在键盘里的语音输入法。在任何应用里按住说话，需要时也能直接打拼音。">
 <link rel="icon" href="../macos/assets/app-icon-preview.svg" type="image/svg+xml">
 <title>Vime for Android</title>
+<link rel="canonical" href="https://vimebot.ai/android/">
+<meta property="og:title" content="Vime for Android">
+<meta property="og:description" content="Vime for Android：装在键盘里的语音输入法。在任何应用里按住说话，需要时也能直接打拼音。">
+<meta property="og:url" content="https://vimebot.ai/android/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Vime">
+<meta name="twitter:card" content="summary">
 <style>
 :root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 body{margin:0}
@@ -720,12 +727,12 @@ footer .links a:hover{color:var(--ink)}
 <main id="top">
   <div class="ahero">
     <div class="wrap">
-      <div class="topline"><i></i>Vime for Android<span class="new">已公开发布</span></div>
+      <div class="topline"><i></i>Vime for Android<span class="new">已发布</span></div>
       <h1>能说，就<span class="accent">不打字</span></h1>
       <p class="lead">装在键盘里的语音输入法。在任何应用里按住说话，需要时也能直接打拼音。</p>
       <div class="acts" id="intro">
         <a class="dl" data-android="release:apk" href="https://vimebot.com/downloads/android/1.9.12/343/V_IME-v1.9.12-release.apk"><svg><use href="#i-dl"/></svg>下载 Android 版</a>
-        <p class="meta"><span data-android="release:version">v1.9.12</span> 正式版 · Android 8.0 及以上 · <a href="#download">公测版</a></p>
+        <p class="meta"><span data-android="release:version">v1.9.12</span> · Android 8.0 及以上 · <a href="#download">也可试用公测版</a></p>
       </div>
     </div>
   </div>
@@ -804,7 +811,7 @@ footer .links a:hover{color:var(--ink)}
         <div class="ch main">
           <div class="top"><b>正式版</b><span class="tag">推荐</span></div>
           <span class="v" data-android="release:version">v1.9.12</span>
-          <p class="note" data-android="release:title">Clean0.39 正式签名优化版</p>
+          <p class="note">稳定版本，推荐日常使用</p>
           <div class="act">
             <a class="dl" data-android="release:apk" href="https://vimebot.com/downloads/android/1.9.12/343/V_IME-v1.9.12-release.apk"><svg><use href="#i-dl"/></svg>下载正式版</a>
             <button class="copy" type="button" data-android="release:sha" data-copy="522217cef21109a44296bca3249f67e6f8c9210742bc4f6cdf90df2dd91453d7">复制 SHA-256</button>
@@ -814,7 +821,7 @@ footer .links a:hover{color:var(--ink)}
         <div class="ch">
           <div class="top"><b>公测版</b><span class="tag mute">尝鲜</span></div>
           <span class="v" data-android="debug:version">v1.9.9</span>
-          <p class="note" data-android="debug:title">Clean0.39 与手动排版联合公测</p>
+          <p class="note">抢先体验新功能，可能不够稳定</p>
           <div class="act">
             <a class="alt" data-android="debug:apk" href="https://vimebot.com/downloads/android/1.9.9-dogfood.1/340/V_IME-v1.9.9-dogfood.1-debug.apk"><svg><use href="#i-dl"/></svg>下载公测版</a>
             <button class="copy" type="button" data-android="debug:sha" data-copy="a2e0798da363b34e50ecec539f10ec3167229553706b482cb4ea62d31584169d">复制 SHA-256</button>
@@ -874,7 +881,7 @@ footer .links a:hover{color:var(--ink)}
   const toast = $('#toast'); let toastT;
   function say(m) { toast.textContent = m; toast.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(() => toast.classList.remove('on'), 2400); }
   $$('[data-copy]').forEach(b => b.addEventListener('click', () => { const v = b.dataset.copy; navigator.clipboard.writeText(v).then(() => say('已复制到剪贴板'), () => say('请手动复制：' + v)); }));
-  $$('[data-soon]').forEach(b => b.addEventListener('click', () => say('iOS 版正在 TestFlight 测试，上线后在这里下载')));
+  $$('[data-soon]').forEach(b => b.addEventListener('click', () => say('iOS 版即将推出，上线后在这里下载')));
 
   // header button on desktop, bottom bar on phones, once the hero button leaves the screen
   const mbar = $('#dlbar');

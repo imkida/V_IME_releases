@@ -150,6 +150,25 @@ test('domain root renders the homepage directly and sync repairs a redirect regr
   }
 });
 
+test('root homepage sync rejects missing, reordered or duplicate source og:url tags', () => {
+  const page = readPublishedPage(ROOT);
+  const tag = '<meta property="og:url" content="https://vimebot.ai/macos/">';
+  assert.ok(page.html.includes(tag));
+  const sandbox = mkdtempSync(path.join(tmpdir(), 'vime-root-og-url-sync.'));
+  try {
+    for (const [replacement, expected] of [
+      ['', /could not locate macOS og:url for root homepage/],
+      ['<meta content="https://vimebot.ai/macos/" property="og:url">', /could not locate macOS og:url for root homepage/],
+      [tag + '\n' + tag, /found more than one candidate for macOS og:url for root homepage/]
+    ]) {
+      seedSandbox(sandbox, { ...page, html: page.html.replace(tag, replacement) });
+      assert.throws(() => syncDownloadPage({ repoRoot: sandbox }), expected);
+    }
+  } finally {
+    rmSync(sandbox, { recursive: true, force: true });
+  }
+});
+
 test('published page carries no previous release identity', () => {
   if (!isGitRepository()) {
     // Cannot read release history here; test 5 still pins the page to the manifest.
@@ -263,7 +282,18 @@ test('Android page carries the canonical Android download data', () => {
     assert.ok(html.includes(`data-android="${name}:apk" href="${channel.apkOssUrl}"`), `${name} OSS primary`);
     assert.ok(html.includes(`data-android="${name}:mirror" href="${channel.apkUrl}"`), `${name} GitHub backup`);
     assert.ok(html.includes(`data-android="${name}:sha" data-copy="${channel.apkSha256}"`), `${name} checksum`);
+    assert.ok(!html.includes(channel.title), `${name} manifest title stays out of the page`);
+    const titleDescription = channel.title.split(' — ').slice(1).join(' — ') || channel.title;
+    assert.ok(!html.includes(titleDescription), `${name} shortened manifest title stays out of the page`);
+    const changedTitle = structuredClone(manifest);
+    changedTitle.channels[name].title = 'Title must never appear on the page';
+    assert.equal(refreshAndroidPage(html, changedTitle), html);
   }
+  assert.ok(html.includes('稳定版本，推荐日常使用'));
+  assert.ok(html.includes('抢先体验新功能，可能不够稳定'));
+  assert.doesNotMatch(html, /正在 TestFlight|data-android="\w+:title"/);
+  assert.match(html, /release:version">[^<]+<\/span> · Android 8.0 及以上 · <a href="#download">也可试用公测版<\/a>/);
+  assert.throws(() => refreshAndroidPage(html.replace('release:version', 'release:title'), manifest), /marker the sync does not understand/);
   assert.equal(refreshAndroidPage(html, manifest), html);
   assert.throws(() => refreshAndroidPage(html.replace('data-android="debug:apk"', 'data-android="beta:apk"'), manifest),
     /no channels\.beta/);
@@ -299,7 +329,8 @@ test('an Android release refreshes the Android page without a second command', (
     assert.ok(html.includes(`data-android="debug:apk" href="${apkOssUrl}"`));
     assert.ok(html.includes(`data-android="debug:mirror" href="${apkUrl}"`));
     assert.ok(html.includes('data-android="debug:version">v9.9.9<'));
-    assert.ok(html.includes('data-android="debug:title">合成网页同步<'));
+    assert.ok(!html.includes('合成网页同步'));
+    assert.ok(html.includes('抢先体验新功能，可能不够稳定'));
     assert.equal(readFileSync(path.join(sandbox, 'docs/android/manifest.json'), 'utf8'),
       readFileSync(path.join(sandbox, 'android/manifest.json'), 'utf8'));
     assert.equal(syncDownloadPage({ repoRoot: sandbox, check: true }).changed, false);

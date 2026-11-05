@@ -144,7 +144,7 @@ export function App() {
     notify('外观：' + themeNames[next]);
   }
   const toggle = id => () => setSupport(support === id ? '' : id);
-  const soon = () => notify('iOS 版正在 TestFlight 测试，上线后在这里下载');
+  const soon = () => notify('iOS 版即将推出，上线后在这里下载');
   const ThemeIcon = themeIcons[theme];
   return <>
     <a className="skip-link" href="#main">跳至主要内容</a>
@@ -211,7 +211,7 @@ export function App() {
           <div className="pgrid" data-reveal>
             <a className="pc here" href="/" aria-current="page"><Laptop className="dev" weight="light"/><b>Mac</b><p>macOS {minSystemVersion} 及以上 · 公开测试版</p><span className="go">你正在看</span></a>
             <a className="pc" href="/android/"><DeviceMobile className="dev" weight="light"/><b>Android<span className="tag">已发布</span></b><p>Android 8.0 及以上 · 语音输入法键盘</p><span className="go">了解 Android 版<ArrowRight/></span></a>
-            <div className="pc off"><DeviceTablet className="dev" weight="light"/><b>iPhone 与 iPad<span className="tag mute">即将推出</span></b><p>正在 TestFlight 测试，上线后在这里下载</p></div>
+            <div className="pc off"><DeviceTablet className="dev" weight="light"/><b>iPhone 与 iPad<span className="tag mute">即将推出</span></b><p>上线后在这里下载</p></div>
           </div>
         </div>
       </section>

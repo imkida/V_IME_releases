@@ -205,7 +205,7 @@ https://raw.githubusercontent.com/imkida/V_IME_releases/main/android/manifest.js
 
 需要在 Debug 与 Release 之间切换时，先用 App 内「配置导出」备份，再卸载重装并重新导入。
 
-官网 Android 单页 `docs/android/index.html` 的版本、标题、下载地址与 SHA-256 来自同一份 `android/manifest.json`：`npm run release:manifest -- --platform android ...` 写入清单后自动刷新该页，不需要第二条命令；直接修改清单后用 `npm run release:page` 同步，`-- --check` 发现漂移时失败。
+官网 Android 单页 `docs/android/index.html` 的版本、下载地址与 SHA-256 来自同一份 `android/manifest.json`：`npm run release:manifest -- --platform android ...` 写入清单后自动刷新该页，不需要第二条命令；直接修改清单后用 `npm run release:page` 同步，`-- --check` 发现漂移时失败。
 
 官网两个渠道的主下载均使用 `apkOssUrl`，并显式保留 `apkUrl` 的 GitHub 备用链接。APK 复用官网已备案且自动续期的 `vimebot.com` 自定义域名（OSS 默认域名禁止公开分发 APK），对象位于既有杭州官网桶 `vime-official-site-cn-hangzhou` 的独立 `downloads/android/<versionName>/<versionCode>/<apkName>` 路径，生成及检查会拒绝版本不匹配的主备地址。发布顺序为：私有 Android 发布入口上传并核验同一 APK 的 OSS 镜像 → 将已验证地址传给 `release:manifest --apk-oss-url` → 提交清单与自动生成页面 → main 的现有 Website sync 自动发布并逐文件核对四个域名。上传工具及凭据仍留在私有发布入口，官网 OIDC 角色不增加安装包权限。
 

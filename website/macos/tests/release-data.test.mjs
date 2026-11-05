@@ -53,8 +53,9 @@ test('published 1.8.0 fixture retains every change and unresolved issue without 
   assert.doesNotMatch(renderedBody,/# Vime macOS/);
 });
 
-test('current 1.8.2 publication preserves author metadata, overview and three changes', () => {
-  const result=readRelease(snapshot);
+test('published 1.8.2 fixture preserves author metadata, overview and three changes', () => {
+  const historical=JSON.parse(readFileSync(new URL('./fixtures/release-1.8.2.json',import.meta.url)));
+  const result=readRelease(historical);
   assert.equal(result.channel.versionName,'1.8.2');
   assert.equal(result.notes[0].type,'metadata');
   assert.match(result.notes[0].text,/2026-10-02.*macOS 14.*build 2026100204/);
@@ -62,5 +63,5 @@ test('current 1.8.2 publication preserves author metadata, overview and three ch
   assert.match(result.notes[1].text,/官网的版本说明更清楚.*App 听写能力与 1.8.1 保持一致/);
   assert.deepEqual(result.notes.filter(b=>b.type==='list').map(b=>b.items.length),[2,1]);
   assert.match(result.notes.at(-1).text,/识别模型.*默认策略.*撤销行为不变/);
-  assert.deepEqual(result.notes,parseReleaseNotes(snapshot.channels.beta.summary));
+  assert.deepEqual(result.notes,parseReleaseNotes(historical.channels.beta.summary));
 });
