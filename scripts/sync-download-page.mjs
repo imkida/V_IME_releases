@@ -119,8 +119,16 @@ export function syncDownloadPage({ repoRoot: root, channel: channelName = 'beta'
   if (androidManifestChanged) messages.push('  Android update manifest differs from android/manifest.json');
   const androidChanged = nextAndroidHtml !== androidHtml;
   if (androidChanged) messages.push('  Android page differs from android/manifest.json');
+  // Static pages (Android, privacy, support) share the site's design tokens; publish the one source.
+  const tokensSourcePath = join(root, 'website', 'macos', 'src', 'tokens.css');
+  const tokensText = existsSync(tokensSourcePath) ? readFileSync(tokensSourcePath, 'utf8') : null;
+  const tokensPath = join(root, 'docs', 'macos', 'assets', 'site-tokens.css');
+  const tokensChanged = tokensText !== null
+    && (!existsSync(tokensPath) || readFileSync(tokensPath, 'utf8') !== tokensText);
+  if (tokensChanged) messages.push('  shared site tokens differ from website/macos/src/tokens.css');
   const changed = nextBundle !== bundle || nextHtml !== html || manifestChanged
-    || rootHtmlChanged || rootManifestChanged || sourceChanged || androidChanged || androidManifestChanged;
+    || rootHtmlChanged || rootManifestChanged || sourceChanged || androidChanged || androidManifestChanged
+    || tokensChanged;
 
   if (changed && !check) {
     writeFileSync(nextBundlePath, nextBundle, 'utf8');
@@ -132,6 +140,7 @@ export function syncDownloadPage({ repoRoot: root, channel: channelName = 'beta'
     writeFileSync(sourceHtmlPath, nextSourceHtml, 'utf8');
     if (androidChanged) writeFileSync(androidHtmlPath, nextAndroidHtml, 'utf8');
     if (androidManifestChanged) writeFileSync(androidManifestPath, androidManifestText, 'utf8');
+    if (tokensChanged) writeFileSync(tokensPath, tokensText, 'utf8');
   }
 
   return { changed, check, messages, htmlPath, bundlePath: nextBundlePath, publishedManifestPath, rootHtmlPath };

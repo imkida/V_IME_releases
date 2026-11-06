@@ -1,34 +1,6 @@
 /* Page structure follows the existing site (hero + download, shortcut stage, output styles, first-use rows, closing band).
    Colours are tokens: system appearance by default, data-theme when the reader picks one. */
-:root{
-  --ink:#20232b; --canvas:#f8f9f7; --surface:#ffffff; --surface-soft:#fbfcff; --muted:#525f75; --subtle:#5d697e; --blue-ink:#2448c8; --del:#c42f35; --del-soft:#fde8e9;
-  --blue:#345ce8; --button:#345ce8; --button-hover:#244acf; --line:#dce0e5; --line-soft:#edf0f6;
-  --stage-start:#e8edfb; --stage-end:#f5f7ff; --dock:rgba(249,251,255,.72); --heading-muted:#5b6b8c; --section-accent:#edf1fa;
-  --key-top:#ffffff; --key-bottom:#f2f4fa; --key-edge:#c8d2ea; --key-ink:#3457b8; --key-label:#5d6b84;
-  --selection:#dae4ff; --wave:#829ae8; --red:#e5484d; --green:#34c759;
-  --desk-a:#dfe6fa; --desk-b:#f1f3f9; --mark:#1a1a1a; --glow:rgba(52,92,232,.16); --glow2:rgba(130,154,232,.18);
-  --shadow:0 18px 50px -24px rgba(25,40,70,.28); --line-alpha:.16;
-  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
-  --mono:ui-monospace,"SF Mono",Menlo,monospace;
-  --ease:cubic-bezier(.2,.8,.2,1); --spring:cubic-bezier(.34,1.56,.64,1);
-  --t-fast:.18s; --t-base:.4s; --t-slow:.8s;
-}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --ink:#edf0f6; --canvas:#15171c; --surface:#252a33; --surface-soft:#2b313d; --muted:#b2bece; --subtle:#a2afc3; --blue-ink:#b8c8ff; --del:#ff8a8f; --del-soft:#3d1d21;
-  --blue:#9bb2ff; --button:#4262ce; --button-hover:#4d6edc; --line:#3b4453; --line-soft:#333c4b;
-  --stage-start:#1d2535; --stage-end:#293245; --dock:rgba(37,46,64,.85); --heading-muted:#a9badb; --section-accent:#1c2433;
-  --key-top:#4b5363; --key-bottom:#353d4b; --key-edge:#151b27; --key-ink:#c5d2ff; --key-label:#c4cede;
-  --selection:#334c7c; --wave:#8faaff; --red:#ff6369; --green:#30d158;
-  --desk-a:#1b2232; --desk-b:#262e3e; --mark:#edf0f6; --glow:rgba(110,149,255,.18); --glow2:rgba(66,98,206,.22);
-  --shadow:0 18px 50px -24px rgba(0,0,0,.7); --line-alpha:.3; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --ink:#edf0f6; --canvas:#15171c; --surface:#252a33; --surface-soft:#2b313d; --muted:#b2bece; --subtle:#a2afc3; --blue-ink:#b8c8ff; --del:#ff8a8f; --del-soft:#3d1d21;
-  --blue:#9bb2ff; --button:#4262ce; --button-hover:#4d6edc; --line:#3b4453; --line-soft:#333c4b;
-  --stage-start:#1d2535; --stage-end:#293245; --dock:rgba(37,46,64,.85); --heading-muted:#a9badb; --section-accent:#1c2433;
-  --key-top:#4b5363; --key-bottom:#353d4b; --key-edge:#151b27; --key-ink:#c5d2ff; --key-label:#c4cede;
-  --selection:#334c7c; --wave:#8faaff; --red:#ff6369; --green:#30d158;
-  --desk-a:#1b2232; --desk-b:#262e3e; --mark:#edf0f6; --glow:rgba(110,149,255,.18); --glow2:rgba(66,98,206,.22);
-  --shadow:0 18px 50px -24px rgba(0,0,0,.7); --line-alpha:.3; color-scheme:dark}
+@import './tokens.css';
 
 *{box-sizing:border-box}
 [hidden]{display:none!important}

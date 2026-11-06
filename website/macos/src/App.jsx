@@ -267,11 +267,11 @@ export function App() {
     <footer><div className="wrap">
       <div className="fb"><a href="#top">Vime</a><span>由个人开发维护</span></div>
       <div className="links">
+        <a href="/">Mac 版</a>
         <a href="/android/">Android 版</a>
         <a href="/macos/privacy/">隐私政策</a>
         <a href="/macos/support/">帮助与支持</a>
         <a href="mailto:kida.wong@gmail.com">联系作者</a>
-        <a href="#updates" onClick={() => setNotesOpen(true)}>最新更新</a>
         {showIcpFiling && <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">京ICP备2026046839号-2</a>}
       </div>
     </div></footer>

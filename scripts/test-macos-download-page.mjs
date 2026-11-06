@@ -274,6 +274,28 @@ test('release JSON drift fails the read-only check and is repaired by sync', () 
   }
 });
 
+test('shared site tokens drift fails the read-only check and is repaired by sync', () => {
+  const page = readPublishedPage(ROOT);
+  const sandbox = mkdtempSync(path.join(tmpdir(), 'vime-site-tokens-sync.'));
+  try {
+    seedSandbox(sandbox, page);
+    const source = readFileSync(path.join(ROOT, 'website', 'macos', 'src', 'tokens.css'), 'utf8');
+    mkdirSync(path.join(sandbox, 'website', 'macos', 'src'), { recursive: true });
+    writeFileSync(path.join(sandbox, 'website', 'macos', 'src', 'tokens.css'), source);
+    const published = path.join(sandbox, 'docs', 'macos', 'assets', 'site-tokens.css');
+    writeFileSync(published, ':root{--ink:#000}\n');
+    const checked = syncDownloadPage({ repoRoot: sandbox, check: true });
+    assert.equal(checked.changed, true);
+    assert.ok(checked.messages.some(message => /shared site tokens differ/.test(message)));
+    assert.equal(readFileSync(published, 'utf8'), ':root{--ink:#000}\n', '--check must not write');
+    syncDownloadPage({ repoRoot: sandbox });
+    assert.equal(readFileSync(published, 'utf8'), source);
+    assert.equal(syncDownloadPage({ repoRoot: sandbox, check: true }).changed, false);
+  } finally {
+    rmSync(sandbox, { recursive: true, force: true });
+  }
+});
+
 test('Android page carries the canonical Android download data', () => {
   const manifest = JSON.parse(readFileSync(path.join(ROOT, 'android', 'manifest.json'), 'utf8'));
   const html = readFileSync(path.join(ROOT, 'docs', 'android', 'index.html'), 'utf8');
