@@ -18,6 +18,18 @@
 
 版本、构建、下载、校验与更新正文仍全部来自 `macos/manifest.json`，`#updates`、`#whats-new`、备案页脚与无脚本下载链接沿用原逻辑。`app-icon-preview.svg` 按品牌规范 1.1 更新红点尺寸（直径 20）。
 
+## 分享图
+
+`public/assets/og-mac.png`、`og-android.png`、`og-vime.png`（1200×630）由 `og/` 下的静态模板生成，修改文案或样式后在本目录重新生成并肉眼检查：
+
+```bash
+for n in og-mac og-android og-vime; do
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --hide-scrollbars \
+    --force-device-scale-factor=1 --window-size=1200,630 --virtual-time-budget=3000 \
+    --screenshot=public/assets/$n.png "file://$PWD/og/$n.html"
+done
+```
+
 ## 从源码恢复
 
 ```bash

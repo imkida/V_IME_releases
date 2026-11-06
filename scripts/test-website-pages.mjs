@@ -23,6 +23,21 @@ test('legal article bytes remain identical to the original pages', () => {
   }
 });
 
+// Each page's share card; the files ship from docs/macos/assets and are 1200×630 PNGs.
+const shareImages = {
+  '/': 'og-mac.png', '/macos/': 'og-mac.png', '/macos/privacy/': 'og-mac.png', '/macos/support/': 'og-mac.png',
+  '/android/': 'og-android.png', '/privacy/': 'og-vime.png', '/support/': 'og-vime.png'
+};
+
+test('share cards exist as 1200×630 PNG files', () => {
+  for (const name of new Set(Object.values(shareImages))) {
+    const png = readFileSync(new URL('../docs/macos/assets/' + name, import.meta.url));
+    assert.equal(png.subarray(1, 4).toString('latin1'), 'PNG', name);
+    assert.equal(png.readUInt32BE(16), 1200, name);
+    assert.equal(png.readUInt32BE(20), 630, name);
+  }
+});
+
 test('all public pages have canonical and sharing metadata and are listed for crawlers', () => {
   const sitemap = read('docs/sitemap.xml');
   for (const path of paths) {
@@ -36,8 +51,12 @@ test('all public pages have canonical and sharing metadata and are listed for cr
     assert.match(head, /<meta property="og:description" content="[^"]+">/);
     assert.match(head, /<meta property="og:type" content="website">/);
     assert.match(head, /<meta property="og:site_name" content="Vime">/);
-    assert.match(head, /<meta name="twitter:card" content="summary">/);
-    assert.doesNotMatch(head, /og:image/);
+    assert.match(head, /<meta name="twitter:card" content="summary_large_image">/);
+    const image = shareImages[path];
+    assert.ok(head.includes(`<meta property="og:image" content="https://vimebot.ai/macos/assets/${image}">`), path);
+    assert.ok(head.includes('<meta property="og:image:width" content="1200">'), path);
+    assert.ok(head.includes('<meta property="og:image:height" content="630">'), path);
+    assert.match(head, /<meta property="og:image:alt" content="[^"]+">/);
     assert.ok(sitemap.includes(`<loc>https://vimebot.ai${path}</loc>`), path);
   }
   assert.equal((sitemap.match(/<loc>/g) || []).length, paths.length);
