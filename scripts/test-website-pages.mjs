@@ -80,5 +80,57 @@ test('legal pages share a static shell and link only Mac and iOS document counte
     assert.match(html, /京ICP备2026046839号-2/);
     assert.match(html, /\['vimebot.com', 'www.vimebot.com'\]/);
   }
-  assert.ok(read('docs/macos/assets/site-legal.css').includes('@media (prefers-color-scheme:dark)'));
+  // Dark appearance now comes from the shared tokens the legal shell loads first.
+  assert.ok(read('website/macos/src/tokens.css').includes('@media (prefers-color-scheme:dark)'));
+});
+
+// One design system across the React homepage and the static pages: a single token source,
+// the same platform switcher and the same footer links (Android has no own privacy or support
+// documents yet, so its footer omits them instead of pointing at the Mac ones).
+const legalPages = ['docs/privacy/index.html', 'docs/support/index.html', 'docs/macos/privacy/index.html', 'docs/macos/support/index.html'];
+const staticPages = ['docs/android/index.html', ...legalPages];
+const fullFooter = ['/', '/android/', '/macos/privacy/', '/macos/support/', 'mailto:kida.wong@gmail.com', 'https://beian.miit.gov.cn/'];
+const androidFooter = ['/', '/android/', 'mailto:kida.wong@gmail.com', 'https://beian.miit.gov.cn/'];
+const hrefs = block => [...block.matchAll(/href="([^"]+)"/g)].map(match => match[1]);
+const siteFooter = html => html.slice(html.lastIndexOf('<footer'));
+
+test('every page draws its colours, type and motion from the one shared token file', () => {
+  const tokens = read('website/macos/src/tokens.css');
+  assert.equal(read('docs/macos/assets/site-tokens.css'), tokens, 'run npm run release:page');
+  assert.match(read('website/macos/src/styles.css'), /^(?:\/\*[\s\S]*?\*\/\s*)?@import '\.\/tokens\.css';/);
+  const tokenNames = [...new Set([...tokens.matchAll(/(--[\w-]+)\s*:/g)].map(match => match[1]))];
+  assert.ok(tokenNames.length > 30, 'token file parsed');
+  for (const path of ['website/macos/src/styles.css', 'docs/macos/assets/site-legal.css', ...staticPages]) {
+    const text = read(path);
+    for (const name of tokenNames) {
+      assert.doesNotMatch(text, new RegExp(name + '\\s*:'), path + ' must not redefine ' + name);
+    }
+  }
+  for (const path of staticPages) {
+    const head = read(path).split('</head>')[0];
+    // The shared tokens are the first style source, so every page style can use them.
+    const sources = [...head.matchAll(/<style>|<link rel="stylesheet" href="([^"]+)">/g)].map(match => match[1] ?? '<style>');
+    assert.equal(sources[0], '/macos/assets/site-tokens.css', path);
+    assert.equal(sources.filter(source => source === '/macos/assets/site-tokens.css').length, 1, path);
+  }
+  for (const path of legalPages) {
+    assert.match(read(path).split('</head>')[0], /localStorage\.getItem\('vime-theme'\)/, path + ' honours the saved appearance');
+  }
+});
+
+test('every page shares the platform switcher and the footer links', () => {
+  for (const path of staticPages) {
+    const html = read(path);
+    const plat = html.match(/<(div|nav) class="plat"[^>]*>([\s\S]*?)<\/\1>/)?.[2] ?? '';
+    assert.deepEqual(hrefs(plat), ['/', '/android/'], path);
+    assert.match(plat, /iOS<em>即将推出<\/em>/, path);
+    const footer = siteFooter(html);
+    assert.match(footer, /<div class="fb"><a href="[^"]+">Vime<\/a><span>由个人开发维护<\/span><\/div>/, path);
+    const links = footer.match(/<div class="links">([\s\S]*?)<\/div>/)[1];
+    assert.deepEqual(hrefs(links), path.includes('android') ? androidFooter : fullFooter, path);
+  }
+  const app = read('website/macos/src/App.jsx');
+  const appFooter = app.slice(app.indexOf('<footer>'), app.indexOf('</footer>'));
+  assert.deepEqual(hrefs(appFooter.match(/<div className="links">([\s\S]*?)<\/div>/)[1]), fullFooter);
+  assert.deepEqual(hrefs(app.match(/<div className="plat"[^>]*>([\s\S]*?)<\/div>/)[1]), ['/', '/android/']);
 });

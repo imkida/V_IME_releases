@@ -1,14 +1,5 @@
-/* Shared static shell; tokens match the main website. */
-:root{
-  color-scheme:light dark;
-  --ink:#20232b; --canvas:#f8f9f7; --surface:#ffffff; --muted:#525f75; --subtle:#5d697e;
-  --blue:#345ce8; --blue-ink:#2448c8; --line:#dce0e5; --line-soft:#edf0f6;
-  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
-}
-@media (prefers-color-scheme:dark){:root{
-  --ink:#edf0f6; --canvas:#15171c; --surface:#252a33; --muted:#b2bece; --subtle:#a2afc3;
-  --blue:#9bb2ff; --blue-ink:#b8c8ff; --line:#3b4453; --line-soft:#333c4b;
-}}
+/* Shared static shell for privacy and support pages; tokens come from site-tokens.css. */
+:root{color-scheme:light dark}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 body{margin:0;background:var(--canvas);color:var(--ink);font:400 16px/1.8 var(--sans);-webkit-font-smoothing:antialiased}
