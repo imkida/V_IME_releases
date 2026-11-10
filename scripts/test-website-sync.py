@@ -44,6 +44,8 @@ class WebsiteSyncTests(unittest.TestCase):
         self.assertLess(keys.index("release.json"), keys.index("index.html"))
         # The Android page ships with the keyboard screenshots it references.
         self.assertIn("android/index.html", files)
+        self.assertIn("android/privacy/index.html", files)
+        self.assertIn("android/support/index.html", files)
         self.assertIn("macos/assets/site-legal.css", files)
         self.assertEqual(files["android/manifest.json"], (sync.ROOT / "android/manifest.json").read_bytes())
         self.assertTrue({"macos/assets/kb-voice.png", "macos/assets/kb-pinyin.png"} <= set(files))
