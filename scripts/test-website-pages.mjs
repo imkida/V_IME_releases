@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 import test from 'node:test';
 
 const read = path => readFileSync(new URL('../' + path, import.meta.url), 'utf8');
-const paths = ['/', '/macos/', '/android/', '/privacy/', '/support/', '/macos/privacy/', '/macos/support/'];
+const paths = ['/', '/macos/', '/android/', '/privacy/', '/support/', '/macos/privacy/', '/macos/support/', '/android/privacy/', '/android/support/'];
 
 // SHA-256 of each complete <article>…</article> block, including whitespace,
 // from origin/main at 80a0166a2213fa2190f633b4b27afbd5a638b18d. No Git needed at test time.
@@ -26,7 +26,7 @@ test('legal article bytes remain identical to the original pages', () => {
 // Each page's share card; the files ship from docs/macos/assets and are 1200×630 PNGs.
 const shareImages = {
   '/': 'og-mac.png', '/macos/': 'og-mac.png', '/macos/privacy/': 'og-mac.png', '/macos/support/': 'og-mac.png',
-  '/android/': 'og-android.png', '/privacy/': 'og-vime.png', '/support/': 'og-vime.png'
+  '/android/': 'og-android.png', '/android/privacy/': 'og-android.png', '/android/support/': 'og-android.png', '/privacy/': 'og-vime.png', '/support/': 'og-vime.png'
 };
 
 test('share cards exist as 1200×630 PNG files', () => {
@@ -63,19 +63,22 @@ test('all public pages have canonical and sharing metadata and are listed for cr
   assert.equal(read('docs/robots.txt'), 'User-agent: *\nAllow: /\n\nSitemap: https://vimebot.ai/sitemap.xml\n');
 });
 
-test('legal pages share a static shell and link only Mac and iOS document counterparts', () => {
+test('legal pages share a static shell and link their Mac, Android and iOS counterparts', () => {
   for (const path of paths.slice(3)) {
     const html = read('docs' + path + 'index.html');
     const kind = path.includes('privacy') ? 'privacy' : 'support';
-    const mac = path.startsWith('/macos/');
+    const platform = path.startsWith('/macos/') ? 'mac' : path.startsWith('/android/') ? 'android' : 'ios';
     assert.match(html, /<link rel="stylesheet" href="\/macos\/assets\/site-legal.css">/);
     assert.match(html, /<link rel="icon" href="\/macos\/assets\/app-icon-preview.svg"/);
     assert.match(html, /<a class="brand" href="\/"/);
     const tabs = html.match(/<nav class="plat document-platforms"[\s\S]*?<\/nav>/)[0];
-    assert.ok(tabs.includes(`<a href="/macos/${kind}/"${mac ? ' aria-current="page"' : ''}>Mac</a>`));
-    assert.ok(tabs.includes(`<a href="/${kind}/"${mac ? '' : ' aria-current="page"'}>iOS</a>`));
-    assert.doesNotMatch(tabs, /Android/);
-    assert.ok(html.includes(`<p class="document-scope">适用于 ${mac ? 'Vime for macOS' : 'Vime iOS App'}</p>`));
+    const current = name => platform === name ? ' aria-current="page"' : '';
+    assert.deepEqual(hrefs(tabs), [`/macos/${kind}/`, `/android/${kind}/`, `/${kind}/`]);
+    assert.ok(tabs.includes(`<a href="/macos/${kind}/"${current('mac')}>Mac</a>`));
+    assert.ok(tabs.includes(`<a href="/android/${kind}/"${current('android')}>Android</a>`));
+    assert.ok(tabs.includes(`<a href="/${kind}/"${current('ios')}>iOS</a>`));
+    const scope = { mac: 'Vime for macOS', android: 'Vime for Android', ios: 'Vime iOS App' }[platform];
+    assert.ok(html.includes(`<p class="document-scope">适用于 ${scope}</p>`));
     assert.match(html, /<\/nav>\s*<p class="document-scope">[^<]+<\/p>\s*<article>/);
     assert.match(html, /京ICP备2026046839号-2/);
     assert.match(html, /\['vimebot.com', 'www.vimebot.com'\]/);
@@ -85,12 +88,13 @@ test('legal pages share a static shell and link only Mac and iOS document counte
 });
 
 // One design system across the React homepage and the static pages: a single token source,
-// the same platform switcher and the same footer links (Android has no own privacy or support
-// documents yet, so its footer omits them instead of pointing at the Mac ones).
-const legalPages = ['docs/privacy/index.html', 'docs/support/index.html', 'docs/macos/privacy/index.html', 'docs/macos/support/index.html'];
+// the same platform switcher and the same footer links (Android pages link their own privacy
+// and support documents).
+const legalPages = ['docs/privacy/index.html', 'docs/support/index.html', 'docs/macos/privacy/index.html', 'docs/macos/support/index.html',
+  'docs/android/privacy/index.html', 'docs/android/support/index.html'];
 const staticPages = ['docs/android/index.html', ...legalPages];
 const fullFooter = ['/', '/android/', '/macos/privacy/', '/macos/support/', 'mailto:kida.wong@gmail.com', 'https://beian.miit.gov.cn/'];
-const androidFooter = ['/', '/android/', 'mailto:kida.wong@gmail.com', 'https://beian.miit.gov.cn/'];
+const androidFooter = ['/', '/android/', '/android/privacy/', '/android/support/', 'mailto:kida.wong@gmail.com', 'https://beian.miit.gov.cn/'];
 const hrefs = block => [...block.matchAll(/href="([^"]+)"/g)].map(match => match[1]);
 const siteFooter = html => html.slice(html.lastIndexOf('<footer'));
 
@@ -133,4 +137,14 @@ test('every page shares the platform switcher and the footer links', () => {
   const appFooter = app.slice(app.indexOf('<footer>'), app.indexOf('</footer>'));
   assert.deepEqual(hrefs(appFooter.match(/<div className="links">([\s\S]*?)<\/div>/)[1]), fullFooter);
   assert.deepEqual(hrefs(app.match(/<div className="plat"[^>]*>([\s\S]*?)<\/div>/)[1]), ['/', '/android/']);
+});
+
+// The Android documents describe the Android app only and point back to each other.
+test('Android legal documents are self-contained', () => {
+  const privacy = read('docs/android/privacy/index.html'), support = read('docs/android/support/index.html');
+  assert.match(privacy, /<h1>Vime for Android 隐私政策<\/h1>/);
+  assert.match(support, /<h1>Vime for Android 支持<\/h1>/);
+  assert.ok(privacy.includes('<a href="/android/support/">Vime for Android 支持页面</a>'));
+  assert.ok(support.includes('<a href="/android/privacy/">隐私政策</a>'));
+  for (const html of [privacy, support]) assert.doesNotMatch(html.match(/<article>[\s\S]*<\/article>/)[0], /macOS|钥匙串|右 Command|Apple/);
 });
