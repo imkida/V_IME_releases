@@ -6,13 +6,14 @@ import test from 'node:test';
 const read = path => readFileSync(new URL('../' + path, import.meta.url), 'utf8');
 const paths = ['/', '/macos/', '/android/', '/privacy/', '/support/', '/macos/privacy/', '/macos/support/', '/android/privacy/', '/android/support/'];
 
-// SHA-256 of each complete <article>…</article> block, including whitespace,
-// from origin/main at 80a0166a2213fa2190f633b4b27afbd5a638b18d. No Git needed at test time.
+// SHA-256 of each complete <article>…</article> block, including whitespace. iOS pages are the
+// origin/main 80a0166a originals; the Mac pages were updated on 2026-11-11 for anonymous usage statistics.
+// Any further policy text change must update these on purpose. No Git needed at test time.
 const legalArticleHashes = {
   'docs/privacy/index.html': 'de6063232bbca0e486fd3f712516bab9d5a0a6a751f12e8e6b5c65df766263a5',
   'docs/support/index.html': '05fa2ff594a97322eaaf1b6399deedb5da350238660ee1a845e5042e365ce875',
-  'docs/macos/privacy/index.html': '6b250cddc9bfbec3b5cda798550dc5bdd6cb30a4fcff47c13bf7a3a617d37487',
-  'docs/macos/support/index.html': '147b47281d4167d75e159cbfa7838aa858c6dfa34a22cb423bb361be91a353f8'
+  'docs/macos/privacy/index.html': 'fb532dcedb662a8ee786843785e177c0865ab5d011b5ec92195f632525a08a83',
+  'docs/macos/support/index.html': '40dd0a38a2a84721d16bc3fe577f297e0b577f978dbc0c294bcf75e35f7fa881'
 };
 
 test('legal article bytes remain identical to the original pages', () => {
