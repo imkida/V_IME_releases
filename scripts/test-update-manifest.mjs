@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
@@ -173,6 +173,42 @@ function withFixture(callback) {
     rmSync(root, { recursive: true, force: true });
   }
 }
+
+test('CLI runs when invoked through a symlinked directory', () => {
+  withFixture(({ artifact, manifest, summary }) => {
+    const linkRoot = mkdtempSync(path.join(tmpdir(), 'v-ime-manifest-link-'));
+    try {
+      const linkedScripts = path.join(linkRoot, 'scripts');
+      symlinkSync(path.join(ROOT, 'scripts'), linkedScripts, 'dir');
+      const result = spawnSync('node', [path.join(linkedScripts, 'update-manifest.mjs'),
+        '--platform', 'macos',
+        '--channel', 'beta',
+        '--version-name', '1.4.0',
+        '--build-number', '2026072703',
+        '--title', 'VIME macOS beta',
+        '--summary-file', summary,
+        '--tag', 'macos-v1.4.0',
+        '--release-url', 'https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.4.0',
+        '--repo', 'imkida/V_IME_releases',
+        '--asset', artifact,
+        '--manifest', manifest,
+        '--dry-run'
+      ], { cwd: ROOT, encoding: 'utf8' });
+      assert.equal(result.status, 0, result.stderr);
+      assert.notEqual(result.stdout.trim(), '', 'a symlinked invocation must not silently print nothing');
+      assert.equal(JSON.parse(result.stdout).channels.beta.versionName, '1.4.0');
+    } finally {
+      rmSync(linkRoot, { recursive: true, force: true });
+    }
+  });
+});
+
+test('importing the module does not run the CLI', () => {
+  const result = spawnSync('node', ['--input-type=module', '-e',
+    `await import(${JSON.stringify(new URL(`file://${SCRIPT}`).href)});`], { cwd: ROOT, encoding: 'utf8' });
+  assert.equal(result.status, 0, result.stderr);
+  assert.equal(result.stdout, '');
+});
 
 function run(args) {
   return spawnSync('node', [SCRIPT, ...args], {
