@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { createHash } from 'node:crypto';
-import { createReadStream, existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
+import { createReadStream, existsSync, mkdirSync, readFileSync, realpathSync, statSync, writeFileSync } from 'node:fs';
 import { basename, dirname, extname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { assertAndroidDownloadSources, syncDownloadPage } from './sync-download-page.mjs';
@@ -29,8 +29,19 @@ const scriptPath = fileURLToPath(import.meta.url);
 const repoRoot = resolve(dirname(scriptPath), '..');
 
 // Only run the CLI when invoked directly, so tests can import the invariants above.
-if (process.argv[1] && resolve(process.argv[1]) === scriptPath) {
+// Compare real paths: invoking through a symlinked directory (e.g. macOS /var -> /private/var)
+// must still run the CLI instead of silently exiting 0 with empty output.
+if (isDirectInvocation()) {
   main();
+}
+
+function isDirectInvocation() {
+  if (!process.argv[1]) return false;
+  try {
+    return realpathSync(resolve(process.argv[1])) === realpathSync(scriptPath);
+  } catch {
+    return false;
+  }
 }
 
 async function main() {
