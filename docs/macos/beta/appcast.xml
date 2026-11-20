@@ -1,38 +1,58 @@
 <?xml version="1.0" standalone="yes"?><!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0" xmlns:vime="https://vime.app/xml-namespaces/policy">
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
     <channel>
         <title>VIME</title>
         <item>
-            <title>1.9.1</title>
-            <pubDate>Tue, 20 Oct 2026 02:05:11 +0800</pubDate>
+            <title>1.10.0</title>
+            <pubDate>Fri, 20 Nov 2026 10:50:48 +0800</pubDate>
             <link>https://imkida.github.io/V_IME_releases/macos/</link>
-            <sparkle:version>2026102001</sparkle:version>
-            <sparkle:shortVersionString>1.9.1</sparkle:shortVersionString>
+            <sparkle:version>2026112002</sparkle:version>
+            <sparkle:shortVersionString>1.10.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# Vime 1.9.1 公测更新
+            <description sparkle:format="markdown"><![CDATA[# Vime 1.10.0 公测更新
 
-构建号：2026102001 · macOS 14+
+构建号：2026112002 · macOS 14+
 
-- 修复逐个念出常见技术缩写的字母后，整理成 API、SDK 等规范缩写可能导致结果退回原话的问题。
-- 改进整理回退的问题分类，便于准确定位原因。
-- 改进诊断隐私保护，避免在公开诊断字段中出现口述内容片段。
+**我的词库**
+- 手动添加的词条和原来的「常用词」合并成「我的词库」。每条词条可以选用途（帮助识别写对、统一写法，或两者都要），也可以只在指定的 App 里生效。原来的常用词会移到「待整理」，原文保留。
+- 识别和整理时，词库里的词条会随请求一起发给你正在使用的识别和整理服务，帮助写对人名、术语等专有名词。新装默认开启；升级后沿用你原来的设置。随时可以在设置里关闭，关闭后立即停止附带。
+- 词库暂时保存不了时会明确提示，不会默默丢失。
 
-保留现有输入能力、个人设置和历史记录；实验室功能继续默认关闭，不改变服务地址、识别模型或整理提示内容。
+**整理更稳**
+- 整理后更好地保留你原有的分段、换行和列表层级。
+- 整理结果把一整段换成了无关内容，或者把「不要」「不宜」这类否定说反了，会自动退回你的原话，不会把意思改错。
+- 「一块」「切成三块」这类量词不再被当成金额改写；「两万块」这类金额的写法更准。口述时重复说同一个数，不会再因此退回原话。
 
-本次不包含离线语音识别研究或其他未验收候选，不宣称长文整理成功率已经提升。
+**设置与备份**
+- 设置没有保存成功时，会恢复成已保存的值，并就地提示「没有保存」和「重试」。
+- 导入备份时，会先预览本地历史记录的变化，默认不勾选，不会未经确认就打开历史保存；覆盖导入不会丢失已保存的 API Key；部分项目导入失败时如实说明哪些没有完成。
+- 设置页的说法和分组做了整理，例如「听写状态条」「权限帮助」「默认快捷键」，服务检查可以取消。
+- 设置里新增「匿名使用统计」说明。目前不上传任何数据。
+
+**听写**
+- 听写时打开菜单栏菜单，实时文字照常出现，不再等菜单关闭才一下子补出来。
+- 没开速记时，打开「历史」直接看到输入历史；以前用过速记的，仍可切到「速记记录」查看。
+- 修复：说完一段停下来想一会儿再接着说，偶尔会提示「语音转文字失败」（E901），已经识别出的内容也一起丢失。现在停顿留下的空白不会再让整段听写失败。
+
+**实验室：速记（默认关闭）**
+- 新增「速记」：在设置 › 系统与权限 › 实验室 里打开「Vime AI 速记」后，按右⌘＋;（按住右⌘ 再按分号）唤起速记纸面，边说边出字，说完自动整理成稿，可以保存为 Markdown。
+- 录音分段保存，退出或意外关闭后可以恢复。录音设备断开时会自动暂停，并保留已经录下的内容。
+- 暂停后再按一次快捷键，会结束上一篇（照常整理），并立刻开始新的一篇。想接着写上一篇，就点「继续」。
+- 整理时如果漏掉了原有内容，会保留原稿；保存时不会覆盖已有文件：「更新文件」遇到内容明显变少会另存一份新文件；另存为选中了已有的文件时不会写入，请换一个文件名。
+- 保存文件夹被移走、改名或换掉后，速记不会再把文件写到别处，会提示你重新选择保存位置或另存为。
+- 文件名太长时会自动缩短；实在放不下会提示你另存为。保存中途出错时，会告诉你哪个文件可能不完整、放在哪里。
+
+保留现有输入能力、个人设置和历史记录。实验室功能（包括速记）继续默认关闭，不改变服务地址或识别模型。
+
+本次只更新 Vime 主应用，不包含 Vime Note，也不包含本机离线听写。
 
 建议更新，不新增强制升级；旧版安装包保留。
 ]]></description>
-            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.9.1/2026102001/V_IME-1.9.1-2026102001-macos.zip" length="11335018" type="application/octet-stream" sparkle:edSignature="mYs+FMVgfS6R7te5rO0+H/FaYzU3QvJ2bxgr6/TMQQhyB/aZ5ZKiklfnsNl6eysnRNemH6ZuHdJ1Be4loT1XCA=="></enclosure>
-            <vime:policyRevision>2026102001</vime:policyRevision>
-            <vime:mandatory>false</vime:mandatory>
-            <vime:minSupportedBuild>2026100906</vime:minSupportedBuild>
-            <vime:mandatoryReason>旧版默认云服务协议已停止支持，请更新至当前公测版。</vime:mandatoryReason>
-            <vime:supportURL>https://imkida.github.io/V_IME_releases/macos/</vime:supportURL>
+            <enclosure url="https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.10.0/2026112002/V_IME-1.10.0-2026112002-macos.zip" length="19483460" type="application/octet-stream" sparkle:edSignature="Fc3djkQMXpOfE0L0zndgvmjfLj1QnrJkY4CpsLONJZ947pHTVH+2qoiSRsdi7FB7/0iS+1hktHJwkZBCSndDAg=="></enclosure>
         </item>
     </channel>
 </rss><!-- sparkle-signatures:
-edSignature: ixbsgsE/eIN13yk13mAPbtIm2jMavvcFW7CKeZ9Lo29jfmpxY+Csfp4V8CeuoDBNFfHIIBb26lPJNLS6DSbaBA==
-length: 2391
+edSignature: bwZ0oFwId8IsenUI8H+DufmQ3NmGLwtMfi32qfKBZtzhpPr9dfsQtPM24WL537/Ff/DeQjZnfOzTTj2EDplTDw==
+length: 4841
 -->

@@ -1,41 +1,41 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-10-19T18:11:44Z",
+  "generatedAt": "2026-11-20T02:59:22Z",
   "platform": "macos",
   "channels": {
     "beta": {
-      "versionName": "1.9.1",
-      "title": "VIME macOS v1.9.1 beta · build 2026102001 · macOS 14+ · 已通过 macOS 安全检查",
-      "summary": "# Vime 1.9.1 公测更新\n\n构建号：2026102001 · macOS 14+\n\n- 修复逐个念出常见技术缩写的字母后，整理成 API、SDK 等规范缩写可能导致结果退回原话的问题。\n- 改进整理回退的问题分类，便于准确定位原因。\n- 改进诊断隐私保护，避免在公开诊断字段中出现口述内容片段。\n\n保留现有输入能力、个人设置和历史记录；实验室功能继续默认关闭，不改变服务地址、识别模型或整理提示内容。\n\n本次不包含离线语音识别研究或其他未验收候选，不宣称长文整理成功率已经提升。\n\n建议更新，不新增强制升级；旧版安装包保留。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.9.1",
+      "versionName": "1.10.0",
+      "title": "VIME macOS v1.10.0 beta · build 2026112002 · macOS 14+ · 已通过 macOS 安全检查",
+      "summary": "# Vime 1.10.0 公测更新\n\n构建号：2026112002 · macOS 14+\n\n**我的词库**\n- 手动添加的词条和原来的「常用词」合并成「我的词库」。每条词条可以选用途（帮助识别写对、统一写法，或两者都要），也可以只在指定的 App 里生效。原来的常用词会移到「待整理」，原文保留。\n- 识别和整理时，词库里的词条会随请求一起发给你正在使用的识别和整理服务，帮助写对人名、术语等专有名词。新装默认开启；升级后沿用你原来的设置。随时可以在设置里关闭，关闭后立即停止附带。\n- 词库暂时保存不了时会明确提示，不会默默丢失。\n\n**整理更稳**\n- 整理后更好地保留你原有的分段、换行和列表层级。\n- 整理结果把一整段换成了无关内容，或者把「不要」「不宜」这类否定说反了，会自动退回你的原话，不会把意思改错。\n- 「一块」「切成三块」这类量词不再被当成金额改写；「两万块」这类金额的写法更准。口述时重复说同一个数，不会再因此退回原话。\n\n**设置与备份**\n- 设置没有保存成功时，会恢复成已保存的值，并就地提示「没有保存」和「重试」。\n- 导入备份时，会先预览本地历史记录的变化，默认不勾选，不会未经确认就打开历史保存；覆盖导入不会丢失已保存的 API Key；部分项目导入失败时如实说明哪些没有完成。\n- 设置页的说法和分组做了整理，例如「听写状态条」「权限帮助」「默认快捷键」，服务检查可以取消。\n- 设置里新增「匿名使用统计」说明。目前不上传任何数据。\n\n**听写**\n- 听写时打开菜单栏菜单，实时文字照常出现，不再等菜单关闭才一下子补出来。\n- 没开速记时，打开「历史」直接看到输入历史；以前用过速记的，仍可切到「速记记录」查看。\n- 修复：说完一段停下来想一会儿再接着说，偶尔会提示「语音转文字失败」（E901），已经识别出的内容也一起丢失。现在停顿留下的空白不会再让整段听写失败。\n\n**实验室：速记（默认关闭）**\n- 新增「速记」：在设置 › 系统与权限 › 实验室 里打开「Vime AI 速记」后，按右⌘＋;（按住右⌘ 再按分号）唤起速记纸面，边说边出字，说完自动整理成稿，可以保存为 Markdown。\n- 录音分段保存，退出或意外关闭后可以恢复。录音设备断开时会自动暂停，并保留已经录下的内容。\n- 暂停后再按一次快捷键，会结束上一篇（照常整理），并立刻开始新的一篇。想接着写上一篇，就点「继续」。\n- 整理时如果漏掉了原有内容，会保留原稿；保存时不会覆盖已有文件：「更新文件」遇到内容明显变少会另存一份新文件；另存为选中了已有的文件时不会写入，请换一个文件名。\n- 保存文件夹被移走、改名或换掉后，速记不会再把文件写到别处，会提示你重新选择保存位置或另存为。\n- 文件名太长时会自动缩短；实在放不下会提示你另存为。保存中途出错时，会告诉你哪个文件可能不完整、放在哪里。\n\n保留现有输入能力、个人设置和历史记录。实验室功能（包括速记）继续默认关闭，不改变服务地址或识别模型。\n\n本次只更新 Vime 主应用，不包含 Vime Note，也不包含本机离线听写。\n\n建议更新，不新增强制升级；旧版安装包保留。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/macos-v1.10.0",
       "mandatory": false,
-      "buildNumber": 2026102001,
+      "buildNumber": 2026112002,
       "minSystemVersion": "14.0",
       "assets": [
         {
-          "name": "V_IME-1.9.1-2026102001-macos.dmg",
-          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.9.1/2026102001/V_IME-1.9.1-2026102001-macos.dmg",
-          "sha256": "3a645caea5eefe9bcf5c7bcf6ba32e0327afddbda63453cc94288bdc9e3c12fd",
-          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.9.1/V_IME-1.9.1-2026102001-macos.dmg",
-          "sizeBytes": 12655347,
+          "name": "V_IME-1.10.0-2026112002-macos.dmg",
+          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.10.0/2026112002/V_IME-1.10.0-2026112002-macos.dmg",
+          "sha256": "32e055aaf804842fa02c0e06912ce7cf7b5e46d1f7a198023957d911d5d03937",
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.10.0/V_IME-1.10.0-2026112002-macos.dmg",
+          "sizeBytes": 21727974,
           "installerType": "dmg",
           "arch": "universal",
           "minSystemVersion": "14.0"
         },
         {
-          "name": "V_IME-1.9.1-2026102001-macos.zip",
-          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.9.1/2026102001/V_IME-1.9.1-2026102001-macos.zip",
-          "sha256": "1e0850b455692f9bc9229b6d88fbf978bceb6e44c3fb8295d880efc7ce4adf71",
-          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.9.1/V_IME-1.9.1-2026102001-macos.zip",
-          "sizeBytes": 11335018,
+          "name": "V_IME-1.10.0-2026112002-macos.zip",
+          "url": "https://vime-public-releases-cn-shanghai.oss-cn-shanghai.aliyuncs.com/macos/1.10.0/2026112002/V_IME-1.10.0-2026112002-macos.zip",
+          "sha256": "f5b54545582d2dfe396ba69a9dddd8db838299c88db9114cc5c41215f8e9c456",
+          "mirrorUrl": "https://github.com/imkida/V_IME_releases/releases/download/macos-v1.10.0/V_IME-1.10.0-2026112002-macos.zip",
+          "sizeBytes": 19483460,
           "installerType": "zip",
           "arch": "universal",
           "minSystemVersion": "14.0",
-          "sparkleEdDsaSignature": "mYs+FMVgfS6R7te5rO0+H/FaYzU3QvJ2bxgr6/TMQQhyB/aZ5ZKiklfnsNl6eysnRNemH6ZuHdJ1Be4loT1XCA=="
+          "sparkleEdDsaSignature": "Fc3djkQMXpOfE0L0zndgvmjfLj1QnrJkY4CpsLONJZ947pHTVH+2qoiSRsdi7FB7/0iS+1hktHJwkZBCSndDAg=="
         }
       ],
       "appcastUrl": "https://imkida.github.io/V_IME_releases/macos/beta/appcast.xml",
-      "sparkleEdDsaSignature": "mYs+FMVgfS6R7te5rO0+H/FaYzU3QvJ2bxgr6/TMQQhyB/aZ5ZKiklfnsNl6eysnRNemH6ZuHdJ1Be4loT1XCA=="
+      "sparkleEdDsaSignature": "Fc3djkQMXpOfE0L0zndgvmjfLj1QnrJkY4CpsLONJZ947pHTVH+2qoiSRsdi7FB7/0iS+1hktHJwkZBCSndDAg=="
     }
   },
   "productName": "VIME",
