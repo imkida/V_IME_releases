@@ -1,21 +1,21 @@
 {
   "formatVersion": 1,
-  "generatedAt": "2026-10-28T12:48:29Z",
+  "generatedAt": "2026-11-22T03:54:51Z",
   "packageName": "com.vime.android",
   "channels": {
     "debug": {
-      "versionName": "1.9.9-dogfood.1",
-      "versionCode": 340,
-      "title": "v1.9.9-dogfood.1 — Clean0.39 与手动排版联合公测",
-      "summary": "公开 Debug 联合公测。采用以 0.27 内容规则为基线的 Clean0.39 有限公测，侧重断句、段落与可读性并保留原意、语气和口语风格；加入独立手动排版及一次撤销，空格键恢复原位，排版按钮移到候选栏右侧。保留完整键盘、双预测、本地语音识别运行时（仅 arm64，模型仍需在 App 内下载）和严格更新校验，不含新 Rime。少数窄屏布局仍需观察，键盘 50ms 性能目标尚未达成，不代表稳定 Release。只能同 Debug 签名覆盖升级，不卸载或清数据；Debug/Release 不可混装。",
-      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.9.9-dogfood.1",
-      "apkName": "V_IME-v1.9.9-dogfood.1-debug.apk",
-      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.9.9-dogfood.1/V_IME-v1.9.9-dogfood.1-debug.apk",
-      "apkSha256": "a2e0798da363b34e50ecec539f10ec3167229553706b482cb4ea62d31584169d",
+      "versionName": "1.9.42-dogfood.1",
+      "versionCode": 373,
+      "title": "373 · OpenAI 实时听写与联合包精简",
+      "summary": "支持 OpenAI 实时听写和输入框预览，优化服务配置检查。精简联合包，保留本机识别、26 键和九宫格。已有 Debug 签名包可覆盖升级。",
+      "releaseUrl": "https://github.com/imkida/V_IME_releases/releases/tag/android-v1.9.42-dogfood.1",
+      "apkName": "V_IME-v1.9.42-dogfood.1-debug.apk",
+      "apkUrl": "https://github.com/imkida/V_IME_releases/releases/download/android-v1.9.42-dogfood.1/V_IME-v1.9.42-dogfood.1-debug.apk",
+      "apkSha256": "405c30cd51715bbd1d4e3a11d999b3166a0186ceeb8d4ff5e58cf6373cf13241",
       "certificateSha256": "4513e5bc726058d40be6020e1bbfc2d0c0fbf4e81d3b04a393cba394cd195059",
       "mandatory": false,
       "minSupportedVersionCode": 1,
-      "apkOssUrl": "https://vimebot.com/downloads/android/1.9.9-dogfood.1/340/V_IME-v1.9.9-dogfood.1-debug.apk"
+      "apkOssUrl": "https://vimebot.com/downloads/android/1.9.42-dogfood.1/373/V_IME-v1.9.42-dogfood.1-debug.apk"
     },
     "release": {
       "versionName": "1.9.12",
